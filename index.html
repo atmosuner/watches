@@ -115,7 +115,7 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
 
 <div class="wrap">
   <h1>Saat Koleksiyonum</h1>
-  <p class="lede">Konuştuğumuz 62 saat tek sayfada. Kategori, renk, kasa şekli, mekanizma, bütçe ve markaya göre süz, beğendiklerini listene ekle, altta toplam fiyat aralığını gör. Kadran rengi önerdiğimiz renktir.</p>
+  <p class="lede">Konuştuğumuz 63 saat tek sayfada. Kategori, renk, kasa şekli, mekanizma, bütçe ve markaya göre süz, beğendiklerini listene ekle, altta toplam fiyat aralığını gör. Kadran rengi önerdiğimiz renktir.</p>
 
   <details class="filters" open>
     <summary>Filtreler <span id="active"></span></summary>
@@ -199,6 +199,7 @@ var W = [
   {b:"Seiko", n:"5 Sports SRPK89", c:"Eğlenceli / Kronograf", p:[350,450], dial:"#14161a", dn:"Siyah (bir yerde lacivert yazıyor)", verify:true, note:"37 mm çelik kasa, 44,7 mm lug-to-lug, otomatik 4R36, 41 saat güç rezervi, 100 m, çelik bilezik, sadece tarih penceresi. 17 cm bilek için rahat boyut. Kadran rengi kaynaklarda siyah ve lacivert arasında değişiyor, bayide kontrol et."},
   {b:"Fears", n:"Brunswick 40.5 Jump Hour Celestial", c:"Grail / Özel", p:[4700,4700], dial:"#1b2f66", dn:"Mavi (aventurin ve sedef kadran)", cush:true, siteLabel:"Haber ↗", note:"75 adetlik sınırlı üretim, 40 mm yastık kasa, Sellita SW200 üzerine JJ01 jump hour modülü, 100 m, çelik bilezik. Fiyat 4.700 USD, satıcı sayfasında tükenmiş görünüyor. Bağlantı resmi site değil, haber sayfasına gider."},
   {b:"Unimatic", n:"Modello Uno", c:"Diver", p:[850,2300], dial:"#111315", dn:"Siyah (titanyum doğal renk de var)", verify:true, note:"İtalyan mikro marka, 300 m. Klasik UC1 40 mm, ICON modelleri 41,5 mm. Klasik sürüm Seiko NH35A, bazı sürümlerde Sellita SW200-1 var. Fiyat sürüme göre 795-2.080 EUR arasında, USD aralığı yaklaşık. Hangi sürümü istediğini seç."},
+  {b:"AV86", n:"1954 Amalfi Mechanical", c:"Dress", p:[425,425], dial:"#1b2a4e", dn:"Gece mavisi, altın kasa", sq:true, note:"Kare, parlak altın renkli kasa, küçük saniyeli mekanik hareket, dokulu deri kayış. Kasa ölçüsü, su geçirmezlik ve hareketin türü sayfada yazmıyor, bileğine uyup uymadığını almadan önce sor. Fiyat 425 USD."},
   {b:"Garmin", n:"quatix 7", c:"Beater / Akıllı", p:[600,1100], dial:"#101418", dn:"Siyah ekran", digital:true, note:"Tekne seyri, koşu ve spor takibi. Mekanik saatleri darbe ve terden korur. Forerunner daha uygun fiyatlı seçenek."}
 ];
 var CATS = ["Tümü","Dress","Ofis spor-şık","Smart casual","Field / Pilot","Diver","GMT / Seyahat","Eğlenceli / Kronograf","Grail / Özel","Beater / Akıllı"];
@@ -255,7 +256,7 @@ var SITES = {
   "Doxa":"https://doxawatches.com", "Farer":"https://farer.com", "Grand Seiko":"https://www.grand-seiko.com",
   "Breitling":"https://www.breitling.com", "Zenith":"https://www.zenith-watches.com", "Rado":"https://www.rado.com",
   "Patek Philippe":"https://www.patek.com", "Omega x Swatch":"https://www.swatch.com",
-  "Casio":"https://www.casio.com/intl/watches/gshock/", "Unimatic":"https://www.unimaticwatches.com", "Bell & Ross":"https://www.bellross.com", "Garmin":"https://www.garmin.com"
+  "Casio":"https://www.casio.com/intl/watches/gshock/", "Unimatic":"https://www.unimaticwatches.com", "AV86":"https://av86.com/products/1954-amalfi-mechanical-gold-midnight-blue", "Bell & Ross":"https://www.bellross.com", "Garmin":"https://www.garmin.com"
 };
 var TARGET = ["Audemars Piguet","Rolex","Omega","Longines","Hamilton","Seiko","Mondaine","Oris","TAG Heuer","Panerai"];
 var MICRO = ["Baltic","Christopher Ward","Venezianico","Sternglas","Straum","Farer"];
@@ -322,6 +323,7 @@ var META = {
   "Seiko 5 Sports SRPK89":["Siyah","Otomatik","Tarihli"],
   "Fears Brunswick 40.5 Jump Hour Celestial":["Mavi","Otomatik","Bilinmiyor"],
   "Unimatic Modello Uno":["Siyah","Otomatik","Sade"],
+  "AV86 1954 Amalfi Mechanical":["Mavi","Bilinmiyor","Sade"],
   "Garmin quatix 7":["Siyah","Akıllı saat","Dijital"]
 };
 var COLS = ["Tümü","Siyah","Beyaz / krem","Gri / gümüş","Mavi","Turkuaz","Yeşil","Bordo / kırmızı","Pembe","Kahverengi","Turuncu / sarı / şampanya","Diğer"];
