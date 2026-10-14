@@ -198,7 +198,7 @@ var W = [
   {b:"Bell & Ross", n:"BR 03-92 Steel", c:"Field / Pilot", p:[3500,4500], dial:"#27456f", dn:"Mavi (siyah da var)", sq:true, note:"42 mm kare kasa, kokpit göstergesi estetiği. Mavi ve siyah çelik sürümleri var. Fiyat aralığı yaklaşık, bayiden doğrula."},
   {b:"Seiko", n:"5 Sports SRPK89", c:"Eğlenceli / Kronograf", p:[350,450], dial:"#14161a", dn:"Siyah (bir yerde lacivert yazıyor)", verify:true, note:"37 mm çelik kasa, 44,7 mm lug-to-lug, otomatik 4R36, 41 saat güç rezervi, 100 m, çelik bilezik, sadece tarih penceresi. 17 cm bilek için rahat boyut. Kadran rengi kaynaklarda siyah ve lacivert arasında değişiyor, bayide kontrol et."},
   {b:"Fears", n:"Brunswick 40.5 Jump Hour Celestial", c:"Grail / Özel", p:[4700,4700], dial:"#1b2f66", dn:"Mavi (aventurin ve sedef kadran)", cush:true, siteLabel:"Haber ↗", note:"75 adetlik sınırlı üretim, 40 mm yastık kasa, Sellita SW200 üzerine JJ01 jump hour modülü, 100 m, çelik bilezik. Fiyat 4.700 USD, satıcı sayfasında tükenmiş görünüyor. Bağlantı resmi site değil, haber sayfasına gider."},
-  {b:"Unimatic", n:"Modello Uno", c:"Diver", p:[850,2300], dial:"#111315", dn:"Siyah (titanyum doğal renk de var)", verify:true, note:"İtalyan mikro marka, 300 m. Klasik UC1 40 mm, ICON modelleri 41,5 mm. Klasik sürüm Seiko NH35A, bazı sürümlerde Sellita SW200-1 var. Fiyat sürüme göre 795-2.080 EUR arasında, USD aralığı yaklaşık. Hangi sürümü istediğini seç."},
+  {b:"Unimatic", n:"Modello Uno U1-TSP", c:"Diver", p:[870,930], dial:"#a8523a", dn:"Clay (kiremit kırmızısı, grené doku)", note:"99 adetlik sınırlı üretim. 40 mm çelik kasa (bezelle 41,5 mm), kumlanmış yüzey, otomatik NH35A, 41 saat güç rezervi, 300 m. Siyah-sarı naylon kayışla gelir. Fiyat 800 EUR, USD karşılığı kura göre değişir."},
   {b:"AV86", n:"1954 Amalfi Mechanical", c:"Dress", p:[425,425], dial:"#1b2a4e", dn:"Gece mavisi, altın kasa", sq:true, note:"Kare, parlak altın renkli kasa, küçük saniyeli mekanik hareket, dokulu deri kayış. Kasa ölçüsü, su geçirmezlik ve hareketin türü sayfada yazmıyor, bileğine uyup uymadığını almadan önce sor. Fiyat 425 USD."},
   {b:"Garmin", n:"quatix 7", c:"Beater / Akıllı", p:[600,1100], dial:"#101418", dn:"Siyah ekran", digital:true, note:"Tekne seyri, koşu ve spor takibi. Mekanik saatleri darbe ve terden korur. Forerunner daha uygun fiyatlı seçenek."}
 ];
@@ -322,7 +322,7 @@ var META = {
   "Bell & Ross BR 03-92 Steel":["Mavi","Otomatik","Tarihli"],
   "Seiko 5 Sports SRPK89":["Siyah","Otomatik","Tarihli"],
   "Fears Brunswick 40.5 Jump Hour Celestial":["Mavi","Otomatik","Bilinmiyor"],
-  "Unimatic Modello Uno":["Siyah","Otomatik","Sade"],
+  "Unimatic Modello Uno U1-TSP":["Bordo / kırmızı","Otomatik","Sade"],
   "AV86 1954 Amalfi Mechanical":["Mavi","Bilinmiyor","Sade"],
   "Garmin quatix 7":["Siyah","Akıllı saat","Dijital"]
 };
@@ -349,6 +349,7 @@ function shapeOf(w){ return w.sq?"Kare":(w.rect?"Dikdörtgen":(w.oct?"Sekizgen":
 function kindOf(w){ return TARGET.indexOf(w.b)>=0?"Hedef marka":(MICRO.indexOf(w.b)>=0?"Mikro marka":"Diğer"); }
 var COLEN = {"Siyah":"black dial","Beyaz / krem":"white dial","Gri / gümüş":"silver grey dial","Mavi":"blue dial","Turkuaz":"turquoise dial","Yeşil":"green dial","Bordo / kırmızı":"red dial","Pembe":"pink dial","Kahverengi":"brown dial","Turuncu / sarı / şampanya":"","Diğer":""};
 var IMGQ = {
+  "Unimatic Modello Uno U1-TSP":"Unimatic Modello Uno U1-TSP clay red dial",
   "Rolex Submariner":"Rolex Submariner black dial green bezel",
   "Rolex GMT-Master II":"Rolex GMT-Master II black dial blue black bezel",
   "Tudor Black Bay GMT":"Tudor Black Bay GMT black dial red blue bezel",
@@ -371,6 +372,7 @@ function imgQuery(w){
   return (w.b+" "+w.n.replace(/ \(.*\)$/,"")+" "+c+" watch").replace(/\s+/g," ").trim();
 }
 function siteOf(w){
+  if (key(w)==="Unimatic Modello Uno U1-TSP") return "https://www.unimaticwatches.com/products/uwk-u1-tsp";
   if (key(w)==="Fears Brunswick 40.5 Jump Hour Celestial") return "https://www.fratellowatches.com/introducing-the-fears-brunswick-40-5-jump-hour-celestial-limited-edition/";
   if (key(w)==="Christopher Ward C63 Sealander Automatic") return "https://www.christopherward.com/int/C63-Sealander-Automatic/C63-36ADA4-S00K0-B0.html";
   if (key(w)==="Straum Expedition") return "https://straum.co/products/expedition-white-lume";
