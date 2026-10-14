@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Saat Koleksiyonum</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Layout: üstte kısa başlık ve filtre çubuğu, altında kadran görselli kart ızgarası, en altta yapışkan seçim özeti */
+:root {
+  --bg: #e9ecef;
+  --surface: #f7f8f9;
+  --ink: #161a20;
+  --muted: #5b6470;
+  --line: #cfd5db;
+  --accent: #0f6b5c;
+  --accent-ink: #ffffff;
+  --steel: #9aa3ab;
+  --f-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --f-body: "IBM Plex Sans", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151a; --surface: #1a2027; --ink: #e8ecef; --muted: #9aa5b1;
+    --line: #2b343d; --accent: #5fd0b5; --accent-ink: #0b1a16; --steel: #6b757e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11151a; --surface: #1a2027; --ink: #e8ecef; --muted: #9aa5b1;
+  --line: #2b343d; --accent: #5fd0b5; --accent-ink: #0b1a16; --steel: #6b757e;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--f-body); font-size: 15px; line-height: 1.5;
+  padding-block: 28px 96px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1120px; margin: 0 auto; }
+h1 {
+  font-family: var(--f-display); font-weight: 700; font-size: clamp(2.4rem, 7vw, 3.8rem);
+  line-height: 1; letter-spacing: 0.01em; text-transform: uppercase; margin: 0 0 10px; text-wrap: balance;
+}
+.lede { color: var(--muted); max-width: 62ch; margin: 0 0 22px; }
+.filters { display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.row .lab {
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); min-width: 74px;
+}
+.chip {
+  font: inherit; font-size: 13px; color: var(--ink); background: transparent;
+  border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; cursor: pointer;
+}
+.chip:hover { border-color: var(--accent); }
+.chip[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.chip:focus-visible, .pick:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.count { font-family: var(--f-mono); font-size: 12px; color: var(--muted); margin: 0 0 12px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 14px; }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
+  padding: 16px; display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 14px; align-content: start;
+}
+.card.on { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.dial { width: 92px; height: 92px; display: block; }
+.meta { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.brand { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.name { font-family: var(--f-display); font-weight: 600; font-size: 1.35rem; line-height: 1.1; margin: 0; overflow-wrap: anywhere; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+.tag { font-size: 11.5px; color: var(--muted); border: 1px solid var(--line); border-radius: 3px; padding: 1px 7px; }
+.price { font-family: var(--f-mono); font-size: 13px; font-variant-numeric: tabular-nums; }
+.colorline { font-size: 13px; color: var(--muted); }
+.colorline b { color: var(--ink); font-weight: 500; }
+.note { font-size: 13px; color: var(--muted); grid-column: 1 / -1; margin: 2px 0 0; }
+.actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 12px; }
+.actions a { color: var(--accent); font-size: 13px; text-decoration: none; }
+.actions a:hover { text-decoration: underline; }
+.pick {
+  font: inherit; font-size: 13px; background: transparent; color: var(--ink);
+  border: 1px solid var(--line); border-radius: 4px; padding: 5px 12px; cursor: pointer;
+}
+.pick[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.bar {
+  position: fixed; left: 0; right: 0; bottom: 0; background: var(--surface); border-top: 1px solid var(--line);
+  padding-top: 10px;
+  padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.bar .in { max-width: 1120px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline; justify-content: space-between; }
+.bar strong { font-family: var(--f-display); font-size: 1.2rem; font-weight: 600; letter-spacing: 0.02em; }
+.bar span { font-family: var(--f-mono); font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.foot { color: var(--muted); font-size: 12.5px; margin-top: 26px; max-width: 70ch; }
+@media (max-width: 420px) { .card { grid-template-columns: 72px minmax(0, 1fr); } .dial { width: 72px; height: 72px; } .row .lab { min-width: 100%; } }
+
+.filters { margin-bottom: 22px; border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; background: var(--surface); }
+.filters summary { cursor: pointer; font-family: var(--f-display); font-weight: 600; font-size: 1.1rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.filters summary span { font-family: var(--f-mono); font-size: 12px; color: var(--accent); text-transform: none; letter-spacing: 0; }
+.frows { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.tools { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+.tools .lab { min-width: 0; }
+select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 5px 8px; max-width: 100%; }
+.links { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.empty { grid-column: 1 / -1; color: var(--muted); padding: 24px 0; }
+.chip { padding: 4px 10px; font-size: 12.5px; }
+.row .lab { min-width: 92px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <h1>Saat Koleksiyonum</h1>
+  <p class="lede">Konuştuğumuz 41 saat tek sayfada. Kategori, renk, kasa şekli, mekanizma, bütçe ve markaya göre süz, beğendiklerini listene ekle, altta toplam fiyat aralığını gör. Kadran rengi önerdiğimiz renktir.</p>
+
+  <details class="filters" open>
+    <summary>Filtreler <span id="active"></span></summary>
+    <div id="frows" class="frows"></div>
+    <div class="row tools">
+      <label class="lab" for="brand">Marka</label>
+      <select id="brand"></select>
+      <button type="button" class="chip" id="only" aria-pressed="false">Sadece listem</button>
+      <button type="button" class="chip" id="clear">Filtreleri temizle</button>
+    </div>
+  </details>
+
+  <p class="count" id="count"></p>
+  <div class="grid" id="grid"></div>
+
+  <p class="foot">Fiyatlar yeni halde yaklaşık USD değerleridir, kesin fiyat için yetkili bayiye bak. Tier sınırları: Tier 1 1.500 USD altı, Tier 2 1.500-5.000 USD, Tier 3 5.000 USD üstü. Fiyatı ya da modeli doğrulayamadığım saatler "Doğrula" etiketli. Görsel bağlantıları Google Görseller aramasını yeni sekmede açar. Resmi site bağlantıları markanın ana sayfasına gider (Venezianico Bosphorus hariç, o model sayfasına gider). Baltic ve Sternglas adreslerini aramayla doğrulayamadım. Mekanizma ve kadran tipi bilgisi emin olmadığım saatlerde "Bilinmiyor" olarak bırakıldı.</p>
+</div>
+
+<div class="bar"><div class="in"><strong id="selTitle">Listem boş</strong><span id="selSum"></span></div></div>
+
+<script>
+var W = [
+  {b:"Nomos", n:"Tangente", c:"Dress", p:[2000,2500], dial:"#f1eee6", dn:"Beyaz / gümüş", note:"Bauhaus çizgisi, ince kasa. Siyah ya da koyu kahverengi deri kayışla en resmi takım elbise saati."},
+  {b:"Mondaine", n:"Original Automatic 41 mm", c:"Dress", p:[600,900], dial:"#1c1f24", dn:"Siyah / koyu", acc:"#d6322b", note:"İsviçre tren istasyonu saati tasarımı. Nomos beyaz olduğu için koyu kadran, kırmızı saniye ibresi vurgu."},
+  {b:"Orient", n:"Bambino", c:"Dress", p:[200,350], dial:"#27457a", dn:"Mavi ya da yeşil", note:"Bütçe dostu klasik. Renkli kadranla sıradan beyaz dress saatlerden ayrışır."},
+  {b:"Sternglas", n:"Naos", c:"Dress", p:[400,700], dial:"#e8e2d0", dn:"Krem ya da mavi", note:"Bauhaus çizgili uygun fiyatlı dress. Nomos ile aynı rolde, ikisinden birini seçmek gerekebilir."},
+  {b:"Baume & Mercier", n:"Riviera", c:"Ofis spor-şık", p:[2500,3500], dial:"#5d6b7a", dn:"Mavi veya gri", note:"12 kenarlı bezel, entegre bilezik hissi. İş kıyafetiyle çok uyumlu.", sq:false, oct:true},
+  {b:"Christopher Ward", n:"The Twelve (Pick and Mix)", c:"Ofis spor-şık", p:[1000,1500], dial:"#7d8f6a", dn:"Kendin seçersin", note:"Entegre bilezikli, kadran rengini sen belirliyorsun. Riviera ile aynı rolde, biri yeter.", oct:true},
+  {b:"Longines", n:"Conquest Heritage", c:"Smart casual", p:[2000,2500], dial:"#d9d4c3", dn:"Krem ya da gümüş", note:"Vintage hava. Kahverengi deri kayışla ceket ve kotla çok iyi gider."},
+  {b:"Rolex", n:"Datejust", c:"Smart casual", p:[8500,10000], dial:"#c9ccd0", dn:"Gümüş (ya da mavi, yeşil)", note:"Hem ofiste hem takım elbiseyle gider. GMT-Master II'ye alternatif ya da ek parça."},
+  {b:"Seiko", n:"Alpinist", c:"Field / Pilot", p:[800,1200], dial:"#3e5b45", dn:"Yeşil", note:"İmza rengi yeşil. Dönen pusula bezeli ayırt edici özelliği."},
+  {b:"Hamilton", n:"Khaki Field Murph", c:"Field / Pilot", p:[1000,1200], dial:"#111111", dn:"Siyah", note:"Koleksiyondaki tek siyah kadran burada kalsın."},
+  {b:"Longines", n:"Spirit Pilot", c:"Field / Pilot", p:[2500,3500], dial:"#1f3b66", dn:"Mavi", note:"Alpinist yeşil olduğu için buna mavi. Çelik bilezik ya da deri kayışla çok yönlü."},
+  {b:"Straum", n:"Expedition", c:"Field / Pilot", p:null, dial:"#8b8f94", dn:"Doğrula", verify:true, note:"Norveç doğasına göre tasarlanmış, titanyum kasalı sürümü var. Fiyat, mekanizma ve kadran seçeneklerini resmi sitesinden kontrol et."},
+  {b:"Baltic", n:"Aquascaphe", c:"Diver", p:[700,1000], dial:"#2f6f73", dn:"Mavi-yeşil ya da gri", note:"Mikro marka, çok başarılı. Diğer mavilerle çakışmasın."},
+  {b:"Panerai", n:"Luminor", c:"Diver", p:[6000,9000], dial:"#1b3550", dn:"Mavi ya da yeşil", note:"Büyük kasa, bileğinde denemeden alma. Luminor Due daha ince bir seçenek.", cush:true},
+  {b:"Blancpain", n:"Fifty Fathoms", c:"Diver", p:[16000,20000], dial:"#1f4a3a", dn:"Yeşil ya da mavi", note:"İlk modern dalış saati olarak anılır. Panerai ile aynı slot, birini seçmek gerekir."},
+  {b:"Rolex", n:"GMT-Master II", c:"GMT / Seyahat", p:[11000,13000], dial:"#0d0d0d", dn:"Siyah, bezel renkli", bezel:"#1f4fa8", note:"Kadran siyah, renk bezelden gelir (mavi-siyah ya da yeşil). Çelik modellerde bekleme ya da ikinci el primi olabilir."},
+  {b:"Seiko", n:"5 Sports SNLK23K1", c:"Eğlenceli / Kronograf", p:[300,400], dial:"#3b4a5a", dn:"Doğrula", verify:true, note:"Günlük hafta sonu saati. Model detayından emin değilim, varyantı bayide kontrol et."},
+  {b:"Venezianico", n:"Arsenale Bosphorus", c:"Eğlenceli / Kronograf", p:[1300,1800], dial:"#2c6e7a", dn:"Modele bağlı, sabit", verify:true, note:"İtalyan mikro marka, İstanbul temalı sınırlı üretim parça. Rengi model belirler, diğer renkleri ona göre dengele."},
+  {b:"TAG Heuer", n:"Monaco Chronograph", c:"Eğlenceli / Kronograf", p:[6000,8500], dial:"#1d3f8f", dn:"Mavi", note:"Kare kasalı kronograf, eğlenceli slotun yıldızı.", sq:true},
+  {b:"Audemars Piguet", n:"Royal Oak", c:"Grail / Özel", p:[30000,null], dial:"#6b747c", dn:"Gri (ya da mavi, yeşil)", note:"Koleksiyonun zirvesi. Mavi çok olursa gri ya da yeşil dengeyi korur.", oct:true},
+  {b:"Oris", n:"Artelier Year of the Horse LE", c:"Grail / Özel", p:null, dial:"#8b8f94", dn:"Sabit (sınırlı üretim)", verify:true, note:"Rengi sabit. Stok ve fiyat için bayiye ya da ikinci el piyasasına bak."},
+  {b:"Seiko", n:"Presage Cocktail Time", c:"Dress", p:[400,600], dial:"#7a2a3c", dn:"Bordo", note:"Güneş ışınlı, desenli kadran. Uygun fiyatlı mekanik dress, koleksiyona sıcak bir renk katar."},
+  {b:"Junghans", n:"Max Bill Automatic", c:"Dress", p:[1300,1800], dial:"#eceae3", dn:"Beyaz", note:"Bauhaus çizgisi. Nomos ile aynı rolde, ikisinden birini seçmek gerekebilir."},
+  {b:"Cartier", n:"Tank Must", c:"Dress", p:[3500,4500], dial:"#e4e1d8", dn:"Gümüş opalin", rect:true, note:"Dikdörtgen kasa, takım elbisenin referans saati. Siyah deri kayışla en klasik hali."},
+  {b:"Jaeger-LeCoultre", n:"Master Ultra Thin", c:"Dress", p:[9000,12000], dial:"#1d2d50", dn:"Lacivert", note:"Çok ince kasa, manşetin altına rahat girer. Üst seviye dress hedefi."},
+  {b:"Tissot", n:"PRX Powermatic 80", c:"Ofis spor-şık", p:[700,800], dial:"#2a4f86", dn:"Mavi", note:"Entegre bilezikli, en uygun fiyatlı giriş. Mavi, gömlek ve ceketle hemen her şeye gider."},
+  {b:"Citizen", n:"Series 8", c:"Ofis spor-şık", p:[1000,1300], dial:"#565d65", dn:"Antrasit gri", oct:true, note:"Mekanik, entegre bilezikli, sekizgen bezel. Gri, mavilerden ayrışır."},
+  {b:"Tudor", n:"Royal", c:"Ofis spor-şık", p:[2500,4500], dial:"#c9b78e", dn:"Şampanya", note:"Entegre bilezikli, Rolex ailesinden. Şampanya kadran koleksiyona sıcak, nötr bir ton katar."},
+  {b:"Omega", n:"Seamaster Aqua Terra", c:"Ofis spor-şık", p:[6500,7500], dial:"#223a63", dn:"Mavi", note:"Ofisten tekneye giden klasik. Oris Aquis ya da Riviera ile aynı slot, biri yeter."},
+  {b:"Omega", n:"Speedmaster Professional", c:"Smart casual", p:[7000,8000], dial:"#101112", dn:"Siyah (Moonwatch)", note:"Elle kurmalı Moonwatch. Siyah kadran bu modelin kimliği, Murph ile birlikte siyah sayısına dikkat."},
+  {b:"Sinn", n:"556 I", c:"Field / Pilot", p:[1500,1900], dial:"#eceae4", dn:"Beyaz (ya da mavi)", note:"Sade ve çok sağlam Alman field saati. Beyaz kadran siyahlı koleksiyona hafiflik katar."},
+  {b:"Tudor", n:"Ranger", c:"Field / Pilot", p:[3500,4000], dial:"#14171a", dn:"Siyah", note:"Daha üst seviye field saati. Siyah kadran, Murph ile çakışır; ikisinden biri yeter."},
+  {b:"IWC", n:"Pilot's Watch Mark XX", c:"Field / Pilot", p:[5000,6500], dial:"#365543", dn:"Yeşil (ya da mavi)", note:"Pilot saatinin klasiği. Alpinist ile aynı renk ailesinde, mavi alternatifi düşün."},
+  {b:"Doxa", n:"Sub 200", c:"Diver", p:[1200,1800], dial:"#e07a1f", dn:"Turuncu", note:"İkonik turuncu Professional kadran. Koleksiyondaki en canlı renk olur."},
+  {b:"Oris", n:"Aquis Date", c:"Diver", p:[2300,2800], dial:"#2a6a8a", dn:"Turkuaz-mavi", note:"Ofis ve hafta sonu arası çok yönlü. Bağımsız marka karakteri."},
+  {b:"Tudor", n:"Black Bay 58", c:"Diver", p:[4000,4500], dial:"#1f3f73", dn:"Mavi", note:"Küçük kasa, vintage hava. Bileği ince olanlara iyi uyar."},
+  {b:"Omega", n:"Seamaster 300M", c:"Diver", p:[5500,6500], dial:"#7d848c", dn:"Gri (ya da siyah, mavi)", note:"Omega'nın diver temsilcisi. Gri, koleksiyonda az kullanılan bir ton."},
+  {b:"Rolex", n:"Submariner", c:"Diver", p:[9500,11000], dial:"#0e4a2f", dn:"Yeşil (bezel ile)", bezel:"#1c6b45", note:"Diver'ın referansı. İkinci elde primli olabilir. Panerai ve Blancpain ile aynı slotta yarışır."},
+  {b:"Tudor", n:"Black Bay GMT", c:"GMT / Seyahat", p:[4500,5500], dial:"#101214", dn:"Siyah, bezel bordo-siyah", bezel:"#8f2430", note:"Rolex GMT-Master II'ye daha ulaşılabilir alternatif. Bezel renk seçenekleri değişir."},
+  {b:"Farer", n:"Aqua Compressor", c:"Eğlenceli / Kronograf", p:[1500,2500], dial:"#c9a03a", dn:"Hardal sarısı (varyantı doğrula)", verify:true, note:"Canlı renkli mikro marka. Bu model ve fiyatından emin değilim, resmi sitesinden kontrol et."},
+  {b:"Grand Seiko", n:"Snowflake (SBGA211)", c:"Grail / Özel", p:[7000,9000], dial:"#e8edf0", dn:"Beyaz (kar tanesi dokulu)", note:"Titanyum kasa, Spring Drive. Japon zanaatının zirvesi, ışıkla değişen kadranı var."}
+];
+var CATS = ["Tümü","Dress","Ofis spor-şık","Smart casual","Field / Pilot","Diver","GMT / Seyahat","Eğlenceli / Kronograf","Grail / Özel"];
+var TIERS = ["Tümü","Tier 1","Tier 2","Tier 3"];
+function tierOf(w){ if(!w.p) return 0; var lo=w.p[0]; return lo<1500?1:(lo<5000?2:3); }
+function fmt(n){ return n.toLocaleString("tr-TR"); }
+function priceText(w){
+  if(!w.p) return "Fiyat: doğrula";
+  if(w.p[1]===null) return fmt(w.p[0])+"+ USD";
+  return fmt(w.p[0])+"–"+fmt(w.p[1])+" USD";
+}
+function lum(hex){ var h=hex.replace("#",""); var r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16); return (0.299*r+0.587*g+0.114*b)/255; }
+function dialSVG(w){
+  var ink = lum(w.dial)>0.55 ? "#1a1d22" : "#f1f1ec";
+  var bez = w.bezel || null;
+  var s = '<svg class="dial" viewBox="0 0 100 100" role="img" aria-label="'+w.dn+' kadran">';
+  if (w.rect){
+    s += '<rect x="16" y="6" width="68" height="88" rx="9" fill="var(--steel)"/><rect x="23" y="13" width="54" height="74" rx="5" fill="'+w.dial+'"/>';
+  } else if (w.sq){
+    s += '<rect x="6" y="6" width="88" height="88" rx="10" fill="var(--steel)"/><rect x="14" y="14" width="72" height="72" rx="5" fill="'+w.dial+'"/>';
+  } else if (w.oct){
+    s += '<polygon points="30,4 70,4 96,30 96,70 70,96 30,96 4,70 4,30" fill="var(--steel)"/><polygon points="32,12 68,12 88,32 88,68 68,88 32,88 12,68 12,32" fill="'+w.dial+'"/>';
+  } else {
+    s += '<circle cx="50" cy="50" r="47" fill="'+(bez||"var(--steel)")+'"/><circle cx="50" cy="50" r="40" fill="'+w.dial+'"/>';
+  }
+  s += '<g transform="translate(50 50) scale('+(w.rect?0.68:1)+') translate(-50 -50)">';
+  for (var i=0;i<12;i++){
+    var a=i*Math.PI/6, r1=(i%3===0)?29:33, r2=37;
+    s += '<line x1="'+(50+r1*Math.sin(a)).toFixed(1)+'" y1="'+(50-r1*Math.cos(a)).toFixed(1)+'" x2="'+(50+r2*Math.sin(a)).toFixed(1)+'" y2="'+(50-r2*Math.cos(a)).toFixed(1)+'" stroke="'+ink+'" stroke-width="'+((i%3===0)?3:1.6)+'" stroke-linecap="round"/>';
+  }
+  s += '<line x1="50" y1="50" x2="36" y2="38" stroke="'+ink+'" stroke-width="3.4" stroke-linecap="round"/>';
+  s += '<line x1="50" y1="50" x2="64" y2="22" stroke="'+ink+'" stroke-width="2.4" stroke-linecap="round"/>';
+  if (w.acc) s += '<line x1="50" y1="58" x2="50" y2="16" stroke="'+w.acc+'" stroke-width="1.4"/>';
+  s += '</g><circle cx="50" cy="50" r="2.6" fill="'+(w.acc||ink)+'"/></svg>';
+  return s;
+}
+var SITES = {
+  "Nomos":"https://nomos-glashuette.com", "Mondaine":"https://www.mondaine.com", "Orient":"https://www.orient-watch.com",
+  "Sternglas":"https://www.sternglas.de", "Baume & Mercier":"https://www.baume-et-mercier.com", "Christopher Ward":"https://www.christopherward.com",
+  "Longines":"https://www.longines.com", "Rolex":"https://www.rolex.com", "Seiko":"https://www.seikowatches.com",
+  "Hamilton":"https://www.hamiltonwatch.com", "Straum":"https://straum.co", "Baltic":"https://www.balticwatches.com",
+  "Panerai":"https://www.panerai.com", "Blancpain":"https://www.blancpain.com", "TAG Heuer":"https://www.tagheuer.com",
+  "Audemars Piguet":"https://www.audemarspiguet.com", "Venezianico":"https://www.venezianico.com", "Oris":"https://www.oris.ch",
+  "Junghans":"https://www.junghans.de", "Cartier":"https://www.cartier.com", "Jaeger-LeCoultre":"https://www.jaeger-lecoultre.com",
+  "Tissot":"https://www.tissotwatches.com", "Citizen":"https://www.citizenwatch.com", "Tudor":"https://www.tudorwatch.com",
+  "Omega":"https://www.omegawatches.com", "Sinn":"https://www.sinn.de", "IWC":"https://www.iwc.com",
+  "Doxa":"https://doxawatches.com", "Farer":"https://farer.com", "Grand Seiko":"https://www.grand-seiko.com"
+};
+var TARGET = ["Audemars Piguet","Rolex","Omega","Longines","Hamilton","Seiko","Mondaine","Oris","TAG Heuer","Panerai"];
+var MICRO = ["Baltic","Christopher Ward","Venezianico","Sternglas","Straum","Farer"];
+/* [renk ailesi, mekanizma, kadran tipi] */
+var META = {
+  "Nomos Tangente":["Beyaz / krem","Elle kurmalı","Sade"],
+  "Mondaine Original Automatic 41 mm":["Siyah","Otomatik","Tarihli"],
+  "Orient Bambino":["Mavi","Otomatik","Tarihli"],
+  "Sternglas Naos":["Beyaz / krem","Otomatik","Sade"],
+  "Baume & Mercier Riviera":["Gri / gümüş","Otomatik","Tarihli"],
+  "Christopher Ward The Twelve (Pick and Mix)":["Diğer","Otomatik","Tarihli"],
+  "Longines Conquest Heritage":["Beyaz / krem","Otomatik","Tarihli"],
+  "Rolex Datejust":["Gri / gümüş","Otomatik","Tarihli"],
+  "Seiko Alpinist":["Yeşil","Otomatik","Tarihli"],
+  "Hamilton Khaki Field Murph":["Siyah","Otomatik","Tarihli"],
+  "Longines Spirit Pilot":["Mavi","Otomatik","Tarihli"],
+  "Straum Expedition":["Diğer","Bilinmiyor","Bilinmiyor"],
+  "Baltic Aquascaphe":["Turkuaz","Otomatik","Tarihli"],
+  "Panerai Luminor":["Mavi","Otomatik","Tarihli"],
+  "Blancpain Fifty Fathoms":["Yeşil","Otomatik","Tarihli"],
+  "Rolex GMT-Master II":["Siyah","Otomatik","GMT"],
+  "Seiko 5 Sports SNLK23K1":["Diğer","Otomatik","Tarihli"],
+  "Venezianico Arsenale Bosphorus":["Diğer","Otomatik","Bilinmiyor"],
+  "TAG Heuer Monaco Chronograph":["Mavi","Otomatik","Kronograf"],
+  "Audemars Piguet Royal Oak":["Gri / gümüş","Otomatik","Tarihli"],
+  "Oris Artelier Year of the Horse LE":["Diğer","Otomatik","Bilinmiyor"],
+  "Seiko Presage Cocktail Time":["Bordo","Otomatik","Tarihli"],
+  "Junghans Max Bill Automatic":["Beyaz / krem","Otomatik","Bilinmiyor"],
+  "Cartier Tank Must":["Gri / gümüş","Quartz","Sade"],
+  "Jaeger-LeCoultre Master Ultra Thin":["Mavi","Otomatik","Sade"],
+  "Tissot PRX Powermatic 80":["Mavi","Otomatik","Tarihli"],
+  "Citizen Series 8":["Gri / gümüş","Otomatik","Tarihli"],
+  "Tudor Royal":["Turuncu / sarı / şampanya","Otomatik","Tarihli"],
+  "Omega Seamaster Aqua Terra":["Mavi","Otomatik","Tarihli"],
+  "Omega Speedmaster Professional":["Siyah","Elle kurmalı","Kronograf"],
+  "Sinn 556 I":["Beyaz / krem","Otomatik","Tarihli"],
+  "Tudor Ranger":["Siyah","Otomatik","Sade"],
+  "IWC Pilot's Watch Mark XX":["Yeşil","Otomatik","Tarihli"],
+  "Doxa Sub 200":["Turuncu / sarı / şampanya","Otomatik","Bilinmiyor"],
+  "Oris Aquis Date":["Turkuaz","Otomatik","Tarihli"],
+  "Tudor Black Bay 58":["Mavi","Otomatik","Sade"],
+  "Omega Seamaster 300M":["Gri / gümüş","Otomatik","Tarihli"],
+  "Rolex Submariner":["Yeşil","Otomatik","Tarihli"],
+  "Tudor Black Bay GMT":["Siyah","Otomatik","GMT"],
+  "Farer Aqua Compressor":["Turuncu / sarı / şampanya","Bilinmiyor","Bilinmiyor"],
+  "Grand Seiko Snowflake (SBGA211)":["Beyaz / krem","Spring Drive","Tarihli"]
+};
+var COLS = ["Tümü","Siyah","Beyaz / krem","Gri / gümüş","Mavi","Turkuaz","Yeşil","Bordo","Turuncu / sarı / şampanya","Diğer"];
+var TYPS = ["Tümü","Sade","Tarihli","Kronograf","GMT","Bilinmiyor"];
+var SHAPES = ["Tümü","Yuvarlak","Kare","Dikdörtgen","Sekizgen","Yastık"];
+var MECHS = ["Tümü","Otomatik","Elle kurmalı","Quartz","Spring Drive","Bilinmiyor"];
+var BUD = {"≤ 1.000":1000,"≤ 2.000":2000,"≤ 3.000":3000,"≤ 5.000":5000,"≤ 10.000":10000,"≤ 20.000":20000};
+var KINDS = ["Tümü","Hedef marka","Mikro marka","Diğer"];
+var FILTERS = [
+  {k:"cat", lab:"Kategori", opts:CATS},
+  {k:"col", lab:"Renk", opts:COLS},
+  {k:"shape", lab:"Kasa şekli", opts:SHAPES},
+  {k:"mech", lab:"Mekanizma", opts:MECHS},
+  {k:"tier", lab:"Tier", opts:TIERS},
+  {k:"budget", lab:"Bütçe", opts:["Tümü"].concat(Object.keys(BUD))}
+];
+function blank(){ return {cat:"Tümü",col:"Tümü",typ:"Tümü",shape:"Tümü",mech:"Tümü",tier:"Tümü",budget:"Tümü",kind:"Tümü",brand:"Tümü",only:false}; }
+var state = blank(); state.sel = {};
+try { var saved = JSON.parse(localStorage.getItem("saatSecim")||"{}"); if (saved && typeof saved==="object") state.sel = saved; } catch(e){}
+function key(w){ return w.b+" "+w.n; }
+function saveSel(){ try { localStorage.setItem("saatSecim", JSON.stringify(state.sel)); } catch(e){} }
+function shapeOf(w){ return w.sq?"Kare":(w.rect?"Dikdörtgen":(w.oct?"Sekizgen":(w.cush?"Yastık":"Yuvarlak"))); }
+function kindOf(w){ return TARGET.indexOf(w.b)>=0?"Hedef marka":(MICRO.indexOf(w.b)>=0?"Mikro marka":"Diğer"); }
+function siteOf(w){
+  if (key(w)==="Venezianico Arsenale Bosphorus") return "https://www.venezianico.com/pages/arsenale-bosphorus-limited-edition";
+  return SITES[w.b];
+}
+function ok(w){
+  var m = META[key(w)], t = tierOf(w);
+  if (state.cat!=="Tümü" && w.c!==state.cat) return false;
+  if (state.col!=="Tümü" && m[0]!==state.col) return false;
+  if (state.typ!=="Tümü" && m[2]!==state.typ) return false;
+  if (state.shape!=="Tümü" && shapeOf(w)!==state.shape) return false;
+  if (state.mech!=="Tümü" && m[1]!==state.mech) return false;
+  if (state.tier!=="Tümü" && t!==parseInt(state.tier.slice(-1),10)) return false;
+  if (state.budget!=="Tümü" && (!w.p || w.p[0]>BUD[state.budget])) return false;
+  if (state.kind!=="Tümü" && kindOf(w)!==state.kind) return false;
+  if (state.brand!=="Tümü" && w.b!==state.brand) return false;
+  if (state.only && !state.sel[key(w)]) return false;
+  return true;
+}
+function buildRows(){
+  var host = document.getElementById("frows"); host.innerHTML = "";
+  FILTERS.forEach(function(f){
+    var row = document.createElement("div"); row.className = "row";
+    var lab = document.createElement("span"); lab.className = "lab"; lab.textContent = f.lab; row.appendChild(lab);
+    var box = document.createElement("span"); box.className = "row";
+    f.opts.forEach(function(t){
+      var b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = t;
+      b.setAttribute("aria-pressed", String(state[f.k]===t));
+      b.onclick = function(){ state[f.k] = t; render(); };
+      box.appendChild(b);
+    });
+    row.appendChild(box); host.appendChild(row);
+  });
+}
+function initControls(){
+  var s = document.getElementById("brand"), names = [];
+  W.forEach(function(w){ if (names.indexOf(w.b)<0) names.push(w.b); });
+  names.sort(function(a,b){ return a.localeCompare(b,"tr"); });
+  s.innerHTML = '<option value="Tümü">Tümü</option>' + names.map(function(n){ return '<option value="'+n+'">'+n+'</option>'; }).join("");
+  s.onchange = function(){ state.brand = s.value; render(); };
+  document.getElementById("only").onclick = function(){ state.only = !state.only; render(); };
+  document.getElementById("clear").onclick = function(){ var keep = state.sel; state = blank(); state.sel = keep; render(); };
+}
+function render(){
+  buildRows();
+  document.getElementById("brand").value = state.brand;
+  document.getElementById("only").setAttribute("aria-pressed", String(state.only));
+  var active = 0; for (var k in state){ if (k!=="sel" && state[k]!=="Tümü" && state[k]!==false) active++; }
+  document.getElementById("active").textContent = active ? "("+active+" aktif)" : "";
+  var list = W.filter(ok).sort(function(a,b){ return (b.p?b.p[0]:-1)-(a.p?a.p[0]:-1); });
+  document.getElementById("count").textContent = list.length+" saat gösteriliyor, toplam "+W.length;
+  var g = document.getElementById("grid"); g.innerHTML = "";
+  if (!list.length){
+    var e = document.createElement("p"); e.className = "empty"; e.textContent = "Bu filtrelerle eşleşen saat yok. Bir filtreyi gevşetmeyi ya da Temizle'yi dene.";
+    g.appendChild(e);
+  }
+  list.forEach(function(w){
+    var t = tierOf(w), k = key(w), on = !!state.sel[k], m = META[k];
+    var card = document.createElement("article"); card.className = "card"+(on?" on":"");
+    var q = encodeURIComponent(w.b+" "+w.n+" watch");
+    card.innerHTML = dialSVG(w) +
+      '<div class="meta"><span class="brand">'+w.b+'</span><h2 class="name">'+w.n+'</h2>' +
+      '<div class="price">'+priceText(w)+'</div>' +
+      '<div class="colorline">Kadran: <b>'+w.dn+'</b></div>' +
+      '<div class="colorline">'+m[1]+' · '+m[2]+' · '+shapeOf(w)+'</div>' +
+      '<div class="tags"><span class="tag">'+w.c+'</span>'+(t?'<span class="tag">Tier '+t+'</span>':'')+'<span class="tag">'+kindOf(w)+'</span>'+(w.verify?'<span class="tag">Doğrula</span>':'')+'</div></div>' +
+      '<p class="note">'+w.note+'</p>' +
+      '<div class="actions"><span class="links"><a href="'+siteOf(w)+'" target="_blank" rel="noopener">Resmi site ↗</a><a href="https://www.google.com/search?tbm=isch&q='+q+'" target="_blank" rel="noopener">Görseller ↗</a></span>' +
+      '<button type="button" class="pick" aria-pressed="'+on+'">'+(on?"Listemde":"Listeme ekle")+'</button></div>';
+    card.querySelector(".pick").onclick = function(){
+      if (state.sel[k]) delete state.sel[k]; else state.sel[k] = 1;
+      saveSel(); render();
+    };
+    g.appendChild(card);
+  });
+  summary();
+}
+function summary(){
+  var n=0, lo=0, hi=0, open=0, unk=0;
+  W.forEach(function(w){
+    if (!state.sel[key(w)]) return;
+    n++;
+    if (!w.p){ unk++; return; }
+    lo += w.p[0];
+    if (w.p[1]===null){ hi += w.p[0]; open++; } else hi += w.p[1];
+  });
+  document.getElementById("selTitle").textContent = n ? "Listemde "+n+" saat" : "Listem boş";
+  var s = "";
+  if (n){
+    s = fmt(lo)+"–"+fmt(hi)+(open?"+":"")+" USD";
+    if (unk) s += " · "+unk+" saatin fiyatı belirsiz, dahil değil";
+  } else s = "Kartlardaki \"Listeme ekle\" ile seçim yap";
+  document.getElementById("selSum").textContent = s;
+}
+initControls();
+render();
+</script>
+
+</body>
+</html>
