@@ -339,6 +339,29 @@ function key(w){ return w.b+" "+w.n; }
 function saveSel(){ try { localStorage.setItem("saatSecim", JSON.stringify(state.sel)); } catch(e){} }
 function shapeOf(w){ return w.sq?"Kare":(w.rect?"Dikdörtgen":(w.oct?"Sekizgen":(w.cush?"Yastık":"Yuvarlak"))); }
 function kindOf(w){ return TARGET.indexOf(w.b)>=0?"Hedef marka":(MICRO.indexOf(w.b)>=0?"Mikro marka":"Diğer"); }
+var COLEN = {"Siyah":"black dial","Beyaz / krem":"white dial","Gri / gümüş":"silver grey dial","Mavi":"blue dial","Turkuaz":"turquoise dial","Yeşil":"green dial","Bordo / kırmızı":"red dial","Pembe":"pink dial","Kahverengi":"brown dial","Turuncu / sarı / şampanya":"","Diğer":""};
+var IMGQ = {
+  "Rolex Submariner":"Rolex Submariner black dial green bezel",
+  "Rolex GMT-Master II":"Rolex GMT-Master II black dial blue black bezel",
+  "Tudor Black Bay GMT":"Tudor Black Bay GMT black dial red blue bezel",
+  "Tudor Royal":"Tudor Royal champagne dial",
+  "Doxa Sub 200":"Doxa Sub 200 Professional orange dial",
+  "Straum Expedition":"Straum Expedition white lume dial",
+  "Seiko 5 Sports SNLK23K1":"Seiko 5 Sports SNKL23K1 black dial",
+  "Oris Artelier Year of the Horse LE":"Oris Artelier Calibre 113 Year of the Horse red dial",
+  "Christopher Ward C63 Sealander Automatic":"Christopher Ward C63 Sealander Automatic 36mm pink dial",
+  "Omega x Swatch MoonSwatch Mission to Mars":"Omega Swatch MoonSwatch Mission to Mars",
+  "Casio G-Shock GW-5000U":"Casio G-Shock GW-5000U",
+  "Garmin quatix 7":"Garmin quatix 7 black",
+  "Venezianico Arsenale Bosphorus":"Venezianico Arsenale Bosphorus limited edition",
+  "Christopher Ward The Twelve (Pick and Mix)":"Christopher Ward The Twelve watch"
+};
+function imgQuery(w){
+  var k = key(w);
+  if (IMGQ[k]) return IMGQ[k];
+  var c = COLEN[META[k][0]] || "";
+  return (w.b+" "+w.n.replace(/ \(.*\)$/,"")+" "+c+" watch").replace(/\s+/g," ").trim();
+}
 function siteOf(w){
   if (key(w)==="Straum Expedition") return "https://straum.co/products/expedition-white-lume";
   if (key(w)==="Oris Artelier Year of the Horse LE") return "https://www.oris.ch/en-TR/product/watch/artelier/artelier-calibre-113/01-113-7806-4088-Set";
@@ -399,7 +422,7 @@ function render(){
   list.forEach(function(w){
     var t = tierOf(w), k = key(w), on = !!state.sel[k], m = META[k];
     var card = document.createElement("article"); card.className = "card"+(on?" on":"");
-    var q = encodeURIComponent(w.b+" "+w.n+" watch");
+    var q = encodeURIComponent(imgQuery(w));
     card.innerHTML = dialSVG(w) +
       '<div class="meta"><span class="brand">'+w.b+'</span><h2 class="name">'+w.n+'</h2>' +
       '<div class="price">'+priceText(w)+'</div>' +
