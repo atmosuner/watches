@@ -149,7 +149,7 @@ var W = [
   {b:"Seiko", n:"Alpinist", c:"Field / Pilot", p:[800,1200], dial:"#3e5b45", dn:"Yeşil", note:"İmza rengi yeşil. Dönen pusula bezeli ayırt edici özelliği."},
   {b:"Hamilton", n:"Khaki Field Murph", c:"Field / Pilot", p:[1000,1200], dial:"#111111", dn:"Siyah", note:"Koleksiyondaki tek siyah kadran burada kalsın."},
   {b:"Longines", n:"Spirit Pilot", c:"Field / Pilot", p:[2500,3500], dial:"#1f3b66", dn:"Mavi", note:"Alpinist yeşil olduğu için buna mavi. Çelik bilezik ya da deri kayışla çok yönlü."},
-  {b:"Straum", n:"Expedition", c:"Field / Pilot", p:null, dial:"#6b7580", dn:"Gri (titanyum) ya da lacivert", verify:true, note:"Norveç doğasına göre tasarlanmış, titanyum kasalı sürümü var. Gri, lacivert ve beyaz lume varyantları var. Fiyat ve mekanizmayı resmi sitesinden kontrol et."},
+  {b:"Straum", n:"Expedition", c:"Field / Pilot", p:[3000,3500], dial:"#eef1e8", dn:"Beyaz (tam lume); gri ve lacivert de var", note:"Norveç markası. 38,2 mm Grade 5 titanyum kasa, La Joux-Perret G100 otomatik, 68 saat güç rezervi, 100 m. Fiyat 31.000-35.000 NOK, USD karşılığı kura göre değişir."},
   {b:"Baltic", n:"Aquascaphe", c:"Diver", p:[700,1000], dial:"#2f6f73", dn:"Mavi-yeşil ya da gri", note:"Mikro marka, çok başarılı. Diğer mavilerle çakışmasın."},
   {b:"Panerai", n:"Luminor", c:"Diver", p:[6000,9000], dial:"#1b3550", dn:"Mavi ya da yeşil", note:"Büyük kasa, bileğinde denemeden alma. Luminor Due daha ince bir seçenek.", cush:true},
   {b:"Blancpain", n:"Fifty Fathoms", c:"Diver", p:[16000,20000], dial:"#1f4a3a", dn:"Yeşil ya da mavi", note:"İlk modern dalış saati olarak anılır. Panerai ile aynı slot, birini seçmek gerekir."},
@@ -158,7 +158,7 @@ var W = [
   {b:"Venezianico", n:"Arsenale Bosphorus", c:"Eğlenceli / Kronograf", p:[1300,1800], dial:"#2c6e7a", dn:"Modele bağlı, sabit", verify:true, note:"İtalyan mikro marka, İstanbul temalı sınırlı üretim parça. Rengi model belirler, diğer renkleri ona göre dengele."},
   {b:"TAG Heuer", n:"Monaco Chronograph", c:"Eğlenceli / Kronograf", p:[6000,8500], dial:"#1d3f8f", dn:"Mavi", note:"Kare kasalı kronograf, eğlenceli slotun yıldızı.", sq:true},
   {b:"Audemars Piguet", n:"Royal Oak", c:"Grail / Özel", p:[30000,null], dial:"#6b747c", dn:"Gri (ya da mavi, yeşil)", note:"Koleksiyonun zirvesi. Mavi çok olursa gri ya da yeşil dengeyi korur.", oct:true},
-  {b:"Oris", n:"Artelier Year of the Horse LE", c:"Grail / Özel", p:null, dial:"#9b1c2a", dn:"Kırmızı (crimson), sınırlı üretim", verify:true, note:"Rengi sabit, kırmızı kadran. Stok ve fiyat için bayiye ya da ikinci el piyasasına bak."},
+  {b:"Oris", n:"Artelier Year of the Horse LE", c:"Grail / Özel", p:[7300,8300], dial:"#9b1c2a", dn:"Kırmızı", note:"88 adetlik sınırlı üretim, 43 mm, elle kurmalı Calibre 113, 10 gün güç rezervi. Fiyat 6.650 CHF, USD karşılığı kura göre değişir. Oris sitesinde şu an çevrimiçi satışta görünmüyor."},
   {b:"Seiko", n:"Presage Cocktail Time", c:"Dress", p:[400,600], dial:"#7a2a3c", dn:"Bordo", note:"Güneş ışınlı, desenli kadran. Uygun fiyatlı mekanik dress, koleksiyona sıcak bir renk katar."},
   {b:"Junghans", n:"Max Bill Automatic", c:"Dress", p:[1300,1800], dial:"#eceae3", dn:"Beyaz", note:"Bauhaus çizgisi. Nomos ile aynı rolde, ikisinden birini seçmek gerekebilir."},
   {b:"Cartier", n:"Tank Must", c:"Dress", p:[3500,4500], dial:"#e4e1d8", dn:"Gümüş opalin", rect:true, note:"Dikdörtgen kasa, takım elbisenin referans saati. Siyah deri kayışla en klasik hali."},
@@ -267,7 +267,7 @@ var META = {
   "Seiko Alpinist":["Yeşil","Otomatik","Tarihli"],
   "Hamilton Khaki Field Murph":["Siyah","Otomatik","Tarihli"],
   "Longines Spirit Pilot":["Mavi","Otomatik","Tarihli"],
-  "Straum Expedition":["Gri / gümüş","Bilinmiyor","Bilinmiyor"],
+  "Straum Expedition":["Beyaz / krem","Otomatik","Tarihli"],
   "Baltic Aquascaphe":["Turkuaz","Otomatik","Tarihli"],
   "Panerai Luminor":["Mavi","Otomatik","Tarihli"],
   "Blancpain Fifty Fathoms":["Yeşil","Otomatik","Tarihli"],
@@ -276,7 +276,7 @@ var META = {
   "Venezianico Arsenale Bosphorus":["Diğer","Otomatik","Bilinmiyor"],
   "TAG Heuer Monaco Chronograph":["Mavi","Otomatik","Kronograf"],
   "Audemars Piguet Royal Oak":["Gri / gümüş","Otomatik","Tarihli"],
-  "Oris Artelier Year of the Horse LE":["Bordo / kırmızı","Otomatik","Bilinmiyor"],
+  "Oris Artelier Year of the Horse LE":["Bordo / kırmızı","Elle kurmalı","Tarihli"],
   "Seiko Presage Cocktail Time":["Bordo / kırmızı","Otomatik","Tarihli"],
   "Junghans Max Bill Automatic":["Beyaz / krem","Otomatik","Bilinmiyor"],
   "Cartier Tank Must":["Gri / gümüş","Quartz","Sade"],
@@ -336,6 +336,8 @@ function saveSel(){ try { localStorage.setItem("saatSecim", JSON.stringify(state
 function shapeOf(w){ return w.sq?"Kare":(w.rect?"Dikdörtgen":(w.oct?"Sekizgen":(w.cush?"Yastık":"Yuvarlak"))); }
 function kindOf(w){ return TARGET.indexOf(w.b)>=0?"Hedef marka":(MICRO.indexOf(w.b)>=0?"Mikro marka":"Diğer"); }
 function siteOf(w){
+  if (key(w)==="Straum Expedition") return "https://straum.co/products/expedition-white-lume";
+  if (key(w)==="Oris Artelier Year of the Horse LE") return "https://www.oris.ch/en-TR/product/watch/artelier/artelier-calibre-113/01-113-7806-4088-Set";
   if (key(w)==="Venezianico Arsenale Bosphorus") return "https://www.venezianico.com/pages/arsenale-bosphorus-limited-edition";
   return SITES[w.b];
 }
