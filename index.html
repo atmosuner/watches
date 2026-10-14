@@ -194,7 +194,7 @@ var W = [
   {b:"Patek Philippe", n:"Calatrava", c:"Dress", p:[30000,null], dial:"#eee7d3", dn:"Fildişi (beyaz)", note:"Dress slotunun zirvesi. Fiyat modele göre çok değişir."},
   {b:"Omega x Swatch", n:"MoonSwatch Mission to Mars", c:"Eğlenceli / Kronograf", p:[300,350], dial:"#b5322a", dn:"Kırmızı", note:"Biyoseramik, quartz kronograf. Koleksiyondaki tek kırmızı, eğlenceli ve çok uygun fiyatlı."},
   {b:"Casio", n:"G-Shock GW-5000U", c:"Beater / Akıllı", p:[150,500], dial:"#b7c0ae", dn:"Gümüş kasa, dijital ekran", sq:true, digital:true, note:"Tekne bakımı, tamir gibi işler için dayanıklı yedek. DW-5600 daha ucuz alternatif."},
-  {b:"Christopher Ward", n:"C63 Sealander Automatic", c:"Ofis spor-şık", p:[1300,1600], dial:"#e6b3bc", dn:"Pembe (beyaz, siyah, gök mavisi de var)", note:"36 ve 39 mm, Sellita SW200-2, 65 saat güç rezervi, Bader ve Consort bilezik seçenekleri. Pembe sadece 36 mm'de var, 39 mm'de fıstık yeşili çıkıyor. Fiyat 1.125-1.390 EUR, USD karşılığı kura göre değişir."},
+  {b:"Christopher Ward", n:"C63 Sealander Automatic", c:"Ofis spor-şık", p:[1375,1400], dial:"#e6b3bc", dn:"Pembe (beyaz, siyah, gök mavisi, fıstık yeşili de var)", note:"36 ve 39 mm seçenekleri var, Sellita SW200-2 otomatik, 65 saat güç rezervi, 150 m, 6 hizasında tarih. Bader ve Consort bilezik ya da kauçuk ve deri kayış seçenekleri var. 36 mm bilezikli fiyatı 1.375 USD, ön siparişte teslimat Şubat 2027 görünüyor, 39 mm fiyatı sayfada yok. Bir yazıda pembe sadece 36 mm, fıstık yeşili sadece 39 mm yazıyordu, ürün sayfası beden başına renk ayrımı göstermiyor, seçerken kontrol et."},
   {b:"Bell & Ross", n:"BR 03-92 Steel", c:"Field / Pilot", p:[3500,4500], dial:"#27456f", dn:"Mavi (siyah da var)", sq:true, note:"42 mm kare kasa, kokpit göstergesi estetiği. Mavi ve siyah çelik sürümleri var. Fiyat aralığı yaklaşık, bayiden doğrula."},
   {b:"Garmin", n:"quatix 7", c:"Beater / Akıllı", p:[600,1100], dial:"#101418", dn:"Siyah ekran", digital:true, note:"Tekne seyri, koşu ve spor takibi. Mekanik saatleri darbe ve terden korur. Forerunner daha uygun fiyatlı seçenek."}
 ];
@@ -314,7 +314,7 @@ var META = {
   "Patek Philippe Calatrava":["Beyaz / krem","Elle kurmalı","Sade"],
   "Omega x Swatch MoonSwatch Mission to Mars":["Bordo / kırmızı","Quartz","Kronograf"],
   "Casio G-Shock GW-5000U":["Gri / gümüş","Quartz","Dijital"],
-  "Christopher Ward C63 Sealander Automatic":["Pembe","Otomatik","Bilinmiyor"],
+  "Christopher Ward C63 Sealander Automatic":["Pembe","Otomatik","Tarihli"],
   "Bell & Ross BR 03-92 Steel":["Mavi","Otomatik","Tarihli"],
   "Garmin quatix 7":["Siyah","Akıllı saat","Dijital"]
 };
@@ -349,7 +349,7 @@ var IMGQ = {
   "Straum Expedition":"Straum Expedition white lume dial",
   "Seiko 5 Sports SNLK23K1":"Seiko 5 Sports SNKL23K1 black dial",
   "Oris Artelier Year of the Horse LE":"Oris Artelier Calibre 113 Year of the Horse red dial",
-  "Christopher Ward C63 Sealander Automatic":"Christopher Ward C63 Sealander Automatic 36mm pink dial",
+  "Christopher Ward C63 Sealander Automatic":"Christopher Ward C63 Sealander Automatic pink dial",
   "Omega x Swatch MoonSwatch Mission to Mars":"Omega Swatch MoonSwatch Mission to Mars",
   "Casio G-Shock GW-5000U":"Casio G-Shock GW-5000U",
   "Garmin quatix 7":"Garmin quatix 7 black",
@@ -363,6 +363,7 @@ function imgQuery(w){
   return (w.b+" "+w.n.replace(/ \(.*\)$/,"")+" "+c+" watch").replace(/\s+/g," ").trim();
 }
 function siteOf(w){
+  if (key(w)==="Christopher Ward C63 Sealander Automatic") return "https://www.christopherward.com/int/C63-Sealander-Automatic/C63-36ADA4-S00K0-B0.html";
   if (key(w)==="Straum Expedition") return "https://straum.co/products/expedition-white-lume";
   if (key(w)==="Oris Artelier Year of the Horse LE") return "https://www.oris.ch/en-TR/product/watch/artelier/artelier-calibre-113/01-113-7806-4088-Set";
   if (key(w)==="Venezianico Arsenale Bosphorus") return "https://www.venezianico.com/pages/arsenale-bosphorus-limited-edition";
