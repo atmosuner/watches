@@ -115,7 +115,7 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
 
 <div class="wrap">
   <h1>Saat Koleksiyonum</h1>
-  <p class="lede">Konuştuğumuz 57 saat tek sayfada. Kategori, renk, kasa şekli, mekanizma, bütçe ve markaya göre süz, beğendiklerini listene ekle, altta toplam fiyat aralığını gör. Kadran rengi önerdiğimiz renktir.</p>
+  <p class="lede">Konuştuğumuz 58 saat tek sayfada. Kategori, renk, kasa şekli, mekanizma, bütçe ve markaya göre süz, beğendiklerini listene ekle, altta toplam fiyat aralığını gör. Kadran rengi önerdiğimiz renktir.</p>
 
   <details class="filters" open>
     <summary>Filtreler <span id="active"></span></summary>
@@ -139,7 +139,7 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
 <script>
 var W = [
   {b:"Nomos", n:"Tangente", c:"Dress", p:[2000,2500], dial:"#f1eee6", dn:"Beyaz / gümüş", note:"Bauhaus çizgisi, ince kasa. Siyah ya da koyu kahverengi deri kayışla en resmi takım elbise saati."},
-  {b:"Mondaine", n:"Original Automatic 41 mm", c:"Dress", p:[600,900], dial:"#1c1f24", dn:"Siyah / koyu", acc:"#d6322b", note:"İsviçre tren istasyonu saati tasarımı. Nomos beyaz olduğu için koyu kadran, kırmızı saniye ibresi vurgu."},
+  {b:"Mondaine", n:"Original Automatic 41 mm", c:"Dress", p:[600,900], dial:"#f1f0ea", dn:"Beyaz", acc:"#d6322b", note:"İsviçre tren istasyonu saati tasarımı, beyaz kadran ve kırmızı saniye ibresi. Nomos ve Junghans da beyaz olduğu için dress slotunda bu üçünden birini seçmek yeter."},
   {b:"Orient", n:"Bambino", c:"Dress", p:[200,350], dial:"#27457a", dn:"Mavi ya da yeşil", note:"Bütçe dostu klasik. Renkli kadranla sıradan beyaz dress saatlerden ayrışır."},
   {b:"Sternglas", n:"Naos", c:"Dress", p:[400,700], dial:"#eceae3", dn:"Beyaz ya da siyah", note:"Bauhaus çizgili uygun fiyatlı dress. Nomos ile aynı rolde, ikisinden birini seçmek gerekebilir."},
   {b:"Baume & Mercier", n:"Riviera", c:"Ofis spor-şık", p:[2500,3500], dial:"#5d6b7a", dn:"Mavi veya gri", note:"12 kenarlı bezel, entegre bilezik hissi. İş kıyafetiyle çok uyumlu.", sq:false, oct:true},
@@ -194,6 +194,7 @@ var W = [
   {b:"Patek Philippe", n:"Calatrava", c:"Dress", p:[30000,null], dial:"#eee7d3", dn:"Fildişi (beyaz)", note:"Dress slotunun zirvesi. Fiyat modele göre çok değişir."},
   {b:"Omega x Swatch", n:"MoonSwatch Mission to Mars", c:"Eğlenceli / Kronograf", p:[300,350], dial:"#b5322a", dn:"Kırmızı", note:"Biyoseramik, quartz kronograf. Koleksiyondaki tek kırmızı, eğlenceli ve çok uygun fiyatlı."},
   {b:"Casio", n:"G-Shock GW-5000U", c:"Beater / Akıllı", p:[150,500], dial:"#b7c0ae", dn:"Gümüş kasa, dijital ekran", sq:true, digital:true, note:"Tekne bakımı, tamir gibi işler için dayanıklı yedek. DW-5600 daha ucuz alternatif."},
+  {b:"Christopher Ward", n:"C63 Sealander Automatic", c:"Ofis spor-şık", p:[1300,1600], dial:"#b9d2b0", dn:"Fıstık yeşili (beyaz, siyah, gök mavisi, pembe de var)", note:"36 ve 39 mm, Sellita SW200-2, 65 saat güç rezervi, Bader ve Consort bilezik seçenekleri. Fıstık yeşili sadece 39 mm. Fiyat 1.125-1.390 EUR, USD karşılığı kura göre değişir."},
   {b:"Garmin", n:"quatix 7", c:"Beater / Akıllı", p:[600,1100], dial:"#101418", dn:"Siyah ekran", digital:true, note:"Tekne seyri, koşu ve spor takibi. Mekanik saatleri darbe ve terden korur. Forerunner daha uygun fiyatlı seçenek."}
 ];
 var CATS = ["Tümü","Dress","Ofis spor-şık","Smart casual","Field / Pilot","Diver","GMT / Seyahat","Eğlenceli / Kronograf","Grail / Özel","Beater / Akıllı"];
@@ -257,7 +258,7 @@ var MICRO = ["Baltic","Christopher Ward","Venezianico","Sternglas","Straum","Far
 /* [renk ailesi, mekanizma, kadran tipi] */
 var META = {
   "Nomos Tangente":["Beyaz / krem","Elle kurmalı","Sade"],
-  "Mondaine Original Automatic 41 mm":["Siyah","Otomatik","Tarihli"],
+  "Mondaine Original Automatic 41 mm":["Beyaz / krem","Otomatik","Tarihli"],
   "Orient Bambino":["Mavi","Otomatik","Tarihli"],
   "Sternglas Naos":["Beyaz / krem","Otomatik","Sade"],
   "Baume & Mercier Riviera":["Gri / gümüş","Otomatik","Tarihli"],
@@ -312,6 +313,7 @@ var META = {
   "Patek Philippe Calatrava":["Beyaz / krem","Elle kurmalı","Sade"],
   "Omega x Swatch MoonSwatch Mission to Mars":["Bordo / kırmızı","Quartz","Kronograf"],
   "Casio G-Shock GW-5000U":["Gri / gümüş","Quartz","Dijital"],
+  "Christopher Ward C63 Sealander Automatic":["Yeşil","Otomatik","Bilinmiyor"],
   "Garmin quatix 7":["Siyah","Akıllı saat","Dijital"]
 };
 var COLS = ["Tümü","Siyah","Beyaz / krem","Gri / gümüş","Mavi","Turkuaz","Yeşil","Bordo / kırmızı","Kahverengi","Turuncu / sarı / şampanya","Diğer"];
