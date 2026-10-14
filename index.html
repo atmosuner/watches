@@ -115,7 +115,7 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
 
 <div class="wrap">
   <h1>Saat Koleksiyonum</h1>
-  <p class="lede">Konuştuğumuz 41 saat tek sayfada. Kategori, renk, kasa şekli, mekanizma, bütçe ve markaya göre süz, beğendiklerini listene ekle, altta toplam fiyat aralığını gör. Kadran rengi önerdiğimiz renktir.</p>
+  <p class="lede">Konuştuğumuz 57 saat tek sayfada. Kategori, renk, kasa şekli, mekanizma, bütçe ve markaya göre süz, beğendiklerini listene ekle, altta toplam fiyat aralığını gör. Kadran rengi önerdiğimiz renktir.</p>
 
   <details class="filters" open>
     <summary>Filtreler <span id="active"></span></summary>
@@ -178,9 +178,25 @@ var W = [
   {b:"Rolex", n:"Submariner", c:"Diver", p:[9500,11000], dial:"#0e4a2f", dn:"Yeşil (bezel ile)", bezel:"#1c6b45", note:"Diver'ın referansı. İkinci elde primli olabilir. Panerai ve Blancpain ile aynı slotta yarışır."},
   {b:"Tudor", n:"Black Bay GMT", c:"GMT / Seyahat", p:[4500,5500], dial:"#101214", dn:"Siyah, bezel bordo-siyah", bezel:"#8f2430", note:"Rolex GMT-Master II'ye daha ulaşılabilir alternatif. Bezel renk seçenekleri değişir."},
   {b:"Farer", n:"Aqua Compressor", c:"Eğlenceli / Kronograf", p:[1500,2500], dial:"#c9a03a", dn:"Hardal sarısı (varyantı doğrula)", verify:true, note:"Canlı renkli mikro marka. Bu model ve fiyatından emin değilim, resmi sitesinden kontrol et."},
-  {b:"Grand Seiko", n:"Snowflake (SBGA211)", c:"Grail / Özel", p:[7000,9000], dial:"#e8edf0", dn:"Beyaz (kar tanesi dokulu)", note:"Titanyum kasa, Spring Drive. Japon zanaatının zirvesi, ışıkla değişen kadranı var."}
+  {b:"Grand Seiko", n:"Snowflake (SBGA211)", c:"Grail / Özel", p:[7000,9000], dial:"#e8edf0", dn:"Beyaz (kar tanesi dokulu)", note:"Titanyum kasa, Spring Drive. Japon zanaatının zirvesi, ışıkla değişen kadranı var."},
+  {b:"Longines", n:"HydroConquest", c:"Ofis spor-şık", p:[1500,1900], dial:"#274a78", dn:"Mavi", note:"300 m su geçirmezlik, çelik bilezik. İlk saat adayı olarak konuştuğumuz model, ofisten tekneye gider."},
+  {b:"Longines", n:"Legend Diver", c:"Diver", p:[3000,3800], dial:"#14161a", dn:"Siyah", note:"Vintage çizgili diver, iç bezelli ve ince kasalı. Longines'in diver tarafı."},
+  {b:"Hamilton", n:"Jazzmaster", c:"Dress", p:[600,1100], dial:"#b9bec3", dn:"Gümüş", note:"Hamilton'ın dress çizgisi. Gümüş kadran koyu takımla güzel durur."},
+  {b:"TAG Heuer", n:"Carrera Chronograph", c:"Smart casual", p:[5500,7500], dial:"#e8e6df", dn:"Beyaz (panda)", note:"Monaco'dan daha sakin, günlük kronograf. Beyaz kadran koyu ceketle iyi gider."},
+  {b:"Seiko", n:"Prospex 62MAS Reissue", c:"Diver", p:[1100,1500], dial:"#2f5a43", dn:"Yeşil", note:"Seiko'nun ilk dalış saatinin yeniden yorumu. Seiko diver slotunu uygun fiyatla doldurur."},
+  {b:"Oris", n:"Divers Sixty-Five", c:"Diver", p:[2500,3500], dial:"#5a3a22", dn:"Kahverengi (bronz kasa)", note:"Retro diver. Kahverengi kadran koleksiyonda hiç olmayan bir renk. Bronz kasalı model daha pahalı olabilir."},
+  {b:"Rolex", n:"Explorer", c:"Field / Pilot", p:[8000,9500], dial:"#0f1112", dn:"Siyah", note:"Rolex'in en sade ve çok yönlü modeli. Siyah kadran bu modelin kimliği."},
+  {b:"Grand Seiko", n:"Spring Drive GMT", c:"GMT / Seyahat", p:[8000,10000], dial:"#2a6f78", dn:"Mavi-yeşil", note:"Rolex GMT'ye farklı bir alternatif, akıcı saniye ibreli Spring Drive. Kadran seçeneklerini doğrula."},
+  {b:"Breitling", n:"Navitimer B01", c:"Field / Pilot", p:[8500,10500], dial:"#26416b", dn:"Mavi", note:"Pilot kronografının klasiği, kayar hesap cetveli bezeli. Kendi mekanizması var."},
+  {b:"Zenith", n:"Chronomaster Sport", c:"Smart casual", p:[10000,12000], dial:"#8d949b", dn:"Gri", note:"Üst seviye otomatik kronograf, saniyenin onda birini ölçer."},
+  {b:"Cartier", n:"Santos", c:"Smart casual", p:[7500,9500], dial:"#d7d9db", dn:"Gümüş", sq:true, note:"Cartier'in spor yüzü, kare kasa ve görünür vidalar. Bilezik ve kayış hızlı değişir."},
+  {b:"Rado", n:"Captain Cook", c:"Diver", p:[2300,3000], dial:"#1f5a3d", dn:"Yeşil", note:"Orta fiyatlı, tasarım odaklı retro diver."},
+  {b:"Patek Philippe", n:"Calatrava", c:"Dress", p:[30000,null], dial:"#eee7d3", dn:"Fildişi (beyaz)", note:"Dress slotunun zirvesi. Fiyat modele göre çok değişir."},
+  {b:"Omega x Swatch", n:"MoonSwatch Mission to Mars", c:"Eğlenceli / Kronograf", p:[300,350], dial:"#b5322a", dn:"Kırmızı", note:"Biyoseramik, quartz kronograf. Koleksiyondaki tek kırmızı, eğlenceli ve çok uygun fiyatlı."},
+  {b:"Casio", n:"G-Shock GW-5000U", c:"Beater / Akıllı", p:[150,500], dial:"#b7c0ae", dn:"Gümüş kasa, dijital ekran", sq:true, digital:true, note:"Tekne bakımı, tamir gibi işler için dayanıklı yedek. DW-5600 daha ucuz alternatif."},
+  {b:"Garmin", n:"quatix 7", c:"Beater / Akıllı", p:[600,1100], dial:"#101418", dn:"Siyah ekran", digital:true, note:"Tekne seyri, koşu ve spor takibi. Mekanik saatleri darbe ve terden korur. Forerunner daha uygun fiyatlı seçenek."}
 ];
-var CATS = ["Tümü","Dress","Ofis spor-şık","Smart casual","Field / Pilot","Diver","GMT / Seyahat","Eğlenceli / Kronograf","Grail / Özel"];
+var CATS = ["Tümü","Dress","Ofis spor-şık","Smart casual","Field / Pilot","Diver","GMT / Seyahat","Eğlenceli / Kronograf","Grail / Özel","Beater / Akıllı"];
 var TIERS = ["Tümü","Tier 1","Tier 2","Tier 3"];
 function tierOf(w){ if(!w.p) return 0; var lo=w.p[0]; return lo<1500?1:(lo<5000?2:3); }
 function fmt(n){ return n.toLocaleString("tr-TR"); }
@@ -191,6 +207,13 @@ function priceText(w){
 }
 function lum(hex){ var h=hex.replace("#",""); var r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16); return (0.299*r+0.587*g+0.114*b)/255; }
 function dialSVG(w){
+  if (w.digital){
+    var tx = lum(w.dial)>0.55 ? "#1a1d22" : "#d8f5ea";
+    var shp = w.sq
+      ? '<rect x="6" y="6" width="88" height="88" rx="12" fill="#1c2024"/><rect x="18" y="26" width="64" height="48" rx="5" fill="'+w.dial+'"/>'
+      : '<circle cx="50" cy="50" r="47" fill="#2a3036"/><circle cx="50" cy="50" r="40" fill="'+w.dial+'"/>';
+    return '<svg class="dial" viewBox="0 0 100 100" role="img" aria-label="'+w.dn+'">'+shp+'<text x="50" y="57" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="20" font-weight="500" fill="'+tx+'">10:10</text></svg>';
+  }
   var ink = lum(w.dial)>0.55 ? "#1a1d22" : "#f1f1ec";
   var bez = w.bezel || null;
   var s = '<svg class="dial" viewBox="0 0 100 100" role="img" aria-label="'+w.dn+' kadran">';
@@ -224,7 +247,10 @@ var SITES = {
   "Junghans":"https://www.junghans.de", "Cartier":"https://www.cartier.com", "Jaeger-LeCoultre":"https://www.jaeger-lecoultre.com",
   "Tissot":"https://www.tissotwatches.com", "Citizen":"https://www.citizenwatch.com", "Tudor":"https://www.tudorwatch.com",
   "Omega":"https://www.omegawatches.com", "Sinn":"https://www.sinn.de", "IWC":"https://www.iwc.com",
-  "Doxa":"https://doxawatches.com", "Farer":"https://farer.com", "Grand Seiko":"https://www.grand-seiko.com"
+  "Doxa":"https://doxawatches.com", "Farer":"https://farer.com", "Grand Seiko":"https://www.grand-seiko.com",
+  "Breitling":"https://www.breitling.com", "Zenith":"https://www.zenith-watches.com", "Rado":"https://www.rado.com",
+  "Patek Philippe":"https://www.patek.com", "Omega x Swatch":"https://www.swatch.com",
+  "Casio":"https://www.casio.com/intl/watches/gshock/", "Garmin":"https://www.garmin.com"
 };
 var TARGET = ["Audemars Piguet","Rolex","Omega","Longines","Hamilton","Seiko","Mondaine","Oris","TAG Heuer","Panerai"];
 var MICRO = ["Baltic","Christopher Ward","Venezianico","Sternglas","Straum","Farer"];
@@ -251,7 +277,7 @@ var META = {
   "TAG Heuer Monaco Chronograph":["Mavi","Otomatik","Kronograf"],
   "Audemars Piguet Royal Oak":["Gri / gümüş","Otomatik","Tarihli"],
   "Oris Artelier Year of the Horse LE":["Diğer","Otomatik","Bilinmiyor"],
-  "Seiko Presage Cocktail Time":["Bordo","Otomatik","Tarihli"],
+  "Seiko Presage Cocktail Time":["Bordo / kırmızı","Otomatik","Tarihli"],
   "Junghans Max Bill Automatic":["Beyaz / krem","Otomatik","Bilinmiyor"],
   "Cartier Tank Must":["Gri / gümüş","Quartz","Sade"],
   "Jaeger-LeCoultre Master Ultra Thin":["Mavi","Otomatik","Sade"],
@@ -270,12 +296,28 @@ var META = {
   "Rolex Submariner":["Yeşil","Otomatik","Tarihli"],
   "Tudor Black Bay GMT":["Siyah","Otomatik","GMT"],
   "Farer Aqua Compressor":["Turuncu / sarı / şampanya","Bilinmiyor","Bilinmiyor"],
-  "Grand Seiko Snowflake (SBGA211)":["Beyaz / krem","Spring Drive","Tarihli"]
+  "Grand Seiko Snowflake (SBGA211)":["Beyaz / krem","Spring Drive","Tarihli"],
+  "Longines HydroConquest":["Mavi","Otomatik","Tarihli"],
+  "Longines Legend Diver":["Siyah","Otomatik","Tarihli"],
+  "Hamilton Jazzmaster":["Gri / gümüş","Otomatik","Bilinmiyor"],
+  "TAG Heuer Carrera Chronograph":["Beyaz / krem","Otomatik","Kronograf"],
+  "Seiko Prospex 62MAS Reissue":["Yeşil","Otomatik","Tarihli"],
+  "Oris Divers Sixty-Five":["Kahverengi","Otomatik","Tarihli"],
+  "Rolex Explorer":["Siyah","Otomatik","Sade"],
+  "Grand Seiko Spring Drive GMT":["Turkuaz","Spring Drive","GMT"],
+  "Breitling Navitimer B01":["Mavi","Otomatik","Kronograf"],
+  "Zenith Chronomaster Sport":["Gri / gümüş","Otomatik","Kronograf"],
+  "Cartier Santos":["Gri / gümüş","Otomatik","Tarihli"],
+  "Rado Captain Cook":["Yeşil","Otomatik","Tarihli"],
+  "Patek Philippe Calatrava":["Beyaz / krem","Elle kurmalı","Sade"],
+  "Omega x Swatch MoonSwatch Mission to Mars":["Bordo / kırmızı","Quartz","Kronograf"],
+  "Casio G-Shock GW-5000U":["Gri / gümüş","Quartz","Dijital"],
+  "Garmin quatix 7":["Siyah","Akıllı saat","Dijital"]
 };
-var COLS = ["Tümü","Siyah","Beyaz / krem","Gri / gümüş","Mavi","Turkuaz","Yeşil","Bordo","Turuncu / sarı / şampanya","Diğer"];
+var COLS = ["Tümü","Siyah","Beyaz / krem","Gri / gümüş","Mavi","Turkuaz","Yeşil","Bordo / kırmızı","Kahverengi","Turuncu / sarı / şampanya","Diğer"];
 var TYPS = ["Tümü","Sade","Tarihli","Kronograf","GMT","Bilinmiyor"];
 var SHAPES = ["Tümü","Yuvarlak","Kare","Dikdörtgen","Sekizgen","Yastık"];
-var MECHS = ["Tümü","Otomatik","Elle kurmalı","Quartz","Spring Drive","Bilinmiyor"];
+var MECHS = ["Tümü","Otomatik","Elle kurmalı","Quartz","Spring Drive","Akıllı saat","Bilinmiyor"];
 var BUD = {"≤ 1.000":1000,"≤ 2.000":2000,"≤ 3.000":3000,"≤ 5.000":5000,"≤ 10.000":10000,"≤ 20.000":20000};
 var KINDS = ["Tümü","Hedef marka","Mikro marka","Diğer"];
 var FILTERS = [
@@ -356,7 +398,7 @@ function render(){
       '<div class="meta"><span class="brand">'+w.b+'</span><h2 class="name">'+w.n+'</h2>' +
       '<div class="price">'+priceText(w)+'</div>' +
       '<div class="colorline">Kadran: <b>'+w.dn+'</b></div>' +
-      '<div class="colorline">'+m[1]+' · '+m[2]+' · '+shapeOf(w)+'</div>' +
+      '<div class="colorline">'+[m[1],m[2],shapeOf(w)].filter(function(x){return x!=="Bilinmiyor";}).join(" · ")+'</div>' +
       '<div class="tags"><span class="tag">'+w.c+'</span>'+(t?'<span class="tag">Tier '+t+'</span>':'')+'<span class="tag">'+kindOf(w)+'</span>'+(w.verify?'<span class="tag">Doğrula</span>':'')+'</div></div>' +
       '<p class="note">'+w.note+'</p>' +
       '<div class="actions"><span class="links"><a href="'+siteOf(w)+'" target="_blank" rel="noopener">Resmi site ↗</a><a href="https://www.google.com/search?tbm=isch&q='+q+'" target="_blank" rel="noopener">Görseller ↗</a></span>' +
