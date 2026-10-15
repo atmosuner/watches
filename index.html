@@ -69,6 +69,8 @@ h1 {
 }
 .card.on { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
 .dial { width: 92px; height: 92px; display: block; }
+.photo { width: 92px; height: 92px; display: block; object-fit: contain; border-radius: 6px; background: var(--bg); }
+.sh-head .photo { width: 140px; height: 140px; }
 .meta { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
 .brand { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 .name { font-family: var(--f-display); font-weight: 600; font-size: 1.35rem; line-height: 1.1; margin: 0; overflow-wrap: anywhere; }
@@ -104,7 +106,7 @@ h1 {
 .bar strong { font-family: var(--f-display); font-size: 1.2rem; font-weight: 600; letter-spacing: 0.02em; }
 .bar span { font-family: var(--f-mono); font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .foot { color: var(--muted); font-size: 12.5px; margin-top: 26px; max-width: 70ch; }
-@media (max-width: 420px) { .card { grid-template-columns: 72px minmax(0, 1fr); } .dial { width: 72px; height: 72px; } .row .lab { min-width: 100%; } }
+@media (max-width: 420px) { .card { grid-template-columns: 72px minmax(0, 1fr); } .dial, .photo { width: 72px; height: 72px; } .row .lab { min-width: 100%; } }
 
 .filters { margin-bottom: 22px; border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; background: var(--surface); }
 .filters summary { cursor: pointer; font-family: var(--f-display); font-weight: 600; font-size: 1.1rem; letter-spacing: 0.04em; text-transform: uppercase; }
@@ -162,7 +164,7 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
 .sim:hover { border-color: var(--accent); }
 .sim small { display: block; color: var(--muted); font-size: 12px; }
 .sheet textarea { width: 100%; min-height: 84px; resize: vertical; font: inherit; font-size: 13.5px; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 8px 10px; }
-@media (max-width: 480px) { .sh-head { grid-template-columns: 96px minmax(0,1fr); gap: 12px; } .sh-head .dial { width: 96px; height: 96px; } .sh-head h2 { font-size: 1.6rem; } }
+@media (max-width: 480px) { .sh-head { grid-template-columns: 96px minmax(0,1fr); gap: 12px; } .sh-head .dial, .sh-head .photo { width: 96px; height: 96px; } .sh-head h2 { font-size: 1.6rem; } }
 </style>
 </head>
 <body>
@@ -544,7 +546,7 @@ function render(){
     var t = tierOf(w), k = key(w), on = !!state.sel[k], ow = !!state.own[k], m = META[k];
     var card = document.createElement("article"); card.className = "card"+(ow?" own":(on?" on":""));
     var q = encodeURIComponent(imgQuery(w));
-    card.innerHTML = dialSVG(w) +
+    card.innerHTML = visual(w) +
       '<div class="meta"><span class="brand">'+w.b+'</span><h2 class="name">'+w.n+'</h2>' +
       '<div class="price">'+priceText(w)+'</div>' +
       '<div class="colorline">Kadran: <b>'+w.dn+'</b></div>' +
@@ -591,6 +593,15 @@ function summary(){
   document.getElementById("ownTitle").textContent = b.n ? "Bende "+b.n+" saat var" : "Henüz saatim yok";
   document.getElementById("ownSum").textContent = b.n ? b.s : "Aldığın saatte onay ikonuna bas";
 }
+var IMGS = {
+  "Audemars Piguet Royal Oak":"https://dynamicmedia.audemarspiguet.com/is/image/audemarspiguet/watch-936?size=568,0&dpr=off&fmt=avif-alpha&dpr=off"
+};
+function visual(w){
+  var u = IMGS[key(w)];
+  if (!u) return dialSVG(w);
+  return '<img class="photo" src="'+esc(u)+'" alt="'+esc(w.b+" "+w.n)+'" data-k="'+esc(key(w))+'" referrerpolicy="no-referrer" onerror="photoFail(this)">';
+}
+function photoFail(img){ var w = findW(img.getAttribute("data-k")); if (w) img.outerHTML = dialSVG(w); }
 var SPEC = {
   "Straum Expedition":{dia:"38,2 mm",wr:"100 m",mov:"La Joux-Perret G100 otomatik",pr:"68 saat"},
   "Seiko 5 Sports SRPK89":{dia:"37 mm",l2l:44.7,wr:"100 m",mov:"Seiko 4R36 otomatik",pr:"41 saat"},
@@ -642,7 +653,7 @@ function renderSheet(){
     '<button type="button" class="ibtn" id="shNext" aria-label="Sonraki saat"'+(idx<0||idx>=ks.length-1?' disabled style="opacity:.4"':'')+'>'+R_SVG+'</button>' +
     '<span>'+(idx>=0?(idx+1)+" / "+ks.length:"")+'</span></div>' +
     '<button type="button" class="ibtn" id="shClose" aria-label="Kapat">'+X_SVG+'</button></div>';
-  h += '<div class="sh-head">'+dialSVG(w)+'<div><span class="brand">'+esc(w.b)+'</span><h2 id="shTitle">'+esc(w.n)+'</h2>' +
+  h += '<div class="sh-head">'+visual(w)+'<div><span class="brand">'+esc(w.b)+'</span><h2 id="shTitle">'+esc(w.n)+'</h2>' +
     '<div class="tags"><span class="tag">'+w.c+'</span>'+(t?'<span class="tag">Tier '+t+'</span>':'')+'<span class="tag">'+kindOf(w)+'</span>'+(w.verify?'<span class="tag">Doğrula</span>':'')+'</div>' +
     '<div class="sh-price">'+priceText(w)+'</div>' +
     '<div class="colorline">Kadran: <b>'+esc(w.dn)+'</b></div>' +
