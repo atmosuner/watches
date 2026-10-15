@@ -2,8 +2,9 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Saat Koleksiyonum</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bileğime Yakışanlar</title>
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
@@ -59,7 +60,7 @@ h1 {
 }
 .chip:hover { border-color: var(--accent); }
 .chip[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-.chip:focus-visible, .pick:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.chip:focus-visible, .pick:focus-visible, .own-btn:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .count { font-family: var(--f-mono); font-size: 12px; color: var(--muted); margin: 0 0 12px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 14px; }
 .card {
@@ -80,7 +81,7 @@ h1 {
 .actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 12px; }
 .actions a { color: var(--accent); font-size: 13px; text-decoration: none; }
 .actions a:hover { text-decoration: underline; }
-.pick {
+.pick, .own-btn {
   font: inherit; font-size: 13px; background: transparent; color: var(--ink);
   border: 1px solid var(--line); border-radius: 4px; padding: 5px 12px; cursor: pointer;
 }
@@ -93,6 +94,10 @@ h1 {
   padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
 .bar .in { max-width: 1120px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline; justify-content: space-between; }
+.bar .b { display: flex; flex-direction: column; gap: 2px; }
+.card.own { border-color: var(--steel); box-shadow: inset 0 0 0 1px var(--steel); }
+.btns { display: flex; gap: 6px; flex-wrap: wrap; }
+.own-btn[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .bar strong { font-family: var(--f-display); font-size: 1.2rem; font-weight: 600; letter-spacing: 0.02em; }
 .bar span { font-family: var(--f-mono); font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .foot { color: var(--muted); font-size: 12.5px; margin-top: 26px; max-width: 70ch; }
@@ -114,8 +119,8 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
 <body>
 
 <div class="wrap">
-  <h1>Saat Koleksiyonum</h1>
-  <p class="lede">Konuştuğumuz 65 saat tek sayfada. Kategori, renk, kasa şekli, mekanizma, bütçe ve markaya göre süz, beğendiklerini listene ekle, altta toplam fiyat aralığını gör. Kadran rengi önerdiğimiz renktir.</p>
+  <h1>Bileğime Yakışanlar</h1>
+  <p class="lede">Beğendiğim 65 saat tek sayfada. Kategori, renk, kasa şekli, mekanizma, bütçe ve markaya göre süz. Almak istediklerini istek listene ekle, aldıklarını "Bende var" diye işaretle. Altta iki listenin toplamını gör. Kadran rengi önerdiğimiz renktir.</p>
 
   <details class="filters" open>
     <summary>Filtreler <span id="active"></span></summary>
@@ -123,7 +128,8 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
     <div class="row tools">
       <label class="lab" for="brand">Marka</label>
       <select id="brand"></select>
-      <button type="button" class="chip" id="only" aria-pressed="false">Sadece listem</button>
+      <button type="button" class="chip" id="onlyWish" aria-pressed="false">Sadece istek listem</button>
+      <button type="button" class="chip" id="onlyOwn" aria-pressed="false">Sadece sahip olduklarım</button>
       <button type="button" class="chip" id="clear">Filtreleri temizle</button>
     </div>
   </details>
@@ -134,7 +140,7 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
   <p class="foot">Fiyatlar yeni halde yaklaşık USD değerleridir, kesin fiyat için yetkili bayiye bak. Tier sınırları: Tier 1 1.500 USD altı, Tier 2 1.500-5.000 USD, Tier 3 5.000 USD üstü. Fiyatı ya da modeli doğrulayamadığım saatler "Doğrula" etiketli. Görsel bağlantıları Google Görseller aramasını yeni sekmede açar. Resmi site bağlantıları markanın ana sayfasına gider (Venezianico Bosphorus hariç, o model sayfasına gider). Baltic ve Sternglas adreslerini aramayla doğrulayamadım. Mekanizma ve kadran tipi bilgisi emin olmadığım saatlerde "Bilinmiyor" olarak bırakıldı.</p>
 </div>
 
-<div class="bar"><div class="in"><strong id="selTitle">Listem boş</strong><span id="selSum"></span></div></div>
+<div class="bar"><div class="in"><div class="b"><strong id="selTitle">İstek listem boş</strong><span id="selSum"></span></div><div class="b"><strong id="ownTitle">Henüz saatim yok</strong><span id="ownSum"></span></div></div></div>
 
 <script>
 var W = [
@@ -344,11 +350,12 @@ var FILTERS = [
   {k:"tier", lab:"Tier", opts:TIERS},
   {k:"budget", lab:"Bütçe", opts:["Tümü"].concat(Object.keys(BUD))}
 ];
-function blank(){ return {cat:"Tümü",col:"Tümü",typ:"Tümü",shape:"Tümü",mech:"Tümü",tier:"Tümü",budget:"Tümü",kind:"Tümü",brand:"Tümü",only:false}; }
-var state = blank(); state.sel = {};
+function blank(){ return {cat:"Tümü",col:"Tümü",typ:"Tümü",shape:"Tümü",mech:"Tümü",tier:"Tümü",budget:"Tümü",kind:"Tümü",brand:"Tümü",only:"Tümü"}; }
+var state = blank(); state.sel = {}; state.own = {};
 try { var saved = JSON.parse(localStorage.getItem("saatSecim")||"{}"); if (saved && typeof saved==="object") state.sel = saved; } catch(e){}
 function key(w){ return w.b+" "+w.n; }
-function saveSel(){ try { localStorage.setItem("saatSecim", JSON.stringify(state.sel)); } catch(e){} }
+try { var savedOwn = JSON.parse(localStorage.getItem("saatSahip")||"{}"); if (savedOwn && typeof savedOwn==="object") state.own = savedOwn; } catch(e){}
+function saveSel(){ try { localStorage.setItem("saatSecim", JSON.stringify(state.sel)); localStorage.setItem("saatSahip", JSON.stringify(state.own)); } catch(e){} }
 function shapeOf(w){ return w.sq?"Kare":(w.rect?"Dikdörtgen":(w.oct?"Sekizgen":(w.cush?"Yastık":"Yuvarlak"))); }
 function kindOf(w){ return TARGET.indexOf(w.b)>=0?"Hedef marka":(MICRO.indexOf(w.b)>=0?"Mikro marka":"Diğer"); }
 var COLEN = {"Siyah":"black dial","Beyaz / krem":"white dial","Gri / gümüş":"silver grey dial","Mavi":"blue dial","Turkuaz":"turquoise dial","Yeşil":"green dial","Bordo / kırmızı":"red dial","Pembe":"pink dial","Kahverengi":"brown dial","Turuncu / sarı / şampanya":"","Diğer":""};
@@ -393,7 +400,8 @@ function ok(w){
   if (state.budget!=="Tümü" && (!w.p || w.p[0]>BUD[state.budget])) return false;
   if (state.kind!=="Tümü" && kindOf(w)!==state.kind) return false;
   if (state.brand!=="Tümü" && w.b!==state.brand) return false;
-  if (state.only && !state.sel[key(w)]) return false;
+  if (state.only==="wish" && !state.sel[key(w)]) return false;
+  if (state.only==="own" && !state.own[key(w)]) return false;
   return true;
 }
 function buildRows(){
@@ -417,14 +425,16 @@ function initControls(){
   names.sort(function(a,b){ return a.localeCompare(b,"tr"); });
   s.innerHTML = '<option value="Tümü">Tümü</option>' + names.map(function(n){ return '<option value="'+n+'">'+n+'</option>'; }).join("");
   s.onchange = function(){ state.brand = s.value; render(); };
-  document.getElementById("only").onclick = function(){ state.only = !state.only; render(); };
-  document.getElementById("clear").onclick = function(){ var keep = state.sel; state = blank(); state.sel = keep; render(); };
+  document.getElementById("onlyWish").onclick = function(){ state.only = state.only==="wish"?"Tümü":"wish"; render(); };
+  document.getElementById("onlyOwn").onclick = function(){ state.only = state.only==="own"?"Tümü":"own"; render(); };
+  document.getElementById("clear").onclick = function(){ var ks = state.sel, ko = state.own; state = blank(); state.sel = ks; state.own = ko; render(); };
 }
 function render(){
   buildRows();
   document.getElementById("brand").value = state.brand;
-  document.getElementById("only").setAttribute("aria-pressed", String(state.only));
-  var active = 0; for (var k in state){ if (k!=="sel" && state[k]!=="Tümü" && state[k]!==false) active++; }
+  document.getElementById("onlyWish").setAttribute("aria-pressed", String(state.only==="wish"));
+  document.getElementById("onlyOwn").setAttribute("aria-pressed", String(state.only==="own"));
+  var active = 0; for (var k in state){ if (k!=="sel" && k!=="own" && state[k]!=="Tümü" && state[k]!==false) active++; }
   document.getElementById("active").textContent = active ? "("+active+" aktif)" : "";
   var list = W.filter(ok).sort(function(a,b){ return (b.p?b.p[0]:-1)-(a.p?a.p[0]:-1); });
   document.getElementById("count").textContent = list.length+" saat gösteriliyor, toplam "+W.length;
@@ -434,8 +444,8 @@ function render(){
     g.appendChild(e);
   }
   list.forEach(function(w){
-    var t = tierOf(w), k = key(w), on = !!state.sel[k], m = META[k];
-    var card = document.createElement("article"); card.className = "card"+(on?" on":"");
+    var t = tierOf(w), k = key(w), on = !!state.sel[k], ow = !!state.own[k], m = META[k];
+    var card = document.createElement("article"); card.className = "card"+(ow?" own":(on?" on":""));
     var q = encodeURIComponent(imgQuery(w));
     card.innerHTML = dialSVG(w) +
       '<div class="meta"><span class="brand">'+w.b+'</span><h2 class="name">'+w.n+'</h2>' +
@@ -445,31 +455,38 @@ function render(){
       '<div class="tags"><span class="tag">'+w.c+'</span>'+(t?'<span class="tag">Tier '+t+'</span>':'')+'<span class="tag">'+kindOf(w)+'</span>'+(w.verify?'<span class="tag">Doğrula</span>':'')+'</div></div>' +
       '<p class="note">'+w.note+'</p>' +
       '<div class="actions"><span class="links"><a href="'+siteOf(w)+'" target="_blank" rel="noopener">'+(w.siteLabel||"Resmi site ↗")+'</a><a href="https://www.google.com/search?tbm=isch&q='+q+'" target="_blank" rel="noopener">Görseller ↗</a></span>' +
-      '<button type="button" class="pick" aria-pressed="'+on+'">'+(on?"Listemde":"Listeme ekle")+'</button></div>';
+      '<span class="btns"><button type="button" class="pick" aria-pressed="'+on+'">'+(on?"İstek listemde":"İstek listesine ekle")+'</button>' +
+      '<button type="button" class="own-btn" aria-pressed="'+ow+'">'+(ow?"Bende var":"Bende var mı?")+'</button></span></div>';
     card.querySelector(".pick").onclick = function(){
-      if (state.sel[k]) delete state.sel[k]; else state.sel[k] = 1;
+      if (state.sel[k]) delete state.sel[k]; else { state.sel[k] = 1; delete state.own[k]; }
+      saveSel(); render();
+    };
+    card.querySelector(".own-btn").onclick = function(){
+      if (state.own[k]) delete state.own[k]; else { state.own[k] = 1; delete state.sel[k]; }
       saveSel(); render();
     };
     g.appendChild(card);
   });
   summary();
 }
-function summary(){
+function sumOf(map){
   var n=0, lo=0, hi=0, open=0, unk=0;
   W.forEach(function(w){
-    if (!state.sel[key(w)]) return;
+    if (!map[key(w)]) return;
     n++;
     if (!w.p){ unk++; return; }
     lo += w.p[0];
     if (w.p[1]===null){ hi += w.p[0]; open++; } else hi += w.p[1];
   });
-  document.getElementById("selTitle").textContent = n ? "Listemde "+n+" saat" : "Listem boş";
-  var s = "";
-  if (n){
-    s = fmt(lo)+"–"+fmt(hi)+(open?"+":"")+" USD";
-    if (unk) s += " · "+unk+" saatin fiyatı belirsiz, dahil değil";
-  } else s = "Kartlardaki \"Listeme ekle\" ile seçim yap";
-  document.getElementById("selSum").textContent = s;
+  var s = n ? fmt(lo)+"–"+fmt(hi)+(open?"+":"")+" USD" + (unk ? " · "+unk+" saatin fiyatı belirsiz, dahil değil" : "") : "";
+  return {n:n, s:s};
+}
+function summary(){
+  var a = sumOf(state.sel), b = sumOf(state.own);
+  document.getElementById("selTitle").textContent = a.n ? "İstek listemde "+a.n+" saat" : "İstek listem boş";
+  document.getElementById("selSum").textContent = a.n ? a.s : "Kartlardaki \"İstek listesine ekle\" ile seçim yap";
+  document.getElementById("ownTitle").textContent = b.n ? "Bende "+b.n+" saat var" : "Henüz saatim yok";
+  document.getElementById("ownSum").textContent = b.n ? b.s : "Aldığın saatte \"Bende var\" de";
 }
 initControls();
 render();
