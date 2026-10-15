@@ -213,7 +213,7 @@ var W = [
   {b:"Omega", n:"Seamaster Aqua Terra", c:"Ofis spor-şık", p:[6500,7500], dial:"#2a4f86", dn:"Mavi", note:"Ofisten tekneye giden klasik, mavi kadran. Oris Aquis ya da Riviera ile aynı slot, biri yeter."},
   {b:"Panerai", n:"Luminor", c:"Diver", p:[6000,9000], dial:"#1b3550", dn:"Mavi ya da yeşil", note:"Büyük kasa, bileğinde denemeden alma. Luminor Due daha ince bir seçenek.", cush:true},
   {b:"TAG Heuer", n:"Monaco Chronograph", c:"Eğlenceli / Kronograf", p:[6000,8500], dial:"#1d3f8f", dn:"Mavi", note:"Kare kasalı kronograf, eğlenceli slotun yıldızı.", sq:true},
-  {b:"Omega", n:"Seamaster 300M", c:"Diver", p:[5500,6500], dial:"#7d848c", dn:"Gri (ya da siyah, mavi)", note:"Omega'nın diver temsilcisi. Gri kadran siyah ve maviden daha az görülen bir ton."},
+  {b:"Omega", n:"Seamaster 300M", c:"Diver", p:[5500,6500], dial:"#5a3a22", dn:"Kahverengi (titanyum kasa)", verify:true, note:"Omega'nın diver temsilcisi. 42 mm Grade 2 titanyum kasa, titanyum mesh bilezik, kahverengi kadran ve tropik alüminyum bezel. Referans 210.90.42.20.01.001. Omega sayfasında fiyat görünmüyor, steel/mesh model 8.600 CHF olduğu için bu kasa muhtemelen kartta yazandan pahalı, bayiden doğrula."},
   {b:"TAG Heuer", n:"Carrera Chronograph", c:"Smart casual", p:[5500,7500], dial:"#e8e6df", dn:"Beyaz (panda)", note:"Monaco'dan daha sakin, günlük kronograf. Beyaz kadran koyu ceketle iyi gider."},
   {b:"IWC", n:"Pilot's Watch Mark XX", c:"Field / Pilot", p:[5000,6500], dial:"#111314", dn:"Siyah", note:"Pilot saatinin klasiği. Siyah kadran, sade ve okunaklı."},
   {b:"Tudor", n:"Black Bay GMT", c:"GMT / Seyahat", p:[4500,5500], dial:"#101214", dn:"Siyah, bezel kırmızı-mavi", bezel:"#b32a30", note:"Rolex GMT-Master II'ye daha ulaşılabilir alternatif. Bezel renk seçenekleri değişir."},
@@ -331,7 +331,7 @@ var META = {
   "Omega Seamaster Aqua Terra":["Mavi", "Otomatik / Elle kurmalı", "Tarihli"],
   "Panerai Luminor":["Mavi", "Otomatik / Elle kurmalı", "Tarihli"],
   "TAG Heuer Monaco Chronograph":["Mavi", "Otomatik / Elle kurmalı", "Kronograf"],
-  "Omega Seamaster 300M":["Gri / gümüş", "Otomatik / Elle kurmalı", "Tarihli"],
+  "Omega Seamaster 300M":["Diğer", "Otomatik / Elle kurmalı", "Tarihli"],
   "TAG Heuer Carrera Chronograph":["Beyaz / krem", "Otomatik / Elle kurmalı", "Kronograf"],
   "IWC Pilot's Watch Mark XX":["Siyah", "Otomatik / Elle kurmalı", "Tarihli"],
   "Tudor Black Bay GMT":["Siyah", "Otomatik / Elle kurmalı", "GMT"],
@@ -399,6 +399,7 @@ function shapeOf(w){ return w.sq?"Kare":(w.rect?"Dikdörtgen":(w.oct?"Sekizgen":
 function kindOf(w){ return TARGET.indexOf(w.b)>=0?"Hedef marka":(MICRO.indexOf(w.b)>=0?"Mikro marka":"Diğer"); }
 var COLEN = {"Siyah":"black dial","Beyaz / krem":"white dial","Gri / gümüş":"silver grey dial","Mavi":"blue dial","Yeşil":"green dial","Bordo / kırmızı":"red dial","Turuncu / sarı / şampanya":"","Diğer":""};
 var IMGQ = {
+  "Omega Seamaster 300M":"Omega Seamaster Diver 300M titanium brown dial",
   "Oris Aquis Date":"Oris Aquis Date turquoise blue dial",
   "Oris Divers Sixty-Five":"Oris Divers Sixty-Five brown dial bronze",
   "Unimatic Modello Uno U1-TSP":"Unimatic Modello Uno U1-TSP clay red dial",
@@ -439,7 +440,7 @@ var LINKS = {
  "Omega Seamaster Aqua Terra": "https://www.omegawatches.com/watch-omega-seamaster-aqua-terra-150m-co-axial-master-chronometer-41-mm-22032412103001",
  "Panerai Luminor": "https://www.panerai.com/en/collections/watch-collection/luminor/pam03312-luminor-marina.html",
  "TAG Heuer Monaco Chronograph": "https://www.tagheuer.com/int/en/timepieces/collections/tag-heuer-monaco/39-mm-th20-11/CDW2181.FC8360.html",
- "Omega Seamaster 300M": "https://www.omegawatches.com/watch-omega-seamaster-diver-300m-co-axial-master-chronometer-42-mm-21030422001023",
+ "Omega Seamaster 300M": "https://www.omegawatches.com/watch-omega-seamaster-diver-300m-co-axial-master-chronometer-42-mm-21090422001001",
  "TAG Heuer Carrera Chronograph": "https://www.tagheuer.com/int/en/timepieces/collections/tag-heuer-carrera/39-mm-th20-00/CBS2210.FC6534.html",
  "IWC Pilot's Watch Mark XX": "https://www.iwc.com/ww-en/watches/pilot-watches/iw328201-pilots-watch-mark-xx",
  "Tudor Black Bay GMT": "https://www.tudorwatch.com/en/watches/black-bay-gmt/m79830rb-0010",
@@ -591,6 +592,7 @@ function summary(){
   document.getElementById("ownSum").textContent = b.n ? b.s : "Aldığın saatte onay ikonuna bas";
 }
 var IMGS = {
+  "Omega Seamaster 300M": "https://www.omegawatches.com/media/catalog/product/o/m/omega-seamaster-diver-300m-co-axial-master-chronometer-42-mm-21090422001001-ba176b.png?w=700",
   "Audemars Piguet Royal Oak": "https://dynamicmedia.audemarspiguet.com/is/image/audemarspiguet/watch-936?size=568,0&dpr=off&fmt=avif-alpha&dpr=off",
   "Patek Philippe Calatrava": "https://patek-res.cloudinary.com/dfsmedia/0906caea301d42b3b8bd23bd656d1711/425570-51890",
   "Blancpain Fifty Fathoms": "https://prestigedam.swatchgroup.biz/transform/adb1a1d9-f60d-44be-abc0-e82d6d49db4d/5007_36B40_O64_Fifty_Fathoms_Automatique_Soldier_Front_RGB?io=transform:fill,height:0,width:2400",
@@ -655,6 +657,7 @@ function visual(w){
 }
 function photoFail(img){ var w = findW(img.getAttribute("data-k")); if (w) img.outerHTML = dialSVG(w); }
 var SPEC = {
+  "Omega Seamaster 300M":{dia:"42 mm",mov:"Co-Axial Master Chronometer otomatik"},
   "Breitling Navitimer Automatic":{dia:"41 mm",th:"11,65 mm",wr:"30 m",mov:"Breitling 17 otomatik",pr:"38 saat"},
   "Patek Philippe Calatrava":{dia:"39 mm",th:"9,24 mm",mov:"26-330 S C otomatik"},
   "Straum Expedition":{dia:"38,2 mm",wr:"100 m",mov:"La Joux-Perret G100 otomatik",pr:"68 saat"},
