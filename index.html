@@ -204,6 +204,13 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
 .pzdone { margin: 16px 0 0; text-align: center; font-family: var(--f-display); font-size: 1.25rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--accent); }
 @media (max-width: 480px) { .pzlab b { font-size: .9rem; } .pzlab small { font-size: 10.5px; } }
 .ablab { display: block; font-family: var(--f-mono); font-weight: 500; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-top: 6px; }
+.tgroups { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 10px; }
+.tg { border: 1px solid var(--line); border-radius: 4px; padding: 8px 12px 10px; background: var(--bg); }
+.tg h4 { margin: 0 0 6px; font-family: var(--f-mono); font-weight: 500; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.tr { display: grid; grid-template-columns: 112px minmax(0,1fr); gap: 8px; padding: 3px 0; font-size: 13px; }
+.tr span { color: var(--muted); }
+.tr b { font-family: var(--f-body); font-weight: 500; font-size: 13px; overflow-wrap: anywhere; }
+.nodata { color: var(--steel); font-weight: 400; }
 </style>
 </head>
 <body>
@@ -1017,6 +1024,404 @@ var ABOUT = {
   ""
  ]
 };
+var TECH = {
+ "Rolex GMT-Master II": {
+  "bz": "Çift renkli seramik (Cerachrom), 24 saat",
+  "str": "Oyster bilezik (üç parçalı)",
+  "mat": "Oystersteel",
+  "dial": "Siyah"
+ },
+ "Rolex Submariner": {
+  "mat": "Oystersteel",
+  "bz": "Tek yönlü dönen, yeşil seramik (Cerachrom)",
+  "gl": "Safir, tarih için Cyclops mercek",
+  "str": "Oyster bilezik, Glidelock uzatma"
+ },
+ "Rolex Datejust": {
+  "mat": "Oystersteel ve beyaz altın (White Rolesor)",
+  "bz": "Kanallı, altın",
+  "gl": "Safir, tarih için Cyclops mercek",
+  "str": "Oyster bilezik, Easylink uzatma"
+ },
+ "Zenith Chronomaster Sport": {
+  "bz": "Siyah seramik",
+  "str": "Çelik bilezik",
+  "mat": "Paslanmaz çelik",
+  "dial": "Meteorit"
+ },
+ "Patek Philippe Calatrava": {
+  "mat": "Beyaz altın",
+  "dial": "Pembe-altın tonlu opalin",
+  "bz": "Içbükey (concave)",
+  "gl": "Safir arka kapak",
+  "str": "Parlak çikolata kahve alligator, beyaz altın iğneli toka"
+ },
+ "Audemars Piguet Royal Oak": {
+  "mat": "Paslanmaz çelik",
+  "dial": "Grande Tapisserie dokulu",
+  "gl": "Safir (ön ve arka)",
+  "str": "Çelik bilezik, AP katlamalı toka"
+ },
+ "Jaeger-LeCoultre Master Ultra Thin": {
+  "mat": "Paslanmaz çelik",
+  "dial": "Güneş ışınlı fırçalı gümüş-gri",
+  "str": "Siyah alligator, hızlı değişim, çift katlamalı çelik toka",
+  "lw": "17 mm"
+ },
+ "Omega Speedmaster Professional": {
+  "mat": "Paslanmaz çelik (316L)",
+  "dial": "Siyah, kademeli",
+  "bz": "Siyah eloksallı alüminyum",
+  "gl": "Bombeli safir, içte yansıma önleyici",
+  "str": "Siyah dana derisi, çelik katlamalı toka",
+  "lw": "20 mm"
+ },
+ "Omega Seamaster Aqua Terra": {
+  "mat": "Paslanmaz çelik (316L)",
+  "dial": "Lake turkuaz, siyaha geçen gradyan",
+  "bz": "Fırçalı siyah seramik",
+  "gl": "Bombeli safir, iki yüzde yansıma önleyici",
+  "str": "Siyah kauçuk, katlamalı toka",
+  "lw": "20 mm"
+ },
+ "Omega Seamaster 300M": {
+  "mat": "Titanyum (Grade 2)",
+  "dial": "Kahverengi",
+  "bz": "Kahverengi tropik alüminyum",
+  "gl": "Bombeli safir, içte yansıma önleyici",
+  "str": "Titanyum mesh bilezik, katlamalı toka",
+  "lw": "20 mm"
+ },
+ "Grand Seiko Snowflake (SBGA211)": {
+  "mat": "Yüksek yoğunluklu titanyum",
+  "dial": "Kar tanesi dokulu",
+  "gl": "Çift bombeli safir, içte yansıma önleyici",
+  "str": "Titanyum bilezik, üçlü katlamalı toka",
+  "lw": "20 mm"
+ },
+ "Breitling Navitimer Automatic": {
+  "bz": "Çift yönlü, hesap cetvelli, çentikli",
+  "gl": "Bombeli safir, iki yüzde yansıma önleyici",
+  "str": "Mavi alligator, katlamalı çelik toka",
+  "lw": "22 mm"
+ },
+ "IWC Pilot's Watch Mark XX": {
+  "mat": "Paslanmaz çelik",
+  "dial": "Siyah",
+  "gl": "Bombeli safir, iki yüzde yansıma önleyici",
+  "str": "Siyah dana derisi, EasX-CHANGE",
+  "lw": "20 mm"
+ },
+ "Tudor Black Bay GMT": {
+  "mat": "Çelik",
+  "dial": "Opalin, bombeli, galvanik",
+  "bz": "Çelik, çift yönlü, 24 saat alüminyum disk (bordo-mavi)",
+  "gl": "Bombeli safir",
+  "str": "Perçinli çelik bilezik, katlamalı toka",
+  "lw": "22 mm"
+ },
+ "Tudor Ranger": {
+  "mat": "Çelik",
+  "dial": "Bej, bombeli",
+  "bz": "Pürüzsüz saten fırçalı çelik",
+  "gl": "Bombeli safir",
+  "str": "Çelik bilezik, T-fit toka",
+  "lw": "19 mm"
+ },
+ "TAG Heuer Monaco Chronograph": {
+  "mat": "Titanyum (Grade 5)",
+  "dial": "Mavi opalin",
+  "bz": "Sabit, titanyum",
+  "gl": "Safir arka kapak",
+  "str": "Delikli siyah dana derisi, titanyum katlamalı toka",
+  "lw": "22,5 mm"
+ },
+ "Longines Legend Diver": {
+  "mat": "Paslanmaz çelik",
+  "dial": "Dokulu siyah",
+  "bz": "İç dönen dalış bezeli",
+  "gl": "Safir, iki yüzde yansıma önleyici"
+ },
+ "Longines Spirit Pilot": {
+  "mat": "Paslanmaz çelik",
+  "dial": "Mat mavi",
+  "gl": "Safir, iki yüzde yansıma önleyici",
+  "str": "Kauçuk, tokalı"
+ },
+ "Longines HydroConquest": {
+  "mat": "Çelik ve seramik",
+  "dial": "Mavi güneş ışınlı",
+  "bz": "Tek yönlü dönen",
+  "gl": "Safir, iki yüzde yansıma önleyici",
+  "str": "Çelik bilezik"
+ },
+ "Rado Captain Cook": {
+  "mat": "Yüksek teknoloji seramik ve çelik",
+  "dial": "Yeşil",
+  "str": "Çelik bilezik, titanyum üçlü katlamalı toka"
+ },
+ "Nomos Tangente": {
+  "mat": "Paslanmaz çelik",
+  "dial": "Gümüş kaplı, galvanik beyaz",
+  "gl": "Safir",
+  "str": "Siyah Horween shell cordovan deri",
+  "lw": "18 mm"
+ },
+ "Doxa Sub 200": {
+  "mat": "Paslanmaz çelik (316L)",
+  "bz": "Tek yönlü dönen, Super-LumiNova kaplı",
+  "gl": "Bombeli safir, yansıma önleyici",
+  "str": "Beads of Rice çelik bilezik (FKM kauçuk kayış seçeneği)",
+  "lw": "19 mm"
+ },
+ "Seiko Presage Cocktail Time": {
+  "mat": "Paslanmaz çelik",
+  "gl": "Hardlex (kutu formunda)",
+  "str": "İnek derisi",
+  "lw": "20 mm"
+ },
+ "Seiko Alpinist": {
+  "mat": "Paslanmaz çelik, sert kaplamalı",
+  "bz": "Dönen pusula bezeli",
+  "gl": "Safir, büyüteçli, içte yansıma önleyici",
+  "str": "İnek derisi, üçlü katlamalı toka",
+  "lw": "20 mm"
+ },
+ "Hamilton Jazzmaster": {
+  "mat": "Paslanmaz çelik",
+  "dial": "Gümüş, açık kalp",
+  "gl": "Safir",
+  "str": "Koyu kahverengi dana derisi",
+  "lw": "20 mm"
+ },
+ "Hamilton Khaki Field Murph": {
+  "mat": "Paslanmaz çelik",
+  "dial": "Siyah",
+  "gl": "Safir",
+  "str": "İnek derisi (siyah deri)",
+  "lw": "20 mm"
+ },
+ "Citizen Series 8": {
+  "mat": "Gümüş tonlu paslanmaz çelik",
+  "bz": "Dönen dalış bezeli",
+  "gl": "Safir, yansıma önleyici",
+  "str": "Poliüretan kayış, katlamalı toka",
+  "lw": "15 mm"
+ },
+ "Baume & Mercier Riviera": {
+  "mat": "Cilalı/saten çelik",
+  "dial": "Dumanlı yeşil safir",
+  "bz": "Sabit, on iki kenarlı",
+  "str": "Değiştirilebilir çelik bilezik, üçlü katlamalı toka"
+ },
+ "Bell & Ross BR 03-92 Steel": {
+  "mat": "Cilalı-saten çelik",
+  "dial": "Siyah",
+  "gl": "Safir, yansıma önleyici",
+  "str": "Siyah kauçuk ve sentetik kumaş, iğneli toka"
+ },
+ "Oris Divers Sixty-Five": {
+  "mat": "Paslanmaz çelik",
+  "dial": "Siyah",
+  "bz": "Dönen (2026'dan itibaren tek yönlü), dakika ölçekli",
+  "gl": "Safir, her iki yüzde bombeli",
+  "str": "Çok parçalı çelik bilezik, katlamalı toka",
+  "lw": "20 mm"
+ },
+ "Oris Aquis Date": {
+  "mat": "Paslanmaz çelik, çok parçalı kasa",
+  "bz": "Dakika ölçekli, dönen",
+  "gl": "Safir, her iki yüzde bombeli",
+  "str": "Kauçuk (çelik bilezik de var)",
+  "lw": "23 mm"
+ },
+ "Straum Expedition": {
+  "mat": "Titanyum (Grade 5), kumlanmış",
+  "dial": "Kumlanmış saf titanyum",
+  "bz": "Titanyum (Grade 5), kademeli profil",
+  "gl": "Çift bombeli safir, içte yansıma önleyici",
+  "str": "FKM kauçuk kayış ya da titanyum bilezik",
+  "l2l": 45.7,
+  "th": "11 mm (camsız 10,3)"
+ },
+ "Christopher Ward C63 Sealander GMT": {
+  "mat": "Paslanmaz çelik (fırçalı/cilalı)",
+  "dial": "Cilalı vernik",
+  "bz": "Sabit çelik, siyah vernik dolgu",
+  "gl": "Safir, yansıma önleyici",
+  "str": "Bader çelik bilezik",
+  "lw": "20 mm",
+  "l2l": 45,
+  "th": "11,3 mm (39 mm sürüm)"
+ },
+ "Christopher Ward C63 Sealander Automatic": {
+  "mat": "Paslanmaz çelik (fırçalı/cilalı)",
+  "dial": "Cilalı vernik",
+  "bz": "Sabit çelik, cilalı",
+  "gl": "Safir, yansıma önleyici",
+  "str": "Bader çelik bilezik",
+  "lw": "20 mm",
+  "l2l": 42,
+  "th": "10,9 mm (36 mm sürüm)"
+ },
+ "Christopher Ward The Twelve (Pick and Mix)": {
+  "mat": "Titanyum (Grade 2)",
+  "dial": "Şeker kristali dokulu, degrade",
+  "bz": "Gümüş renkli, sabit",
+  "gl": "Safir arka kapak",
+  "str": "Titanyum bilezik, kelebek toka (kauçuk kayış da var)",
+  "lw": "22 mm"
+ },
+ "Seiko 5 Sports SRPK89": {
+  "mat": "Paslanmaz çelik",
+  "gl": "Bombeli hardlex",
+  "str": "Metal bilezik",
+  "lw": "18 mm",
+  "th": "12,5 mm"
+ },
+ "Seiko 5 Sports GMT SSK059": {
+  "mat": "Paslanmaz çelik",
+  "gl": "Kavisli hardlex",
+  "str": "Üçlü katlamalı toka (buton açmalı)",
+  "lw": "20 mm"
+ },
+ "Junghans Max Bill Automatic": {
+  "mat": "Cilalı paslanmaz çelik",
+  "dial": "Mat gümüş kaplama",
+  "gl": "Bombeli safir, yansıma önleyici",
+  "str": "Siyah deri, çelik toka"
+ },
+ "Unimatic Modello Uno U1-TSP": {
+  "mat": "316L çelik, kumlanmış",
+  "dial": "Kiremit kırmızısı, iri grené",
+  "bz": "Tek yönlü, 120 tık, mat siyah alüminyum",
+  "gl": "Çift bombeli safir, içte yansıma önleyici",
+  "str": "Siyah-sarı naylon, iki parçalı",
+  "lw": "22 mm"
+ },
+ "AV86 1954 Amalfi Mechanical": {
+  "mat": "316L çelik, altın kaplama",
+  "dial": "Mavi, güneş ışınlı",
+  "bz": "Yok",
+  "gl": "Bombeli safir, yansıma önleyici",
+  "str": "İtalyan deri, iğneli toka",
+  "lw": "20 mm"
+ },
+ "Venezianico Arsenale Bosphorus": {
+  "mat": "316L paslanmaz çelik",
+  "dial": "Doğal kırmızı sedef, Osmanlı esinli geometrik desen",
+  "bz": "316L çelik",
+  "gl": "Safir, yansıma önleyici",
+  "str": "Entegre kauçuk, çelik uç parçalı"
+ },
+ "Sternglas Naos": {
+  "mat": "316L cilalı çelik",
+  "dial": "Tam yüzey Luminova, uygulama indeksler",
+  "bz": "Yok",
+  "gl": "Çift bombeli safir, çift yansıma önleyici",
+  "str": "Vintage İtalyan deri",
+  "lw": "20 mm"
+ },
+ "Orient Bambino": {
+  "mat": "Paslanmaz çelik",
+  "dial": "Fildişi",
+  "bz": "Çelik",
+  "gl": "Kutu form (box) kristal",
+  "str": "Kahverengi deri, iğneli toka",
+  "lw": "20 mm"
+ },
+ "Seiko Prospex Speedtimer HBJ005": {
+  "mat": "Paslanmaz çelik",
+  "gl": "Bombeli safir, içte yansıma önleyici",
+  "str": "Üçlü katlamalı toka (buton açmalı)",
+  "lw": "21 mm"
+ },
+ "Baltic Aquascaphe": {
+  "mat": "Titanyum",
+  "dial": "Parlak mavi",
+  "bz": "Tek yönlü (120 tık), fırçalı seramik",
+  "gl": "Çift bombeli safir",
+  "lw": "20 mm"
+ },
+ "Mondaine Original Automatic 41 mm": {
+  "mat": "316L fırçalı çelik",
+  "dial": "Beyaz, siyah indeksler",
+  "gl": "Safir",
+  "str": "Deri ya da metal (sayfada ikisi de geçiyor)",
+  "lw": "20 mm"
+ },
+ "Omega x Swatch MoonSwatch Mission to the Sun": {
+  "mat": "Swatch biyoseramik",
+  "dial": "Sarı",
+  "bz": "Biyoseramik",
+  "gl": "Eko malzeme (biyobazlı)",
+  "str": "Cırt-cırt bant"
+ },
+ "Seiko 5 Sports SNKL23K": {
+  "mat": "Çelik",
+  "dial": "Siyah",
+  "gl": "Mineral",
+  "str": "Çelik bilezik"
+ },
+ "Blancpain Fifty Fathoms": {
+  "mat": "Kırmızı altın",
+  "dial": "Güneş ışınlı mavi",
+  "bz": "Tek yönlü dönen",
+  "gl": "Safir arka kapak",
+  "str": "Kauçuk, katlamalı toka",
+  "lw": "19 mm"
+ },
+ "Sinn 240 St": {
+  "mat": "Çelik, mat kumlanmış",
+  "dial": "Mat siyah",
+  "bz": "İç pilot bezeli, ışıklı işaretli",
+  "gl": "Safir, iki yüzde yansıma önleyici",
+  "str": "Deri, silikon ya da çelik bilezik seçenekleri",
+  "lw": "22 mm"
+ },
+ "Farer Aqua Compressor": {
+  "mat": "Titanyum (Grade 2)"
+ },
+ "Oris Artelier Year of the Horse LE": {
+  "mat": "Çelik, çok parçalı",
+  "dial": "Kırmızı",
+  "gl": "Safir, her iki yüzde bombeli, içte yansıma önleyici",
+  "str": "Deri",
+  "lw": "22 mm"
+ },
+ "Panerai Radiomir": {
+  "mat": "Cilalı çelik",
+  "dial": "Güneş ışınlı siyah",
+  "bz": "Cilalı çelik",
+  "str": "Mat siyah alligator, cilalı çelik toka",
+  "lw": "24 mm"
+ },
+ "Rolex Explorer": {
+  "mat": "Oystersteel",
+  "dial": "Siyah",
+  "str": "Oyster bilezik"
+ },
+ "TAG Heuer Carrera Chronograph": {
+  "mat": "Çelik (fırçalı/cilalı)",
+  "dial": "Siyah, dairesel fırçalı",
+  "bz": "Yok (bezelsiz)",
+  "gl": "Bombeli safir, safir arka kapak",
+  "str": "Delikli siyah deri, çelik katlamalı toka"
+ },
+ "Longines Conquest Heritage": {
+  "mat": "Paslanmaz çelik",
+  "dial": "Kahverengi, işlemeli indeksler",
+  "gl": "Safir, çok katmanlı yansıma önleyici",
+  "str": "Kahverengi timsah derisi, tokalı",
+  "lw": "20 mm"
+ },
+ "Seiko Prospex 62MAS Reissue": {
+  "mat": "Paslanmaz çelik",
+  "dial": "Gri güneş ışınlı",
+  "gl": "Safir",
+  "str": "Silikon kayış"
+ }
+};
 var SPEC = {
   "Audemars Piguet Royal Oak":{dia:"41 mm",th:"10,5 mm",wr:"50 m",mov:"AP 4302 otomatik",pr:"70 saat"},
   "Patek Philippe Calatrava":{dia:"39 mm",th:"9,24 mm",wr:"30 m",mov:"26-330 S C otomatik (tarih, saniye durdurma)",pr:"35-45 saat"},
@@ -1124,10 +1529,21 @@ function renderSheet(){
   h += '<div class="sh-sec"><h3>Hakkında</h3><p class="muted" style="color:var(--ink)">'+esc(ab[0])+'</p>' +
     (ab[1]?'<p class="muted"><b class="ablab">Koleksiyondaki yeri</b> '+esc(ab[1])+'</p>':'') +
     (ab[2]?'<p class="muted"><b class="ablab">Dikkat</b> '+esc(ab[2])+'</p>':'') + '</div>';
-  var cells = [["Kasa çapı",sp.dia],["Lug-to-lug",sp.l2l?String(sp.l2l).replace(".",",")+" mm":null],["Kalınlık",sp.th],["Su geçirmezlik",sp.wr],["Mekanizma",sp.mov],["Güç rezervi",sp.pr]].filter(function(c){return c[1];});
-  h += '<div class="sh-sec"><h3>Teknik bilgiler</h3>';
-  h += cells.length ? '<div class="specs">'+cells.map(function(c){return '<div class="spec"><span>'+c[0]+'</span><b>'+esc(c[1])+'</b></div>';}).join("")+'</div>' : '<p class="muted">Ölçü ve teknik bilgi henüz eklenmedi.</p>';
-  h += '</div>';
+  var tc = TECH[k] || {};
+  for (var tk in tc) sp[tk] = tc[tk];
+  var dash = function(v){ return v ? esc(v) : '<span class="nodata">—</span>'; };
+  var l2s = sp.l2l ? String(sp.l2l).replace(".",",")+" mm" : "";
+  var groups = [
+    ["Kasa", [["Malzeme",sp.mat],["Çap",sp.dia],["Kalınlık",sp.th],["Lug-to-lug",l2s]]],
+    ["Kadran", [["Renk",w.dn],["Yüzey",sp.dial]]],
+    ["Bezel ve cam", [["Bezel",sp.bz],["Cam",sp.gl]]],
+    ["Mekanizma", [["Kalibre ve tip",sp.mov],["Güç rezervi",sp.pr]]],
+    ["Su geçirmezlik", [["Derinlik",sp.wr]]],
+    ["Kayış / bilezik", [["Tip",sp.str],["Kayış genişliği",sp.lw]]]
+  ];
+  h += '<div class="sh-sec"><h3>Teknik bilgiler</h3><div class="tgroups">' + groups.map(function(g){
+    return '<div class="tg"><h4>'+g[0]+'</h4>' + g[1].map(function(r){ return '<div class="tr"><span>'+r[0]+'</span><b>'+dash(r[1])+'</b></div>'; }).join("") + '</div>';
+  }).join("") + '</div></div>';
   h += '<div class="sh-sec"><h3>17 cm bileğe uyum</h3>';
   if (sp.l2l){
     var v = sp.l2l, lab = v<=46 ? "Rahat" : (v<=48 ? "Sınırda, almadan önce dene" : "17 cm bilek için büyük");
