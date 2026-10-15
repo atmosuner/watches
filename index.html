@@ -198,13 +198,13 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
 <script>
 var W = [
   {b:"Audemars Piguet", n:"Royal Oak", c:"Grail / Özel", p:[30000,null], dial:"#1f3f6e", dn:"Mavi", note:"Koleksiyonun zirvesi. Mavi tapiserili kadran, 15510 referansı.", oct:true},
-  {b:"Patek Philippe", n:"Calatrava", c:"Dress", p:[30000,null], dial:"#d9c79a", dn:"Şampanya (pembe altın tonlu opalin)", note:"Dress slotunun zirvesi. 5227G-015: beyaz altın kasa, tarih penceresi, otomatik 26-330 S C. Resmi fiyatı yaklaşık 47.000 USD."},
+  {b:"Patek Philippe", n:"Calatrava", c:"Dress", p:[47000,48000], dial:"#d9c79a", dn:"Şampanya (pembe altın tonlu opalin)", note:"Dress slotunun zirvesi. 5227G-015: beyaz altın kasa, tarih penceresi, otomatik 26-330 S C. Resmi fiyatı 47.262 USD."},
   {b:"Blancpain", n:"Fifty Fathoms", c:"Diver", p:[16000,20000], dial:"#1f4a3a", dn:"Yeşil ya da mavi", note:"İlk modern dalış saati olarak anılır. Panerai ile aynı slot, birini seçmek gerekir."},
   {b:"Rolex", n:"GMT-Master II", c:"GMT / Seyahat", p:[11000,13000], dial:"#0d0d0d", dn:"Siyah, bezel renkli", bezel:"#1f4fa8", note:"Kadran siyah, renk bezelden gelir (mavi-siyah ya da yeşil). Çelik modellerde bekleme ya da ikinci el primi olabilir."},
   {b:"Zenith", n:"Chronomaster Sport", c:"Smart casual", p:[10000,12000], dial:"#8d949b", dn:"Gri", note:"Üst seviye otomatik kronograf, saniyenin onda birini ölçer."},
   {b:"Rolex", n:"Submariner", c:"Diver", p:[9500,11000], dial:"#101214", dn:"Siyah, yeşil bezel", bezel:"#1c6b45", note:"Diver'ın referansı. İkinci elde primli olabilir. Panerai ve Blancpain ile aynı slotta yarışır."},
-  {b:"Jaeger-LeCoultre", n:"Master Ultra Thin", c:"Dress", p:[9000,12000], dial:"#1d2d50", dn:"Lacivert", note:"Çok ince kasa, manşetin altına rahat girer. Üst seviye dress hedefi."},
-  {b:"Rolex", n:"Datejust", c:"Smart casual", p:[8500,10000], dial:"#c9ccd0", dn:"Gümüş (ya da mavi, yeşil)", note:"Hem ofiste hem takım elbiseyle gider. GMT-Master II'ye alternatif ya da ek parça."},
+  {b:"Jaeger-LeCoultre", n:"Master Ultra Thin", c:"Dress", p:[9000,12000], dial:"#f0eee6", dn:"Beyaz", note:"Çok ince kasa, manşetin altına rahat girer. Ay fazlı (Moon) çelik model, beyaz kadran. Üst seviye dress hedefi."},
+  {b:"Rolex", n:"Datejust", c:"Smart casual", p:[8500,10000], dial:"#7a8189", dn:"Gri (slate)", verify:true, note:"Datejust 41, çelik ve beyaz altın (White Rolesor), kanallı altın bezel, slate gri kadran. Hem ofiste hem takım elbiseyle gider. Fiyat çelik modele göre yazıldı, bu kasa daha pahalı olabilir, bayiden doğrula."},
   {b:"Breitling", n:"Navitimer Automatic", c:"Field / Pilot", p:[6000,6700], dial:"#26416b", dn:"Mavi", verify:true, note:"Kronograf değil, üç ibreli otomatik Navitimer. Kayar hesap cetveli bezeli, 41 mm, mavi kadran ve mavi kayış. Fiyat 5.200 CHF, USD karşılığı kura göre değişir, aralık tahmindir."},
   {b:"Rolex", n:"Explorer", c:"Field / Pilot", p:[8000,9500], dial:"#0f1112", dn:"Siyah", note:"Rolex'in en sade ve çok yönlü modeli. Siyah kadran bu modelin kimliği."},
   {b:"Oris", n:"Artelier Year of the Horse LE", c:"Grail / Özel", p:[7300,8300], dial:"#9b1c2a", dn:"Kırmızı", note:"88 adetlik sınırlı üretim, 43 mm, elle kurmalı Calibre 113, 10 gün güç rezervi. Fiyat 6.650 CHF, USD karşılığı kura göre değişir. Oris sitesinde şu an çevrimiçi satışta görünmüyor."},
@@ -322,7 +322,7 @@ var META = {
   "Rolex GMT-Master II":["Siyah", "Otomatik / Elle kurmalı", "GMT"],
   "Zenith Chronomaster Sport":["Gri / gümüş", "Otomatik / Elle kurmalı", "Kronograf"],
   "Rolex Submariner":["Siyah", "Otomatik / Elle kurmalı", "Tarihli"],
-  "Jaeger-LeCoultre Master Ultra Thin":["Mavi", "Otomatik / Elle kurmalı", "Sade"],
+  "Jaeger-LeCoultre Master Ultra Thin":["Beyaz / krem", "Otomatik / Elle kurmalı", "Tarihli"],
   "Rolex Datejust":["Gri / gümüş", "Otomatik / Elle kurmalı", "Tarihli"],
   "Breitling Navitimer Automatic":["Mavi", "Otomatik / Elle kurmalı", "Bilinmiyor"],
   "Rolex Explorer":["Siyah", "Otomatik / Elle kurmalı", "Sade"],
@@ -432,7 +432,7 @@ var LINKS = {
  "Zenith Chronomaster Sport": "https://www.zenith-watches.com/int/products/chronomaster-sport",
  "Rolex Submariner": "https://www.rolex.com/watches/submariner/m126610lv-0002",
  "Jaeger-LeCoultre Master Ultra Thin": "https://www.jaeger-lecoultre.com/us-en/watches/master-ultra-thin/master-ultra-thin-moon-steel-q1248421",
- "Rolex Datejust": "https://www.rolex.com/watches/datejust/m126334-0033",
+ "Rolex Datejust": "https://www.rolex.com/watches/datejust/m126334-0013",
  "Breitling Navitimer Automatic": "https://www.breitling.com/tr-en/watches/navitimer/navitimer-automatic-41-my23/A17329161C1P1/",
  "Rolex Explorer": "https://www.rolex.com/watches/explorer",
  "Oris Artelier Year of the Horse LE": "https://www.oris.ch/tr-TR/product/watch/artelier/artelier-calibre-113/01-113-7806-4088-Set",
@@ -604,7 +604,7 @@ var IMGS = {
   "Rolex Datejust":"https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-cover-majesty-landscape/c_limit,w_640/v1/a677b2c664f6/catalogue/2026/upright-c/m126334-0013",
   "Breitling Navitimer Automatic":"https://www.breitling.com/cdn-cgi/image/format=auto,quality=90,width=700,fit=cover,gravity=0.5x0.5/api/image-proxy/www-breitling.eu.saleor.cloud/media/thumbnails/products/a17329161c1p1-soldier_42785bad_thumbnail_1024.webp",
   "Rolex Explorer":"https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-cover-majesty-landscape/c_limit,w_640/v1/a677b2c664f6/catalogue/2026/upright-c/m224270-0001",
-  "Oris Artelier Year of the Horse LE":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfRGgN4hWcI0urhlF_z-xOdZVEuDdOVES_Mjs6Wzk5Bw&s=10",
+  "Oris Artelier Year of the Horse LE":"https://monochrome-watches.com/app/uploads/2026/01/2026-Oris-Year-of-the-Fire-Horse-Limited-Edition-1.jpg",
   "Omega Speedmaster Professional":"https://www.omegawatches.com/media/catalog/product/o/m/omega-speedmaster-moonwatch-professional-co-axial-master-chronometer-chronograph-42-mm-31032425001002-78e3aa.png?w=700"
 };
 function visual(w){
