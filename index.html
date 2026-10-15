@@ -165,6 +165,18 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
 .sim small { display: block; color: var(--muted); font-size: 12px; }
 .sheet textarea { width: 100%; min-height: 84px; resize: vertical; font: inherit; font-size: 13.5px; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 8px 10px; }
 @media (max-width: 480px) { .sh-head { grid-template-columns: 96px minmax(0,1fr); gap: 12px; } .sh-head .dial, .sh-head .photo { width: 96px; height: 96px; } .sh-head h2 { font-size: 1.6rem; } }
+.zoomwrap { position: relative; width: 140px; height: 140px; cursor: zoom-in; }
+.zoomwrap .photo { width: 100%; height: 100%; }
+.zoom { position: absolute; top: 6px; right: 6px; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: rgba(255,255,255,.92); color: #161a20; border: 1px solid var(--line); cursor: zoom-in; padding: 0; }
+.zoom svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#zoomWrap { position: fixed; inset: 0; z-index: 120; display: flex; align-items: center; justify-content: center; background: rgba(10,14,18,.88); cursor: zoom-out; }
+#zoomWrap[hidden] { display: none; }
+#zoomWrap img { max-width: 94vw; max-height: 88vh; object-fit: contain; background: #fff; border-radius: 6px; }
+#zoomWrap .zclose { position: absolute; top: calc(12px + env(safe-area-inset-top, 0px)); right: 12px; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,.5); background: rgba(0,0,0,.5); color: #fff; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+#zoomWrap .zclose svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+#zoomWrap .zclose:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+@media (max-width: 480px) { .zoomwrap { width: 96px; height: 96px; } }
 </style>
 </head>
 <body>
@@ -193,6 +205,7 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
 
 <div class="bar"><div class="in"><div class="b"><strong id="selTitle">İstek listem boş</strong><span id="selSum"></span></div><div class="b"><strong id="ownTitle">Henüz saatim yok</strong><span id="ownSum"></span></div></div></div>
 
+<div id="zoomWrap" hidden role="dialog" aria-modal="true" aria-label="Büyük görsel"><button type="button" class="zclose" id="zClose" aria-label="Kapat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button><img id="zImg" alt=""></div>
 <div id="sheetWrap" hidden><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle"><div id="sheetBody"></div></div></div>
 
 <script>
@@ -655,7 +668,32 @@ function visual(w){
   if (!u) return dialSVG(w);
   return '<img class="photo" src="'+esc(u)+'" alt="'+esc(w.b+" "+w.n)+'" data-k="'+esc(key(w))+'" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)">';
 }
-function photoFail(img){ var w = findW(img.getAttribute("data-k")); if (w) img.outerHTML = dialSVG(w); }
+function photoFail(img){
+  var w = findW(img.getAttribute("data-k")), par = img.parentNode;
+  if (par && par.classList && par.classList.contains("zoomwrap")) { var z = par.querySelector(".zoom"); if (z) z.remove(); par.style.cursor = "default"; par.onclick = null; }
+  if (w) img.outerHTML = dialSVG(w);
+}
+var MAG_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5M11 8.5v5M8.5 11h5"/></svg>';
+function bigUrl(u){
+  return u.replace(/c_limit,w_640/,"c_limit,w_1400").replace("mh=600&mw=600","mh=1400&mw=1400").replace("hero.png?w=700","hero.png?w=1440").replace(/(cdn\/shop\/[^?]*\?[^"]*?)width=800/,"$1width=1600").replace("w=800,bg=gray","w=1600,bg=gray").replace("w=700","w=1400");
+}
+var zoomFrom = null;
+function openZoom(k, from){
+  var w = findW(k), u = IMGS[k]; if (!w || !u) return;
+  var im = document.getElementById("zImg"); im.src = bigUrl(u); im.alt = w.b+" "+w.n;
+  zoomFrom = from || null;
+  document.getElementById("zoomWrap").hidden = false;
+  document.getElementById("zClose").focus();
+}
+function closeZoom(){
+  document.getElementById("zoomWrap").hidden = true; document.getElementById("zImg").removeAttribute("src");
+  if (zoomFrom && zoomFrom.focus) { try { zoomFrom.focus(); } catch(e){} } zoomFrom = null;
+}
+function zoomVisual(w){
+  var k = key(w);
+  if (!IMGS[k]) return visual(w);
+  return '<div class="zoomwrap" data-k="'+esc(k)+'">'+visual(w)+'<button type="button" class="zoom" id="shZoom" aria-label="Resmi büyüt" title="Resmi büyüt">'+MAG_SVG+'</button></div>';
+}
 var SPEC = {
   "Omega Seamaster 300M":{dia:"42 mm",mov:"Co-Axial Master Chronometer otomatik"},
   "Breitling Navitimer Automatic":{dia:"41 mm",th:"11,65 mm",wr:"30 m",mov:"Breitling 17 otomatik",pr:"38 saat"},
@@ -710,7 +748,7 @@ function renderSheet(){
     '<button type="button" class="ibtn" id="shNext" aria-label="Sonraki saat"'+(idx<0||idx>=ks.length-1?' disabled style="opacity:.4"':'')+'>'+R_SVG+'</button>' +
     '<span>'+(idx>=0?(idx+1)+" / "+ks.length:"")+'</span></div>' +
     '<button type="button" class="ibtn" id="shClose" aria-label="Kapat">'+X_SVG+'</button></div>';
-  h += '<div class="sh-head">'+visual(w)+'<div><span class="brand">'+esc(w.b)+'</span><h2 id="shTitle">'+esc(w.n)+'</h2>' +
+  h += '<div class="sh-head">'+zoomVisual(w)+'<div><span class="brand">'+esc(w.b)+'</span><h2 id="shTitle">'+esc(w.n)+'</h2>' +
     '<div class="tags"><span class="tag">'+w.c+'</span>'+(t?'<span class="tag">Tier '+t+'</span>':'')+'<span class="tag">'+kindOf(w)+'</span>'+(w.verify?'<span class="tag">Doğrula</span>':'')+'</div>' +
     '<div class="sh-price">'+priceText(w)+'</div>' +
     '<div class="colorline">Kadran: <b>'+esc(w.dn)+'</b></div>' +
@@ -737,6 +775,8 @@ function renderSheet(){
   if (sims.length) h += '<div class="sh-sec"><h3>Aynı kategoride</h3><div class="sims">'+sims.map(function(x){ return '<button type="button" class="sim" data-k="'+esc(key(x))+'">'+esc(x.b+" "+x.n)+'<small>'+priceText(x)+'</small></button>'; }).join("")+'</div></div>';
   h += '<div class="sh-sec"><h3>Notlarım</h3><textarea id="shNote" aria-label="Notlarım" placeholder="Denedim mi, kayış tercihi, aldığım tarih ve fiyat…">'+esc(loadNotes()[k]||"")+'</textarea></div>';
   var body = document.getElementById("sheetBody"); body.innerHTML = h;
+  var zw = body.querySelector(".zoomwrap");
+  if (zw) zw.onclick = function(){ openZoom(k, document.getElementById("shZoom") || document.getElementById("shClose")); };
   document.getElementById("shClose").onclick = closeSheet;
   document.getElementById("shPrev").onclick = function(){ stepSheet(-1); };
   document.getElementById("shNext").onclick = function(){ stepSheet(1); };
@@ -746,7 +786,13 @@ function renderSheet(){
   Array.prototype.forEach.call(body.querySelectorAll(".sim"), function(b){ b.onclick = function(){ cur = b.getAttribute("data-k"); renderSheet(); body.parentNode.scrollTop = 0; }; });
 }
 document.getElementById("sheetWrap").addEventListener("click", function(e){ if (e.target===this) closeSheet(); });
+document.getElementById("zoomWrap").addEventListener("click", closeZoom);
 document.addEventListener("keydown", function(e){
+  if (!document.getElementById("zoomWrap").hidden){
+    if (e.key==="Escape") { closeZoom(); e.stopPropagation(); }
+    else if (e.key==="Tab") e.preventDefault();
+    return;
+  }
   if (!cur) return;
   if (e.key==="Escape") { closeSheet(); return; }
   var tag = (document.activeElement && document.activeElement.tagName) || "";
