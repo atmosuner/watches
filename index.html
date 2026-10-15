@@ -203,6 +203,7 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
 .pzcell.empty .pzlab .plus { display: block; font-size: 22px; line-height: 1; margin-bottom: 4px; color: var(--steel); }
 .pzdone { margin: 16px 0 0; text-align: center; font-family: var(--f-display); font-size: 1.25rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--accent); }
 @media (max-width: 480px) { .pzlab b { font-size: .9rem; } .pzlab small { font-size: 10.5px; } }
+.ablab { display: block; font-family: var(--f-mono); font-weight: 500; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-top: 6px; }
 </style>
 </head>
 <body>
@@ -597,7 +598,7 @@ function render(){
       '<div class="colorline">Kadran: <b>'+w.dn+'</b></div>' +
       '<div class="colorline">'+[m[1],m[2],shapeOf(w)].filter(function(x){return x!=="Bilinmiyor";}).join(" · ")+'</div>' +
       '<div class="tags"><span class="tag">'+w.c+'</span>'+(t?'<span class="tag">Tier '+t+'</span>':'')+'<span class="tag">'+kindOf(w)+'</span>'+(w.verify?'<span class="tag">Doğrula</span>':'')+'</div></div>' +
-      '<p class="note">'+w.note+'</p>' +
+      '<p class="note">'+esc((ABOUT[k]||[w.note])[0])+'</p>' +
       '<div class="actions"><span class="links"><a href="'+siteOf(w)+'" target="_blank" rel="noopener">'+(key(w)==="Seiko 5 Sports SNKL23K"?"Satıcı ↗":"Resmi site ↗")+'</a><a href="https://www.google.com/search?tbm=isch&q='+q+'" target="_blank" rel="noopener">Görseller ↗</a></span>' +
       '<span class="btns"><button type="button" class="pick" aria-pressed="'+on+'" title="'+(on?"İstek listemde, çıkarmak için tıkla":"İstek listesine ekle")+'" aria-label="'+(on?"İstek listemde":"İstek listesine ekle")+'">'+HEART_SVG+'</button>' +
       '<button type="button" class="own-btn" aria-pressed="'+ow+'" title="'+(ow?"Bende var, çıkarmak için tıkla":"Bende var olarak işaretle")+'" aria-label="'+(ow?"Bende var":"Bende var olarak işaretle")+'">'+CHECK_SVG+'</button></span></div>';
@@ -729,6 +730,293 @@ function zoomVisual(w){
   if (!IMGS[k]) return visual(w);
   return '<div class="zoomwrap" data-k="'+esc(k)+'">'+visual(w)+'<button type="button" class="zoom" id="shZoom" aria-label="Resmi büyüt" title="Resmi büyüt">'+MAG_SVG+'</button></div>';
 }
+var ABOUT = {
+ "Audemars Piguet Royal Oak": [
+  "Entegre bilezikli çelik spor saatin kurucusu: sekizgen bezel, görünür vidalar ve Grande Tapisserie dokulu Bleu Nuit kadran.",
+  "Koleksiyonun zirvesi, Grail / Özel parçasının en güçlü adayı.",
+  "Çoğu zaman liste fiyatının üstünde satılır, bayide bekleme ve ikinci elde prim olabilir."
+ ],
+ "Patek Philippe Calatrava": [
+  "Sade Calatrava çizgisinde beyaz altın kasa, pembe-altın tonlu opalin kadran ve tarih penceresi.",
+  "Dress slotunun zirvesi, takım elbiseyle giyilecek en prestijli saat.",
+  "Resmi fiyatı 47.262 USD, listedeki en pahalı dress saati."
+ ],
+ "Blancpain Fifty Fathoms": [
+  "İlk modern dalış saatlerinden biri olarak anılan Fifty Fathoms'un kırmızı altın, güneş ışınlı mavi kadranlı ve tarihli sürümü.",
+  "Diver slotunda Rolex Submariner ile yarışır, ikisinden birini seçmek gerekir.",
+  "38 mm ölçüsü 17 cm bilek için avantaj. Kırmızı altın kasa ve emniyetli mekanizma fiyatı yukarı çekiyor."
+ ],
+ "Rolex GMT-Master II": [
+  "İki saat dilimini birden gösteren seyahat saatinin referansı: kadran siyah, renk bezelden geliyor.",
+  "GMT / Seyahat parçasının en bilinen adayı.",
+  "Çelik modellerde bekleme listesi ya da ikinci el primi olabilir. Lug-to-lug ölçüsünü Rolex yayınlamıyor, bilekte dene."
+ ],
+ "Zenith Chronomaster Sport": [
+  "Saniyenin onda birini ölçen El Primero kronograf, meteorit kadran ve siyah seramik bezel.",
+  "Smart casual slotunda teknik olarak en iddialı seçenek.",
+  "Lug-to-lug ölçüsü bulunamadı, almadan önce bilekte dene."
+ ],
+ "Rolex Submariner": [
+  "Dalış saatlerinin referansı: siyah kadran, yeşil Cerachrom bezel, 300 m.",
+  "Diver slotunun en bilinen adayı, Blancpain Fifty Fathoms ile aynı rolde.",
+  "İkinci elde primli olabilir. Lug-to-lug ölçüsünü Rolex yayınlamıyor, bilekte dene."
+ ],
+ "Jaeger-LeCoultre Master Ultra Thin": [
+  "İnce kasalı ay fazlı dress saati: güneş ışınlı gümüş-gri kadran, gece mavisi ay ve yıldız detayı.",
+  "Dress slotunda ince ve zarif seçenek, manşetin altına rahat girer.",
+  "Resmi sayfa kadranı gümüş-gri tarif ediyor, kartta 'Beyaz' olarak tutuyoruz."
+ ],
+ "Rolex Datejust": [
+  "Çelik ve beyaz altın (White Rolesor) kasa, kanallı altın bezel ve slate gri kadran: klasik Rolex şıklığı.",
+  "Smart casual slotu: ofiste de takım elbiseyle de gider.",
+  "Fiyat aralığı tahmin, White Rolesor modelleri çelikten pahalıdır. Bayiden doğrula."
+ ],
+ "Breitling Navitimer Automatic": [
+  "Kronograf değil, üç ibreli otomatik Navitimer: kayar hesap cetveli bezeli, mavi kadran, mavi alligator kayış.",
+  "Field / Pilot slotunda havacılık kökenli şık seçenek.",
+  "Fiyat 5.200 CHF'den çevrilmiş tahmin, doğrula."
+ ],
+ "Rolex Explorer": [
+  "Rolex'in en sade modeli: siyah kadran, okunaklı 3-6-9 rakamları, 36 mm.",
+  "Field / Pilot slotunun Rolex'i, 36 mm kasa 17 cm bilek için avantaj.",
+  "Bekleme ve ikinci el primi olabilir. Lug-to-lug ölçüsünü Rolex yayınlamıyor."
+ ],
+ "Oris Artelier Year of the Horse LE": [
+  "At yılı için 88 adetlik sınırlı üretim: kırmızı kadran, elle kurmalı Calibre 113, 10 gün güç rezervi, hafta-ay-gün göstergeleri.",
+  "Grail / Özel slotunda hikâyesi olan koleksiyon parçası.",
+  "Sınırlı üretim, temini zor olabilir. Fiyat 6.650 CHF, USD karşılığı kura göre değişir."
+ ],
+ "Omega Speedmaster Professional": [
+  "Aya giden saat olarak bilinen elle kurmalı Moonwatch kronograf, siyah kadran.",
+  "Smart casual slotunun klasiği.",
+  "Koleksiyonda siyah kadran çok, renk dengesine dikkat."
+ ],
+ "Grand Seiko Snowflake (SBGA211)": [
+  "Hotaka dağındaki kar dokusundan esinlenen kadran, titanyum kasa ve bilezik, Spring Drive mekanizma.",
+  "Grail / Özel: Japon zanaatının zirvesi.",
+  "49 mm lug-to-lug 17 cm bilekte sınırda, almadan önce dene."
+ ],
+ "Omega Seamaster Aqua Terra": [
+  "Ofisten tekneye giden klasik Seamaster: turkuaz kadran siyaha geçen gradyanla, fırçalı seramik bezel.",
+  "Ofis spor-şık slotu, Oris Aquis ya da Riviera ile aynı rolde, biri yeter.",
+  "47,9 mm lug-to-lug 17 cm bilekte sınırda, almadan önce dene."
+ ],
+ "Panerai Radiomir": [
+  "Panerai'nin vintage çizgisi: cilalı çelik kasa, güneş ışınlı siyah kadran, 9'da küçük saniye, 3'te tarih.",
+  "Smart casual slotunda Luminor'dan daha küçük ve sakin Panerai.",
+  "Fiyat doğrulanmadı. 50 m su geçirmezlik, dalış saati olarak düşünme."
+ ],
+ "TAG Heuer Monaco Chronograph": [
+  "1969 Heuer Monaco'nun yeniden yorumu: kare Grade 5 titanyum kasa, mavi opalin kadran, Steve McQueen ve Le Mans filmiyle ünlü tasarım.",
+  "Eğlenceli / Kronograf slotunun yıldızı.",
+  "Kare kasa ve 13,9 mm kalınlık bilekte farklı oturur, bilekte dene."
+ ],
+ "Omega Seamaster 300M": [
+  "No Time To Die'daki 007 saatinin titanyum hali: kahverengi tropik alüminyum bezel ve kadran, titanyum mesh bilezik.",
+  "Diver slotunda koleksiyona kahverengi ve Omega ekler.",
+  "49,6 mm lug-to-lug 17 cm bilek için büyük. Fiyat aralığı düşük olabilir, doğrula."
+ ],
+ "TAG Heuer Carrera Chronograph": [
+  "Heuer 02'nin evrimi TH20-00 mekanizmalı, camlı kasa (glassbox) Carrera kronograf; kartta beyaz panda kadran seçili.",
+  "Smart casual slotunda Monaco'dan daha sakin günlük kronograf.",
+  "Link siyah kadranlı sürüme gidiyor, beyaz panda referansı sonra bağlanacak."
+ ],
+ "IWC Pilot's Watch Mark XX": [
+  "Pilot saatinin klasiği: sade siyah kadran, tarih, 120 saat güç rezervi veren IWC 32111.",
+  "Field / Pilot slotunun şık, okunaklı adayı.",
+  ""
+ ],
+ "Tudor Black Bay GMT": [
+  "Rolex GMT-Master II'ye ulaşılabilir alternatif: çelik kasa, bordo-mavi 24 saat bezeli, COSC sertifikalı MT5652.",
+  "GMT / Seyahat slotunun daha uygun fiyatlı seçeneği.",
+  "Kart siyah kadranı gösteriyor, link opalin beyaz-gri sürüme gidiyor."
+ ],
+ "Tudor Ranger": [
+  "Tudor'un field saati: satenize çelik kasa, 36 mm, bej (Dune) kadran, COSC sertifikalı MT5400.",
+  "Field / Pilot slotunun üst seviye seçeneği, 36 mm 17 cm bileğe iyi uyar.",
+  "Görsel M79950-0008, link M79930-0007. Kadran rengini doğrula."
+ ],
+ "Bell & Ross BR 03-92 Steel": [
+  "Kokpit göstergesinden gelen kare çelik kasa, siyah kadran, tarih.",
+  "Field / Pilot slotunda cesur, sert görünümlü seçenek.",
+  "Fiyat aralığı yaklaşık, bayiden doğrula."
+ ],
+ "Straum Expedition": [
+  "Norveç markası: Grade 5 titanyum kasa, La Joux-Perret G100, gri kadran, 68 saat güç rezervi.",
+  "Field / Pilot slotunun hafif, butik seçeneği.",
+  "Fiyat 31.000-35.000 NOK, USD karşılığı kura göre değişir."
+ ],
+ "Longines Legend Diver": [
+  "1959 mirasından vintage çizgili diver: iç dönen bezel, iki taç koruması, dokulu siyah kadran.",
+  "Diver slotunda Longines'in klasik dalış tarafı.",
+  ""
+ ],
+ "Baume & Mercier Riviera": [
+  "Oniki kenarlı kasa, dumanlı yeşil safir kadran, entegre bilezik hissi, Baumatic mekanizma.",
+  "Ofis spor-şık slotu, iş kıyafetiyle çok uyumlu.",
+  "Resmi sayfada artık satışta görünmüyor, stok durumunu doğrula."
+ ],
+ "Oris Divers Sixty-Five": [
+  "1965'te çıkan ilk Oris dalış saatinin 60. yıl yorumu: siyah kadran, iri parlak rakamlar, çift bombeli safir cam.",
+  "Diver slotunun retro karakterli seçeneği.",
+  "Fiyat 2.250 CHF. Bronz kasalı sürüm daha pahalıdır."
+ ],
+ "Oris Aquis Date": [
+  "Bağımsız İsviçre markasının dalış saati: turkuaz-mavi kadran, 300 m, çok yönlü.",
+  "Diver slotunda ofisten denize geçebilen seçenek.",
+  "43,5 mm geniş bir kasa. Link yeşil sınırlı sürüme gidiyor, turkuaz referansı doğrula."
+ ],
+ "Rado Captain Cook": [
+  "1962 Captain Cook'un yeniden yorumu: seramik ve çelik kasa, yeşil kadran, 80 saat güç rezervi.",
+  "Diver slotunda orta fiyatlı, tasarım odaklı retro seçenek.",
+  ""
+ ],
+ "Nomos Tangente": [
+  "Bauhaus çizgisinde, 6,2 mm inceliğinde elle kurmalı saat: kendi kalibresi DUW 4001, gümüş kaplı beyaz kadran, mavi ibreler.",
+  "Dress slotunda en resmi takım elbise saati.",
+  "35 mm küçük kasa. Siyah ya da koyu kahverengi deri kayışla en iyi durur."
+ ],
+ "Longines Conquest Heritage": [
+  "Vintage havalı, kahverengi kadranlı, pembe ibreli çelik saat; kasa arkasında 18 ayar altın balık madalyonu.",
+  "Smart casual slotu, kahverengi deri kayışla ceket ve kotla iyi gider.",
+  "48,1 mm lug-to-lug 17 cm bilekte sınırda."
+ ],
+ "Sinn 240 St": [
+  "Alman mühendisliği: iç pilot bezeli, gün ve tarih göstergesi, mat çelik kasa, sade ve sağlam günlük saat.",
+  "Field / Pilot slotunun dayanıklı, fiyatı makul seçeneği.",
+  "43 mm 17 cm bilek için büyük, almadan önce dene. Fiyat 1.820-2.170 EUR."
+ ],
+ "Farer Aqua Compressor": [
+  "Canlı renk paletiyle bilinen mikro marka: Hecla yeşili kadran, titanyum kasa, dört pozisyonda ayarlı G101.",
+  "Eğlenceli slotunun renkli seçeneği.",
+  "Kategori adı kronograf olsa da bu bir dalış saati, slot 'eğlenceli' anlamında."
+ ],
+ "Longines Spirit Pilot": [
+  "Pilot saatlerinden esinlenen otomatik: mat mavi kadran, silikon spiralli mekanizma, yaklaşık 72 saat güç rezervi.",
+  "Field / Pilot slotunda mavi: Alpinist yeşil olduğu için buna mavi seçildi.",
+  "Çelik bilezik ya da deri kayışla çok yönlü."
+ ],
+ "Longines HydroConquest": [
+  "Çelik bilezikli, mavi güneş ışınlı kadranlı, 300 m su geçirmezlikli dalış saati.",
+  "Ofis spor-şık slotu, ilk saat adayı olarak konuştuğumuz model.",
+  ""
+ ],
+ "Christopher Ward C63 Sealander GMT": [
+  "C63 Sealander ailesinin caller GMT sürümü, 36/39/42 mm seçenekleri ve 56 saat güç rezervi.",
+  "GMT / Seyahat slotunun uygun fiyatlı seçeneği.",
+  "Link beyaz kadranlı sürüme gidiyor, siyah seçilince link yenilenecek."
+ ],
+ "Christopher Ward C63 Sealander Automatic": [
+  "Üç ibreli C63 Sealander: 36 ve 39 mm, 6'da tarih, pembe kadran seçili.",
+  "Ofis spor-şık slotunda koleksiyona pastel bir renk katar.",
+  "Ön siparişte teslimat Şubat 2027 görünüyor, 39 mm fiyatı sayfada yok."
+ ],
+ "Venezianico Arsenale Bosphorus": [
+  "Osmanlı süslemelerinden esinlenen desenli kırmızı sedef kadran, sınırlı üretim, İtalyan mikro marka.",
+  "Eğlenceli slotta hikâyeli, İstanbul'a bağlı seçenek.",
+  "Sınırlı üretim, stok durumunu kontrol et."
+ ],
+ "Junghans Max Bill Automatic": [
+  "Max Bill'in Bauhaus tasarımı: mat gümüş kadran, 38 mm, J800.1 otomatik.",
+  "Dress slotu: Nomos ile aynı rolde, ikisinden birini seçmek gerekebilir.",
+  ""
+ ],
+ "Doxa Sub 200": [
+  "İkonik turuncu Professional kadranlı dalış saati.",
+  "Diver slotunda koleksiyondaki en canlı renk.",
+  ""
+ ],
+ "Seiko Prospex 62MAS Reissue": [
+  "Seiko'nun 1965 ilk dalış saatinin aynı ölçüde yeniden yorumu (SJE093): gri güneş ışınlı kadran, yeni ince 6L37, 1.965 adet.",
+  "Diver slotunda tarihî Seiko.",
+  "Fiyat yaklaşık AU$5.500 (3.600 USD kadar), Türkiye fiyatını doğrula."
+ ],
+ "Christopher Ward The Twelve (Pick and Mix)": [
+  "Entegre bilezikli, sekizgen hatlı titanyum saat; kadran rengini sen seçiyorsun, burada kırmızı.",
+  "Ofis spor-şık slotu, Riviera ile aynı rolde, biri yeter.",
+  "Link Blue Sherbet kadrana gidiyor, kırmızı seçilince link yenilenecek."
+ ],
+ "Hamilton Khaki Field Murph": [
+  "Christopher Nolan filmindeki 42 mm Murph'ün 38 mm kompakt hali: siyah kadran, bej ibreler, H-10 80 saat.",
+  "Field / Pilot slotunda sade günlük saat.",
+  "Siyah kadran sayısına dikkat."
+ ],
+ "Citizen Series 8": [
+  "Mekanik, entegre bilezikli sekizgen çelik kasa, beyaz-mavi kadran.",
+  "Ofis spor-şık slotunda uygun fiyatlı alternatif.",
+  "Link beyaz kadranlı NB6060-07A'ya gidiyor."
+ ],
+ "Unimatic Modello Uno U1-TSP": [
+  "İtalyan dalış saati: kumlanmış kasa, kiremit kırmızısı grené kadran, 99 adetlik sınırlı üretim.",
+  "Diver slotunda farklı, minimal ve renkli seçenek.",
+  "49 mm lug-to-lug 17 cm bilek için büyük."
+ ],
+ "Seiko Alpinist": [
+  "Seiko'nun imza yeşil kadranı ve dönen pusula bezeli olan field saati.",
+  "Field / Pilot slotunun yeşil rengi.",
+  ""
+ ],
+ "Baltic Aquascaphe": [
+  "Mikro markanın çok başarılı dalış saati: titanyum kasa, parlak mavi kadran, seramik bezel.",
+  "Diver slotunda uygun fiyatlı mavi.",
+  "47 mm lug-to-lug 17 cm bilekte sınırda. Çelik Mk2 sürümleri daha küçük."
+ ],
+ "Seiko Prospex Speedtimer HBJ005": [
+  "Seiko 145. yıl dönümü sınırlı üretimi: lila kadranlı solar kronograf, 24 saat ibresi, güç rezervi göstergesi.",
+  "Smart casual slotuna renk katar.",
+  "Türkiye fiyatı 55.395 TL, USD karşılığı kura göre değişir."
+ ],
+ "Mondaine Original Automatic 41 mm": [
+  "İsviçre tren istasyonu saati tasarımı: beyaz kadran, kırmızı saniye ibresi, Sellita SW200-1 otomatik.",
+  "Dress slotunda uygun fiyatlı beyaz kadran.",
+  "Nomos ve Junghans da beyaz, dress slotunda renk tekrarına dikkat."
+ ],
+ "Hamilton Jazzmaster": [
+  "Açık kalp kadranda H-10'u gösteren, 80 saat güç rezervli dress saati.",
+  "Dress slotunda gümüş kadranlı, koyu takımla uyumlu seçenek.",
+  ""
+ ],
+ "Seiko 5 Sports GMT SSK059": [
+  "Overwhite kadran, turuncu vurgular, caller GMT ve saniye durdurma.",
+  "GMT / Seyahat slotunun en uygun fiyatlı seçeneği.",
+  "47,9 mm lug-to-lug 17 cm bilekte sınırda."
+ ],
+ "AV86 1954 Amalfi Mechanical": [
+  "Kare, altın renkli kasa, gece mavisi güneş ışınlı kadran, Seagull ST17 elle kurmalı, küçük saniyeli.",
+  "Dress slotunda farklı bir şekil.",
+  "Fiyatı 425 USD, mekanizma Çin menşeli."
+ ],
+ "Sternglas Naos": [
+  "Hamburg'dan iF Design ödüllü Bauhaus çizgili model; link Edition Bauhaus X (500 adet) sürümüne gidiyor.",
+  "Dress slotunda uygun fiyatlı Bauhaus.",
+  "Bağlantıdaki sarı sınırlı sürüm ile kartta seçili beyaz standart sürüm farklı."
+ ],
+ "Seiko Presage Cocktail Time": [
+  "Güneş ışınlı, desenli bordo kadran, 4R35 otomatik.",
+  "Dress slotunda sıcak renk katan, uygun fiyatlı mekanik saat.",
+  ""
+ ],
+ "Seiko 5 Sports SRPK89": [
+  "Çelik kasa ve bilezikli, siyah kadranlı, 100 m su geçirmezlikli günlük saat.",
+  "Eğlenceli slotunda en uygun fiyatlı seçeneklerden.",
+  "Bir yerde kadran lacivert yazıyor, rengi doğrula."
+ ],
+ "Seiko 5 Sports SNKL23K": [
+  "Gün-tarihli, çelik bilezikli günlük saat, 7S26C otomatik.",
+  "Eğlenceli slotunda bütçe dostu seçenek.",
+  "Fiyat Singapur perakendesinden, Türkiye fiyatı farklı olabilir."
+ ],
+ "Omega x Swatch MoonSwatch Mission to the Sun": [
+  "Biyoseramik sarı kasa ve kadran, quartz kronograf, Speedmaster esintisi.",
+  "Eğlenceli slotunun en uygun fiyatlı ve en renkli seçeneği.",
+  ""
+ ],
+ "Orient Bambino": [
+  "Krem kadranlı, bombeli camlı klasik: F6524 otomatik, elle de kurulabilir.",
+  "Dress slotunda bütçe dostu, sıcak görünümlü seçenek.",
+  ""
+ ]
+};
 var SPEC = {
   "Audemars Piguet Royal Oak":{dia:"41 mm",th:"10,5 mm",wr:"50 m",mov:"AP 4302 otomatik",pr:"70 saat"},
   "Patek Philippe Calatrava":{dia:"39 mm",th:"9,24 mm",wr:"30 m",mov:"26-330 S C otomatik (tarih, saniye durdurma)",pr:"35-45 saat"},
@@ -832,7 +1120,10 @@ function renderSheet(){
     '<button type="button" class="sbtn o" id="shOwn" aria-pressed="'+ow+'">'+CHECK_SVG+(ow?"Bende var":"Bende var olarak işaretle")+'</button>' +
     '<a href="'+siteOf(w)+'" target="_blank" rel="noopener">'+(k==="Seiko 5 Sports SNKL23K"?"Satıcı":"Resmi site")+' ↗</a>' +
     '<a href="https://www.google.com/search?tbm=isch&q='+q+'" target="_blank" rel="noopener">Görseller ↗</a></div>';
-  h += '<div class="sh-sec"><h3>Hakkında</h3><p class="muted" style="color:var(--ink)">'+w.note+'</p></div>';
+  var ab = ABOUT[k] || [w.note,"",""];
+  h += '<div class="sh-sec"><h3>Hakkında</h3><p class="muted" style="color:var(--ink)">'+esc(ab[0])+'</p>' +
+    (ab[1]?'<p class="muted"><b class="ablab">Koleksiyondaki yeri</b> '+esc(ab[1])+'</p>':'') +
+    (ab[2]?'<p class="muted"><b class="ablab">Dikkat</b> '+esc(ab[2])+'</p>':'') + '</div>';
   var cells = [["Kasa çapı",sp.dia],["Lug-to-lug",sp.l2l?String(sp.l2l).replace(".",",")+" mm":null],["Kalınlık",sp.th],["Su geçirmezlik",sp.wr],["Mekanizma",sp.mov],["Güç rezervi",sp.pr]].filter(function(c){return c[1];});
   h += '<div class="sh-sec"><h3>Teknik bilgiler</h3>';
   h += cells.length ? '<div class="specs">'+cells.map(function(c){return '<div class="spec"><span>'+c[0]+'</span><b>'+esc(c[1])+'</b></div>';}).join("")+'</div>' : '<p class="muted">Ölçü ve teknik bilgi henüz eklenmedi.</p>';
