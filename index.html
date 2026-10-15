@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bileğime Yakışanlar</title>
+<title>Saat Defterim</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
@@ -170,8 +170,8 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
 <body>
 
 <div class="wrap">
-  <h1>Bileğime Yakışanlar</h1>
-  <p class="lede">Beğendiğim 58 saat tek sayfada. Kategori, renk, kasa şekli, mekanizma, bütçe ve markaya göre süz. Almak istediklerini kalp ikonuyla istek listene ekle, aldıklarını onay ikonuyla "Bende var" diye işaretle. Karta tıklayınca detay açılır. Altta iki listenin toplamını gör. Kadran rengi önerdiğimiz renktir.</p>
+  <h1>Saat Defterim</h1>
+  <p class="lede"><span id="total">58</span> saat, hepsi tek sayfada. Kategori, renk, kasa şekli, mekanizma, bütçe ve markaya göre süz. Kalp ikonuyla almak istediklerini istek listene ekle, onay ikonuyla sahip olduklarını işaretle. Karta tıklayınca detaylar açılır. Kadran renkleri benim seçtiğim renklerdir.</p>
 
   <details class="filters" open>
     <summary>Filtreler <span id="active"></span></summary>
@@ -705,6 +705,7 @@ document.addEventListener("keydown", function(e){
   }
 });
 
+document.getElementById("total").textContent = W.length;
 initControls();
 render();
 </script>
