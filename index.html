@@ -120,7 +120,7 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
 
 <div class="wrap">
   <h1>Bileğime Yakışanlar</h1>
-  <p class="lede">Beğendiğim 65 saat tek sayfada. Kategori, renk, kasa şekli, mekanizma, bütçe ve markaya göre süz. Almak istediklerini istek listene ekle, aldıklarını "Bende var" diye işaretle. Altta iki listenin toplamını gör. Kadran rengi önerdiğimiz renktir.</p>
+  <p class="lede">Beğendiğim 58 saat tek sayfada. Kategori, renk, kasa şekli, mekanizma, bütçe ve markaya göre süz. Almak istediklerini istek listene ekle, aldıklarını "Bende var" diye işaretle. Altta iki listenin toplamını gör. Kadran rengi önerdiğimiz renktir.</p>
 
   <details class="filters" open>
     <summary>Filtreler <span id="active"></span></summary>
@@ -137,78 +137,71 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
   <p class="count" id="count"></p>
   <div class="grid" id="grid"></div>
 
-  <p class="foot">Fiyatlar yeni halde yaklaşık USD değerleridir, kesin fiyat için yetkili bayiye bak. Tier sınırları: Tier 1 1.500 USD altı, Tier 2 1.500-5.000 USD, Tier 3 5.000 USD üstü. Fiyatı ya da modeli doğrulayamadığım saatler "Doğrula" etiketli. Görsel bağlantıları Google Görseller aramasını yeni sekmede açar. Resmi site bağlantıları markanın ana sayfasına gider (Venezianico Bosphorus hariç, o model sayfasına gider). Baltic ve Sternglas adreslerini aramayla doğrulayamadım. Mekanizma ve kadran tipi bilgisi emin olmadığım saatlerde "Bilinmiyor" olarak bırakıldı.</p>
+  <p class="foot">Fiyatlar yeni halde yaklaşık USD değerleridir, kesin fiyat için yetkili bayiye bak. Tier sınırları: Tier 1 1.500 USD altı, Tier 2 1.500-5.000 USD, Tier 3 5.000 USD üstü. Fiyatı ya da modeli doğrulayamadığım saatler "Doğrula" etiketli. Görsel bağlantıları Google Görseller aramasını yeni sekmede açar. Site bağlantıları senin verdiğin model sayfalarıdır, takip parametreleri temizlendi. Mekanizma ve kadran tipi bilgisi emin olmadığım saatlerde "Bilinmiyor" olarak bırakıldı.</p>
 </div>
 
 <div class="bar"><div class="in"><div class="b"><strong id="selTitle">İstek listem boş</strong><span id="selSum"></span></div><div class="b"><strong id="ownTitle">Henüz saatim yok</strong><span id="ownSum"></span></div></div></div>
 
 <script>
 var W = [
-  {b:"Nomos", n:"Tangente", c:"Dress", p:[2000,2500], dial:"#f1eee6", dn:"Beyaz / gümüş", note:"Bauhaus çizgisi, ince kasa. Siyah ya da koyu kahverengi deri kayışla en resmi takım elbise saati."},
-  {b:"Mondaine", n:"Original Automatic 41 mm", c:"Dress", p:[600,900], dial:"#f1f0ea", dn:"Beyaz", acc:"#d6322b", note:"İsviçre tren istasyonu saati tasarımı, beyaz kadran ve kırmızı saniye ibresi. Nomos ve Junghans da beyaz olduğu için dress slotunda bu üçünden birini seçmek yeter."},
-  {b:"Orient", n:"Bambino", c:"Dress", p:[200,350], dial:"#2f5a47", dn:"Yeşil (mavi de var)", note:"Bütçe dostu klasik. Yeşil kadranla sıradan beyaz dress saatlerden ayrışır."},
-  {b:"Sternglas", n:"Naos", c:"Dress", p:[400,700], dial:"#16181b", dn:"Siyah (beyaz da var)", note:"Bauhaus çizgili uygun fiyatlı dress. Nomos ile aynı rolde, ikisinden birini seçmek gerekebilir."},
-  {b:"Baume & Mercier", n:"Riviera", c:"Ofis spor-şık", p:[2500,3500], dial:"#2f5a4a", dn:"Yeşil", note:"12 kenarlı bezel, entegre bilezik hissi. İş kıyafetiyle çok uyumlu.", sq:false, oct:true},
-  {b:"Christopher Ward", n:"The Twelve (Pick and Mix)", c:"Ofis spor-şık", p:[1000,1500], dial:"#7d8f6a", dn:"Kendin seçersin", note:"Entegre bilezikli, kadran rengini sen belirliyorsun. Riviera ile aynı rolde, biri yeter.", oct:true},
-  {b:"Longines", n:"Conquest Heritage", c:"Smart casual", p:[2000,2500], dial:"#d9d4c3", dn:"Krem ya da gümüş", note:"Vintage hava. Kahverengi deri kayışla ceket ve kotla çok iyi gider."},
-  {b:"Rolex", n:"Datejust", c:"Smart casual", p:[8500,10000], dial:"#c9ccd0", dn:"Gümüş (ya da mavi, yeşil)", note:"Hem ofiste hem takım elbiseyle gider. GMT-Master II'ye alternatif ya da ek parça."},
-  {b:"Seiko", n:"Alpinist", c:"Field / Pilot", p:[800,1200], dial:"#3e5b45", dn:"Yeşil", note:"İmza rengi yeşil. Dönen pusula bezeli ayırt edici özelliği."},
-  {b:"Hamilton", n:"Khaki Field Murph", c:"Field / Pilot", p:[1000,1200], dial:"#111111", dn:"Siyah", note:"Koleksiyondaki tek siyah kadran burada kalsın."},
-  {b:"Longines", n:"Spirit Pilot", c:"Field / Pilot", p:[2500,3500], dial:"#1f3b66", dn:"Mavi", note:"Alpinist yeşil olduğu için buna mavi. Çelik bilezik ya da deri kayışla çok yönlü."},
-  {b:"Straum", n:"Expedition", c:"Field / Pilot", p:[3000,3500], dial:"#6b7580", dn:"Gri (titanyum); beyaz lume ve lacivert de var", note:"Norveç markası. 38,2 mm Grade 5 titanyum kasa, La Joux-Perret G100 otomatik, 68 saat güç rezervi, 100 m. Fiyat 31.000-35.000 NOK, USD karşılığı kura göre değişir. Özellikler beyaz lume sayfasından, gri sürümün detaylarını doğrula."},
-  {b:"Baltic", n:"Aquascaphe", c:"Diver", p:[700,1000], dial:"#7d848b", dn:"Gri (mavi ve turkuaz da var)", note:"Mikro marka, çok başarılı. Mk2 sürümleri 37 ve 39 mm."},
-  {b:"Panerai", n:"Luminor", c:"Diver", p:[6000,9000], dial:"#1b3550", dn:"Mavi ya da yeşil", note:"Büyük kasa, bileğinde denemeden alma. Luminor Due daha ince bir seçenek.", cush:true},
+  {b:"Audemars Piguet", n:"Royal Oak", c:"Grail / Özel", p:[30000,null], dial:"#1f3f6e", dn:"Mavi", note:"Koleksiyonun zirvesi. Mavi tapiserili kadran, 15510 referansı.", oct:true},
+  {b:"Patek Philippe", n:"Calatrava", c:"Dress", p:[30000,null], dial:"#d9c79a", dn:"Şampanya", note:"Dress slotunun zirvesi. Fiyat modele göre çok değişir."},
   {b:"Blancpain", n:"Fifty Fathoms", c:"Diver", p:[16000,20000], dial:"#1f4a3a", dn:"Yeşil ya da mavi", note:"İlk modern dalış saati olarak anılır. Panerai ile aynı slot, birini seçmek gerekir."},
   {b:"Rolex", n:"GMT-Master II", c:"GMT / Seyahat", p:[11000,13000], dial:"#0d0d0d", dn:"Siyah, bezel renkli", bezel:"#1f4fa8", note:"Kadran siyah, renk bezelden gelir (mavi-siyah ya da yeşil). Çelik modellerde bekleme ya da ikinci el primi olabilir."},
-  {b:"Seiko", n:"5 Sports SNLK23K1", c:"Eğlenceli / Kronograf", p:[300,400], dial:"#14161a", dn:"Siyah", verify:true, note:"Günlük hafta sonu saati. Büyük ihtimalle SNKL23K1 modelini kastediyorsun, kodu kontrol et."},
-  {b:"Venezianico", n:"Arsenale Bosphorus", c:"Eğlenceli / Kronograf", p:[1300,1800], dial:"#2c6e7a", dn:"Modele bağlı, sabit", verify:true, note:"İtalyan mikro marka, İstanbul temalı sınırlı üretim parça. Rengi model belirler, diğer renkleri ona göre dengele."},
-  {b:"TAG Heuer", n:"Monaco Chronograph", c:"Eğlenceli / Kronograf", p:[6000,8500], dial:"#1d3f8f", dn:"Mavi", note:"Kare kasalı kronograf, eğlenceli slotun yıldızı.", sq:true},
-  {b:"Audemars Piguet", n:"Royal Oak", c:"Grail / Özel", p:[30000,null], dial:"#6b747c", dn:"Gri (ya da mavi, yeşil)", note:"Koleksiyonun zirvesi. Mavi çok olursa gri ya da yeşil dengeyi korur.", oct:true},
-  {b:"Oris", n:"Artelier Year of the Horse LE", c:"Grail / Özel", p:[7300,8300], dial:"#9b1c2a", dn:"Kırmızı", note:"88 adetlik sınırlı üretim, 43 mm, elle kurmalı Calibre 113, 10 gün güç rezervi. Fiyat 6.650 CHF, USD karşılığı kura göre değişir. Oris sitesinde şu an çevrimiçi satışta görünmüyor."},
-  {b:"Seiko", n:"Presage Cocktail Time", c:"Dress", p:[400,600], dial:"#7a2a3c", dn:"Bordo", note:"Güneş ışınlı, desenli kadran. Uygun fiyatlı mekanik dress, koleksiyona sıcak bir renk katar."},
-  {b:"Junghans", n:"Max Bill Automatic", c:"Dress", p:[1300,1800], dial:"#eceae3", dn:"Beyaz", note:"Bauhaus çizgisi. Nomos ile aynı rolde, ikisinden birini seçmek gerekebilir."},
-  {b:"Cartier", n:"Tank Must", c:"Dress", p:[3500,4500], dial:"#e4e1d8", dn:"Gümüş opalin", rect:true, note:"Dikdörtgen kasa, takım elbisenin referans saati. Siyah deri kayışla en klasik hali."},
-  {b:"Jaeger-LeCoultre", n:"Master Ultra Thin", c:"Dress", p:[9000,12000], dial:"#1d2d50", dn:"Lacivert", note:"Çok ince kasa, manşetin altına rahat girer. Üst seviye dress hedefi."},
-  {b:"Tissot", n:"PRX Powermatic 80", c:"Ofis spor-şık", p:[700,800], dial:"#2a4f86", dn:"Mavi", note:"Entegre bilezikli, en uygun fiyatlı giriş. Mavi, gömlek ve ceketle hemen her şeye gider."},
-  {b:"Citizen", n:"Series 8", c:"Ofis spor-şık", p:[1000,1300], dial:"#565d65", dn:"Antrasit gri", oct:true, note:"Mekanik, entegre bilezikli, sekizgen bezel. Gri, mavilerden ayrışır."},
-  {b:"Tudor", n:"Royal", c:"Ofis spor-şık", p:[2500,4500], dial:"#c9b78e", dn:"Şampanya", note:"Entegre bilezikli, Rolex ailesinden. Şampanya kadran koleksiyona sıcak, nötr bir ton katar."},
-  {b:"Omega", n:"Seamaster Aqua Terra", c:"Ofis spor-şık", p:[6500,7500], dial:"#8a9096", dn:"Gri (mavi de var)", note:"Ofisten tekneye giden klasik. Oris Aquis ya da Riviera ile aynı slot, biri yeter."},
-  {b:"Omega", n:"Speedmaster Professional", c:"Smart casual", p:[7000,8000], dial:"#101112", dn:"Siyah (Moonwatch)", note:"Elle kurmalı Moonwatch. Siyah kadran bu modelin kimliği, Murph ile birlikte siyah sayısına dikkat."},
-  {b:"Sinn", n:"556 I", c:"Field / Pilot", p:[1500,1900], dial:"#eceae4", dn:"Beyaz (ya da mavi)", note:"Sade ve çok sağlam Alman field saati. Beyaz kadran siyahlı koleksiyona hafiflik katar."},
-  {b:"Tudor", n:"Ranger", c:"Field / Pilot", p:[3500,4000], dial:"#ece6d6", dn:"Dune White (siyah da var)", note:"Daha üst seviye field saati. 36 mm Dune White 17 cm bileğe iyi uyar, siyah sürüm Murph ile çakışırdı."},
-  {b:"IWC", n:"Pilot's Watch Mark XX", c:"Field / Pilot", p:[5000,6500], dial:"#365543", dn:"Yeşil (ya da mavi)", note:"Pilot saatinin klasiği. Alpinist ile aynı renk ailesinde, mavi alternatifi düşün."},
-  {b:"Doxa", n:"Sub 200", c:"Diver", p:[1200,1800], dial:"#e07a1f", dn:"Turuncu", note:"İkonik turuncu Professional kadran. Koleksiyondaki en canlı renk olur."},
-  {b:"Oris", n:"Aquis Date", c:"Diver", p:[2300,2800], dial:"#2a6a8a", dn:"Turkuaz-mavi", note:"Ofis ve hafta sonu arası çok yönlü. Bağımsız marka karakteri."},
-  {b:"Tudor", n:"Black Bay 58", c:"Diver", p:[4000,4500], dial:"#1f3f73", dn:"Mavi", note:"Küçük kasa, vintage hava. Bileği ince olanlara iyi uyar."},
-  {b:"Omega", n:"Seamaster 300M", c:"Diver", p:[5500,6500], dial:"#7d848c", dn:"Gri (ya da siyah, mavi)", note:"Omega'nın diver temsilcisi. Gri, koleksiyonda az kullanılan bir ton."},
-  {b:"Rolex", n:"Submariner", c:"Diver", p:[9500,11000], dial:"#101214", dn:"Siyah, yeşil bezel", bezel:"#1c6b45", note:"Diver'ın referansı. İkinci elde primli olabilir. Panerai ve Blancpain ile aynı slotta yarışır."},
-  {b:"Tudor", n:"Black Bay GMT", c:"GMT / Seyahat", p:[4500,5500], dial:"#101214", dn:"Siyah, bezel kırmızı-mavi", bezel:"#b32a30", note:"Rolex GMT-Master II'ye daha ulaşılabilir alternatif. Bezel renk seçenekleri değişir."},
-  {b:"Farer", n:"Aqua Compressor", c:"Eğlenceli / Kronograf", p:[1500,2500], dial:"#2f5f4a", dn:"Yeşil (Hecla Hunter Green)", verify:true, note:"Canlı renkli mikro marka. Bu model ve fiyatından emin değilim, resmi sitesinden kontrol et."},
-  {b:"Grand Seiko", n:"Snowflake (SBGA211)", c:"Grail / Özel", p:[7000,9000], dial:"#e8edf0", dn:"Beyaz (kar tanesi dokulu)", note:"Titanyum kasa, Spring Drive. Japon zanaatının zirvesi, ışıkla değişen kadranı var."},
-  {b:"Longines", n:"HydroConquest", c:"Ofis spor-şık", p:[1500,1900], dial:"#14161a", dn:"Siyah (mavi de var)", note:"300 m su geçirmezlik, çelik bilezik. İlk saat adayı olarak konuştuğumuz model, ofisten tekneye gider."},
-  {b:"Longines", n:"Legend Diver", c:"Diver", p:[3000,3800], dial:"#14161a", dn:"Siyah", note:"Vintage çizgili diver, iç bezelli ve ince kasalı. Longines'in diver tarafı."},
-  {b:"Hamilton", n:"Jazzmaster", c:"Dress", p:[600,1100], dial:"#b9bec3", dn:"Gümüş", note:"Hamilton'ın dress çizgisi. Gümüş kadran koyu takımla güzel durur."},
-  {b:"TAG Heuer", n:"Carrera Chronograph", c:"Smart casual", p:[5500,7500], dial:"#e8e6df", dn:"Beyaz (panda)", note:"Monaco'dan daha sakin, günlük kronograf. Beyaz kadran koyu ceketle iyi gider."},
-  {b:"Seiko", n:"Prospex 62MAS Reissue", c:"Diver", p:[1100,1500], dial:"#14161a", dn:"Siyah (SPB143)", note:"Seiko'nun ilk dalış saatinin yeniden yorumu. Seiko diver slotunu uygun fiyatla doldurur."},
-  {b:"Oris", n:"Divers Sixty-Five", c:"Diver", p:[2500,3500], dial:"#5a3a22", dn:"Kahverengi (bronz kasa)", note:"Retro diver. Kahverengi kadran koleksiyonda hiç olmayan bir renk. Bronz kasalı model daha pahalı olabilir."},
-  {b:"Rolex", n:"Explorer", c:"Field / Pilot", p:[8000,9500], dial:"#0f1112", dn:"Siyah", note:"Rolex'in en sade ve çok yönlü modeli. Siyah kadran bu modelin kimliği."},
-  {b:"Grand Seiko", n:"Spring Drive GMT", c:"GMT / Seyahat", p:[8000,10000], dial:"#2b4c7e", dn:"Mavi (beyaz ve siyah da var)", note:"Rolex GMT'ye farklı bir alternatif, akıcı saniye ibreli Spring Drive. Kadran seçeneklerini doğrula."},
-  {b:"Breitling", n:"Navitimer B01", c:"Field / Pilot", p:[8500,10500], dial:"#26416b", dn:"Mavi", note:"Pilot kronografının klasiği, kayar hesap cetveli bezeli. Kendi mekanizması var."},
   {b:"Zenith", n:"Chronomaster Sport", c:"Smart casual", p:[10000,12000], dial:"#8d949b", dn:"Gri", note:"Üst seviye otomatik kronograf, saniyenin onda birini ölçer."},
-  {b:"Cartier", n:"Santos", c:"Smart casual", p:[7500,9500], dial:"#d7d9db", dn:"Gümüş", sq:true, note:"Cartier'in spor yüzü, kare kasa ve görünür vidalar. Bilezik ve kayış hızlı değişir."},
-  {b:"Rado", n:"Captain Cook", c:"Diver", p:[2300,3000], dial:"#1f5a3d", dn:"Yeşil", note:"Orta fiyatlı, tasarım odaklı retro diver."},
-  {b:"Patek Philippe", n:"Calatrava", c:"Dress", p:[30000,null], dial:"#eee7d3", dn:"Fildişi (beyaz)", note:"Dress slotunun zirvesi. Fiyat modele göre çok değişir."},
-  {b:"Omega x Swatch", n:"MoonSwatch Mission to Mars", c:"Eğlenceli / Kronograf", p:[300,350], dial:"#b5322a", dn:"Kırmızı", note:"Biyoseramik, quartz kronograf. Koleksiyondaki tek kırmızı, eğlenceli ve çok uygun fiyatlı."},
-  {b:"Christopher Ward", n:"C63 Sealander Automatic", c:"Ofis spor-şık", p:[1375,1400], dial:"#e6b3bc", dn:"Pembe (beyaz, siyah, gök mavisi, fıstık yeşili de var)", note:"36 ve 39 mm seçenekleri var, Sellita SW200-2 otomatik, 65 saat güç rezervi, 150 m, 6 hizasında tarih. Bader ve Consort bilezik ya da kauçuk ve deri kayış seçenekleri var. 36 mm bilezikli fiyatı 1.375 USD, ön siparişte teslimat Şubat 2027 görünüyor, 39 mm fiyatı sayfada yok. Bir yazıda pembe sadece 36 mm, fıstık yeşili sadece 39 mm yazıyordu, ürün sayfası beden başına renk ayrımı göstermiyor, seçerken kontrol et."},
+  {b:"Rolex", n:"Submariner", c:"Diver", p:[9500,11000], dial:"#101214", dn:"Siyah, yeşil bezel", bezel:"#1c6b45", note:"Diver'ın referansı. İkinci elde primli olabilir. Panerai ve Blancpain ile aynı slotta yarışır."},
+  {b:"Jaeger-LeCoultre", n:"Master Ultra Thin", c:"Dress", p:[9000,12000], dial:"#1d2d50", dn:"Lacivert", note:"Çok ince kasa, manşetin altına rahat girer. Üst seviye dress hedefi."},
+  {b:"Rolex", n:"Datejust", c:"Smart casual", p:[8500,10000], dial:"#c9ccd0", dn:"Gümüş (ya da mavi, yeşil)", note:"Hem ofiste hem takım elbiseyle gider. GMT-Master II'ye alternatif ya da ek parça."},
+  {b:"Breitling", n:"Navitimer B01", c:"Field / Pilot", p:[8500,10500], dial:"#26416b", dn:"Mavi", note:"Pilot kronografının klasiği, kayar hesap cetveli bezeli. Kendi mekanizması var."},
+  {b:"Rolex", n:"Explorer", c:"Field / Pilot", p:[8000,9500], dial:"#0f1112", dn:"Siyah", note:"Rolex'in en sade ve çok yönlü modeli. Siyah kadran bu modelin kimliği."},
+  {b:"Oris", n:"Artelier Year of the Horse LE", c:"Grail / Özel", p:[7300,8300], dial:"#9b1c2a", dn:"Kırmızı", note:"88 adetlik sınırlı üretim, 43 mm, elle kurmalı Calibre 113, 10 gün güç rezervi. Fiyat 6.650 CHF, USD karşılığı kura göre değişir. Oris sitesinde şu an çevrimiçi satışta görünmüyor."},
+  {b:"Omega", n:"Speedmaster Professional", c:"Smart casual", p:[7000,8000], dial:"#101112", dn:"Siyah (Moonwatch)", note:"Elle kurmalı Moonwatch. Siyah kadran bu modelin kimliği, Murph ile birlikte siyah sayısına dikkat."},
+  {b:"Grand Seiko", n:"Snowflake (SBGA211)", c:"Grail / Özel", p:[7000,9000], dial:"#e8edf0", dn:"Beyaz (kar tanesi dokulu)", note:"Titanyum kasa, Spring Drive. Japon zanaatının zirvesi, ışıkla değişen kadranı var."},
+  {b:"Omega", n:"Seamaster Aqua Terra", c:"Ofis spor-şık", p:[6500,7500], dial:"#8a9096", dn:"Gri (mavi de var)", note:"Ofisten tekneye giden klasik. Oris Aquis ya da Riviera ile aynı slot, biri yeter."},
+  {b:"Panerai", n:"Luminor", c:"Diver", p:[6000,9000], dial:"#1b3550", dn:"Mavi ya da yeşil", note:"Büyük kasa, bileğinde denemeden alma. Luminor Due daha ince bir seçenek.", cush:true},
+  {b:"TAG Heuer", n:"Monaco Chronograph", c:"Eğlenceli / Kronograf", p:[6000,8500], dial:"#1d3f8f", dn:"Mavi", note:"Kare kasalı kronograf, eğlenceli slotun yıldızı.", sq:true},
+  {b:"Omega", n:"Seamaster 300M", c:"Diver", p:[5500,6500], dial:"#7d848c", dn:"Gri (ya da siyah, mavi)", note:"Omega'nın diver temsilcisi. Gri kadran siyah ve maviden daha az görülen bir ton."},
+  {b:"TAG Heuer", n:"Carrera Chronograph", c:"Smart casual", p:[5500,7500], dial:"#e8e6df", dn:"Beyaz (panda)", note:"Monaco'dan daha sakin, günlük kronograf. Beyaz kadran koyu ceketle iyi gider."},
+  {b:"IWC", n:"Pilot's Watch Mark XX", c:"Field / Pilot", p:[5000,6500], dial:"#111314", dn:"Siyah", note:"Pilot saatinin klasiği. Siyah kadran, sade ve okunaklı."},
+  {b:"Tudor", n:"Black Bay GMT", c:"GMT / Seyahat", p:[4500,5500], dial:"#101214", dn:"Siyah, bezel kırmızı-mavi", bezel:"#b32a30", note:"Rolex GMT-Master II'ye daha ulaşılabilir alternatif. Bezel renk seçenekleri değişir."},
+  {b:"Tudor", n:"Black Bay 58", c:"Diver", p:[4000,4500], dial:"#1f3f73", dn:"Mavi", note:"Küçük kasa, vintage hava. Bileği ince olanlara iyi uyar."},
+  {b:"Tudor", n:"Ranger", c:"Field / Pilot", p:[3500,4000], dial:"#ece6d6", dn:"Dune White (siyah da var)", note:"Daha üst seviye field saati. 36 mm Dune White 17 cm bileğe iyi uyar, siyah sürüm Murph ile çakışırdı."},
   {b:"Bell & Ross", n:"BR 03-92 Steel", c:"Field / Pilot", p:[3500,4500], dial:"#27456f", dn:"Mavi (siyah da var)", sq:true, note:"42 mm kare kasa, kokpit göstergesi estetiği. Mavi ve siyah çelik sürümleri var. Fiyat aralığı yaklaşık, bayiden doğrula."},
-  {b:"Seiko", n:"5 Sports SRPK89", c:"Eğlenceli / Kronograf", p:[350,450], dial:"#14161a", dn:"Siyah (bir yerde lacivert yazıyor)", verify:true, note:"37 mm çelik kasa, 44,7 mm lug-to-lug, otomatik 4R36, 41 saat güç rezervi, 100 m, çelik bilezik, sadece tarih penceresi. 17 cm bilek için rahat boyut. Kadran rengi kaynaklarda siyah ve lacivert arasında değişiyor, bayide kontrol et."},
-  {b:"Fears", n:"Brunswick 40.5 Jump Hour Celestial", c:"Grail / Özel", p:[4700,4700], dial:"#1b2f66", dn:"Mavi (aventurin ve sedef kadran)", cush:true, siteLabel:"Haber ↗", note:"75 adetlik sınırlı üretim, 40 mm yastık kasa, Sellita SW200 üzerine JJ01 jump hour modülü, 100 m, çelik bilezik. Fiyat 4.700 USD, satıcı sayfasında tükenmiş görünüyor. Bağlantı resmi site değil, haber sayfasına gider."},
+  {b:"Straum", n:"Expedition", c:"Field / Pilot", p:[3000,3500], dial:"#6b7580", dn:"Gri", note:"Norveç markası. 38,2 mm Grade 5 titanyum kasa, La Joux-Perret G100 otomatik, 68 saat güç rezervi, 100 m. Fiyat 31.000-35.000 NOK, USD karşılığı kura göre değişir. Özellikler beyaz lume sayfasından, gri sürümün detaylarını doğrula."},
+  {b:"Longines", n:"Legend Diver", c:"Diver", p:[3000,3800], dial:"#14161a", dn:"Siyah", note:"Vintage çizgili diver, iç bezelli ve ince kasalı. Longines'in diver tarafı."},
+  {b:"Baume & Mercier", n:"Riviera", c:"Ofis spor-şık", p:[2500,3500], dial:"#2f5a4a", dn:"Yeşil", note:"12 kenarlı bezel, entegre bilezik hissi. İş kıyafetiyle çok uyumlu.", sq:false, oct:true},
+  {b:"Longines", n:"Spirit Pilot", c:"Field / Pilot", p:[2500,3500], dial:"#1f3b66", dn:"Mavi", note:"Alpinist yeşil olduğu için buna mavi. Çelik bilezik ya da deri kayışla çok yönlü."},
+  {b:"Oris", n:"Divers Sixty-Five", c:"Diver", p:[2500,3500], dial:"#5a3a22", dn:"Kahverengi (bronz kasa)", note:"Retro diver. Kahverengi kadran koleksiyonda hiç olmayan bir renk. Bronz kasalı model daha pahalı olabilir."},
+  {b:"Oris", n:"Aquis Date", c:"Diver", p:[2300,2800], dial:"#2a6a8a", dn:"Turkuaz-mavi", note:"Ofis ve hafta sonu arası çok yönlü. Bağımsız marka karakteri."},
+  {b:"Rado", n:"Captain Cook", c:"Diver", p:[2300,3000], dial:"#1f5a3d", dn:"Yeşil", note:"Orta fiyatlı, tasarım odaklı retro diver."},
+  {b:"Nomos", n:"Tangente", c:"Dress", p:[2000,2500], dial:"#f1eee6", dn:"Beyaz / gümüş", note:"Bauhaus çizgisi, ince kasa. Siyah ya da koyu kahverengi deri kayışla en resmi takım elbise saati."},
+  {b:"Longines", n:"Conquest Heritage", c:"Smart casual", p:[2000,2500], dial:"#6e2331", dn:"Bordo", note:"Vintage hava, bordo kadran. Kahverengi deri kayışla ceket ve kotla çok iyi gider."},
+  {b:"Sinn", n:"240 St", c:"Field / Pilot", p:[1500,1900], dial:"#121314", dn:"Siyah", verify:true, note:"Alman mühendisliği, sade ve sağlam günlük saat. Ölçü, mekanizma ve fiyatı resmi sayfadan doğrula."},
+  {b:"Farer", n:"Aqua Compressor", c:"Eğlenceli / Kronograf", p:[1500,2500], dial:"#2f5f4a", dn:"Yeşil (Hecla Hunter Green)", verify:true, note:"Canlı renkli mikro marka. Bu model ve fiyatından emin değilim, resmi sitesinden kontrol et."},
+  {b:"Longines", n:"HydroConquest", c:"Ofis spor-şık", p:[1500,1900], dial:"#1f3f73", dn:"Mavi", note:"300 m su geçirmezlik, çelik bilezik. İlk saat adayı olarak konuştuğumuz model, ofisten tekneye gider."},
+  {b:"Christopher Ward", n:"C63 Sealander GMT", c:"GMT / Seyahat", p:[1500,1800], dial:"#121314", dn:"Siyah", note:"36, 39 ve 42 mm seçenekleri var. Sellita SW330-2 caller GMT, 56 saat güç rezervi, 150 m. Fiyat 1.350-1.615 EUR, USD karşılığı kura göre değişir."},
+  {b:"Christopher Ward", n:"C63 Sealander Automatic", c:"Ofis spor-şık", p:[1375,1400], dial:"#e6b3bc", dn:"Pembe (beyaz, siyah, gök mavisi, fıstık yeşili de var)", note:"36 ve 39 mm seçenekleri var, Sellita SW200-2 otomatik, 65 saat güç rezervi, 150 m, 6 hizasında tarih. Bader ve Consort bilezik ya da kauçuk ve deri kayış seçenekleri var. 36 mm bilezikli fiyatı 1.375 USD, ön siparişte teslimat Şubat 2027 görünüyor, 39 mm fiyatı sayfada yok. Bir yazıda pembe sadece 36 mm, fıstık yeşili sadece 39 mm yazıyordu, ürün sayfası beden başına renk ayrımı göstermiyor, seçerken kontrol et."},
+  {b:"Venezianico", n:"Arsenale Bosphorus", c:"Eğlenceli / Kronograf", p:[1000, 1100], dial:"#a8222c", dn:"Kırmızı (sedef)", note:"İtalyan mikro marka, Osmanlı desenli kırmızı sedef kadran, sınırlı üretim. 40 mm çap, 44 mm lug-to-lug, 9,95 mm kalınlık, Miyota 9039 otomatik, tarihsiz. Fiyat 900 EUR, USD karşılığı kura göre değişir."},
+  {b:"Junghans", n:"Max Bill Automatic", c:"Dress", p:[1300,1800], dial:"#eceae3", dn:"Beyaz", note:"Bauhaus çizgisi. Nomos ile aynı rolde, ikisinden birini seçmek gerekebilir."},
+  {b:"Doxa", n:"Sub 200", c:"Diver", p:[1200,1800], dial:"#e07a1f", dn:"Turuncu", note:"İkonik turuncu Professional kadran. Koleksiyondaki en canlı renk olur."},
+  {b:"Seiko", n:"Prospex 62MAS Reissue", c:"Diver", p:[1100,1500], dial:"#14161a", dn:"Siyah (SPB143)", note:"Seiko'nun ilk dalış saatinin yeniden yorumu. Seiko diver slotunu uygun fiyatla doldurur."},
+  {b:"Christopher Ward", n:"The Twelve (Pick and Mix)", c:"Ofis spor-şık", p:[1000,1500], dial:"#a8242b", dn:"Kırmızı", note:"Entegre bilezikli, kadran rengini sen belirliyorsun (burada kırmızı seçildi). Riviera ile aynı rolde, biri yeter.", oct:true},
+  {b:"Hamilton", n:"Khaki Field Murph", c:"Field / Pilot", p:[1000,1200], dial:"#111111", dn:"Siyah", note:"Okunaklı siyah kadran, tarihsiz sade field saati."},
+  {b:"Citizen", n:"Series 8", c:"Ofis spor-şık", p:[1000,1300], dial:"#565d65", dn:"Gri / mavi", oct:true, note:"Mekanik, entegre bilezikli, sekizgen bezel. Gri ve mavi tonlu kadran."},
   {b:"Unimatic", n:"Modello Uno U1-TSP", c:"Diver", p:[870,930], dial:"#a8523a", dn:"Clay (kiremit kırmızısı, grené doku)", note:"99 adetlik sınırlı üretim. 40 mm çelik kasa (bezelle 41,5 mm), kumlanmış yüzey, otomatik NH35A, 41 saat güç rezervi, 300 m. Siyah-sarı naylon kayışla gelir. Fiyat 800 EUR, USD karşılığı kura göre değişir."},
-  {b:"AV86", n:"1954 Amalfi Mechanical", c:"Dress", p:[425,425], dial:"#1b2a4e", dn:"Gece mavisi, altın kasa", sq:true, note:"Kare, parlak altın renkli kasa, küçük saniyeli mekanik hareket, dokulu deri kayış. Kasa ölçüsü, su geçirmezlik ve hareketin türü sayfada yazmıyor, bileğine uyup uymadığını almadan önce sor. Fiyat 425 USD."},
+  {b:"Seiko", n:"Alpinist", c:"Field / Pilot", p:[800,1200], dial:"#3e5b45", dn:"Yeşil", note:"İmza rengi yeşil. Dönen pusula bezeli ayırt edici özelliği."},
+  {b:"Baltic", n:"Aquascaphe", c:"Diver", p:[700,1000], dial:"#2a4f86", dn:"Mavi", note:"Mikro marka, çok başarılı. Mk2 sürümleri 37 ve 39 mm."},
+  {b:"Seiko", n:"Prospex Speedtimer HBJ005", c:"Smart casual", p:[700,800], dial:"#8f7ab8", dn:"Lila", verify:true, note:"Seiko 145. yıl dönümü sınırlı üretim Speedtimer. Türkiye fiyatı 55.395 TL, USD karşılığı kura göre değişir, aralık tahmindir. Ölçü ve mekanizmayı resmi sayfadan doğrula."},
+  {b:"Mondaine", n:"Original Automatic 41 mm", c:"Dress", p:[600,900], dial:"#f1f0ea", dn:"Beyaz", acc:"#d6322b", note:"İsviçre tren istasyonu saati tasarımı, beyaz kadran ve kırmızı saniye ibresi. Nomos ve Junghans da beyaz olduğu için dress slotunda bu üçünden birini seçmek yeter."},
+  {b:"Hamilton", n:"Jazzmaster", c:"Dress", p:[600,1100], dial:"#b9bec3", dn:"Gümüş", note:"Hamilton'ın dress çizgisi. Gümüş kadran koyu takımla güzel durur."},
   {b:"Seiko", n:"5 Sports GMT SSK059", c:"GMT / Seyahat", p:[520,560], dial:"#efede8", dn:"Beyaz (Overwhite), turuncu vurgulu", note:"39,4 mm çelik kasa, 13,6 mm kalın, 47,9 mm lug-to-lug (17 cm bilek için sınırda). Otomatik 4R34 caller GMT, saniye durdurma ve elle kurma var, 100 m, çelik bilezik. Fiyat 410 GBP, USD karşılığı kura göre değişir. Aynı serinin SSK023 ve SSK025 modelleri daha küçük."},
-  {b:"Christopher Ward", n:"C63 Sealander GMT", c:"GMT / Seyahat", p:[1500,1800], dial:"#b9d2b0", dn:"Fıstık yeşili (beyaz, gök mavisi, siyah da var)", note:"36, 39 ve 42 mm seçenekleri var, fıstık yeşili sadece 39 mm. Sellita SW330-2 caller GMT, 56 saat güç rezervi, 150 m. Fiyat 1.350-1.615 EUR, USD karşılığı kura göre değişir."},
-  {b:"Seiko", n:"Prospex Speedtimer Solar SSC911", c:"Smart casual", p:[700,800], dial:"#d9dde0", dn:"Gümüş (panda), mavi ve siyah da var", note:"Retro solar kronograf. 41,4 mm, 13 mm kalın, 45,9 mm lug-to-lug, Seiko V192 quartz, 100 m, çelik bilezik. SSC913 mavi Pepsi bezelli, SSC915 siyah Coke bezelli. Fiyat yaklaşık 700 USD."},
-  {b:"Hamilton", n:"Intra-Matic Chronograph H", c:"Smart casual", p:[2450,2600], dial:"#5b3a26", dn:"Kahverengi (fumé), mavi, yeşil de var", note:"40 mm çelik kasa, 14,4 mm kalın, elle kurmalı H-51 kronograf, 60 saat güç rezervi, 100 m. Deri yarış kayışı ve çelik hasır bilezik kutudan çıkar. Fiyat 2.295 EUR, USD karşılığı kura göre değişir."},
+  {b:"AV86", n:"1954 Amalfi Mechanical", c:"Dress", p:[425,425], dial:"#1b2a4e", dn:"Gece mavisi, altın kasa", sq:true, note:"Kare, parlak altın renkli kasa, küçük saniyeli mekanik hareket, dokulu deri kayış. Kasa ölçüsü, su geçirmezlik ve hareketin türü sayfada yazmıyor, bileğine uyup uymadığını almadan önce sor. Fiyat 425 USD."},
+  {b:"Sternglas", n:"Naos", c:"Dress", p:[400,700], dial:"#eceae3", dn:"Beyaz", note:"Bauhaus çizgili uygun fiyatlı dress. Nomos ile aynı rolde, ikisinden birini seçmek gerekebilir."},
+  {b:"Seiko", n:"Presage Cocktail Time", c:"Dress", p:[400,600], dial:"#7a2a3c", dn:"Bordo", note:"Güneş ışınlı, desenli kadran. Uygun fiyatlı mekanik dress, koleksiyona sıcak bir renk katar."},
+  {b:"Seiko", n:"5 Sports SRPK89", c:"Eğlenceli / Kronograf", p:[350,450], dial:"#14161a", dn:"Siyah (bir yerde lacivert yazıyor)", verify:true, note:"37 mm çelik kasa, 44,7 mm lug-to-lug, otomatik 4R36, 41 saat güç rezervi, 100 m, çelik bilezik, sadece tarih penceresi. 17 cm bilek için rahat boyut. Kadran rengi kaynaklarda siyah ve lacivert arasında değişiyor, bayide kontrol et."},
+  {b:"Seiko", n:"5 Sports SNKL23K", c:"Eğlenceli / Kronograf", p:[300,400], dial:"#14161a", dn:"Siyah", verify:true, note:"38 mm, otomatik 7S26C, 30 m, gün-tarihli günlük saat. Fiyat Singapur perakendesinden (yaklaşık 180 SGD), Türkiye fiyatı farklı olabilir."},
+  {b:"Omega x Swatch", n:"MoonSwatch Mission to the Sun", c:"Eğlenceli / Kronograf", p:[300,350], dial:"#f2c53a", dn:"Sarı", note:"Biyoseramik, quartz kronograf. Kasa ve kadran sarı, 42 mm. Eğlenceli ve çok uygun fiyatlı."},
+  {b:"Orient", n:"Bambino", c:"Dress", p:[200,350], dial:"#ead9b4", dn:"Krem", note:"Bütçe dostu klasik, krem kadran sıcak bir dress görünümü verir."},
 ];
 var CATS = ["Tümü","Dress","Ofis spor-şık","Smart casual","Field / Pilot","Diver","GMT / Seyahat","Eğlenceli / Kronograf","Grail / Özel"];
 var TIERS = ["Tümü","Tier 1","Tier 2","Tier 3"];
@@ -270,71 +263,64 @@ var TARGET = ["Audemars Piguet","Rolex","Omega","Longines","Hamilton","Seiko","M
 var MICRO = ["Baltic","Christopher Ward","Venezianico","Sternglas","Straum","Farer"];
 /* [renk ailesi, mekanizma, kadran tipi] */
 var META = {
-  "Nomos Tangente":["Beyaz / krem","Elle kurmalı","Sade"],
-  "Mondaine Original Automatic 41 mm":["Beyaz / krem","Otomatik","Tarihli"],
-  "Orient Bambino":["Yeşil","Otomatik","Tarihli"],
-  "Sternglas Naos":["Siyah","Otomatik","Sade"],
-  "Baume & Mercier Riviera":["Yeşil","Otomatik","Tarihli"],
-  "Christopher Ward The Twelve (Pick and Mix)":["Diğer","Otomatik","Tarihli"],
-  "Longines Conquest Heritage":["Beyaz / krem","Otomatik","Tarihli"],
-  "Rolex Datejust":["Gri / gümüş","Otomatik","Tarihli"],
-  "Seiko Alpinist":["Yeşil","Otomatik","Tarihli"],
-  "Hamilton Khaki Field Murph":["Siyah","Otomatik","Tarihli"],
-  "Longines Spirit Pilot":["Mavi","Otomatik","Tarihli"],
-  "Straum Expedition":["Gri / gümüş","Otomatik","Tarihli"],
-  "Baltic Aquascaphe":["Gri / gümüş","Otomatik","Tarihli"],
-  "Panerai Luminor":["Mavi","Otomatik","Tarihli"],
-  "Blancpain Fifty Fathoms":["Yeşil","Otomatik","Tarihli"],
-  "Rolex GMT-Master II":["Siyah","Otomatik","GMT"],
-  "Seiko 5 Sports SNLK23K1":["Siyah","Otomatik","Tarihli"],
-  "Venezianico Arsenale Bosphorus":["Diğer","Otomatik","Bilinmiyor"],
-  "TAG Heuer Monaco Chronograph":["Mavi","Otomatik","Kronograf"],
-  "Audemars Piguet Royal Oak":["Gri / gümüş","Otomatik","Tarihli"],
-  "Oris Artelier Year of the Horse LE":["Bordo / kırmızı","Elle kurmalı","Tarihli"],
-  "Seiko Presage Cocktail Time":["Bordo / kırmızı","Otomatik","Tarihli"],
-  "Junghans Max Bill Automatic":["Beyaz / krem","Otomatik","Bilinmiyor"],
-  "Cartier Tank Must":["Gri / gümüş","Quartz","Sade"],
-  "Jaeger-LeCoultre Master Ultra Thin":["Mavi","Otomatik","Sade"],
-  "Tissot PRX Powermatic 80":["Mavi","Otomatik","Tarihli"],
-  "Citizen Series 8":["Gri / gümüş","Otomatik","Tarihli"],
-  "Tudor Royal":["Turuncu / sarı / şampanya","Otomatik","Tarihli"],
-  "Omega Seamaster Aqua Terra":["Gri / gümüş","Otomatik","Tarihli"],
-  "Omega Speedmaster Professional":["Siyah","Elle kurmalı","Kronograf"],
-  "Sinn 556 I":["Beyaz / krem","Otomatik","Tarihli"],
-  "Tudor Ranger":["Beyaz / krem","Otomatik","Sade"],
-  "IWC Pilot's Watch Mark XX":["Yeşil","Otomatik","Tarihli"],
-  "Doxa Sub 200":["Turuncu / sarı / şampanya","Otomatik","Bilinmiyor"],
-  "Oris Aquis Date":["Turkuaz","Otomatik","Tarihli"],
-  "Tudor Black Bay 58":["Mavi","Otomatik","Sade"],
-  "Omega Seamaster 300M":["Gri / gümüş","Otomatik","Tarihli"],
-  "Rolex Submariner":["Siyah","Otomatik","Tarihli"],
-  "Tudor Black Bay GMT":["Siyah","Otomatik","GMT"],
-  "Farer Aqua Compressor":["Yeşil","Bilinmiyor","Bilinmiyor"],
-  "Grand Seiko Snowflake (SBGA211)":["Beyaz / krem","Spring Drive","Tarihli"],
-  "Longines HydroConquest":["Siyah","Otomatik","Tarihli"],
-  "Longines Legend Diver":["Siyah","Otomatik","Tarihli"],
-  "Hamilton Jazzmaster":["Gri / gümüş","Otomatik","Bilinmiyor"],
-  "TAG Heuer Carrera Chronograph":["Beyaz / krem","Otomatik","Kronograf"],
-  "Seiko Prospex 62MAS Reissue":["Siyah","Otomatik","Tarihli"],
-  "Oris Divers Sixty-Five":["Kahverengi","Otomatik","Tarihli"],
-  "Rolex Explorer":["Siyah","Otomatik","Sade"],
-  "Grand Seiko Spring Drive GMT":["Mavi","Spring Drive","GMT"],
-  "Breitling Navitimer B01":["Mavi","Otomatik","Kronograf"],
-  "Zenith Chronomaster Sport":["Gri / gümüş","Otomatik","Kronograf"],
-  "Cartier Santos":["Gri / gümüş","Otomatik","Tarihli"],
-  "Rado Captain Cook":["Yeşil","Otomatik","Tarihli"],
-  "Patek Philippe Calatrava":["Beyaz / krem","Elle kurmalı","Sade"],
-  "Omega x Swatch MoonSwatch Mission to Mars":["Bordo / kırmızı","Quartz","Kronograf"],
-  "Christopher Ward C63 Sealander Automatic":["Pembe","Otomatik","Tarihli"],
-  "Bell & Ross BR 03-92 Steel":["Mavi","Otomatik","Tarihli"],
-  "Seiko 5 Sports SRPK89":["Siyah","Otomatik","Tarihli"],
-  "Fears Brunswick 40.5 Jump Hour Celestial":["Mavi","Otomatik","Bilinmiyor"],
-  "Unimatic Modello Uno U1-TSP":["Bordo / kırmızı","Otomatik","Sade"],
-  "AV86 1954 Amalfi Mechanical":["Mavi","Bilinmiyor","Sade"],
-  "Seiko 5 Sports GMT SSK059":["Beyaz / krem","Otomatik","GMT"],
-  "Christopher Ward C63 Sealander GMT":["Yeşil","Otomatik","GMT"],
-  "Seiko Prospex Speedtimer Solar SSC911":["Gri / gümüş","Quartz","Kronograf"],
-  "Hamilton Intra-Matic Chronograph H":["Kahverengi","Elle kurmalı","Kronograf"]
+  "Audemars Piguet Royal Oak":["Mavi", "Otomatik", "Tarihli"],
+  "Patek Philippe Calatrava":["Turuncu / sarı / şampanya", "Elle kurmalı", "Sade"],
+  "Blancpain Fifty Fathoms":["Yeşil", "Otomatik", "Tarihli"],
+  "Rolex GMT-Master II":["Siyah", "Otomatik", "GMT"],
+  "Zenith Chronomaster Sport":["Gri / gümüş", "Otomatik", "Kronograf"],
+  "Rolex Submariner":["Siyah", "Otomatik", "Tarihli"],
+  "Jaeger-LeCoultre Master Ultra Thin":["Mavi", "Otomatik", "Sade"],
+  "Rolex Datejust":["Gri / gümüş", "Otomatik", "Tarihli"],
+  "Breitling Navitimer B01":["Mavi", "Otomatik", "Kronograf"],
+  "Rolex Explorer":["Siyah", "Otomatik", "Sade"],
+  "Oris Artelier Year of the Horse LE":["Bordo / kırmızı", "Elle kurmalı", "Tarihli"],
+  "Omega Speedmaster Professional":["Siyah", "Elle kurmalı", "Kronograf"],
+  "Grand Seiko Snowflake (SBGA211)":["Beyaz / krem", "Spring Drive", "Tarihli"],
+  "Omega Seamaster Aqua Terra":["Gri / gümüş", "Otomatik", "Tarihli"],
+  "Panerai Luminor":["Mavi", "Otomatik", "Tarihli"],
+  "TAG Heuer Monaco Chronograph":["Mavi", "Otomatik", "Kronograf"],
+  "Omega Seamaster 300M":["Gri / gümüş", "Otomatik", "Tarihli"],
+  "TAG Heuer Carrera Chronograph":["Beyaz / krem", "Otomatik", "Kronograf"],
+  "IWC Pilot's Watch Mark XX":["Siyah", "Otomatik", "Tarihli"],
+  "Tudor Black Bay GMT":["Siyah", "Otomatik", "GMT"],
+  "Tudor Black Bay 58":["Mavi", "Otomatik", "Sade"],
+  "Tudor Ranger":["Beyaz / krem", "Otomatik", "Sade"],
+  "Bell & Ross BR 03-92 Steel":["Mavi", "Otomatik", "Tarihli"],
+  "Straum Expedition":["Gri / gümüş", "Otomatik", "Tarihli"],
+  "Longines Legend Diver":["Siyah", "Otomatik", "Tarihli"],
+  "Baume & Mercier Riviera":["Yeşil", "Otomatik", "Tarihli"],
+  "Longines Spirit Pilot":["Mavi", "Otomatik", "Tarihli"],
+  "Oris Divers Sixty-Five":["Kahverengi", "Otomatik", "Tarihli"],
+  "Oris Aquis Date":["Turkuaz", "Otomatik", "Tarihli"],
+  "Rado Captain Cook":["Yeşil", "Otomatik", "Tarihli"],
+  "Nomos Tangente":["Beyaz / krem", "Elle kurmalı", "Sade"],
+  "Longines Conquest Heritage":["Bordo / kırmızı", "Otomatik", "Tarihli"],
+  "Sinn 240 St":["Siyah", "Otomatik", "Bilinmiyor"],
+  "Farer Aqua Compressor":["Yeşil", "Bilinmiyor", "Bilinmiyor"],
+  "Longines HydroConquest":["Mavi", "Otomatik", "Tarihli"],
+  "Christopher Ward C63 Sealander GMT":["Siyah", "Otomatik", "GMT"],
+  "Christopher Ward C63 Sealander Automatic":["Pembe", "Otomatik", "Tarihli"],
+  "Venezianico Arsenale Bosphorus":["Bordo / kırmızı", "Otomatik", "Sade"],
+  "Junghans Max Bill Automatic":["Beyaz / krem", "Otomatik", "Bilinmiyor"],
+  "Doxa Sub 200":["Turuncu / sarı / şampanya", "Otomatik", "Bilinmiyor"],
+  "Seiko Prospex 62MAS Reissue":["Siyah", "Otomatik", "Tarihli"],
+  "Christopher Ward The Twelve (Pick and Mix)":["Bordo / kırmızı", "Otomatik", "Tarihli"],
+  "Hamilton Khaki Field Murph":["Siyah", "Otomatik", "Tarihli"],
+  "Citizen Series 8":["Gri / gümüş", "Otomatik", "Tarihli"],
+  "Unimatic Modello Uno U1-TSP":["Bordo / kırmızı", "Otomatik", "Sade"],
+  "Seiko Alpinist":["Yeşil", "Otomatik", "Tarihli"],
+  "Baltic Aquascaphe":["Mavi", "Otomatik", "Tarihli"],
+  "Seiko Prospex Speedtimer HBJ005":["Diğer", "Quartz", "Kronograf"],
+  "Mondaine Original Automatic 41 mm":["Beyaz / krem", "Otomatik", "Tarihli"],
+  "Hamilton Jazzmaster":["Gri / gümüş", "Otomatik", "Bilinmiyor"],
+  "Seiko 5 Sports GMT SSK059":["Beyaz / krem", "Otomatik", "GMT"],
+  "AV86 1954 Amalfi Mechanical":["Mavi", "Bilinmiyor", "Sade"],
+  "Sternglas Naos":["Beyaz / krem", "Otomatik", "Sade"],
+  "Seiko Presage Cocktail Time":["Bordo / kırmızı", "Otomatik", "Tarihli"],
+  "Seiko 5 Sports SRPK89":["Siyah", "Otomatik", "Tarihli"],
+  "Seiko 5 Sports SNKL23K":["Siyah", "Otomatik", "Tarihli"],
+  "Omega x Swatch MoonSwatch Mission to the Sun":["Turuncu / sarı / şampanya", "Quartz", "Kronograf"],
+  "Orient Bambino":["Beyaz / krem", "Otomatik", "Tarihli"]
 };
 var COLS = ["Tümü","Siyah","Beyaz / krem","Gri / gümüş","Mavi","Turkuaz","Yeşil","Bordo / kırmızı","Pembe","Kahverengi","Turuncu / sarı / şampanya","Diğer"];
 var TYPS = ["Tümü","Sade","Tarihli","Kronograf","GMT","Bilinmiyor"];
@@ -351,11 +337,13 @@ var FILTERS = [
   {k:"budget", lab:"Bütçe", opts:["Tümü"].concat(Object.keys(BUD))}
 ];
 function blank(){ return {cat:"Tümü",col:"Tümü",typ:"Tümü",shape:"Tümü",mech:"Tümü",tier:"Tümü",budget:"Tümü",kind:"Tümü",brand:"Tümü",only:"Tümü"}; }
+var SEED = ["Rolex GMT-Master II", "Rolex Datejust", "Oris Artelier Year of the Horse LE", "Omega Speedmaster Professional", "Grand Seiko Snowflake (SBGA211)", "Panerai Luminor", "Straum Expedition", "Baume & Mercier Riviera", "Sinn 240 St", "Venezianico Arsenale Bosphorus", "Doxa Sub 200", "Mondaine Original Automatic 41 mm", "Unimatic Modello Uno U1-TSP"];
 var state = blank(); state.sel = {}; state.own = {};
-try { var saved = JSON.parse(localStorage.getItem("saatSecim")||"{}"); if (saved && typeof saved==="object") state.sel = saved; } catch(e){}
+try { if (localStorage.getItem("saatSecim2")===null) SEED.forEach(function(k){ state.sel[k]=1; }); } catch(e){ SEED.forEach(function(k){ state.sel[k]=1; }); }
+try { var rawSel = localStorage.getItem("saatSecim2"); if (rawSel!==null){ var saved = JSON.parse(rawSel); if (saved && typeof saved==="object") state.sel = saved; } } catch(e){}
 function key(w){ return w.b+" "+w.n; }
-try { var savedOwn = JSON.parse(localStorage.getItem("saatSahip")||"{}"); if (savedOwn && typeof savedOwn==="object") state.own = savedOwn; } catch(e){}
-function saveSel(){ try { localStorage.setItem("saatSecim", JSON.stringify(state.sel)); localStorage.setItem("saatSahip", JSON.stringify(state.own)); } catch(e){} }
+try { var savedOwn = JSON.parse(localStorage.getItem("saatSahip2")||"{}"); if (savedOwn && typeof savedOwn==="object") state.own = savedOwn; } catch(e){}
+function saveSel(){ try { localStorage.setItem("saatSecim2", JSON.stringify(state.sel)); localStorage.setItem("saatSahip2", JSON.stringify(state.own)); } catch(e){} }
 function shapeOf(w){ return w.sq?"Kare":(w.rect?"Dikdörtgen":(w.oct?"Sekizgen":(w.cush?"Yastık":"Yuvarlak"))); }
 function kindOf(w){ return TARGET.indexOf(w.b)>=0?"Hedef marka":(MICRO.indexOf(w.b)>=0?"Mikro marka":"Diğer"); }
 var COLEN = {"Siyah":"black dial","Beyaz / krem":"white dial","Gri / gümüş":"silver grey dial","Mavi":"blue dial","Turkuaz":"turquoise dial","Yeşil":"green dial","Bordo / kırmızı":"red dial","Pembe":"pink dial","Kahverengi":"brown dial","Turuncu / sarı / şampanya":"","Diğer":""};
@@ -364,15 +352,16 @@ var IMGQ = {
   "Rolex Submariner":"Rolex Submariner black dial green bezel",
   "Rolex GMT-Master II":"Rolex GMT-Master II black dial blue black bezel",
   "Tudor Black Bay GMT":"Tudor Black Bay GMT black dial red blue bezel",
-  "Tudor Royal":"Tudor Royal champagne dial",
   "Doxa Sub 200":"Doxa Sub 200 Professional orange dial",
   "Straum Expedition":"Straum Expedition Titanium Gray",
-  "Seiko 5 Sports SNLK23K1":"Seiko 5 Sports SNKL23K1 black dial",
   "Oris Artelier Year of the Horse LE":"Oris Artelier Calibre 113 Year of the Horse red dial",
   "Christopher Ward C63 Sealander Automatic":"Christopher Ward C63 Sealander Automatic pink dial",
-  "Omega x Swatch MoonSwatch Mission to Mars":"Omega Swatch MoonSwatch Mission to Mars",
-  "Venezianico Arsenale Bosphorus":"Venezianico Arsenale Bosphorus limited edition",
-  "Christopher Ward The Twelve (Pick and Mix)":"Christopher Ward The Twelve watch"
+  "Venezianico Arsenale Bosphorus":"Venezianico Arsenale Bosphorus red mother of pearl dial",
+  "Christopher Ward The Twelve (Pick and Mix)":"Christopher Ward The Twelve watch",
+  "Seiko 5 Sports SNKL23K":"Seiko 5 Sports SNKL23K black dial",
+  "Omega x Swatch MoonSwatch Mission to the Sun":"Omega Swatch MoonSwatch Mission to the Sun yellow",
+  "Seiko Prospex Speedtimer HBJ005":"Seiko Prospex Speedtimer HBJ005 lilac dial",
+  "Sinn 240 St":"Sinn 240 St watch"
 };
 function imgQuery(w){
   var k = key(w);
@@ -380,14 +369,68 @@ function imgQuery(w){
   var c = COLEN[META[k][0]] || "";
   return (w.b+" "+w.n.replace(/ \(.*\)$/,"")+" "+c+" watch").replace(/\s+/g," ").trim();
 }
+var LINKS = {
+ "Audemars Piguet Royal Oak": "https://www.audemarspiguet.com/en/watch-collection/royal-oak/15510ST.OO.1320ST.06",
+ "Patek Philippe Calatrava": "https://www.patek.com/en/collection/calatrava/5227g-015",
+ "Blancpain Fifty Fathoms": "https://www.blancpain.com/en/fifty-fathoms/fifty-fathoms-automatique-5007-36b40-o64b",
+ "Rolex GMT-Master II": "https://www.rolex.com/watches/gmt-master-ii",
+ "Zenith Chronomaster Sport": "https://www.zenith-watches.com/int/products/chronomaster-sport",
+ "Rolex Submariner": "https://www.rolex.com/watches/submariner/m126610lv-0002",
+ "Jaeger-LeCoultre Master Ultra Thin": "https://www.jaeger-lecoultre.com/us-en/watches/master-ultra-thin/master-ultra-thin-moon-steel-q1248421",
+ "Rolex Datejust": "https://www.rolex.com/watches/datejust/m126334-0033",
+ "Breitling Navitimer B01": "https://www.breitling.com/tr-en/watches/navitimer/navitimer-b01-chronograph-43/AB0121211B1X2/",
+ "Rolex Explorer": "https://www.rolex.com/watches/explorer",
+ "Oris Artelier Year of the Horse LE": "https://www.oris.ch/tr-TR/product/watch/artelier/artelier-calibre-113/01-113-7806-4088-Set",
+ "Omega Speedmaster Professional": "https://www.omegawatches.com/watch-omega-speedmaster-moonwatch-professional-co-axial-master-chronometer-chronograph-42-mm-31032425001002",
+ "Grand Seiko Snowflake (SBGA211)": "https://www.grand-seiko.com/tr-tr/collections/sbga211g",
+ "Omega Seamaster Aqua Terra": "https://www.omegawatches.com/watch-omega-seamaster-aqua-terra-150m-co-axial-master-chronometer-41-mm-22032412103001",
+ "Panerai Luminor": "https://www.panerai.com/en/collections/watch-collection/luminor/pam03312-luminor-marina.html",
+ "TAG Heuer Monaco Chronograph": "https://www.tagheuer.com/int/en/timepieces/collections/tag-heuer-monaco/39-mm-th20-11/CDW2181.FC8360.html",
+ "Omega Seamaster 300M": "https://www.omegawatches.com/watch-omega-seamaster-diver-300m-co-axial-master-chronometer-42-mm-21030422001023",
+ "TAG Heuer Carrera Chronograph": "https://www.tagheuer.com/int/en/timepieces/collections/tag-heuer-carrera/39-mm-th20-00/CBS2210.FC6534.html",
+ "IWC Pilot's Watch Mark XX": "https://www.iwc.com/ww-en/watches/pilot-watches/iw328201-pilots-watch-mark-xx",
+ "Tudor Black Bay GMT": "https://www.tudorwatch.com/en/watches/black-bay-gmt/m79830rb-0010",
+ "Tudor Black Bay 58": "https://www.tudorwatch.com/en/watches/black-bay-58/m7939g1a0nru-0003",
+ "Tudor Ranger": "https://www.tudorwatch.com/en/watches/ranger/m79930-0007",
+ "Bell & Ross BR 03-92 Steel": "https://bellross.com/en/products/br-03-92-steel-black",
+ "Straum Expedition": "https://straum.co/products/expedition-titanium-gray?variant=53076682506551",
+ "Longines Legend Diver": "https://www.longines.com/tr/p/watch-longines-legend-diver-l3-795-4-59-9",
+ "Baume & Mercier Riviera": "https://www.baume-et-mercier.com/en/collections/riviera-men/watch-riviera-10770-central-second.html",
+ "Longines Spirit Pilot": "https://www.longines.com/tr/p/watch-longines-spirit-pilot-l3-809-4-93-9",
+ "Oris Divers Sixty-Five": "https://www.oris.ch/tr-TR/product/watch/divers/divers-sixty-five/01-733-7772-4034-Set",
+ "Oris Aquis Date": "https://www.oris.ch/tr-TR/product/watch/aquis/aquis-date/01-733-7789-4187-Set",
+ "Rado Captain Cook": "https://www.rado.com/tr_tr/captain-cook-automatic-r32105313.html",
+ "Nomos Tangente": "https://nomos-glashuette.com/en/tangente/tangente-101",
+ "Longines Conquest Heritage": "https://www.longines.com/tr/p/watch-conquest-heritage-l1-650-4-62-2",
+ "Sinn 240 St": "https://www.sinn.de/en/watches/series/series-240/240-st.html",
+ "Farer Aqua Compressor": "https://farer.com/products/hecla-hunter-green",
+ "Longines HydroConquest": "https://www.longines.com/tr/p/watch-hydroconquest-l3-781-4-96-6",
+ "Christopher Ward C63 Sealander GMT": "https://www.christopherward.com/c63-sealander-gmt/C63-39AGM4-S00W0-B0.html",
+ "Christopher Ward C63 Sealander Automatic": "https://www.christopherward.com/int/C63-Sealander-Automatic/C63-36ADA4-S00K0-B0.html",
+ "Venezianico Arsenale Bosphorus": "https://www.venezianico.com/products/arsenale-bosphorus-limited-edition?ROTW=yes",
+ "Junghans Max Bill Automatic": "https://junghans.de/en/shop/watches-en/junghans-max-bill-en/max-bill-automatic-en/max-bill-automatic/",
+ "Doxa Sub 200": "https://ch.doxawatches.com/products/sub-200-professional?variant=42802362515535",
+ "Seiko Prospex 62MAS Reissue": "https://www.seikowatches.com/tr-tr/products/prospex/special/1965_6L/index",
+ "Christopher Ward The Twelve (Pick and Mix)": "https://www.christopherward.com/int/The-Twelve-%28Ti%29-Pic%27n%27Mix/C12-36AHC1-T00B1-B0R.html",
+ "Hamilton Khaki Field Murph": "https://www.hamiltonwatch.com/tr-tr/h70405730-khaki-field-murph-38mm.html",
+ "Citizen Series 8": "https://www.citizenwatch.com/us/en/product/NB6060-07A",
+ "Unimatic Modello Uno U1-TSP": "https://www.unimaticwatches.com/products/uwk-u1-tsp",
+ "Seiko Alpinist": "https://www.seikowatches.com/global-en/products/prospex/spb507j1",
+ "Baltic Aquascaphe": "https://baltic-watches.com/en/products/aquascaphe-titanium-blue",
+ "Seiko Prospex Speedtimer HBJ005": "https://www.seikowatches.com/tr-tr/products/prospex/speedtimer-design",
+ "Mondaine Original Automatic 41 mm": "https://mondaine.com/products/original-automatic-41mm-stainless-steel-automatic-watch-mst-4161b-sj",
+ "Hamilton Jazzmaster": "https://www.hamiltonwatch.com/tr-tr/h32675551-jazzmaster-open-heart-auto.html",
+ "Seiko 5 Sports GMT SSK059": "https://www.seikowatches.com/tr-tr/products/5sports/ssk059",
+ "AV86 1954 Amalfi Mechanical": "https://av86.com/products/1954-amalfi-mechanical-gold-midnight-blue",
+ "Sternglas Naos": "https://www.sternglas.com/products/naos-automatik-bauhaus-x-yellow",
+ "Seiko Presage Cocktail Time": "https://www.seikowatches.com/tr-tr/products/presage/srpe41j1",
+ "Seiko 5 Sports SRPK89": "https://www.seikowatches.com/tr-tr/products/5sports/srpk89",
+ "Seiko 5 Sports SNKL23K": "https://www.n11.com/urun/seiko-snkl23j-erkek-kol-saati-982709",
+ "Omega x Swatch MoonSwatch Mission to the Sun": "https://www.swatch.com/tr-tr/mission-to-the-sun-so33j100/SO33J100.html",
+ "Orient Bambino": "https://orient-watch.com/en/orient/collection/classic/classic-and-simple-style-38/RA-BB0003Y/"
+};
 function siteOf(w){
-  if (key(w)==="Unimatic Modello Uno U1-TSP") return "https://www.unimaticwatches.com/products/uwk-u1-tsp";
-  if (key(w)==="Fears Brunswick 40.5 Jump Hour Celestial") return "https://www.fratellowatches.com/introducing-the-fears-brunswick-40-5-jump-hour-celestial-limited-edition/";
-  if (key(w)==="Christopher Ward C63 Sealander Automatic") return "https://www.christopherward.com/int/C63-Sealander-Automatic/C63-36ADA4-S00K0-B0.html";
-  if (key(w)==="Straum Expedition") return "https://straum.co/products/expedition-titanium-gray";
-  if (key(w)==="Oris Artelier Year of the Horse LE") return "https://www.oris.ch/en-TR/product/watch/artelier/artelier-calibre-113/01-113-7806-4088-Set";
-  if (key(w)==="Venezianico Arsenale Bosphorus") return "https://www.venezianico.com/pages/arsenale-bosphorus-limited-edition";
-  return SITES[w.b];
+  return LINKS[key(w)] || SITES[w.b];
 }
 function ok(w){
   var m = META[key(w)], t = tierOf(w);
@@ -454,7 +497,7 @@ function render(){
       '<div class="colorline">'+[m[1],m[2],shapeOf(w)].filter(function(x){return x!=="Bilinmiyor";}).join(" · ")+'</div>' +
       '<div class="tags"><span class="tag">'+w.c+'</span>'+(t?'<span class="tag">Tier '+t+'</span>':'')+'<span class="tag">'+kindOf(w)+'</span>'+(w.verify?'<span class="tag">Doğrula</span>':'')+'</div></div>' +
       '<p class="note">'+w.note+'</p>' +
-      '<div class="actions"><span class="links"><a href="'+siteOf(w)+'" target="_blank" rel="noopener">'+(w.siteLabel||"Resmi site ↗")+'</a><a href="https://www.google.com/search?tbm=isch&q='+q+'" target="_blank" rel="noopener">Görseller ↗</a></span>' +
+      '<div class="actions"><span class="links"><a href="'+siteOf(w)+'" target="_blank" rel="noopener">'+(key(w)==="Seiko 5 Sports SNKL23K"?"Satıcı ↗":"Resmi site ↗")+'</a><a href="https://www.google.com/search?tbm=isch&q='+q+'" target="_blank" rel="noopener">Görseller ↗</a></span>' +
       '<span class="btns"><button type="button" class="pick" aria-pressed="'+on+'">'+(on?"İstek listemde":"İstek listesine ekle")+'</button>' +
       '<button type="button" class="own-btn" aria-pressed="'+ow+'">'+(ow?"Bende var":"Bende var mı?")+'</button></span></div>';
     card.querySelector(".pick").onclick = function(){
