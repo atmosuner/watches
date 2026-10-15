@@ -83,8 +83,11 @@ h1 {
 .actions a:hover { text-decoration: underline; }
 .pick, .own-btn {
   font: inherit; font-size: 13px; background: transparent; color: var(--ink);
-  border: 1px solid var(--line); border-radius: 4px; padding: 5px 12px; cursor: pointer;
+  border: 1px solid var(--line); border-radius: 4px; padding: 0; cursor: pointer;
+  width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;
 }
+.pick svg, .own-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.pick[aria-pressed="true"] svg { fill: currentColor; }
 .pick[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 .bar {
   position: fixed; left: 0; right: 0; bottom: 0; background: var(--surface); border-top: 1px solid var(--line);
@@ -120,7 +123,7 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
 
 <div class="wrap">
   <h1>Bileğime Yakışanlar</h1>
-  <p class="lede">Beğendiğim 58 saat tek sayfada. Kategori, renk, kasa şekli, mekanizma, bütçe ve markaya göre süz. Almak istediklerini istek listene ekle, aldıklarını "Bende var" diye işaretle. Altta iki listenin toplamını gör. Kadran rengi önerdiğimiz renktir.</p>
+  <p class="lede">Beğendiğim 58 saat tek sayfada. Kategori, renk, kasa şekli, mekanizma, bütçe ve markaya göre süz. Almak istediklerini kalp ikonuyla istek listene ekle, aldıklarını onay ikonuyla "Bende var" diye işaretle. Altta iki listenin toplamını gör. Kadran rengi önerdiğimiz renktir.</p>
 
   <details class="filters" open>
     <summary>Filtreler <span id="active"></span></summary>
@@ -500,8 +503,8 @@ function render(){
       '<div class="tags"><span class="tag">'+w.c+'</span>'+(t?'<span class="tag">Tier '+t+'</span>':'')+'<span class="tag">'+kindOf(w)+'</span>'+(w.verify?'<span class="tag">Doğrula</span>':'')+'</div></div>' +
       '<p class="note">'+w.note+'</p>' +
       '<div class="actions"><span class="links"><a href="'+siteOf(w)+'" target="_blank" rel="noopener">'+(key(w)==="Seiko 5 Sports SNKL23K"?"Satıcı ↗":"Resmi site ↗")+'</a><a href="https://www.google.com/search?tbm=isch&q='+q+'" target="_blank" rel="noopener">Görseller ↗</a></span>' +
-      '<span class="btns"><button type="button" class="pick" aria-pressed="'+on+'">'+(on?"İstek listemde":"İstek listesine ekle")+'</button>' +
-      '<button type="button" class="own-btn" aria-pressed="'+ow+'">'+(ow?"Bende var":"Bende var mı?")+'</button></span></div>';
+      '<span class="btns"><button type="button" class="pick" aria-pressed="'+on+'" title="'+(on?"İstek listemde, çıkarmak için tıkla":"İstek listesine ekle")+'" aria-label="'+(on?"İstek listemde":"İstek listesine ekle")+'">'+HEART_SVG+'</button>' +
+      '<button type="button" class="own-btn" aria-pressed="'+ow+'" title="'+(ow?"Bende var, çıkarmak için tıkla":"Bende var olarak işaretle")+'" aria-label="'+(ow?"Bende var":"Bende var olarak işaretle")+'">'+CHECK_SVG+'</button></span></div>';
     card.querySelector(".pick").onclick = function(){
       if (state.sel[k]) delete state.sel[k]; else { state.sel[k] = 1; delete state.own[k]; }
       saveSel(); render();
@@ -514,6 +517,8 @@ function render(){
   });
   summary();
 }
+var HEART_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.7 7.700 4 4.500 7.300 4.500c1.900 0 3.500 1 4.700 2.700 1.200-1.700 2.800-2.700 4.700-2.700 3.300 0 5.600 3.200 4.500 6.600-1.700 4.800-9.200 9.400-9.200 9.400z"/></svg>';
+var CHECK_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.300l2.800 2.800L16 9.500"/></svg>';
 function sumOf(map){
   var n=0, lo=0, hi=0, open=0, unk=0;
   W.forEach(function(w){
@@ -529,9 +534,9 @@ function sumOf(map){
 function summary(){
   var a = sumOf(state.sel), b = sumOf(state.own);
   document.getElementById("selTitle").textContent = a.n ? "İstek listemde "+a.n+" saat" : "İstek listem boş";
-  document.getElementById("selSum").textContent = a.n ? a.s : "Kartlardaki \"İstek listesine ekle\" ile seçim yap";
+  document.getElementById("selSum").textContent = a.n ? a.s : "Kartlardaki kalp ikonuyla seçim yap";
   document.getElementById("ownTitle").textContent = b.n ? "Bende "+b.n+" saat var" : "Henüz saatim yok";
-  document.getElementById("ownSum").textContent = b.n ? b.s : "Aldığın saatte \"Bende var\" de";
+  document.getElementById("ownSum").textContent = b.n ? b.s : "Aldığın saatte onay ikonuna bas";
 }
 initControls();
 render();
