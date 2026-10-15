@@ -198,14 +198,14 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
 <script>
 var W = [
   {b:"Audemars Piguet", n:"Royal Oak", c:"Grail / Özel", p:[30000,null], dial:"#1f3f6e", dn:"Mavi", note:"Koleksiyonun zirvesi. Mavi tapiserili kadran, 15510 referansı.", oct:true},
-  {b:"Patek Philippe", n:"Calatrava", c:"Dress", p:[30000,null], dial:"#d9c79a", dn:"Şampanya", note:"Dress slotunun zirvesi. Fiyat modele göre çok değişir."},
+  {b:"Patek Philippe", n:"Calatrava", c:"Dress", p:[30000,null], dial:"#d9c79a", dn:"Şampanya (pembe altın tonlu opalin)", note:"Dress slotunun zirvesi. 5227G-015: beyaz altın kasa, tarih penceresi, otomatik 26-330 S C. Resmi fiyatı yaklaşık 47.000 USD."},
   {b:"Blancpain", n:"Fifty Fathoms", c:"Diver", p:[16000,20000], dial:"#1f4a3a", dn:"Yeşil ya da mavi", note:"İlk modern dalış saati olarak anılır. Panerai ile aynı slot, birini seçmek gerekir."},
   {b:"Rolex", n:"GMT-Master II", c:"GMT / Seyahat", p:[11000,13000], dial:"#0d0d0d", dn:"Siyah, bezel renkli", bezel:"#1f4fa8", note:"Kadran siyah, renk bezelden gelir (mavi-siyah ya da yeşil). Çelik modellerde bekleme ya da ikinci el primi olabilir."},
   {b:"Zenith", n:"Chronomaster Sport", c:"Smart casual", p:[10000,12000], dial:"#8d949b", dn:"Gri", note:"Üst seviye otomatik kronograf, saniyenin onda birini ölçer."},
   {b:"Rolex", n:"Submariner", c:"Diver", p:[9500,11000], dial:"#101214", dn:"Siyah, yeşil bezel", bezel:"#1c6b45", note:"Diver'ın referansı. İkinci elde primli olabilir. Panerai ve Blancpain ile aynı slotta yarışır."},
   {b:"Jaeger-LeCoultre", n:"Master Ultra Thin", c:"Dress", p:[9000,12000], dial:"#1d2d50", dn:"Lacivert", note:"Çok ince kasa, manşetin altına rahat girer. Üst seviye dress hedefi."},
   {b:"Rolex", n:"Datejust", c:"Smart casual", p:[8500,10000], dial:"#c9ccd0", dn:"Gümüş (ya da mavi, yeşil)", note:"Hem ofiste hem takım elbiseyle gider. GMT-Master II'ye alternatif ya da ek parça."},
-  {b:"Breitling", n:"Navitimer B01", c:"Field / Pilot", p:[8500,10500], dial:"#26416b", dn:"Mavi", note:"Pilot kronografının klasiği, kayar hesap cetveli bezeli. Kendi mekanizması var."},
+  {b:"Breitling", n:"Navitimer Automatic", c:"Field / Pilot", p:[6000,6700], dial:"#26416b", dn:"Mavi", verify:true, note:"Kronograf değil, üç ibreli otomatik Navitimer. Kayar hesap cetveli bezeli, 41 mm, mavi kadran ve mavi kayış. Fiyat 5.200 CHF, USD karşılığı kura göre değişir, aralık tahmindir."},
   {b:"Rolex", n:"Explorer", c:"Field / Pilot", p:[8000,9500], dial:"#0f1112", dn:"Siyah", note:"Rolex'in en sade ve çok yönlü modeli. Siyah kadran bu modelin kimliği."},
   {b:"Oris", n:"Artelier Year of the Horse LE", c:"Grail / Özel", p:[7300,8300], dial:"#9b1c2a", dn:"Kırmızı", note:"88 adetlik sınırlı üretim, 43 mm, elle kurmalı Calibre 113, 10 gün güç rezervi. Fiyat 6.650 CHF, USD karşılığı kura göre değişir. Oris sitesinde şu an çevrimiçi satışta görünmüyor."},
   {b:"Omega", n:"Speedmaster Professional", c:"Smart casual", p:[7000,8000], dial:"#101112", dn:"Siyah (Moonwatch)", note:"Elle kurmalı Moonwatch. Siyah kadran bu modelin kimliği, Murph ile birlikte siyah sayısına dikkat."},
@@ -317,14 +317,14 @@ var MICRO = ["Baltic","Christopher Ward","Venezianico","Sternglas","Straum","Far
 /* [renk ailesi, mekanizma, kadran tipi] */
 var META = {
   "Audemars Piguet Royal Oak":["Mavi", "Otomatik / Elle kurmalı", "Tarihli"],
-  "Patek Philippe Calatrava":["Turuncu / sarı / şampanya", "Otomatik / Elle kurmalı", "Sade"],
+  "Patek Philippe Calatrava":["Turuncu / sarı / şampanya", "Otomatik / Elle kurmalı", "Tarihli"],
   "Blancpain Fifty Fathoms":["Yeşil", "Otomatik / Elle kurmalı", "Tarihli"],
   "Rolex GMT-Master II":["Siyah", "Otomatik / Elle kurmalı", "GMT"],
   "Zenith Chronomaster Sport":["Gri / gümüş", "Otomatik / Elle kurmalı", "Kronograf"],
   "Rolex Submariner":["Siyah", "Otomatik / Elle kurmalı", "Tarihli"],
   "Jaeger-LeCoultre Master Ultra Thin":["Mavi", "Otomatik / Elle kurmalı", "Sade"],
   "Rolex Datejust":["Gri / gümüş", "Otomatik / Elle kurmalı", "Tarihli"],
-  "Breitling Navitimer B01":["Mavi", "Otomatik / Elle kurmalı", "Kronograf"],
+  "Breitling Navitimer Automatic":["Mavi", "Otomatik / Elle kurmalı", "Bilinmiyor"],
   "Rolex Explorer":["Siyah", "Otomatik / Elle kurmalı", "Sade"],
   "Oris Artelier Year of the Horse LE":["Bordo / kırmızı", "Otomatik / Elle kurmalı", "Tarihli"],
   "Omega Speedmaster Professional":["Siyah", "Otomatik / Elle kurmalı", "Kronograf"],
@@ -433,7 +433,7 @@ var LINKS = {
  "Rolex Submariner": "https://www.rolex.com/watches/submariner/m126610lv-0002",
  "Jaeger-LeCoultre Master Ultra Thin": "https://www.jaeger-lecoultre.com/us-en/watches/master-ultra-thin/master-ultra-thin-moon-steel-q1248421",
  "Rolex Datejust": "https://www.rolex.com/watches/datejust/m126334-0033",
- "Breitling Navitimer B01": "https://www.breitling.com/tr-en/watches/navitimer/navitimer-b01-chronograph-43/AB0121211B1X2/",
+ "Breitling Navitimer Automatic": "https://www.breitling.com/tr-en/watches/navitimer/navitimer-automatic-41-my23/A17329161C1P1/",
  "Rolex Explorer": "https://www.rolex.com/watches/explorer",
  "Oris Artelier Year of the Horse LE": "https://www.oris.ch/tr-TR/product/watch/artelier/artelier-calibre-113/01-113-7806-4088-Set",
  "Omega Speedmaster Professional": "https://www.omegawatches.com/watch-omega-speedmaster-moonwatch-professional-co-axial-master-chronometer-chronograph-42-mm-31032425001002",
@@ -594,15 +594,28 @@ function summary(){
   document.getElementById("ownSum").textContent = b.n ? b.s : "Aldığın saatte onay ikonuna bas";
 }
 var IMGS = {
-  "Audemars Piguet Royal Oak":"https://dynamicmedia.audemarspiguet.com/is/image/audemarspiguet/watch-936?size=568,0&dpr=off&fmt=avif-alpha&dpr=off"
+  "Audemars Piguet Royal Oak":"https://dynamicmedia.audemarspiguet.com/is/image/audemarspiguet/watch-936?size=568,0&dpr=off&fmt=avif-alpha&dpr=off",
+  "Patek Philippe Calatrava":"https://patek-res.cloudinary.com/dfsmedia/0906caea301d42b3b8bd23bd656d1711/425570-51890",
+  "Blancpain Fifty Fathoms":"https://prestigedam.swatchgroup.biz/transform/adb1a1d9-f60d-44be-abc0-e82d6d49db4d/5007_36B40_O64_Fifty_Fathoms_Automatique_Soldier_Front_RGB?io=transform:fill,height:0,width:2400",
+  "Rolex GMT-Master II":"https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-cover-majesty-landscape/c_limit,w_640/v1/a677b2c664f6/catalogue/2026/upright-c/m126710blnr-0002",
+  "Zenith Chronomaster Sport":"https://images.zenith-watches.com/asset/48fe5ef2-d09f-44cb-ad73-4a2de2779144/Digital-RGB/1-SOLDAT-1_Chronomaster-Sport_03-3100-3600-69-M3100_4x5.png?im=Resize=900",
+  "Rolex Submariner":"https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-cover-majesty-landscape/c_limit,w_640/v1/a677b2c664f6/catalogue/2026/upright-c/m126610lv-0002",
+  "Jaeger-LeCoultre Master Ultra Thin":"https://img.jaeger-lecoultre.com/product-light-box-1/226152206b915272add4e19bc17251e0fa8ae2d7.jpg",
+  "Rolex Datejust":"https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-cover-majesty-landscape/c_limit,w_640/v1/a677b2c664f6/catalogue/2026/upright-c/m126334-0013",
+  "Breitling Navitimer Automatic":"https://www.breitling.com/cdn-cgi/image/format=auto,quality=90,width=700,fit=cover,gravity=0.5x0.5/api/image-proxy/www-breitling.eu.saleor.cloud/media/thumbnails/products/a17329161c1p1-soldier_42785bad_thumbnail_1024.webp",
+  "Rolex Explorer":"https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-cover-majesty-landscape/c_limit,w_640/v1/a677b2c664f6/catalogue/2026/upright-c/m224270-0001",
+  "Oris Artelier Year of the Horse LE":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfRGgN4hWcI0urhlF_z-xOdZVEuDdOVES_Mjs6Wzk5Bw&s=10",
+  "Omega Speedmaster Professional":"https://www.omegawatches.com/media/catalog/product/o/m/omega-speedmaster-moonwatch-professional-co-axial-master-chronometer-chronograph-42-mm-31032425001002-78e3aa.png?w=700"
 };
 function visual(w){
   var u = IMGS[key(w)];
   if (!u) return dialSVG(w);
-  return '<img class="photo" src="'+esc(u)+'" alt="'+esc(w.b+" "+w.n)+'" data-k="'+esc(key(w))+'" referrerpolicy="no-referrer" onerror="photoFail(this)">';
+  return '<img class="photo" src="'+esc(u)+'" alt="'+esc(w.b+" "+w.n)+'" data-k="'+esc(key(w))+'" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="photoFail(this)">';
 }
 function photoFail(img){ var w = findW(img.getAttribute("data-k")); if (w) img.outerHTML = dialSVG(w); }
 var SPEC = {
+  "Breitling Navitimer Automatic":{dia:"41 mm",th:"11,65 mm",wr:"30 m",mov:"Breitling 17 otomatik",pr:"38 saat"},
+  "Patek Philippe Calatrava":{dia:"39 mm",th:"9,24 mm",mov:"26-330 S C otomatik"},
   "Straum Expedition":{dia:"38,2 mm",wr:"100 m",mov:"La Joux-Perret G100 otomatik",pr:"68 saat"},
   "Seiko 5 Sports SRPK89":{dia:"37 mm",l2l:44.7,wr:"100 m",mov:"Seiko 4R36 otomatik",pr:"41 saat"},
   "Seiko 5 Sports GMT SSK059":{dia:"39,4 mm",l2l:47.9,th:"13,6 mm",mov:"Seiko 4R34 otomatik, caller GMT"},
