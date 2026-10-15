@@ -117,13 +117,59 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
 .empty { grid-column: 1 / -1; color: var(--muted); padding: 24px 0; }
 .chip { padding: 4px 10px; font-size: 12.5px; }
 .row .lab { min-width: 92px; }
+
+.card { cursor: pointer; transition: border-color .15s; }
+.card:hover { border-color: var(--steel); }
+.card .name:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+#sheetWrap { position: fixed; inset: 0; z-index: 100; display: flex; align-items: flex-end; justify-content: center; background: rgba(10,14,18,.55); }
+#sheetWrap[hidden] { display: none; }
+.sheet {
+  width: min(760px, 100%); max-height: 92vh; overflow-y: auto; overscroll-behavior: contain;
+  background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 12px 12px 0 0;
+  padding: 0 18px calc(20px + env(safe-area-inset-bottom, 0px));
+}
+@media (min-width: 720px) { #sheetWrap { align-items: center; } .sheet { border-radius: 10px; max-height: 88vh; } }
+.sh-top { position: sticky; top: 0; z-index: 2; background: var(--surface); display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.sh-nav { display: flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.ibtn { font: inherit; width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 4px; cursor: pointer; }
+.ibtn:hover { border-color: var(--accent); }
+.ibtn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ibtn:focus-visible, .sbtn:focus-visible, .sim:focus-visible, .sheet a:focus-visible, .sheet textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.sh-head { display: grid; grid-template-columns: 140px minmax(0,1fr); gap: 18px; padding: 18px 0 14px; align-items: start; }
+.sh-head .dial { width: 140px; height: 140px; }
+.sh-head h2 { font-family: var(--f-display); font-weight: 600; font-size: 2rem; line-height: 1.05; margin: 2px 0 8px; overflow-wrap: anywhere; }
+.sh-price { font-family: var(--f-mono); font-size: 15px; margin: 8px 0 4px; }
+.sh-acts { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 4px 0 18px; }
+.sbtn { font: inherit; font-size: 13px; display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 4px; cursor: pointer; }
+.sbtn svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.sbtn[aria-pressed="true"].w { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.sbtn[aria-pressed="true"].w svg { fill: currentColor; }
+.sbtn[aria-pressed="true"].o { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.sh-acts a { color: var(--accent); font-size: 13px; text-decoration: none; margin-left: 6px; }
+.sh-acts a:hover { text-decoration: underline; }
+.sh-sec { border-top: 1px solid var(--line); padding: 14px 0; }
+.sh-sec h3 { font-family: var(--f-display); font-weight: 600; font-size: 1.05rem; letter-spacing: .04em; text-transform: uppercase; margin: 0 0 10px; }
+.specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
+.spec { border: 1px solid var(--line); border-radius: 4px; padding: 8px 10px; }
+.spec span { display: block; font-size: 11.5px; color: var(--muted); }
+.spec b { font-family: var(--f-mono); font-weight: 500; font-size: 13.5px; }
+.fitbar { position: relative; height: 8px; border-radius: 4px; background: var(--line); margin: 12px 0 6px; }
+.fitbar i { position: absolute; top: 0; bottom: 0; left: 0; border-radius: 4px; background: var(--accent); opacity: .35; }
+.fitbar em { position: absolute; top: -4px; width: 4px; height: 16px; margin-left: -2px; border-radius: 2px; background: var(--ink); }
+.muted { color: var(--muted); font-size: 13px; margin: 0; }
+.sims { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px; }
+.sim { font: inherit; text-align: left; background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 4px; padding: 8px 10px; cursor: pointer; }
+.sim:hover { border-color: var(--accent); }
+.sim small { display: block; color: var(--muted); font-size: 12px; }
+.sheet textarea { width: 100%; min-height: 84px; resize: vertical; font: inherit; font-size: 13.5px; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 8px 10px; }
+@media (max-width: 480px) { .sh-head { grid-template-columns: 96px minmax(0,1fr); gap: 12px; } .sh-head .dial { width: 96px; height: 96px; } .sh-head h2 { font-size: 1.6rem; } }
 </style>
 </head>
 <body>
 
 <div class="wrap">
   <h1>Bileğime Yakışanlar</h1>
-  <p class="lede">Beğendiğim 58 saat tek sayfada. Kategori, renk, kasa şekli, mekanizma, bütçe ve markaya göre süz. Almak istediklerini kalp ikonuyla istek listene ekle, aldıklarını onay ikonuyla "Bende var" diye işaretle. Altta iki listenin toplamını gör. Kadran rengi önerdiğimiz renktir.</p>
+  <p class="lede">Beğendiğim 58 saat tek sayfada. Kategori, renk, kasa şekli, mekanizma, bütçe ve markaya göre süz. Almak istediklerini kalp ikonuyla istek listene ekle, aldıklarını onay ikonuyla "Bende var" diye işaretle. Karta tıklayınca detay açılır. Altta iki listenin toplamını gör. Kadran rengi önerdiğimiz renktir.</p>
 
   <details class="filters" open>
     <summary>Filtreler <span id="active"></span></summary>
@@ -144,6 +190,8 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
 </div>
 
 <div class="bar"><div class="in"><div class="b"><strong id="selTitle">İstek listem boş</strong><span id="selSum"></span></div><div class="b"><strong id="ownTitle">Henüz saatim yok</strong><span id="ownSum"></span></div></div></div>
+
+<div id="sheetWrap" hidden><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle"><div id="sheetBody"></div></div></div>
 
 <script>
 var W = [
@@ -485,6 +533,7 @@ function render(){
   var active = 0; for (var k in state){ if (k!=="sel" && k!=="own" && state[k]!=="Tümü" && state[k]!==false) active++; }
   document.getElementById("active").textContent = active ? "("+active+" aktif)" : "";
   var list = W.filter(ok).sort(function(a,b){ return (b.p?b.p[0]:-1)-(a.p?a.p[0]:-1); });
+  shownList = list;
   document.getElementById("count").textContent = list.length+" saat gösteriliyor, toplam "+W.length;
   var g = document.getElementById("grid"); g.innerHTML = "";
   if (!list.length){
@@ -513,9 +562,13 @@ function render(){
       if (state.own[k]) delete state.own[k]; else { state.own[k] = 1; delete state.sel[k]; }
       saveSel(); render();
     };
+    var nm = card.querySelector(".name"); nm.setAttribute("role","button"); nm.tabIndex = 0;
+    card.onclick = function(e){ if (e.target.closest("a,button")) return; openSheet(k); };
+    nm.onkeydown = function(e){ if (e.key==="Enter" || e.key===" "){ e.preventDefault(); openSheet(k); } };
     g.appendChild(card);
   });
   summary();
+  if (cur) renderSheet();
 }
 var HEART_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.7 7.700 4 4.500 7.300 4.500c1.900 0 3.500 1 4.700 2.700 1.200-1.700 2.800-2.700 4.700-2.700 3.300 0 5.600 3.200 4.500 6.600-1.700 4.800-9.200 9.400-9.200 9.400z"/></svg>';
 var CHECK_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.300l2.800 2.800L16 9.500"/></svg>';
@@ -538,6 +591,109 @@ function summary(){
   document.getElementById("ownTitle").textContent = b.n ? "Bende "+b.n+" saat var" : "Henüz saatim yok";
   document.getElementById("ownSum").textContent = b.n ? b.s : "Aldığın saatte onay ikonuna bas";
 }
+var SPEC = {
+  "Straum Expedition":{dia:"38,2 mm",wr:"100 m",mov:"La Joux-Perret G100 otomatik",pr:"68 saat"},
+  "Seiko 5 Sports SRPK89":{dia:"37 mm",l2l:44.7,wr:"100 m",mov:"Seiko 4R36 otomatik",pr:"41 saat"},
+  "Seiko 5 Sports GMT SSK059":{dia:"39,4 mm",l2l:47.9,th:"13,6 mm",mov:"Seiko 4R34 otomatik, caller GMT"},
+  "Seiko 5 Sports SNKL23K":{dia:"38 mm",wr:"30 m",mov:"Seiko 7S26C otomatik"},
+  "Unimatic Modello Uno U1-TSP":{dia:"40 mm (bezelle 41,5)",mov:"Seiko NH35A otomatik",pr:"41 saat"},
+  "Venezianico Arsenale Bosphorus":{dia:"40 mm",l2l:44,th:"9,95 mm",mov:"Miyota 9039 otomatik"},
+  "Christopher Ward C63 Sealander Automatic":{dia:"36 / 39 mm",wr:"150 m",mov:"Sellita SW200-2 otomatik",pr:"65 saat"},
+  "Christopher Ward C63 Sealander GMT":{dia:"36 / 39 / 42 mm",wr:"150 m",mov:"Sellita SW330-2 caller GMT",pr:"56 saat"},
+  "Farer Aqua Compressor":{mov:"La Joux-Perret G101 otomatik"},
+  "AV86 1954 Amalfi Mechanical":{mov:"Seagull ST17 elle kurmalı"},
+  "Oris Artelier Year of the Horse LE":{dia:"43 mm",mov:"Oris Calibre 113 elle kurmalı",pr:"10 gün"},
+  "Hamilton Khaki Field Murph":{dia:"38 mm"},
+  "Tudor Ranger":{dia:"36 mm"},
+  "Baltic Aquascaphe":{dia:"37 / 39 mm"},
+  "Bell & Ross BR 03-92 Steel":{dia:"42 mm"}
+};
+var shownList = [], cur = null, lastFocus = null;
+var X_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+var L_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>';
+var R_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
+function findW(k){ for (var i=0;i<W.length;i++) if (key(W[i])===k) return W[i]; return null; }
+function loadNotes(){ try { return JSON.parse(localStorage.getItem("saatNot2")||"{}") || {}; } catch(e){ return {}; } }
+function saveNote(k, v){ try { var n = loadNotes(); if (v) n[k]=v; else delete n[k]; localStorage.setItem("saatNot2", JSON.stringify(n)); } catch(e){} }
+function esc(t){ return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;"); }
+function openSheet(k){
+  if (!cur) lastFocus = document.activeElement;
+  cur = k; renderSheet();
+  var wrap = document.getElementById("sheetWrap"); wrap.hidden = false;
+  document.body.style.overflow = "hidden";
+  document.getElementById("shClose").focus();
+}
+function closeSheet(){
+  cur = null; document.getElementById("sheetWrap").hidden = true; document.body.style.overflow = "";
+  if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch(e){} }
+}
+function stepSheet(d){
+  var ks = shownList.map(key), i = ks.indexOf(cur);
+  if (i<0) return; i += d; if (i<0 || i>=ks.length) return;
+  cur = ks[i]; renderSheet(); document.getElementById("sheetBody").parentNode.scrollTop = 0;
+}
+function renderSheet(){
+  var w = findW(cur); if (!w) { closeSheet(); return; }
+  var k = cur, t = tierOf(w), m = META[k], on = !!state.sel[k], ow = !!state.own[k], sp = SPEC[k] || {};
+  var ks = shownList.map(key), idx = ks.indexOf(k);
+  var q = encodeURIComponent(imgQuery(w));
+  var h = '<div class="sh-top"><div class="sh-nav">' +
+    '<button type="button" class="ibtn" id="shPrev" aria-label="Önceki saat"'+(idx<=0?' disabled style="opacity:.4"':'')+'>'+L_SVG+'</button>' +
+    '<button type="button" class="ibtn" id="shNext" aria-label="Sonraki saat"'+(idx<0||idx>=ks.length-1?' disabled style="opacity:.4"':'')+'>'+R_SVG+'</button>' +
+    '<span>'+(idx>=0?(idx+1)+" / "+ks.length:"")+'</span></div>' +
+    '<button type="button" class="ibtn" id="shClose" aria-label="Kapat">'+X_SVG+'</button></div>';
+  h += '<div class="sh-head">'+dialSVG(w)+'<div><span class="brand">'+esc(w.b)+'</span><h2 id="shTitle">'+esc(w.n)+'</h2>' +
+    '<div class="tags"><span class="tag">'+w.c+'</span>'+(t?'<span class="tag">Tier '+t+'</span>':'')+'<span class="tag">'+kindOf(w)+'</span>'+(w.verify?'<span class="tag">Doğrula</span>':'')+'</div>' +
+    '<div class="sh-price">'+priceText(w)+'</div>' +
+    '<div class="colorline">Kadran: <b>'+esc(w.dn)+'</b></div>' +
+    '<div class="colorline">'+[m[1],m[2],shapeOf(w)].filter(function(x){return x!=="Bilinmiyor";}).join(" · ")+'</div></div></div>';
+  h += '<div class="sh-acts">' +
+    '<button type="button" class="sbtn w" id="shWish" aria-pressed="'+on+'">'+HEART_SVG+(on?"İstek listemde":"İstek listesine ekle")+'</button>' +
+    '<button type="button" class="sbtn o" id="shOwn" aria-pressed="'+ow+'">'+CHECK_SVG+(ow?"Bende var":"Bende var olarak işaretle")+'</button>' +
+    '<a href="'+siteOf(w)+'" target="_blank" rel="noopener">'+(k==="Seiko 5 Sports SNKL23K"?"Satıcı":"Resmi site")+' ↗</a>' +
+    '<a href="https://www.google.com/search?tbm=isch&q='+q+'" target="_blank" rel="noopener">Görseller ↗</a></div>';
+  h += '<div class="sh-sec"><h3>Hakkında</h3><p class="muted" style="color:var(--ink)">'+w.note+'</p></div>';
+  var cells = [["Kasa çapı",sp.dia],["Lug-to-lug",sp.l2l?String(sp.l2l).replace(".",",")+" mm":null],["Kalınlık",sp.th],["Su geçirmezlik",sp.wr],["Mekanizma",sp.mov],["Güç rezervi",sp.pr]].filter(function(c){return c[1];});
+  h += '<div class="sh-sec"><h3>Teknik bilgiler</h3>';
+  h += cells.length ? '<div class="specs">'+cells.map(function(c){return '<div class="spec"><span>'+c[0]+'</span><b>'+esc(c[1])+'</b></div>';}).join("")+'</div>' : '<p class="muted">Ölçü ve teknik bilgi henüz eklenmedi.</p>';
+  h += '</div>';
+  h += '<div class="sh-sec"><h3>17 cm bileğe uyum</h3>';
+  if (sp.l2l){
+    var v = sp.l2l, lab = v<=46 ? "Rahat" : (v<=48 ? "Sınırda, almadan önce dene" : "17 cm bilek için büyük");
+    var pos = Math.max(0, Math.min(100, (v-38)/(56-38)*100)), zone = (46-38)/(56-38)*100;
+    h += '<div class="fitbar" role="img" aria-label="Lug-to-lug '+v+' mm, '+lab+'"><i style="width:'+zone+'%"></i><em style="left:'+pos+'%"></em></div>' +
+      '<p class="muted"><b style="color:var(--ink);font-weight:500">'+lab+'.</b> Lug-to-lug '+String(v).replace(".",",")+' mm. 46 mm ve altı bu bilekte rahat sayılır.</p>';
+  } else h += '<p class="muted">Lug-to-lug ölçüsü eklenince burada gösterilecek. 17 cm bilek için 46 mm ve altı rahat sayılır.</p>';
+  h += '</div>';
+  var sims = W.filter(function(x){ return x!==w && x.c===w.c && x.p; }).sort(function(a,b){ return Math.abs(a.p[0]-(w.p?w.p[0]:0)) - Math.abs(b.p[0]-(w.p?w.p[0]:0)); }).slice(0,3);
+  if (sims.length) h += '<div class="sh-sec"><h3>Aynı kategoride</h3><div class="sims">'+sims.map(function(x){ return '<button type="button" class="sim" data-k="'+esc(key(x))+'">'+esc(x.b+" "+x.n)+'<small>'+priceText(x)+'</small></button>'; }).join("")+'</div></div>';
+  h += '<div class="sh-sec"><h3>Notlarım</h3><textarea id="shNote" aria-label="Notlarım" placeholder="Denedim mi, kayış tercihi, aldığım tarih ve fiyat…">'+esc(loadNotes()[k]||"")+'</textarea></div>';
+  var body = document.getElementById("sheetBody"); body.innerHTML = h;
+  document.getElementById("shClose").onclick = closeSheet;
+  document.getElementById("shPrev").onclick = function(){ stepSheet(-1); };
+  document.getElementById("shNext").onclick = function(){ stepSheet(1); };
+  document.getElementById("shWish").onclick = function(){ if (state.sel[k]) delete state.sel[k]; else { state.sel[k]=1; delete state.own[k]; } saveSel(); render(); };
+  document.getElementById("shOwn").onclick = function(){ if (state.own[k]) delete state.own[k]; else { state.own[k]=1; delete state.sel[k]; } saveSel(); render(); };
+  document.getElementById("shNote").oninput = function(){ saveNote(k, this.value.trim()); };
+  Array.prototype.forEach.call(body.querySelectorAll(".sim"), function(b){ b.onclick = function(){ cur = b.getAttribute("data-k"); renderSheet(); body.parentNode.scrollTop = 0; }; });
+}
+document.getElementById("sheetWrap").addEventListener("click", function(e){ if (e.target===this) closeSheet(); });
+document.addEventListener("keydown", function(e){
+  if (!cur) return;
+  if (e.key==="Escape") { closeSheet(); return; }
+  var tag = (document.activeElement && document.activeElement.tagName) || "";
+  if (tag==="TEXTAREA") return;
+  if (e.key==="ArrowLeft") stepSheet(-1);
+  if (e.key==="ArrowRight") stepSheet(1);
+  if (e.key==="Tab"){
+    var f = document.getElementById("sheetWrap").querySelectorAll("button:not([disabled]),a[href],textarea");
+    if (!f.length) return;
+    var first = f[0], last = f[f.length-1];
+    if (e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+  }
+});
+
 initControls();
 render();
 </script>
