@@ -177,6 +177,32 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
 #zoomWrap .zclose svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
 #zoomWrap .zclose:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 @media (max-width: 480px) { .zoomwrap { width: 96px; height: 96px; } }
+.puzzle { margin-bottom: 22px; border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px 16px; background: var(--surface); }
+.puzzle summary { cursor: pointer; font-family: var(--f-display); font-weight: 600; font-size: 1.1rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.puzzle summary span { font-family: var(--f-mono); font-size: 12px; color: var(--accent); text-transform: none; letter-spacing: 0; margin-left: 6px; }
+.pzlede { margin: 6px 0 14px; color: var(--muted); font-size: 13.5px; }
+.pzbar { height: 6px; border-radius: 3px; background: var(--line); margin: 0 0 18px; overflow: hidden; }
+.pzbar i { display: block; height: 100%; background: var(--accent); transition: width .3s; }
+.pzgrid { display: grid; gap: 0; max-width: 760px; margin: 0 auto; padding: 0 4px; }
+.pzcell { position: relative; aspect-ratio: 1; }
+.pzpiece { position: absolute; inset: -20%; }
+.pzfill { position: absolute; inset: 0; border: 0; padding: 0; margin: 0; background: color-mix(in srgb, var(--accent) 10%, var(--surface)); cursor: pointer; overflow: hidden; display: block; }
+.pzfill.empty { background: var(--surface); }
+.pzfill > img, .pzfill > svg { width: 58%; height: 58%; margin: 12% 21% 30%; display: block; object-fit: contain; border-radius: 0; background: transparent; }
+.pzfill:hover, .pzfill:focus-visible { filter: brightness(1.06); outline: none; }
+.pzline { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.pzline path { fill: none; stroke: var(--line); stroke-width: 1.6; vector-effect: non-scaling-stroke; }
+.pzcell.have .pzline path { stroke: var(--accent); stroke-width: 2.4; }
+.pzcell.empty .pzline path { stroke-dasharray: 5 4; stroke: var(--steel); }
+.pzlab { position: absolute; left: 6%; right: 6%; bottom: 6%; z-index: 3; pointer-events: none; text-align: center; line-height: 1.2; }
+.pzlab b { display: block; font-family: var(--f-display); font-weight: 600; font-size: 1.02rem; letter-spacing: .03em; text-transform: uppercase; }
+.pzlab small { display: block; font-size: 11.5px; }
+.pzcell.have .pzlab { left: 14%; right: 14%; bottom: 9%; background: var(--surface); color: var(--ink); border: 1px solid var(--accent); border-radius: 4px; padding: 3px 4px; }
+.pzcell.empty .pzlab { color: var(--muted); left: 22%; right: 22%; bottom: auto; top: 50%; transform: translateY(-50%); }
+.pzcell.empty .pzlab b { color: var(--ink); }
+.pzcell.empty .pzlab .plus { display: block; font-size: 22px; line-height: 1; margin-bottom: 4px; color: var(--steel); }
+.pzdone { margin: 16px 0 0; text-align: center; font-family: var(--f-display); font-size: 1.25rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--accent); }
+@media (max-width: 480px) { .pzlab b { font-size: .9rem; } .pzlab small { font-size: 10.5px; } }
 </style>
 </head>
 <body>
@@ -184,6 +210,14 @@ select { font: inherit; font-size: 13px; color: var(--ink); background: var(--bg
 <div class="wrap">
   <h1>Saat Defterim</h1>
   <p class="lede"><span id="total">58</span> saat, hepsi tek sayfada. Kategori, renk, kasa şekli, mekanizma, bütçe ve markaya göre süz. Kalp ikonuyla almak istediklerini istek listene ekle, onay ikonuyla sahip olduklarını işaretle. Karta tıklayınca detaylar açılır. Kadran renkleri benim seçtiğim renklerdir.</p>
+
+  <details class="puzzle" id="puzzle" open>
+    <summary>Koleksiyonum <span id="pzCount"></span></summary>
+    <p class="pzlede">Her kategori koleksiyonun bir parçası. Bir kategoriden saat alıp onay ikonuyla işaretleyince o parça yerine oturur, sekiz parça tamamlanınca koleksiyon biter. Boş bir parçaya tıklarsan o kategorideki saatleri süzer.</p>
+    <div class="pzbar"><i id="pzBar"></i></div>
+    <div class="pzgrid" id="pzGrid"></div>
+    <p class="pzdone" id="pzDone" hidden>Koleksiyon tamam</p>
+  </details>
 
   <details class="filters" open>
     <summary>Filtreler <span id="active"></span></summary>
@@ -581,6 +615,7 @@ function render(){
     g.appendChild(card);
   });
   summary();
+  renderPuzzle();
   if (cur) renderSheet();
 }
 var HEART_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.7 7.700 4 4.500 7.300 4.500c1.900 0 3.500 1 4.700 2.700 1.200-1.700 2.800-2.700 4.700-2.700 3.300 0 5.600 3.200 4.500 6.600-1.700 4.800-9.200 9.400-9.200 9.400z"/></svg>';
@@ -847,6 +882,70 @@ document.addEventListener("keydown", function(e){
   }
 });
 
+
+var PZ_ICON_CAT = null;
+function pzEdge(edge, sg, u0){
+  /* kenar boyunca 0..100 arasi ilerleyen nokta (u,v) -> kasa kordinatlari */
+  function P(u,v){ if (edge===0) return [u,-v]; if (edge===1) return [100+v,u]; if (edge===2) return [100-u,100+v]; return [-v,100-u]; }
+  var pts = sg ? [[38,0],[38,5*sg],[32,6*sg],[32,11*sg],[32,17*sg],[68,17*sg],[68,11*sg],[68,6*sg],[62,5*sg],[62,0],[100,0]] : [[100,0]];
+  return pts.map(function(p){ return P(p[0],p[1]); });
+}
+function pzPath(c, r, cols, rows, norm){
+  var tx = (c+r)%2===0 ? 1 : -1, ty = (c*3+r)%2===0 ? 1 : -1;
+  var right = c<cols-1 ? tx : 0, left = c>0 ? -((c-1+r)%2===0?1:-1) : 0;
+  var bottom = r<rows-1 ? ty : 0, top = r>0 ? -(((c*3+(r-1))%2===0)?1:-1) : 0;
+  var sgs = [top, right, bottom, left];
+  function N(p){ return norm ? [((p[0]+20)/140).toFixed(4), ((p[1]+20)/140).toFixed(4)] : [p[0], p[1]]; }
+  var corners = [[0,0],[100,0],[100,100],[0,100]];
+  var d = "M"+N(corners[0]).join(",");
+  for (var e=0;e<4;e++){
+    var q = pzEdge(e, sgs[e]);
+    if (sgs[e]===0){ d += "L"+N(q[q.length-1]).join(","); continue; }
+    d += "L"+N(q[0]).join(",");
+    d += "C"+N(q[1]).join(",")+" "+N(q[2]).join(",")+" "+N(q[3]).join(",");
+    d += "C"+N(q[4]).join(",")+" "+N(q[5]).join(",")+" "+N(q[6]).join(",");
+    d += "C"+N(q[7]).join(",")+" "+N(q[8]).join(",")+" "+N(q[9]).join(",");
+    d += "L"+N(q[10]).join(",");
+  }
+  return d+"Z";
+}
+function renderPuzzle(){
+  var host = document.getElementById("pzGrid"); if (!host) return;
+  var cats = CATS.filter(function(c){ return c!=="Tümü"; });
+  var cols = window.innerWidth < 560 ? 2 : 4, rows = Math.ceil(cats.length/cols);
+  host.style.gridTemplateColumns = "repeat("+cols+", minmax(0,1fr))";
+  host.style.paddingBottom = "0";
+  var defs = '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>';
+  var cells = "", have = 0;
+  cats.forEach(function(cat, i){
+    var c = i%cols, r = Math.floor(i/cols);
+    var owned = W.filter(function(w){ return w.c===cat && state.own[key(w)]; }).sort(function(a,b){ return (b.p?b.p[0]:0)-(a.p?a.p[0]:0); });
+    var wished = W.filter(function(w){ return w.c===cat && state.sel[key(w)]; }).length;
+    var w = owned[0];
+    if (w) have++;
+    defs += '<clipPath id="pzc'+i+'" clipPathUnits="objectBoundingBox"><path d="'+pzPath(c,r,cols,rows,true)+'"/></clipPath>';
+    var sub = w ? esc(w.b+" "+w.n)+(owned.length>1?" +"+(owned.length-1):"") : (wished? wished+" aday istek listende" : "Boş parça");
+    cells += '<div class="pzcell '+(w?"have":"empty")+'" style="grid-column:'+(c+1)+';grid-row:'+(r+1)+'">' +
+      '<div class="pzpiece"><button type="button" class="pzfill '+(w?"":"empty")+'" data-cat="'+esc(cat)+'"'+(w?' data-k="'+esc(key(w))+'"':'')+' style="clip-path:url(#pzc'+i+')" aria-label="'+esc(cat)+(w?": "+esc(w.b+" "+w.n):": boş parça, bu kategorideki saatleri göster")+'">'+(w?visual(w):'')+'</button>' +
+      '<svg class="pzline" viewBox="-20 -20 140 140" preserveAspectRatio="none" aria-hidden="true"><path d="'+pzPath(c,r,cols,rows,false)+'"/></svg></div>' +
+      '<div class="pzlab">'+(w?'':'<span class="plus" aria-hidden="true">+</span>')+'<b>'+esc(cat)+'</b><small>'+sub+'</small></div></div>';
+  });
+  host.innerHTML = defs+'</defs></svg>'+cells;
+  host.querySelectorAll(".pzfill").forEach(function(b){
+    b.onclick = function(){
+      var k = b.getAttribute("data-k");
+      if (k) { openSheet(k); return; }
+      state.cat = b.getAttribute("data-cat"); render();
+      var g = document.getElementById("grid"); if (g && g.scrollIntoView) g.scrollIntoView({behavior:"smooth", block:"start"});
+    };
+  });
+  document.getElementById("pzCount").textContent = have+" / "+cats.length+" parça";
+  document.getElementById("pzBar").style.width = Math.round(have/cats.length*100)+"%";
+  document.getElementById("pzDone").hidden = have!==cats.length;
+}
+var pzCols = null;
+window.addEventListener("resize", function(){ var c = window.innerWidth < 560 ? 2 : 4; if (c!==pzCols){ pzCols = c; renderPuzzle(); } });
+pzCols = window.innerWidth < 560 ? 2 : 4;
 document.getElementById("total").textContent = W.length;
 initControls();
 render();
