@@ -1595,9 +1595,52 @@ function dialSVG(w){
 }
 function fallback(w, failed){ return '<div class="fb">'+dialSVG(w)+'<span class="fbcap">'+(failed?"Fotoğraf yüklenemedi":"Fotoğraf yok")+'</span></div>'; }
 function photo(w){ var u = IMGS[key(w)]; if (!u) return fallback(w,false);
-  return '<img src="'+esc(u)+'" alt="'+esc(key(w))+'" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fk="'+esc(key(w))+'" onerror="SDfail(this)">'; }
+  return '<img src="'+esc(u)+'" alt="'+esc(key(w))+'" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fk="'+esc(key(w))+'" onerror="SDfail(this)" onload="SDfit(this)">'; }
 var FAILED = {};
 window.SDfail = function(img){ var k = img.getAttribute("data-fk"), w = find(k); if (!w) return; FAILED[k] = 1; var p = img.closest(".ph"); if (p) p.classList.add("failed"); img.outerHTML = fallback(w,true); };
+/* Fotoğraf yakınlığını eşitle: saatin sınır kutusunu bul, hepsini AP Royal Oak ölçüsüne getir */
+var FIT = {}, FITQ = {}, FIT_H = 0.84, FIT_W = 0.92;
+function measure(u, cb){
+  if (FIT[u] !== undefined) return cb(FIT[u]);
+  if (FITQ[u]) return FITQ[u].push(cb);
+  FITQ[u] = [cb];
+  function done(r){ FIT[u] = r; var q = FITQ[u]; delete FITQ[u]; q.forEach(function(f){ f(r); }); }
+  try {
+    var im = new Image(); im.crossOrigin = "anonymous"; im.referrerPolicy = "no-referrer";
+    im.onerror = function(){ done(null); };
+    im.onload = function(){
+      try {
+        var sc = Math.min(1, 260/Math.max(im.naturalWidth, im.naturalHeight)), w = Math.max(8,Math.round(im.naturalWidth*sc)), hh = Math.max(8,Math.round(im.naturalHeight*sc));
+        var c = document.createElement("canvas"); c.width = w; c.height = hh; var x = c.getContext("2d"); x.drawImage(im,0,0,w,hh);
+        var d = x.getImageData(0,0,w,hh).data;
+        function px(i){ var a = d[i+3]/255; return [d[i]*a+255*(1-a), d[i+1]*a+255*(1-a), d[i+2]*a+255*(1-a)]; }
+        var cs = [px(0), px((w-1)*4), px((hh-1)*w*4), px(((hh-1)*w+w-1)*4)], bg = [0,1,2].map(function(k){ return (cs[0][k]+cs[1][k]+cs[2][k]+cs[3][k])/4; });
+        var rows = new Array(hh).fill(0), cols = new Array(w).fill(0);
+        for (var yy=0; yy<hh; yy++) for (var xx=0; xx<w; xx++){ var p = px((yy*w+xx)*4);
+          if (Math.abs(p[0]-bg[0])+Math.abs(p[1]-bg[1])+Math.abs(p[2]-bg[2]) > 45){ rows[yy]++; cols[xx]++; } }
+        var y0=0, y1=hh-1, x0=0, x1=w-1;
+        while (y0<hh && rows[y0]<2) y0++; while (y1>y0 && rows[y1]<2) y1--;
+        while (x0<w && cols[x0]<2) x0++; while (x1>x0 && cols[x1]<2) x1--;
+        if (y1-y0 < hh*0.12 || x1-x0 < w*0.05 || ((y1-y0)>hh*0.97 && (x1-x0)>w*0.97)) return done(null);
+        done({x0:x0/w, x1:(x1+1)/w, y0:y0/hh, y1:(y1+1)/hh});
+      } catch(e){ done(null); }
+    };
+    im.src = u;
+  } catch(e){ done(null); }
+}
+function applyFit(img, b){
+  if (!b || !img.naturalWidth || !img.clientWidth) { img.style.transform = ""; return; }
+  var bw = img.clientWidth, bh = img.clientHeight, sc = Math.min(bw/img.naturalWidth, bh/img.naturalHeight), dw = img.naturalWidth*sc, dh = img.naturalHeight*sc;
+  var ww = (b.x1-b.x0)*dw, wh = (b.y1-b.y0)*dh;
+  var s = Math.min(FIT_H*bh/wh, FIT_W*bw/ww); s = Math.max(0.55, Math.min(2.6, s));
+  var tx = -s*((b.x0+b.x1)/2-0.5)*dw, ty = -s*((b.y0+b.y1)/2-0.5)*dh;
+  img.style.transform = "translate("+tx.toFixed(1)+"px,"+ty.toFixed(1)+"px) scale("+s.toFixed(3)+")";
+  img.setAttribute("data-fit", s.toFixed(2));
+}
+window.SDfit = function(img){ var u = img.currentSrc || img.src; measure(u, function(b){ if (img.isConnected) applyFit(img, b); }); };
+var fitT = null;
+window.addEventListener("resize", function(){ clearTimeout(fitT); fitT = setTimeout(function(){
+  [].forEach.call(document.querySelectorAll("img[data-fk]"), function(im){ var b = FIT[im.currentSrc || im.src]; if (b) applyFit(im, b); }); }, 150); });
 function vis(w){ return FAILED[key(w)] ? fallback(w,true) : photo(w); }
 function bigUrl(u){ return u.replace(/c_limit,w_640/,"c_limit,w_1400").replace("mh=600&mw=600","mh=1400&mw=1400").replace("hero.png?w=700","hero.png?w=1440").replace(/(cdn\/shop\/[^?]*\?[^"]*?)width=800/,"$1width=1600").replace("w=800,bg=gray","w=1600,bg=gray").replace("w=700","w=1400"); }
 
