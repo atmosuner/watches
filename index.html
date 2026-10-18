@@ -436,7 +436,7 @@ var W = [
   {b:"Straum", n:"Expedition", c:"Field / Pilot", p:[3000,3500], dial:"#6b7580", dn:"Gri", note:"Norveç markası. 38,2 mm Grade 5 titanyum kasa, La Joux-Perret G100 otomatik, 68 saat güç rezervi, 100 m. Fiyat 31.000-35.000 NOK, USD karşılığı kura göre değişir. Özellikler beyaz lume sayfasından, gri sürümün detaylarını doğrula."},
   {b:"Longines", n:"Legend Diver", c:"Diver", p:[3000,3800], dial:"#14161a", dn:"Siyah", note:"1959 mirasından, 42 mm, 300 m. İç dönen bezel ve iki taç koruması var. Silikon spiralli otomatik, yaklaşık 72 saat, dokulu siyah kadran."},
   {b:"Baume & Mercier", n:"Riviera", c:"Ofis spor-şık", p:[2500,3500], dial:"#2f5a4a", dn:"Yeşil", note:"39 mm, 10,21 mm, on iki kenarlı kasa, dumanlı yeşil safir kadran. Baumatic otomatik ve 120 saat güç rezervi. Not: resmi sayfada artık satışta görünmüyor olabilir.", sq:false, oct:true},
-  {b:"Longines", n:"Spirit Pilot", c:"Field / Pilot", p:[2500,3500], dial:"#1f3b66", dn:"Mavi", note:"39 mm çelik, 100 m, mat mavi kadran, silikon spiralli otomatik ve yaklaşık 72 saat."},
+  {b:"Longines", n:"Spirit Zulu Time", c:"Field / Pilot", p:[3300,3800], dial:"#14161a", dn:"Siyah", verify:true, note:"39 mm çelik kasa, 13,5 mm kalın, 47 mm lug-to-lug, 21 mm kayış. Longines L844.4 otomatik GMT (COSC), 72 saat güç rezervi, 100 m, siyah seramik çift yönlü 24 saat bezeli, çelik bilezik. Fiyat ABD'de yaklaşık 3.550 USD, Türkiye fiyatını bayiden doğrula."},
   {b:"Oris", n:"Divers Sixty-Five", c:"Diver", p:[2600,3000], dial:"#14161a", dn:"Siyah", note:"Retro diver, 60. yıl sürümü: 40 mm çelik kasa, siyah kadran, iri parlak rakamlar, çift bombeli safir cam. Oris 733, 41 saat, 100 m. Fiyat 2.250 CHF."},
   {b:"Oris", n:"Aquis Date", c:"Diver", p:[2300,2800], dial:"#2a6a8a", dn:"Turkuaz-mavi", note:"43,5 mm, 300 m, Oris 733 otomatik. Turkuaz-mavi kadran."},
   {b:"Rado", n:"Captain Cook", c:"Diver", p:[2300,3000], dial:"#1f5a3d", dn:"Yeşil", note:"42 mm, 12,3 mm, 300 m. Rado R763 ile 80 saat güç rezervi. 1962 Captain Cook'un yeniden yorumu, yeşil kadran, seramik ve çelik."},
@@ -516,7 +516,7 @@ var META = {
   "Straum Expedition":["Gri / gümüş", "Otomatik / Elle kurmalı", "Tarihli"],
   "Longines Legend Diver":["Siyah", "Otomatik / Elle kurmalı", "Tarihli"],
   "Baume & Mercier Riviera":["Yeşil", "Otomatik / Elle kurmalı", "Tarihli"],
-  "Longines Spirit Pilot":["Mavi", "Otomatik / Elle kurmalı", "Tarihli"],
+  "Longines Spirit Zulu Time":["Siyah", "Otomatik / Elle kurmalı", "GMT"],
   "Oris Divers Sixty-Five":["Siyah", "Otomatik / Elle kurmalı", "Tarihli"],
   "Oris Aquis Date":["Mavi", "Otomatik / Elle kurmalı", "Tarihli"],
   "Rado Captain Cook":["Yeşil", "Otomatik / Elle kurmalı", "Tarihli"],
@@ -599,7 +599,7 @@ var LINKS = {
  "Straum Expedition": "https://straum.co/products/expedition-titanium-gray?variant=53076682506551",
  "Longines Legend Diver": "https://www.longines.com/tr/p/watch-longines-legend-diver-l3-795-4-59-9",
  "Baume & Mercier Riviera": "https://www.baume-et-mercier.com/en/collections/riviera-men/watch-riviera-10770-central-second.html",
- "Longines Spirit Pilot": "https://www.longines.com/tr/p/watch-longines-spirit-pilot-l3-809-4-93-9",
+ "Longines Spirit Zulu Time": "https://teddybaldassarre.com/products/zulu-time-39mm-black",
  "Oris Divers Sixty-Five": "https://www.oris.ch/tr-TR/product/watch/divers/divers-sixty-five/01-733-7772-4034-Set",
  "Oris Aquis Date": "https://www.oris.ch/tr-TR/product/watch/aquis/aquis-date/01-733-7789-4187-Set",
  "Rado Captain Cook": "https://www.rado.com/tr_tr/captain-cook-automatic-r32105313.html",
@@ -660,7 +660,7 @@ var IMGS = {
   "Straum Expedition": "https://straum.co/cdn/shop/files/WATCH-EXPEDITION-CPL-02-TI5-TITANIUMGRAY-39-BRACELET-TI5-MAQR_e9e4e2e8-9fd9-4836-9697-a40849e1e2da.webp?v=1790859820&width=800",
   "Longines Legend Diver": "https://api.ecom.longines.com/media/catalog/product/w/a/watch-collection-longines-legend-diver-59-l3-795-4-59-9-1fd94b-hero.png?w=700",
   "Baume & Mercier Riviera": "https://www.baume-et-mercier.com/content/dam/rcq/bem/U_/K3/q5/9P/QY/aa/wc/m8/ID/f3/kg/U_K3q59PQYaawcm8IDf3kg.png.transform.bemproddetailshd.png",
-  "Longines Spirit Pilot": "https://api.ecom.longines.com/media/catalog/product/w/a/watch-collection-longines-spirit-pilot-l3-809-4-93-9-595c01-hero.png?w=700",
+  "Longines Spirit Zulu Time": "https://teddybaldassarre.com/cdn/shop/files/L3.802.4.53.6_SOL_clipped_rev_1.jpg?v=1685046208&width=800",
   "Oris Divers Sixty-Five": "https://oris.rokka.io/fe_vuepal_no_crop/variables-w-1024/-https://image.oris.ch/data/37105_0173377074354-0752045-OrisDiversSixty-Five_ds.png-/37105_0173377074354-0752045-OrisDiversSixty-Five_ds-v1.jpg",
   "Oris Aquis Date": "https://cdn.beymen.com/mnresize/505/704/productimages/k0l40se3_MP_3e111fc8-ce00-4a93-b00e-deadefc7c536_09061123042645980550511072042_080.jpg",
   "Rado Captain Cook": "https://www.rado.com/media/catalog/product/r/g/rgb_cat_captaincook_763_6105_3_031_4.png?im=AspectCrop=(1300,1300),allowExpansion,location=(0.5,0.5);Resize=(1300,1300),aspect=fill;Crop=(0,0,1300,1300),gravity=Center",
@@ -860,10 +860,10 @@ var ABOUT = {
   "Eğlenceli slotunun renkli seçeneği.",
   "Kategori adı kronograf olsa da bu bir dalış saati, slot 'eğlenceli' anlamında."
  ],
- "Longines Spirit Pilot": [
-  "Pilot saatlerinden esinlenen otomatik: mat mavi kadran, silikon spiralli mekanizma, yaklaşık 72 saat güç rezervi.",
-  "Field / Pilot slotunda mavi: Alpinist yeşil olduğu için buna mavi seçildi.",
-  "Çelik bilezik ya da deri kayışla çok yönlü."
+ "Longines Spirit Zulu Time": [
+  "Pilotların iki saat dilimini takip etmesi için tasarlanmış Zulu Time: siyah kumlanmış kadran, 24 saat bezeli ve ayarlanabilir GMT ibresi.",
+  "Field / Pilot slotunda siyah: Alpinist yeşil, Murph siyah olsa da bu GMT'li ve çelik bilezikli, daha seyahatçi bir seçenek.",
+  "13,5 mm kalınlık ve 47 mm lug-to-lug 17 cm bilekte sınırda. Almadan önce bilekte dene."
  ],
  "Longines HydroConquest": [
   "Çelik bilezikli, mavi güneş ışınlı kadranlı, 300 m su geçirmezlikli dalış saati.",
@@ -1152,15 +1152,15 @@ var TECH = {
   "lw": "22 mm",
   "l2l": 50.1
  },
- "Longines Spirit Pilot": {
+ "Longines Spirit Zulu Time": {
   "mat": "Paslanmaz çelik",
-  "dial": "Mat mavi",
-  "gl": "Safir, iki yüzde yansıma önleyici",
-  "str": "Kauçuk, tokalı",
-  "th": "11,5 mm",
-  "bz": "Sabit, çelik",
-  "lw": "20 mm",
-  "l2l": 47.2
+  "dial": "Siyah, mat kumlanmış, kabartma Arapça rakamlar",
+  "gl": "Bombeli safir, iki yüzde yansıma önleyici",
+  "str": "Çelik bilezik, çift güvenlikli katlamalı toka",
+  "th": "13,5 mm",
+  "bz": "Çift yönlü dönen, siyah seramik insert, 24 saat skalası",
+  "lw": "21 mm",
+  "l2l": 47
  },
  "Longines HydroConquest": {
   "mat": "Çelik ve seramik",
@@ -1546,7 +1546,7 @@ var SPEC = {
   "Straum Expedition":{dia:"38,2 mm",wr:"100 m",mov:"La Joux-Perret G100 otomatik",pr:"68 saat"},
   "Longines Legend Diver":{dia:"42 mm",wr:"300 m",mov:"Otomatik, silikon spiral",pr:"72 saat"},
   "Baume & Mercier Riviera":{dia:"39 mm",th:"10,21 mm",wr:"100 m",mov:"Baumatic otomatik",pr:"120 saat"},
-  "Longines Spirit Pilot":{dia:"39 mm",wr:"100 m",mov:"Otomatik, silikon spiral",pr:"72 saat"},
+  "Longines Spirit Zulu Time":{dia:"39 mm",wr:"100 m",mov:"Longines L844.4 otomatik GMT (COSC)",pr:"72 saat"},
   "Oris Divers Sixty-Five":{dia:"40 mm",wr:"100 m",mov:"Oris 733 otomatik",pr:"41 saat"},
   "Oris Aquis Date":{dia:"43,5 mm",wr:"300 m",mov:"Oris 733 otomatik",pr:"41 saat"},
   "Rado Captain Cook":{dia:"42 mm",th:"12,3 mm",wr:"300 m",mov:"Rado R763 otomatik",pr:"80 saat"},
