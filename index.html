@@ -430,7 +430,7 @@ var W = [
   {b:"Omega", n:"Seamaster 300M", c:"Diver", p:[5500,6500], dial:"#5a3a22", dn:"Kahverengi (titanyum kasa)", verify:true, note:"Omega'nın diver temsilcisi. 42 mm Grade 2 titanyum kasa, titanyum mesh bilezik, kahverengi kadran ve tropik alüminyum bezel. Referans 210.90.42.20.01.001. Omega sayfasında fiyat görünmüyor, steel/mesh model 8.600 CHF olduğu için bu kasa muhtemelen kartta yazandan pahalı, bayiden doğrula."},
   {b:"TAG Heuer", n:"Carrera Chronograph", c:"Smart casual", p:[5500,7500], dial:"#e8e6df", dn:"Beyaz (panda)", note:"39 mm çelik kronograf, TH20-00 ile 80 saat güç rezervi, tersine tricompax düzen."},
   {b:"IWC", n:"Pilot's Watch Mark XX", c:"Field / Pilot", p:[5000,6500], dial:"#111314", dn:"Siyah", note:"40 mm, 10,8 mm kalın, IWC 32111 otomatik ve 120 saat güç rezervi. Sade, okunaklı pilot saati."},
-  {b:"Tudor", n:"Black Bay GMT", c:"GMT / Seyahat", p:[4500,5500], dial:"#101214", dn:"Siyah, bezel kırmızı-mavi", bezel:"#b32a30", note:"41 mm çelik, 200 m, COSC sertifikalı MT5652 ve 70 saat. Rolex GMT'ye ulaşılabilir alternatif."},
+  {b:"Tudor", n:"Black Bay One 41", c:"Diver", p:[4800,5200], dial:"#3a3d40", dn:"Antrasit", verify:true, note:"41 mm çelik kasa, 12,2 mm kalın, 22 mm kayış. Tudor MT5601 (COSC) otomatik, yaklaşık 70 saat güç rezervi, 100 m, düz safir cam, sade çelik bezel, çelik bilezik. Antrasit kadran. Tudor ABD fiyatı 4.975 USD, Türkiye fiyatını bayiden doğrula."},
   {b:"Tudor", n:"Ranger", c:"Field / Pilot", p:[3500,4000], dial:"#ece6d6", dn:"Dune White (siyah da var)", note:"36 mm, 11 mm, 100 m, COSC MT5400 ve 70 saat. Resmi sayfadaki 79930-0007 bej (Dune) kadranlı, 17 cm bileğe iyi uyar."},
   {b:"Bell & Ross", n:"BR 03-92 Steel", c:"Field / Pilot", p:[3500,4500], dial:"#14161a", dn:"Siyah", sq:true, note:"42 mm kare çelik kasa, BR-CAL.302 otomatik, 100 m, siyah kadran. Kokpit göstergesi estetiği."},
   {b:"Straum", n:"Expedition", c:"Field / Pilot", p:[3000,3500], dial:"#6b7580", dn:"Gri", note:"Norveç markası. 38,2 mm Grade 5 titanyum kasa, La Joux-Perret G100 otomatik, 68 saat güç rezervi, 100 m. Fiyat 31.000-35.000 NOK, USD karşılığı kura göre değişir. Özellikler beyaz lume sayfasından, gri sürümün detaylarını doğrula."},
@@ -510,7 +510,7 @@ var META = {
   "Omega Seamaster 300M":["Diğer", "Otomatik / Elle kurmalı", "Tarihli"],
   "TAG Heuer Carrera Chronograph":["Beyaz / krem", "Otomatik / Elle kurmalı", "Kronograf"],
   "IWC Pilot's Watch Mark XX":["Siyah", "Otomatik / Elle kurmalı", "Tarihli"],
-  "Tudor Black Bay GMT":["Siyah", "Otomatik / Elle kurmalı", "GMT"],
+  "Tudor Black Bay One 41":["Gri / gümüş", "Otomatik / Elle kurmalı", "Sade"],
   "Tudor Ranger":["Beyaz / krem", "Otomatik / Elle kurmalı", "Sade"],
   "Bell & Ross BR 03-92 Steel":["Siyah", "Otomatik / Elle kurmalı", "Tarihli"],
   "Straum Expedition":["Gri / gümüş", "Otomatik / Elle kurmalı", "Tarihli"],
@@ -559,7 +559,7 @@ var IMGQ = {
   "Unimatic Modello Uno U1-TSP":"Unimatic Modello Uno U1-TSP clay red dial",
   "Rolex Submariner":"Rolex Submariner black dial green bezel",
   "Rolex GMT-Master II":"Rolex GMT-Master II black dial blue black bezel",
-  "Tudor Black Bay GMT":"Tudor Black Bay GMT black dial red blue bezel",
+  "Tudor Black Bay One 41":"Tudor Black Bay One 41 anthracite dial",
   "Doxa Sub 200":"Doxa Sub 200 Professional orange dial",
   "Straum Expedition":"Straum Expedition Titanium Gray",
   "Oris Artelier Year of the Horse LE":"Oris Artelier Calibre 113 Year of the Horse red dial",
@@ -593,7 +593,7 @@ var LINKS = {
  "Omega Seamaster 300M": "https://www.omegawatches.com/watch-omega-seamaster-diver-300m-co-axial-master-chronometer-42-mm-21090422001001",
  "TAG Heuer Carrera Chronograph": "https://www.tagheuer.com/int/en/timepieces/collections/tag-heuer-carrera/39-mm-th20-00/CBS2210.FC6534.html",
  "IWC Pilot's Watch Mark XX": "https://www.iwc.com/ww-en/watches/pilot-watches/iw328201-pilots-watch-mark-xx",
- "Tudor Black Bay GMT": "https://www.tudorwatch.com/en/watches/black-bay-gmt/m79830rb-0010",
+ "Tudor Black Bay One 41": "https://www.tudorwatch.com/en/watches/black-bay-one/m79680-0001",
  "Tudor Ranger": "https://www.tudorwatch.com/en/watches/ranger/m79930-0007",
  "Bell & Ross BR 03-92 Steel": "https://bellross.com/en/products/br-03-92-steel-black",
  "Straum Expedition": "https://straum.co/products/expedition-titanium-gray?variant=53076682506551",
@@ -654,7 +654,7 @@ var IMGS = {
   "TAG Heuer Monaco Chronograph": "https://www.tagheuer.com/on/demandware.static/-/Sites-tagheuer-master/default/dweea02adb/TAG_Heuer_Monaco/CDW2181.FC8360/CDW2181.FC8360_Soldier.png?impolicy=TrimRatioResize&width=752&ratioHeight=5&ratioWidth=4&expansion=true",
   "TAG Heuer Carrera Chronograph": "https://www.benbridge.com/dw/image/v2/ABAW_PRD/on/demandware.static/-/Sites-bbj-master-catalog/default/dwe47d231f/images/60008703_1.jpg?sw=800&sh=800",
   "IWC Pilot's Watch Mark XX": "https://img.iwc.com/product-slideshow-2xl-1/84051a252a4bdf55e73dfd901165f5e12199ff36.jpg",
-  "Tudor Black Bay GMT": "https://cdn.ugursaat.com.tr/images/products/tudor-black-bay-gmt-6-01685621617.jpg",
+  "Tudor Black Bay One 41": "https://media.tudorwatch.com/image/upload/q_auto/f_auto/t_tdr-cover-watch/c_limit,w_640/v1/catalogue/0yi5ee8b69yh3/upright-cb-centred-with-drop-shadow/tudor-m79680-0001",
   "Tudor Ranger": "https://cdn.ugursaat.com.tr/images/products/tudor-ranger-m79950-0008-01763543198.webp",
   "Bell & Ross BR 03-92 Steel": "https://bellross.com/cdn/shop/files/BR03-92-Steel-2016.png?v=1761060812&width=925",
   "Straum Expedition": "https://straum.co/cdn/shop/files/WATCH-EXPEDITION-CPL-02-TI5-TITANIUMGRAY-39-BRACELET-TI5-MAQR_e9e4e2e8-9fd9-4836-9697-a40849e1e2da.webp?v=1790859820&width=800",
@@ -795,10 +795,10 @@ var ABOUT = {
   "Field / Pilot slotunun şık, okunaklı adayı.",
   ""
  ],
- "Tudor Black Bay GMT": [
-  "Rolex GMT-Master II'ye ulaşılabilir alternatif: çelik kasa, bordo-mavi 24 saat bezeli, COSC sertifikalı MT5652.",
-  "GMT / Seyahat slotunun daha uygun fiyatlı seçeneği.",
-  "Kart siyah kadranı gösteriyor, link opalin beyaz-gri sürüme gidiyor."
+ "Tudor Black Bay One 41": [
+  "Tudor'un 1954 dalgıç saatinden esinlenen Black Bay One: sade antrasit kadran, düz cam ve çelik bilezik, sadece saat dakika saniye.",
+  "Diver slotunda gri/antrasit kadranlı, Tudor imzalı klasik seçenek. GMT'li Black Bay yerine daha sade, daha ince.",
+  "ABD fiyatı 4.975 USD, bayide fark olabilir. Lug-to-lug kaynakta yok, 17 cm bilek uyumu için bilekte dene."
  ],
  "Tudor Ranger": [
   "Tudor'un field saati: satenize çelik kasa, 36 mm, bej (Dune) kadran, COSC sertifikalı MT5400.",
@@ -1116,14 +1116,14 @@ var TECH = {
   "bz": "Sabit, yüksek cilalı çelik",
   "l2l": 49.2
  },
- "Tudor Black Bay GMT": {
-  "mat": "Çelik",
-  "dial": "Opalin, bombeli, galvanik",
-  "bz": "Çelik, çift yönlü, 24 saat alüminyum disk (bordo-mavi)",
-  "gl": "Bombeli safir",
-  "str": "Perçinli çelik bilezik, katlamalı toka",
-  "lw": "22 mm",
-  "l2l": 50.2
+ "Tudor Black Bay One 41": {
+  "mat": "Çelik, cilalı ve satine",
+  "dial": "Antrasit",
+  "bz": "Çelik, sabit, cilalı ve satine",
+  "gl": "Düz safir",
+  "str": "Çelik bilezik (5 mafsallı), T-fit toka",
+  "th": "12,2 mm",
+  "lw": "22 mm"
  },
  "Tudor Ranger": {
   "mat": "Çelik",
@@ -1540,7 +1540,7 @@ var SPEC = {
   "Omega Seamaster 300M":{dia:"42 mm",l2l:49.6,th:"13,48 mm",wr:"300 m",mov:"Omega 8806 Co-Axial Master Chronometer",pr:"55 saat"},
   "TAG Heuer Carrera Chronograph":{dia:"39 mm",th:"13,9 mm",wr:"100 m",mov:"TH20-00 otomatik kronograf",pr:"80 saat"},
   "IWC Pilot's Watch Mark XX":{dia:"40 mm",th:"10,8 mm",wr:"100 m",mov:"IWC 32111 otomatik",pr:"120 saat"},
-  "Tudor Black Bay GMT":{dia:"41 mm",th:"14,6 mm",wr:"200 m",mov:"MT5652 (COSC) otomatik GMT",pr:"70 saat"},
+  "Tudor Black Bay One 41":{dia:"41 mm",wr:"100 m",mov:"Tudor MT5601 (COSC) otomatik",pr:"70 saat"},
   "Tudor Ranger":{dia:"36 mm",th:"11 mm",wr:"100 m",mov:"MT5400 (COSC) otomatik",pr:"70 saat"},
   "Bell & Ross BR 03-92 Steel":{dia:"42 mm",wr:"100 m",mov:"BR-CAL.302 otomatik"},
   "Straum Expedition":{dia:"38,2 mm",wr:"100 m",mov:"La Joux-Perret G100 otomatik",pr:"68 saat"},
