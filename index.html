@@ -427,7 +427,7 @@ var W = [
   {b:"Panerai", n:"Radiomir", c:"Smart casual", p:[6000,9000], dial:"#14161a", dn:"Siyah (güneş ışınlı)", verify:true, note:"40 mm cilalı çelik kasa, güneş ışınlı siyah kadran, Arap rakamlı, saat 3'te tarih ve 9'da küçük saniye. P.900 otomatik, 3 gün güç rezervi, 50 m. Fiyat doğrulanmadı, bayiden kontrol et.", cush:true},
   {b:"TAG Heuer", n:"Monaco Chronograph", c:"Eğlenceli / Kronograf", p:[6000,8500], dial:"#1d3f8f", dn:"Mavi", note:"39 mm kare Grade 5 titanyum kasa, 13,9 mm, mavi opalin kadran, gümüş sayaçlar ve kırmızı vurgular. Kendi TH20-11 otomatiği, 80 saat, 100 m, delikli siyah deri kayış. 1969 Heuer Monaco'nun (Steve McQueen, Le Mans) yeniden yorumu.", sq:true},
   {b:"Omega", n:"Seamaster 300M", c:"Diver", p:[5500,6500], dial:"#5a3a22", dn:"Kahverengi (titanyum kasa)", verify:true, note:"Omega'nın diver temsilcisi. 42 mm Grade 2 titanyum kasa, titanyum mesh bilezik, kahverengi kadran ve tropik alüminyum bezel. Referans 210.90.42.20.01.001. Omega sayfasında fiyat görünmüyor, steel/mesh model 8.600 CHF olduğu için bu kasa muhtemelen kartta yazandan pahalı, bayiden doğrula."},
-  {b:"TAG Heuer", n:"Carrera Chronograph", c:"Smart casual", p:[5500,7500], dial:"#e8e6df", dn:"Beyaz (panda)", note:"39 mm çelik kronograf, TH20-00 ile 80 saat güç rezervi, tersine tricompax düzen."},
+  {b:"TAG Heuer", n:"Carrera Day-Date 41", c:"Smart casual", p:[3500,4200], dial:"#2f4d7e", dn:"Mavi (güneş ışınlı)", verify:true, note:"41 mm çelik kasa, 12,7 mm kalın, 21,5 mm kayış. TAG Heuer TH31-02 otomatik, 80 saat güç rezervi, 100 m, gün ve tarih göstergeli. Güneş ışınlı mavi kadran, üç sıra H şeklinde çelik bilezik. Resmî sayfada fiyat yok, aralık tahmindir, bayiden doğrula."},
   {b:"IWC", n:"Pilot's Watch Mark XX", c:"Field / Pilot", p:[5000,6500], dial:"#111314", dn:"Siyah", note:"40 mm, 10,8 mm kalın, IWC 32111 otomatik ve 120 saat güç rezervi. Sade, okunaklı pilot saati."},
   {b:"Tudor", n:"Black Bay One 41", c:"Diver", p:[4800,5200], dial:"#3a3d40", dn:"Antrasit", verify:true, note:"41 mm çelik kasa, 12,2 mm kalın, 22 mm kayış. Tudor MT5601 (COSC) otomatik, yaklaşık 70 saat güç rezervi, 100 m, düz safir cam, sade çelik bezel, çelik bilezik. Antrasit kadran. Tudor ABD fiyatı 4.975 USD, Türkiye fiyatını bayiden doğrula."},
   {b:"Tudor", n:"Ranger", c:"Field / Pilot", p:[3500,4000], dial:"#ece6d6", dn:"Dune White (siyah da var)", note:"36 mm, 11 mm, 100 m, COSC MT5400 ve 70 saat. Resmi sayfadaki 79930-0007 bej (Dune) kadranlı, 17 cm bileğe iyi uyar."},
@@ -506,7 +506,7 @@ var META = {
   "Panerai Radiomir":["Siyah", "Otomatik / Elle kurmalı", "Tarihli"],
   "TAG Heuer Monaco Chronograph":["Mavi", "Otomatik / Elle kurmalı", "Kronograf"],
   "Omega Seamaster 300M":["Diğer", "Otomatik / Elle kurmalı", "Tarihli"],
-  "TAG Heuer Carrera Chronograph":["Beyaz / krem", "Otomatik / Elle kurmalı", "Kronograf"],
+  "TAG Heuer Carrera Day-Date 41":["Mavi", "Otomatik / Elle kurmalı", "Tarihli"],
   "IWC Pilot's Watch Mark XX":["Siyah", "Otomatik / Elle kurmalı", "Tarihli"],
   "Tudor Black Bay One 41":["Gri / gümüş", "Otomatik / Elle kurmalı", "Sade"],
   "Tudor Ranger":["Beyaz / krem", "Otomatik / Elle kurmalı", "Sade"],
@@ -588,7 +588,7 @@ var LINKS = {
  "Panerai Radiomir": "https://www.panerai.com/en/collections/watch-collection/radiomir/pam01572-radiomir.html",
  "TAG Heuer Monaco Chronograph": "https://www.tagheuer.com/int/en/timepieces/collections/tag-heuer-monaco/39-mm-th20-11/CDW2181.FC8360.html",
  "Omega Seamaster 300M": "https://www.omegawatches.com/watch-omega-seamaster-diver-300m-co-axial-master-chronometer-42-mm-21090422001001",
- "TAG Heuer Carrera Chronograph": "https://www.tagheuer.com/int/en/timepieces/collections/tag-heuer-carrera/39-mm-th20-00/CBS2210.FC6534.html",
+ "TAG Heuer Carrera Day-Date 41": "https://www.tagheuer.com/tr/en/timepieces/collections/tag-heuer-carrera/41-mm-th31-02/WDA2112.BA0043.html",
  "IWC Pilot's Watch Mark XX": "https://www.iwc.com/ww-en/watches/pilot-watches/iw328201-pilots-watch-mark-xx",
  "Tudor Black Bay One 41": "https://www.tudorwatch.com/en/watches/black-bay-one/m79680-0001",
  "Tudor Ranger": "https://www.tudorwatch.com/en/watches/ranger/m79930-0007",
@@ -648,7 +648,7 @@ var IMGS = {
   "Omega Seamaster Aqua Terra": "https://www.omegawatches.com/media/catalog/product/o/m/omega-seamaster-aqua-terra-150m-co-axial-master-chronometer-41-mm-22032412103001-d8a37b.png?w=700",
   "Panerai Radiomir": "https://www.panerai.com/content/dam/rcq/pan/of/S8/l8/U7/TC/6x/da/HI/Ym/ks/ug/ofS8l8U7TC6xdaHIYmksug.png",
   "TAG Heuer Monaco Chronograph": "https://www.tagheuer.com/on/demandware.static/-/Sites-tagheuer-master/default/dweea02adb/TAG_Heuer_Monaco/CDW2181.FC8360/CDW2181.FC8360_Soldier.png?impolicy=TrimRatioResize&width=752&ratioHeight=5&ratioWidth=4&expansion=true",
-  "TAG Heuer Carrera Chronograph": "https://www.benbridge.com/dw/image/v2/ABAW_PRD/on/demandware.static/-/Sites-bbj-master-catalog/default/dwe47d231f/images/60008703_1.jpg?sw=800&sh=800",
+  "TAG Heuer Carrera Day-Date 41": "https://www.tagheuer.com/on/demandware.static/-/Sites-tagheuer-master/default/dw549747e6/TAG_Heuer_Carrera/WDA2112.BA0043/WDA2112.BA0043_Soldier.png",
   "IWC Pilot's Watch Mark XX": "https://img.iwc.com/product-slideshow-2xl-1/84051a252a4bdf55e73dfd901165f5e12199ff36.jpg",
   "Tudor Black Bay One 41": "https://media.tudorwatch.com/image/upload/q_auto/f_auto/t_tdr-cover-watch/c_limit,w_640/v1/catalogue/0yi5ee8b69yh3/upright-cb-centred-with-drop-shadow/tudor-m79680-0001",
   "Tudor Ranger": "https://cdn.ugursaat.com.tr/images/products/tudor-ranger-m79950-0008-01763543198.webp",
@@ -776,10 +776,10 @@ var ABOUT = {
   "Diver slotunda koleksiyona kahverengi ve Omega ekler.",
   "49,6 mm lug-to-lug 17 cm bilek için büyük. Fiyat aralığı düşük olabilir, doğrula."
  ],
- "TAG Heuer Carrera Chronograph": [
-  "Heuer 02'nin evrimi TH20-00 mekanizmalı, camlı kasa (glassbox) Carrera kronograf; kartta beyaz panda kadran seçili.",
-  "Smart casual slotunda Monaco'dan daha sakin günlük kronograf.",
-  "Link siyah kadranlı sürüme gidiyor, beyaz panda referansı sonra bağlanacak."
+ "TAG Heuer Carrera Day-Date 41": [
+  "Carrera'nın kronografsız, gün-tarihli hali: güneş ışınlı mavi kadran, 41 mm çelik kasa, 80 saatlik TH31-02 manufaktür mekanizma ve H şeklinde çelik bilezik.",
+  "Smart casual slotunda mavi kadranlı, çok yönlü bir TAG Heuer. Ofiste de hafta sonu da gider.",
+  "12,7 mm kalınlık ve 41 mm çap 17 cm bilekte iri durabilir, lug-to-lug sayfada yok, almadan önce bilekte dene. Fiyat sayfada belirtilmemiş."
  ],
  "IWC Pilot's Watch Mark XX": [
   "Pilot saatinin klasiği: sade siyah kadran, tarih, 120 saat güç rezervi veren IWC 32111.",
@@ -1476,13 +1476,14 @@ var TECH = {
   "lw": "19 mm",
   "l2l": 43
  },
- "TAG Heuer Carrera Chronograph": {
-  "mat": "Çelik (fırçalı/cilalı)",
-  "dial": "Siyah, dairesel fırçalı",
-  "bz": "Yok (bezelsiz)",
-  "gl": "Bombeli safir, safir arka kapak",
-  "str": "Delikli siyah deri, çelik katlamalı toka",
-  "lw": "20 mm"
+ "TAG Heuer Carrera Day-Date 41": {
+  "mat": "Çelik, ince fırçalı ve cilalı",
+  "dial": "Mavi, güneş ışınlı fırçalı, uygulamalı indeksler",
+  "bz": "Sabit, çelik",
+  "gl": "Safir (şeffaf safir kasa arkası)",
+  "str": "Çelik, üç sıra H şeklinde bilezik, çift güvenlikli katlamalı toka",
+  "th": "12,7 mm",
+  "lw": "21,5 mm"
  },
  "Longines Conquest Heritage": {
   "mat": "Paslanmaz çelik",
@@ -1518,7 +1519,7 @@ var SPEC = {
   "Panerai Radiomir":{dia:"40 mm",wr:"50 m",mov:"P.900 otomatik, küçük saniye ve tarih",pr:"3 gün"},
   "TAG Heuer Monaco Chronograph":{dia:"39 mm",th:"13,9 mm",wr:"100 m",mov:"TH20-11 otomatik kronograf",pr:"80 saat"},
   "Omega Seamaster 300M":{dia:"42 mm",l2l:49.6,th:"13,48 mm",wr:"300 m",mov:"Omega 8806 Co-Axial Master Chronometer",pr:"55 saat"},
-  "TAG Heuer Carrera Chronograph":{dia:"39 mm",th:"13,9 mm",wr:"100 m",mov:"TH20-00 otomatik kronograf",pr:"80 saat"},
+  "TAG Heuer Carrera Day-Date 41":{dia:"41 mm",wr:"100 m",mov:"TAG Heuer TH31-02 otomatik, gün-tarih",pr:"80 saat"},
   "IWC Pilot's Watch Mark XX":{dia:"40 mm",th:"10,8 mm",wr:"100 m",mov:"IWC 32111 otomatik",pr:"120 saat"},
   "Tudor Black Bay One 41":{dia:"41 mm",wr:"100 m",mov:"Tudor MT5601 (COSC) otomatik",pr:"70 saat"},
   "Tudor Ranger":{dia:"36 mm",th:"11 mm",wr:"100 m",mov:"MT5400 (COSC) otomatik",pr:"70 saat"},
