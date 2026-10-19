@@ -2007,45 +2007,42 @@
    "zoom": 1.63
   },
   {
-   "b": "Seiko",
-   "n": "5 Sports GMT SSK059",
-   "c": "GMT / Seyahat",
+   "b": "Brew",
+   "n": "Metric Retro Black",
+   "c": "Eğlenceli / Kronograf",
    "p": [
-    520,
-    560
+    475,
+    475
    ],
-   "dial": "#efede8",
-   "dn": "Beyaz (Overwhite), turuncu vurgulu",
-   "note": "39,4 mm çelik kasa, 13,6 mm kalın, 47,9 mm lug-to-lug (17 cm bilek için sınırda). Otomatik 4R34 caller GMT, saniye durdurma ve elle kurma var, 100 m, çelik bilezik. Fiyat 410 GBP, USD karşılığı kura göre değişir. Aynı serinin SSK023 ve SSK025 modelleri daha küçük.",
-   "color": "Beyaz / krem",
-   "mov": "Otomatik / Elle kurmalı",
-   "type": "GMT",
-   "link": "https://www.seikowatches.com/tr-tr/products/5sports/ssk059",
-   "img": "https://www.seikowatches.com/tr-tr/-/media/Images/Product--Image/All/Seiko/2026/01/26/21/07/SSK059K1/SSK059K1_ima_3_2026.png?mh=600&mw=600",
+   "dial": "#16161a",
+   "dn": "Siyah, çok renkli girintili alt kadranlar",
+   "note": "36 mm çelik kasa, 10,75 mm kalın, 41,5 mm lug-to-lug (sayfada 36 x 41,5 mm yazıyor, etiketsiz), 19,85 mm kayış. VK68 meca-quartz kronograf: zaman quartz, kronograf mekanik modül. Safir cam, 50 m, çelik bilezik. Fiyat 475 USD (sayfada Sold Out/stokta çelişkili). Espresso çekimi sürelemek için tasarlanmış retro 70'ler kronografı.",
+   "color": "Siyah",
+   "mov": "Quartz",
+   "type": "Kronograf",
+   "link": "https://www.brew-watches.com/products/brew-metric-retro-black",
+   "img": "https://www.brew-watches.com/cdn/shop/files/BREWMETRICFRONTRETRODIAL-SD_2048x2048.jpg?v=1700672505",
    "about": [
-    "Overwhite kadran, turuncu vurgular, caller GMT ve saniye durdurma.",
-    "GMT / Seyahat slotunun en uygun fiyatlı seçeneği.",
-    "47,9 mm lug-to-lug 17 cm bilekte sınırda."
+    "1970'ler esintili kompakt kronograf; girintili alt kadranlar ve fırçalı/cilalı çelik karışımı endüstriyel görünüm.",
+    "36 mm ve 41,5 mm lug-to-lug ile 17 cm bilekte çok rahat oturur; günlük ve şık kullanıma uygun.",
+    "Hibrit VK68 meca-quartz: quartz doğruluğu, mekanik kronograf hissi. Red Dot Design Concept 2026 ödüllü."
    ],
    "tech": {
-    "mat": "Paslanmaz çelik",
-    "gl": "Kavisli hardlex",
-    "str": "Üçlü katlamalı toka (buton açmalı)",
-    "lw": "20 mm",
-    "dial": "Mat, ince dokulu (grained)",
-    "bz": "Sabit, 24 saat skalalı, fırçalı çelik"
+    "mat": "316L paslanmaz çelik",
+    "dial": "Siyah, çok renkli, girintili alt kadranlar, retro",
+    "gl": "Safir",
+    "str": "Çelik bilezik, fırçalı/cilalı, mikro ayarlı katlamalı toka",
+    "lw": "19,85 mm",
+    "th": "10,75 mm",
+    "l2l": "41,5 mm"
    },
    "spec": {
-    "dia": "39,4 mm",
-    "l2l": 47.9,
-    "th": "13,6 mm",
-    "wr": "100 m",
-    "mov": "Seiko 4R34 otomatik, elle kurulabilir, caller GMT",
-    "pr": "41 saat"
-   },
-   "zy": 6.8,
-   "zx": 0.3,
-   "zoom": 2.08
+    "dia": "36 mm",
+    "l2l": 41.5,
+    "th": "10,75 mm",
+    "wr": "50 m",
+    "mov": "VK68 meca-quartz kronograf"
+   }
   },
   {
    "b": "AV86",
