@@ -50,6 +50,7 @@ textarea{min-height:64px;resize:vertical}
  repeating-linear-gradient(to right,transparent 0,transparent calc(12.5% - 1px),rgba(0,0,0,.22) calc(12.5% - 1px),rgba(0,0,0,.22) 12.5%),
  repeating-linear-gradient(to bottom,transparent 0,transparent calc(12.5% - 1px),rgba(0,0,0,.22) calc(12.5% - 1px),rgba(0,0,0,.22) 12.5%)}
 .pbox.nogrid::after{display:none}
+.pbox{cursor:grab;touch-action:none;user-select:none}.pbox.drag{cursor:grabbing}.pbox img{-webkit-user-drag:none;pointer-events:none}
 .prev img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
 .zc{display:grid;grid-template-columns:70px 1fr 56px;gap:4px 8px;align-items:center;font-size:12px;color:var(--mute);margin-bottom:6px}
 .zc input[type=number]{padding:3px 4px}
@@ -181,7 +182,7 @@ function renderForm(){
   h += '<fieldset><legend>Link ve fotoğraf</legend><div class="g">' +
     field("Ürün linki", "link", w.link, {type:"url", cls:"wf"}) + field("Fotoğraf linki", "img", w.img, {type:"url", cls:"wf"}) +
     field("Foto arama sorgusu (isteğe bağlı)", "imgq", w.imgq, {cls:"wf"}) + '</div>' +
-    '<div class="prev"><div class="pbox"><img id="pv" alt="" referrerpolicy="no-referrer" src="' + esc(w.img) + '"></div><div style="flex:1;min-width:200px"><div class="zc"><span>Yakınlık</span><input type="range" min="0.6" max="3" step="0.05" data-f="zoom" value="' + (w.zoom || 1) + '"><input type="number" min="0.6" max="3" step="0.05" data-f="zoomn" value="' + (w.zoom || 1) + '"><span>Yatay</span><input type="range" min="-40" max="40" step="1" data-f="zx" value="' + (w.zx || 0) + '"><input type="number" step="1" data-f="zxn" value="' + (w.zx || 0) + '"><span>Dikey</span><input type="range" min="-40" max="40" step="1" data-f="zy" value="' + (w.zy || 0) + '"><input type="number" step="1" data-f="zyn" value="' + (w.zy || 0) + '"></div><div class="info" id="pvi">' + (w.img ? "" : "Fotoğraf linki boş.") + '</div><button type="button" id="bZ0" style="margin-top:6px">Sıfırla</button> <button type="button" id="bGr" style="margin-top:6px">Kareyi aç/kapat</button></div></div>' +
+    '<div class="prev"><div class="pbox"><img id="pv" alt="" referrerpolicy="no-referrer" src="' + esc(w.img) + '"></div><div style="flex:1;min-width:200px"><div class="zc"><span title="Önizlemede sürükle = kaydır, tekerlek = yakınlaştır">Yakınlık</span><input type="range" min="0.6" max="3" step="0.05" data-f="zoom" value="' + (w.zoom || 1) + '"><input type="number" min="0.6" max="3" step="0.05" data-f="zoomn" value="' + (w.zoom || 1) + '"><span>Yatay</span><input type="range" min="-40" max="40" step="1" data-f="zx" value="' + (w.zx || 0) + '"><input type="number" step="1" data-f="zxn" value="' + (w.zx || 0) + '"><span>Dikey</span><input type="range" min="-40" max="40" step="1" data-f="zy" value="' + (w.zy || 0) + '"><input type="number" step="1" data-f="zyn" value="' + (w.zy || 0) + '"></div><div class="info" id="pvi">' + (w.img ? "" : "Fotoğraf linki boş.") + '</div><div class="info" style="margin-top:4px">Önizlemeyi fareyle sürükle, tekerlekle yakınlaştır.</div><button type="button" id="bZ0" style="margin-top:6px">Sıfırla</button> <button type="button" id="bGr" style="margin-top:6px">Kareyi aç/kapat</button></div></div>' +
     (w.link ? '<p style="margin:8px 0 0"><a href="' + esc(w.link) + '" target="_blank" rel="noopener" style="color:var(--acc)">Ürün sayfasını aç ↗</a></p>' : "") + '</fieldset>';
   h += '<fieldset><legend>Hakkında (3 paragraf)</legend><div class="g">' + [0,1,2].map(function(i){ return '<label class="wf"><span class="h">' + (i + 1) + '</span><textarea data-f="about' + i + '">' + esc(a[i] || "") + '</textarea></label>'; }).join("") + '</div></fieldset>';
   h += '<fieldset><legend>Teknik tablo</legend><div class="g">' + TECHF.map(function(x){ return field(x[1], "t_" + x[0], t[x[0]], {cls: (x[0] === "str" || x[0] === "dial" || x[0] === "mat") ? "w2" : ""}); }).join("") + '</div></fieldset>';
@@ -190,6 +191,35 @@ function renderForm(){
   var pv = $("pv"); if (pv) { pv.onerror = function(){ $("pvi").textContent = "Fotoğraf yüklenemedi."; }; applyZoom(w); try { if (localStorage.getItem("sdAdminGrid") === "0") document.querySelector(".pbox").classList.add("nogrid"); } catch(x){} pv.onload = function(){ $("pvi").textContent = pv.naturalWidth + " × " + pv.naturalHeight + " px"; }; }
 }
 function applyZoom(w){ var pv = $("pv"); if (pv) pv.style.transform = "translate(" + (w.zx || 0) + "%," + (w.zy || 0) + "%) scale(" + (w.zoom || 1) + ")"; }
+function setZ(w, kk, nv){
+  nv = kk === "zoom" ? Math.min(3, Math.max(0.6, Math.round(nv * 100) / 100)) : Math.min(40, Math.max(-40, Math.round(nv * 10) / 10));
+  if ((kk === "zoom" && nv === 1) || (kk !== "zoom" && nv === 0)) delete w[kk]; else w[kk] = nv;
+  var r = document.querySelector('[data-f="' + kk + '"]'), n = document.querySelector('[data-f="' + kk + 'n"]'); if (r) r.value = nv; if (n) n.value = nv;
+}
+function zoomDone(){ markDirty(changedKeys().length > 0); renderListKeepScroll(); status(changedKeys().length + " değişiklik, kaydedilmedi.", "warn"); }
+(function(){
+  var drag = null;
+  document.addEventListener("pointerdown", function(e){
+    var pb = e.target.closest && e.target.closest(".pbox"); if (!pb || sel < 0) return;
+    var w = db.watches[sel], im = pb.querySelector("img"); if (!im) return;
+    drag = {x:e.clientX, y:e.clientY, zx:w.zx || 0, zy:w.zy || 0, W:im.clientWidth || 1, H:im.clientHeight || 1, pb:pb};
+    pb.classList.add("drag"); try { pb.setPointerCapture(e.pointerId); } catch(x){} e.preventDefault();
+  });
+  document.addEventListener("pointermove", function(e){
+    if (!drag) return; var w = db.watches[sel];
+    setZ(w, "zx", drag.zx + (e.clientX - drag.x) / drag.W * 100);
+    setZ(w, "zy", drag.zy + (e.clientY - drag.y) / drag.H * 100);
+    applyZoom(w);
+  });
+  function end(){ if (!drag) return; drag.pb.classList.remove("drag"); drag = null; zoomDone(); }
+  document.addEventListener("pointerup", end); document.addEventListener("pointercancel", end);
+  document.addEventListener("wheel", function(e){
+    var pb = e.target.closest && e.target.closest(".pbox"); if (!pb || sel < 0) return;
+    e.preventDefault(); var w = db.watches[sel];
+    setZ(w, "zoom", (w.zoom || 1) * (e.deltaY < 0 ? 1.05 : 1 / 1.05)); applyZoom(w);
+    clearTimeout(window.__zt); window.__zt = setTimeout(zoomDone, 250);
+  }, {passive:false});
+})();
 function setOrDel(o, k, v){ v = (v || "").trim(); if (v === "") delete o[k]; else o[k] = v; }
 $("form").addEventListener("input", function(e){
   var el = e.target, k = el.getAttribute("data-f"); if (!k || sel < 0) return;
