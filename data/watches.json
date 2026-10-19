@@ -223,7 +223,7 @@
     "lw": "23 mm",
     "th": "13,8 mm",
     "pr": "120 saat",
-    "l2l": "49,5 mm"
+    "l2l": "49,5"
    },
    "spec": {
     "dia": "43,6 mm",
@@ -231,7 +231,7 @@
     "wr": "300 m",
     "mov": "Blancpain 1315 otomatik, tarih",
     "pr": "120 saat",
-    "l2l": "49.5 mm"
+    "l2l": 49.5
    },
    "verify": true
   },
