@@ -1923,46 +1923,43 @@
   },
   {
    "b": "Seiko",
-   "n": "Prospex Speedtimer HBJ005",
+   "n": "Dress X SRPE51",
    "c": "Smart casual",
    "p": [
-    700,
-    800
+    330,
+    430
    ],
-   "dial": "#8f7ab8",
-   "dn": "Lila",
+   "dial": "#8d9096",
+   "dn": "Gri (güneş ışınlı)",
    "verify": true,
-   "note": "Seiko 145. yıl dönümü sınırlı üretim Speedtimer. Türkiye fiyatı 55.395 TL, USD karşılığı kura göre değişir, aralık tahmindir. Ölçü ve mekanizmayı resmi sayfadan doğrula.",
-   "color": "Diğer",
-   "mov": "Quartz",
-   "type": "Kronograf",
-   "link": "https://www.seikowatches.com/tr-tr/products/prospex/speedtimer-design",
-   "img": "https://www.seikowatches.com/tr-tr/-/media/Images/Product--Image/All/Seiko/2026/03/10/21/16/HBJ005P1/HBJ005P1_ima_2_2026.png?mh=600&mw=600",
-   "imgq": "Seiko Prospex Speedtimer HBJ005 lilac dial",
+   "note": "Seiko 5 Sports SKX serisi SRPE51. 40 mm çelik kasa, 11,5 mm kalın, 44,6 mm lug-to-lug, 20 mm kayış. Otomatik 4R36 (elle de kurulur), 41 saat güç rezervi, 100 m, gün-tarih, vidalı şeffaf kasa arkası, çelik bilezik. Seiko Türkiye fiyatı 21.995 TL, USD karşılığı kura göre değişir, aralık tahmindir.",
+   "color": "Gri / gümüş",
+   "mov": "Otomatik / Elle kurmalı",
+   "type": "Tarihli",
+   "link": "https://www.seikowatches.com/tr-tr/products/5sports/srpe51",
+   "img": "https://www.seikowatches.com/tr-tr/-/media/Images/Product--Image/All/Seiko/2022/02/20/02/23/SRPE51K1/SRPE51K1.png?mh=1200&mw=1200",
    "about": [
-    "Seiko 145. yıl dönümü sınırlı üretimi: lila kadranlı solar kronograf, 24 saat ibresi, güç rezervi göstergesi.",
-    "Smart casual slotuna renk katar.",
-    "Türkiye fiyatı 55.395 TL, USD karşılığı kura göre değişir."
+    "Seiko 5 Sports SKX serisinin gri, güneş ışınlı kadranlı ve çelik bilezikli SRPE51 modeli. 4R36 ile elle de kurulur, saniye durdurur, gün-tarih gösterir.",
+    "Smart casual slotunda 1.000 USD altı, sade ve renkli bir seçenek. Gri kadran siyah ve beyaz yoğunluğunu dengeler.",
+    "40 mm çap ve 44,6 mm lug-to-lug 17 cm bilek için rahat. Seiko sayfası kadran rengini yazmıyor, gri bilgisini satıcı sayfalarından aldım. Fiyat bölgeye göre değişir."
    ],
    "tech": {
     "mat": "Paslanmaz çelik",
-    "gl": "Bombeli safir, içte yansıma önleyici",
-    "str": "Üçlü katlamalı toka (buton açmalı)",
-    "lw": "21 mm",
-    "dial": "Güneş ışınlı (sunray)",
-    "bz": "Sabit, takimetre skalalı (alüminyum insert)"
+    "dial": "Gri, güneş ışınlı, LumiBrite işaretler ve ibreler",
+    "gl": "Bombeli hardlex",
+    "str": "Çelik bilezik, üçlü katlamalı toka (buton açmalı, emniyetli)",
+    "lw": "20 mm",
+    "th": "11,5 mm",
+    "pr": "41 saat"
    },
    "spec": {
-    "dia": "41,4 mm",
-    "l2l": 45.9,
-    "th": "13 mm",
+    "dia": "40 mm",
+    "l2l": 44.6,
+    "th": "11,5 mm",
     "wr": "100 m",
-    "mov": "Seiko V192 solar kronograf (1/5 sn, 24 saat ibresi, güç rezervi göstergesi)",
-    "pr": "~6 ay (tam şarjla)"
-   },
-   "zoom": 1.63,
-   "zy": 17.8,
-   "zx": -1.2
+    "mov": "Seiko 4R36 otomatik",
+    "pr": "41 saat"
+   }
   },
   {
    "b": "Mondaine",
