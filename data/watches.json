@@ -195,41 +195,43 @@
   },
   {
    "b": "Blancpain",
-   "n": "Fifty Fathoms",
+   "n": "Fifty Fathoms Bathyscaphe",
    "c": "Diver",
    "p": [
-    16000,
-    20000
+    12800,
+    16000
    ],
    "dial": "#1f4a8a",
    "dn": "Mavi (güneş ışınlı)",
-   "note": "İlk modern dalış saati olarak anılır. 38,2 mm kırmızı altın kasa, güneş ışınlı mavi kadran, Blancpain 1150 ve 100 saat güç rezervi, emniyetli mekanizma. Diver slotunda Rolex Submariner ile yarışır.",
+   "note": "43,6 mm mavi seramik kasa ve bezel, 13,8 mm kalınlık, 300 m. Blancpain 1315 otomatik, 120 saat güç rezervi, tarihli. Mavi tekstil kayış. Fiyat piyasa tahmini, çıkış fiyatı 12.800 USD. Blancpain sitesi otomatik okumaya kapalı, ölçüler üçüncü taraf kaynaklardan.",
    "color": "Mavi",
    "mov": "Otomatik / Elle kurmalı",
    "type": "Tarihli",
-   "link": "https://www.blancpain.com/en/fifty-fathoms/fifty-fathoms-automatique-5007-36b40-o64b",
-   "img": "https://prestigedam.swatchgroup.biz/transform/adb1a1d9-f60d-44be-abc0-e82d6d49db4d/5007_36B40_O64_Fifty_Fathoms_Automatique_Soldier_Front_RGB?io=transform:fill,height:0,width:2400",
+   "link": "https://www.blancpain.com/en/fifty-fathoms/bathyscaphe-5000-0240-o52a",
+   "img": "https://www.analogshift.com/cdn/shop/files/AS12791_40993528_BLANCPAIN_FIFTYFATHOMSBATHYSCAPHEBLUE_50000240O52A--1.jpg",
    "about": [
-    "İlk modern dalış saatlerinden biri olarak anılan Fifty Fathoms'un kırmızı altın, güneş ışınlı mavi kadranlı ve tarihli sürümü.",
-    "Diver slotunda Rolex Submariner ile yarışır, ikisinden birini seçmek gerekir.",
-    "38 mm ölçüsü 17 cm bilek için avantaj. Kırmızı altın kasa ve emniyetli mekanizma fiyatı yukarı çekiyor."
+    "Fifty Fathoms Bathyscaphe'in mavi seramik versiyonu: güneş ışınlı mavi kadran, mavi seramik bezel ve kasa, 300 m dalış kapasitesi.",
+    "Diver slotunda Rolex Submariner'a daha modern ve daha spor bir alternatif. 1315 kalibresi 120 saat güç rezervi veriyor, yani hafta sonu çıkarsan Pazartesi hâlâ çalışıyor.",
+    "43,6 mm çap ve 13,8 mm kalınlık 17 cm bilekte büyük olabilir, lug-to-lug kaynaklarda yok. Almadan önce bilekte dene. Önceki 38 mm kırmızı altın modelden belirgin şekilde iri."
    ],
    "tech": {
-    "mat": "Kırmızı altın",
-    "dial": "Güneş ışınlı mavi",
-    "bz": "Tek yönlü dönen",
-    "gl": "Safir arka kapak",
-    "str": "Kauçuk, katlamalı toka",
-    "lw": "19 mm",
-    "l2l": 45
+    "mat": "Mavi seramik (kasa ve çıkıntılar)",
+    "dial": "Güneş ışınlı mavi, uygulamalı lümenli indeksler",
+    "bz": "Tek yönlü dönen, mavi seramik",
+    "gl": "Safir (ön ve şeffaf arka kapak)",
+    "str": "Mavi tekstil kayış, seramik pimli toka",
+    "lw": "23 mm",
+    "th": "13,8 mm",
+    "pr": "120 saat"
    },
    "spec": {
-    "dia": "38,2 mm",
-    "th": "12 mm",
+    "dia": "43,6 mm",
+    "th": "13,8 mm",
     "wr": "300 m",
-    "mov": "Blancpain 1150 otomatik, emniyetli mekanizma",
-    "pr": "100 saat"
-   }
+    "mov": "Blancpain 1315 otomatik, tarih",
+    "pr": "120 saat"
+   },
+   "verify": true
   },
   {
    "b": "Rolex",
