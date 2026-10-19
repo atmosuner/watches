@@ -479,7 +479,8 @@ function dialSVG(w){
 }
 function fallback(w, failed){ return '<div class="fb">'+dialSVG(w)+'<span class="fbcap">'+(failed?"Fotoğraf yüklenemedi":"Fotoğraf yok")+'</span></div>'; }
 function photo(w){ var u = IMGS[key(w)]; if (!u) return fallback(w,false);
-  return '<img src="'+esc(u)+'" alt="'+esc(key(w))+'" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fk="'+esc(key(w))+'" onerror="SDfail(this)">'; }
+  var st = ""; if (w.zoom && w.zoom !== 1 || w.zx || w.zy) st = ' style="transform:translate('+(w.zx||0)+'%,'+(w.zy||0)+'%) scale('+(w.zoom||1)+')"';
+  return '<img src="'+esc(u)+'" alt="'+esc(key(w))+'" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-fk="'+esc(key(w))+'" onerror="SDfail(this)"'+st+'>'; }
 var FAILED = {};
 window.SDfail = function(img){ var k = img.getAttribute("data-fk"), w = find(k); if (!w) return; FAILED[k] = 1; var p = img.closest(".ph"); if (p) p.classList.add("failed"); img.outerHTML = fallback(w,true); };
 function vis(w){ return FAILED[key(w)] ? fallback(w,true) : photo(w); }

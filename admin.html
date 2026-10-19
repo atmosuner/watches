@@ -43,7 +43,10 @@ input:focus,select:focus,textarea:focus{outline:2px solid color-mix(in srgb,var(
 textarea{min-height:64px;resize:vertical}
 .row{display:flex;gap:8px;align-items:center}
 .prev{display:flex;gap:12px;align-items:flex-start;margin-top:8px}
-.prev img{width:120px;height:120px;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:6px}
+.pbox{width:240px;height:180px;flex:none;overflow:hidden;background:#f1efe9;border:1px solid var(--line);border-radius:6px;padding:12px}
+.prev img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.zc{display:grid;grid-template-columns:70px 1fr 56px;gap:4px 8px;align-items:center;font-size:12px;color:var(--mute);margin-bottom:6px}
+.zc input[type=number]{padding:3px 4px}
 .prev .info{font-size:12px;color:var(--mute)}
 .prev a{color:var(--acc)}
 dialog{border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);max-width:520px;width:calc(100% - 32px);padding:18px}
@@ -172,20 +175,26 @@ function renderForm(){
   h += '<fieldset><legend>Link ve fotoğraf</legend><div class="g">' +
     field("Ürün linki", "link", w.link, {type:"url", cls:"wf"}) + field("Fotoğraf linki", "img", w.img, {type:"url", cls:"wf"}) +
     field("Foto arama sorgusu (isteğe bağlı)", "imgq", w.imgq, {cls:"wf"}) + '</div>' +
-    '<div class="prev"><img id="pv" alt="" referrerpolicy="no-referrer" src="' + esc(w.img) + '"><div class="info" id="pvi">' + (w.img ? "" : "Fotoğraf linki boş.") + '</div></div>' +
+    '<div class="prev"><div class="pbox"><img id="pv" alt="" referrerpolicy="no-referrer" src="' + esc(w.img) + '"></div><div style="flex:1;min-width:200px"><div class="zc"><span>Yakınlık</span><input type="range" min="0.6" max="3" step="0.05" data-f="zoom" value="' + (w.zoom || 1) + '"><input type="number" min="0.6" max="3" step="0.05" data-f="zoomn" value="' + (w.zoom || 1) + '"><span>Yatay</span><input type="range" min="-40" max="40" step="1" data-f="zx" value="' + (w.zx || 0) + '"><input type="number" step="1" data-f="zxn" value="' + (w.zx || 0) + '"><span>Dikey</span><input type="range" min="-40" max="40" step="1" data-f="zy" value="' + (w.zy || 0) + '"><input type="number" step="1" data-f="zyn" value="' + (w.zy || 0) + '"></div><div class="info" id="pvi">' + (w.img ? "" : "Fotoğraf linki boş.") + '</div><button type="button" id="bZ0" style="margin-top:6px">Sıfırla</button></div></div>' +
     (w.link ? '<p style="margin:8px 0 0"><a href="' + esc(w.link) + '" target="_blank" rel="noopener" style="color:var(--acc)">Ürün sayfasını aç ↗</a></p>' : "") + '</fieldset>';
   h += '<fieldset><legend>Hakkında (3 paragraf)</legend><div class="g">' + [0,1,2].map(function(i){ return '<label class="wf"><span class="h">' + (i + 1) + '</span><textarea data-f="about' + i + '">' + esc(a[i] || "") + '</textarea></label>'; }).join("") + '</div></fieldset>';
   h += '<fieldset><legend>Teknik tablo</legend><div class="g">' + TECHF.map(function(x){ return field(x[1], "t_" + x[0], t[x[0]], {cls: (x[0] === "str" || x[0] === "dial" || x[0] === "mat") ? "w2" : ""}); }).join("") + '</div></fieldset>';
   h += '<fieldset><legend>Özet ölçüler (kart ve uyum çubuğu)</legend><div class="g">' + SPECF.map(function(x){ return field(x[1], "s_" + x[0], s[x[0]], {ph:x[2], cls: x[0] === "mov" ? "w2" : ""}); }).join("") + '</div></fieldset>';
   f.innerHTML = h;
-  var pv = $("pv"); if (pv) { pv.onerror = function(){ $("pvi").textContent = "Fotoğraf yüklenemedi."; }; pv.onload = function(){ $("pvi").textContent = pv.naturalWidth + " × " + pv.naturalHeight + " px"; }; }
+  var pv = $("pv"); if (pv) { pv.onerror = function(){ $("pvi").textContent = "Fotoğraf yüklenemedi."; }; applyZoom(w); pv.onload = function(){ $("pvi").textContent = pv.naturalWidth + " × " + pv.naturalHeight + " px"; }; }
 }
+function applyZoom(w){ var pv = $("pv"); if (pv) pv.style.transform = "translate(" + (w.zx || 0) + "%," + (w.zy || 0) + "%) scale(" + (w.zoom || 1) + ")"; }
 function setOrDel(o, k, v){ v = (v || "").trim(); if (v === "") delete o[k]; else o[k] = v; }
 $("form").addEventListener("input", function(e){
   var el = e.target, k = el.getAttribute("data-f"); if (!k || sel < 0) return;
   var w = db.watches[sel], v = el.value;
   if (k === "p0" || k === "p1") { w.p = w.p || [null, null]; w.p[+k.slice(1)] = v === "" ? null : +v; }
   else if (k === "verify") { if (v) w.verify = true; else delete w.verify; }
+  else if (k === "zoom" || k === "zx" || k === "zy" || k === "zoomn" || k === "zxn" || k === "zyn") {
+    var kk = k.replace(/n$/, ""), nv = +v; if (isNaN(nv)) return;
+    if ((kk === "zoom" && nv === 1) || (kk !== "zoom" && nv === 0)) delete w[kk]; else w[kk] = nv;
+    document.querySelector('[data-f="' + kk + '"]').value = nv; document.querySelector('[data-f="' + kk + 'n"]').value = nv; applyZoom(w);
+  }
   else if (k === "dial") { w.dial = v; document.querySelector('[data-f="dialtxt"]').value = v; }
   else if (k === "dialtxt") { w.dial = v.trim(); if (/^#[0-9a-f]{6}$/i.test(v.trim())) document.querySelector('[data-f="dial"]').value = v.trim(); }
   else if (/^about\d$/.test(k)) { var a = [0,1,2].map(function(i){ return (document.querySelector('[data-f="about' + i + '"]').value || "").trim(); }); while (a.length && !a[a.length - 1]) a.pop(); w.about = a; }
@@ -205,6 +214,7 @@ $("bNew").onclick = function(){
   db.watches.push(w); sel = db.watches.length - 1; markDirty(true); renderList(); renderForm(); document.querySelector('[data-f="b"]').select();
 };
 $("form").addEventListener("click", function(e){
+  if (e.target.id === "bZ0") { var w0 = db.watches[sel]; delete w0.zoom; delete w0.zx; delete w0.zy; markDirty(changedKeys().length > 0); renderList(); renderForm(); return; }
   if (e.target.id !== "bDel") return;
   var w = db.watches[sel]; if (!confirm(key(w) + " silinsin mi?\nSonraki saatlerin № numaraları bir kayar.")) return;
   db.watches.splice(sel, 1); sel = -1; markDirty(changedKeys().length > 0); renderList(); renderForm();

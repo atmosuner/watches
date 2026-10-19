@@ -273,7 +273,10 @@
     "wr": "100 m",
     "mov": "Rolex 3285 otomatik",
     "pr": "70 saat"
-   }
+   },
+   "zoom": 1.65,
+   "zx": -3,
+   "zy": -10
   },
   {
    "b": "Rolex",
