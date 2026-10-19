@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Saat Defterim · Yönetim</title>
+<style>
+:root{--bg:#f6f4ef;--panel:#fff;--ink:#16181b;--mute:#6b6f76;--line:#dcd8cf;--acc:#1f3f6e;--accink:#fff;--bad:#a4332b;--ok:#2f6b3f;--warn:#9a6a12}
+@media (prefers-color-scheme:dark){:root{--bg:#121315;--panel:#1b1d20;--ink:#ecebe7;--mute:#9a9ea5;--line:#2e3136;--acc:#8fb0e6;--accink:#10151d;--bad:#e88a82;--ok:#7cc48d;--warn:#e0b45c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px 16px;background:var(--panel);border-bottom:1px solid var(--line)}
+header h1{font-size:15px;margin:0 8px 0 0;letter-spacing:.04em}
+header .sp{flex:1}
+button,.btn{font:inherit;border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:6px 12px;border-radius:6px;cursor:pointer}
+button:hover{border-color:var(--acc)}
+button.pri{background:var(--acc);color:var(--accink);border-color:var(--acc)}
+button.pri:disabled{opacity:.45;cursor:default}
+button.dng{color:var(--bad)}
+#status{font-size:12.5px;color:var(--mute)}
+#status.bad{color:var(--bad)}#status.ok{color:var(--ok)}#status.warn{color:var(--warn)}
+main{display:grid;grid-template-columns:300px 1fr;gap:0;min-height:calc(100vh - 54px)}
+aside{border-right:1px solid var(--line);background:var(--panel);overflow:auto;max-height:calc(100vh - 54px);position:sticky;top:54px}
+aside .tools{padding:10px;display:flex;gap:6px;position:sticky;top:0;background:var(--panel);border-bottom:1px solid var(--line)}
+aside input{flex:1;min-width:0}
+.item{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);cursor:pointer}
+.item:hover{background:color-mix(in srgb,var(--acc) 8%,transparent)}
+.item.on{background:color-mix(in srgb,var(--acc) 16%,transparent)}
+.item .no{font-size:11px;color:var(--mute);width:24px;text-align:right}
+.item .dot{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);flex:none}
+.item .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.item .chg{color:var(--warn);font-size:11px}
+#form{padding:18px 22px 80px;max-width:980px}
+fieldset{border:1px solid var(--line);background:var(--panel);border-radius:8px;margin:0 0 16px;padding:12px 14px 14px}
+legend{padding:0 6px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px 14px}
+.g .w2{grid-column:span 2}.g .wf{grid-column:1/-1}
+label{display:block;font-size:12px;color:var(--mute)}
+label>span.h{display:block;margin-bottom:3px}
+input[type=text],input[type=url],input[type=number],input[type=password],select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px 8px}
+input:focus,select:focus,textarea:focus{outline:2px solid color-mix(in srgb,var(--acc) 55%,transparent);outline-offset:-1px}
+textarea{min-height:64px;resize:vertical}
+.row{display:flex;gap:8px;align-items:center}
+.prev{display:flex;gap:12px;align-items:flex-start;margin-top:8px}
+.prev img{width:120px;height:120px;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:6px}
+.prev .info{font-size:12px;color:var(--mute)}
+.prev a{color:var(--acc)}
+dialog{border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);max-width:520px;width:calc(100% - 32px);padding:18px}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+dialog h2{margin:0 0 8px;font-size:15px}
+dialog p{margin:6px 0;color:var(--mute);font-size:13px}
+dialog .act{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
+.empty{padding:60px 24px;color:var(--mute)}
+@media(max-width:760px){main{grid-template-columns:1fr}aside{position:static;max-height:260px;border-right:0;border-bottom:1px solid var(--line)}.g .w2{grid-column:auto}}
+</style>
+</head>
+<body>
+<header>
+  <h1>SAAT DEFTERİM · YÖNETİM</h1>
+  <button id="bSave" class="pri" disabled>GitHub'a kaydet</button>
+  <button id="bDl">JSON indir</button>
+  <button id="bUp">JSON yükle</button>
+  <input type="file" id="fUp" accept=".json,application/json" hidden>
+  <button id="bSet">Ayarlar</button>
+  <a class="btn" href="index.html" style="text-decoration:none">Kataloğu aç ↗</a>
+  <span class="sp"></span>
+  <span id="status">Yükleniyor…</span>
+</header>
+<main>
+  <aside>
+    <div class="tools"><input type="text" id="q" placeholder="Ara…"><button id="bNew" title="Yeni saat">+ Yeni</button></div>
+    <div id="list"></div>
+  </aside>
+  <section id="form"><div class="empty">Soldan bir saat seç.</div></section>
+</main>
+
+<dialog id="dSet">
+  <h2>Ayarlar</h2>
+  <p>Kaydetmek için GitHub'da <b>fine-grained token</b> oluştur (yalnızca bu repo, izin: <i>Contents → Read and write</i>). Token sadece bu tarayıcıda (localStorage) saklanır, hiçbir yere gönderilmez; GitHub API'ye gider.</p>
+  <label><span class="h">Token</span><input type="password" id="sTok" autocomplete="off" placeholder="github_pat_…"></label>
+  <div class="g" style="margin-top:10px">
+    <label><span class="h">Repo</span><input type="text" id="sRepo"></label>
+    <label><span class="h">Branch</span><input type="text" id="sBr"></label>
+    <label class="wf"><span class="h">Veri dosyası</span><input type="text" id="sPath"></label>
+  </div>
+  <div class="act"><button id="sCancel">Vazgeç</button><button class="pri" id="sOk">Tamam</button></div>
+</dialog>
+
+<script>
+(function(){
+var CFG_DEF = {repo:"atmosuner/watches", branch:"main", path:"data/watches.json"};
+var db = null, orig = {}, origOrder = [], sel = -1, sha = null, dirty = false;
+var $ = function(id){ return document.getElementById(id); };
+function esc(s){ return String(s == null ? "" : s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+function ls(k, v){ try { if (v === undefined) return localStorage.getItem(k); if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch(e){} return null; }
+function cfg(){ var c = {}; try { c = JSON.parse(ls("sdAdminCfg") || "{}"); } catch(e){} return {repo:c.repo || CFG_DEF.repo, branch:c.branch || CFG_DEF.branch, path:c.path || CFG_DEF.path, token:ls("sdAdminTok") || ""}; }
+function status(msg, cls){ var s = $("status"); s.textContent = msg; s.className = cls || ""; }
+function key(w){ return w.b + " " + w.n; }
+function snap(w){ return JSON.stringify(w); }
+
+var TECHF = [["mat","Kasa malzemesi"],["dial","Kadran"],["bz","Bezel"],["gl","Cam"],["str","Kayış / bilezik"],["lw","Kayış genişliği"],["th","Kalınlık (tablo)"],["l2l","Lug-to-lug (tablo)"],["pr","Güç rezervi (tablo)"]];
+var SPECF = [["dia","Çap","40 mm"],["l2l","Lug-to-lug (mm, sayı)","47.5"],["th","Kalınlık","11,2 mm"],["wr","Su geçirmezlik","100 m"],["mov","Mekanizma","Seiko 6R35 otomatik"],["pr","Güç rezervi","70 saat"]];
+var MOVS = ["Otomatik / Elle kurmalı","Kuvars","Solar / Kinetik"], TYPES = ["Sade","Tarihli","Kronograf","GMT","Bilinmiyor"];
+
+/* ---------- veri yükleme ---------- */
+function setDb(d, fromDraft){
+  db = d;
+  orig = {}; origOrder = [];
+  (fromDraft ? fromDraft.base : d).watches.forEach(function(w, i){ orig[key(w)] = snap(w); });
+  renderList(); if (sel >= db.watches.length) sel = -1; renderForm();
+}
+function load(){
+  var c = cfg();
+  var done = function(d, s){
+    sha = s || null;
+    var draft = null; try { draft = JSON.parse(ls("sdAdminDraft") || "null"); } catch(e){}
+    if (draft && draft.db && confirm("Bu tarayıcıda kaydedilmemiş bir taslak var. Taslaktan devam edilsin mi?\n(İptal = taslak silinir, sunucudaki veri açılır)")) {
+      db = draft.db; orig = {}; d.watches.forEach(function(w){ orig[key(w)] = snap(w); });
+      markDirty(true); renderList(); renderForm(); status("Taslak yüklendi, henüz kaydedilmedi.", "warn");
+    } else { ls("sdAdminDraft", null); setDb(d); markDirty(false); status(d.watches.length + " saat yüklendi" + (c.token ? " (GitHub)" : ""), "ok"); }
+  };
+  var viaPages = function(){
+    fetch(c.path + "?t=" + Date.now(), {cache:"no-store"}).then(function(r){ if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function(d){ done(d, null); }).catch(function(e){ status("Yüklenemedi: " + e.message, "bad"); });
+  };
+  if (!c.token) return viaPages();
+  fetch("https://api.github.com/repos/" + c.repo + "/contents/" + c.path + "?ref=" + encodeURIComponent(c.branch), {headers:{Authorization:"Bearer " + c.token, Accept:"application/vnd.github+json"}})
+    .then(function(r){ if (!r.ok) throw new Error("GitHub " + r.status); return r.json(); })
+    .then(function(j){ var txt = new TextDecoder().decode(Uint8Array.from(atob(j.content.replace(/\n/g,"")), function(ch){ return ch.charCodeAt(0); })); done(JSON.parse(txt), j.sha); })
+    .catch(function(e){ status("GitHub'dan okunamadı (" + e.message + "), yayındaki dosya açılıyor…", "warn"); viaPages(); });
+}
+function markDirty(v){ dirty = v; $("bSave").disabled = !v; if (v) { try { ls("sdAdminDraft", JSON.stringify({db:db})); } catch(e){} } else ls("sdAdminDraft", null); }
+function changedKeys(){ var cur = {}; db.watches.forEach(function(w){ cur[key(w)] = 1; }); var ch = [];
+  db.watches.forEach(function(w){ if (orig[key(w)] !== snap(w)) ch.push(key(w)); });
+  Object.keys(orig).forEach(function(k){ if (!cur[k]) ch.push("− " + k); });
+  return ch; }
+
+/* ---------- liste ---------- */
+function renderList(){
+  var q = $("q").value.trim().toLowerCase(), h = "";
+  db.watches.forEach(function(w, i){
+    if (q && key(w).toLowerCase().indexOf(q) < 0) return;
+    var ch = orig[key(w)] !== snap(w);
+    h += '<div class="item' + (i === sel ? " on" : "") + '" data-i="' + i + '"><span class="no">' + (i + 1) + '</span><span class="dot" style="background:' + esc(w.dial || "#999") + '"></span><span class="nm">' + esc(key(w)) + '</span>' + (ch ? '<span class="chg">●</span>' : "") + '</div>';
+  });
+  $("list").innerHTML = h || '<div class="empty">Sonuç yok.</div>';
+}
+$("list").addEventListener("click", function(e){ var it = e.target.closest(".item"); if (!it) return; sel = +it.getAttribute("data-i"); renderList(); renderForm(); window.scrollTo(0, 0); });
+$("q").addEventListener("input", renderList);
+
+/* ---------- form ---------- */
+function field(label, id, val, o){ o = o || {};
+  return '<label class="' + (o.cls || "") + '"><span class="h">' + esc(label) + '</span><input type="' + (o.type || "text") + '" data-f="' + id + '" value="' + esc(val) + '"' + (o.ph ? ' placeholder="' + esc(o.ph) + '"' : "") + (o.step ? ' step="' + o.step + '"' : "") + '></label>'; }
+function selectF(label, id, opts, val){
+  if (opts.indexOf(val) < 0 && val) opts = opts.concat([val]);
+  return '<label><span class="h">' + esc(label) + '</span><select data-f="' + id + '">' + opts.map(function(o){ return '<option' + (o === val ? " selected" : "") + '>' + esc(o) + '</option>'; }).join("") + '</select></label>'; }
+function renderForm(){
+  var f = $("form");
+  if (sel < 0 || !db.watches[sel]) { f.innerHTML = '<div class="empty">Soldan bir saat seç ya da “+ Yeni” ile ekle.</div>'; return; }
+  var w = db.watches[sel], t = w.tech || {}, s = w.spec || {}, a = w.about || [], p = w.p || [null, null];
+  var cats = db.config.cats.filter(function(c){ return c !== "Tümü"; }), cols = db.config.cols.filter(function(c){ return c !== "Tümü"; });
+  var h = '<div class="row" style="margin-bottom:12px"><h2 style="margin:0;font-size:18px;flex:1">№ ' + (sel + 1) + ' · ' + esc(key(w)) + '</h2><button class="dng" id="bDel">Sil</button></div>';
+  h += '<fieldset><legend>Temel</legend><div class="g">' +
+    field("Marka", "b", w.b) + field("Model", "n", w.n) + selectF("Kategori", "c", cats, w.c) +
+    field("Fiyat min (USD)", "p0", p[0] == null ? "" : p[0], {type:"number"}) + field("Fiyat max (USD, boş = açık uçlu)", "p1", p[1] == null ? "" : p[1], {type:"number"}) +
+    '<label><span class="h">Fiyat doğrulanmamış</span><select data-f="verify"><option value="">Hayır</option><option value="1"' + (w.verify ? " selected" : "") + '>Evet (tahmin)</option></select></label>' +
+    '<label><span class="h">Kadran rengi</span><div class="row"><input type="color" data-f="dial" value="' + esc(/^#[0-9a-f]{6}$/i.test(w.dial || "") ? w.dial : "#888888") + '" style="width:44px;height:32px;padding:0"><input type="text" data-f="dialtxt" value="' + esc(w.dial || "") + '"></div></label>' +
+    field("Kadran adı", "dn", w.dn) + selectF("Renk ailesi", "color", cols, w.color) +
+    selectF("Mekanizma türü", "mov", MOVS, w.mov) + selectF("Tür", "type", TYPES, w.type) +
+    '<label class="wf"><span class="h">Not (kartta görünen kısa açıklama)</span><textarea data-f="note">' + esc(w.note) + '</textarea></label></div></fieldset>';
+  h += '<fieldset><legend>Link ve fotoğraf</legend><div class="g">' +
+    field("Ürün linki", "link", w.link, {type:"url", cls:"wf"}) + field("Fotoğraf linki", "img", w.img, {type:"url", cls:"wf"}) +
+    field("Foto arama sorgusu (isteğe bağlı)", "imgq", w.imgq, {cls:"wf"}) + '</div>' +
+    '<div class="prev"><img id="pv" alt="" referrerpolicy="no-referrer" src="' + esc(w.img) + '"><div class="info" id="pvi">' + (w.img ? "" : "Fotoğraf linki boş.") + '</div></div>' +
+    (w.link ? '<p style="margin:8px 0 0"><a href="' + esc(w.link) + '" target="_blank" rel="noopener" style="color:var(--acc)">Ürün sayfasını aç ↗</a></p>' : "") + '</fieldset>';
+  h += '<fieldset><legend>Hakkında (3 paragraf)</legend><div class="g">' + [0,1,2].map(function(i){ return '<label class="wf"><span class="h">' + (i + 1) + '</span><textarea data-f="about' + i + '">' + esc(a[i] || "") + '</textarea></label>'; }).join("") + '</div></fieldset>';
+  h += '<fieldset><legend>Teknik tablo</legend><div class="g">' + TECHF.map(function(x){ return field(x[1], "t_" + x[0], t[x[0]], {cls: (x[0] === "str" || x[0] === "dial" || x[0] === "mat") ? "w2" : ""}); }).join("") + '</div></fieldset>';
+  h += '<fieldset><legend>Özet ölçüler (kart ve uyum çubuğu)</legend><div class="g">' + SPECF.map(function(x){ return field(x[1], "s_" + x[0], s[x[0]], {ph:x[2], cls: x[0] === "mov" ? "w2" : ""}); }).join("") + '</div></fieldset>';
+  f.innerHTML = h;
+  var pv = $("pv"); if (pv) { pv.onerror = function(){ $("pvi").textContent = "Fotoğraf yüklenemedi."; }; pv.onload = function(){ $("pvi").textContent = pv.naturalWidth + " × " + pv.naturalHeight + " px"; }; }
+}
+function setOrDel(o, k, v){ v = (v || "").trim(); if (v === "") delete o[k]; else o[k] = v; }
+$("form").addEventListener("input", function(e){
+  var el = e.target, k = el.getAttribute("data-f"); if (!k || sel < 0) return;
+  var w = db.watches[sel], v = el.value;
+  if (k === "p0" || k === "p1") { w.p = w.p || [null, null]; w.p[+k.slice(1)] = v === "" ? null : +v; }
+  else if (k === "verify") { if (v) w.verify = true; else delete w.verify; }
+  else if (k === "dial") { w.dial = v; document.querySelector('[data-f="dialtxt"]').value = v; }
+  else if (k === "dialtxt") { w.dial = v.trim(); if (/^#[0-9a-f]{6}$/i.test(v.trim())) document.querySelector('[data-f="dial"]').value = v.trim(); }
+  else if (/^about\d$/.test(k)) { var a = [0,1,2].map(function(i){ return (document.querySelector('[data-f="about' + i + '"]').value || "").trim(); }); while (a.length && !a[a.length - 1]) a.pop(); w.about = a; }
+  else if (k.slice(0, 2) === "t_") { w.tech = w.tech || {}; setOrDel(w.tech, k.slice(2), v); }
+  else if (k.slice(0, 2) === "s_") { w.spec = w.spec || {}; var kk = k.slice(2), vv = v.trim(); if (vv === "") delete w.spec[kk]; else w.spec[kk] = kk === "l2l" ? (isNaN(+vv.replace(",", ".")) ? vv : +vv.replace(",", ".")) : vv; }
+  else if (k === "imgq" || k === "link" || k === "img") { setOrDel(w, k, v); if (k === "img") { var pv = $("pv"); pv.src = v.trim(); $("pvi").textContent = v.trim() ? "" : "Fotoğraf linki boş."; } }
+  else w[k] = v;
+  markDirty(changedKeys().length > 0);
+  if (k === "b" || k === "n" || k === "dial" || k === "dialtxt") { var h2 = document.querySelector("#form h2"); if (h2) h2.textContent = "№ " + (sel + 1) + " · " + key(w); }
+  renderListKeepScroll();
+  status(changedKeys().length + " değişiklik, kaydedilmedi.", "warn");
+});
+function renderListKeepScroll(){ var a = document.querySelector("aside"), st = a.scrollTop; renderList(); a.scrollTop = st; }
+
+$("bNew").onclick = function(){
+  var w = {b:"Marka", n:"Yeni model " + (db.watches.length + 1), c:db.config.cats[1], p:[0, null], dial:"#888888", dn:"", note:"", color:"Diğer", mov:MOVS[0], type:"Sade", link:"", img:"", about:[], tech:{}, spec:{}};
+  db.watches.push(w); sel = db.watches.length - 1; markDirty(true); renderList(); renderForm(); document.querySelector('[data-f="b"]').select();
+};
+$("form").addEventListener("click", function(e){
+  if (e.target.id !== "bDel") return;
+  var w = db.watches[sel]; if (!confirm(key(w) + " silinsin mi?\nSonraki saatlerin № numaraları bir kayar.")) return;
+  db.watches.splice(sel, 1); sel = -1; markDirty(changedKeys().length > 0); renderList(); renderForm();
+});
+
+/* ---------- kaydet / indir / yükle ---------- */
+function serialize(){ return JSON.stringify(db, null, 1) + "\n"; }
+function b64(s){ var by = new TextEncoder().encode(s), bin = ""; for (var i = 0; i < by.length; i += 0x8000) bin += String.fromCharCode.apply(null, by.subarray(i, i + 0x8000)); return btoa(bin); }
+function validate(){
+  var seen = {}, err = [];
+  db.watches.forEach(function(w, i){
+    var k = key(w);
+    if (!w.b.trim() || !w.n.trim()) err.push("№ " + (i + 1) + ": marka/model boş");
+    if (seen[k]) err.push("Aynı isim iki kez: " + k); seen[k] = 1;
+    if (!w.p || w.p[0] == null) err.push(k + ": fiyat min boş");
+    if (w.img && !/^https?:\/\//.test(w.img)) err.push(k + ": foto linki http(s) olmalı");
+    if (w.link && !/^https?:\/\//.test(w.link)) err.push(k + ": ürün linki http(s) olmalı");
+  });
+  return err;
+}
+$("bSave").onclick = function(){
+  var c = cfg(); if (!c.token) { alert("Önce Ayarlar'dan GitHub token gir."); $("bSet").click(); return; }
+  var err = validate(); if (err.length) { alert("Düzelt:\n\n" + err.slice(0, 8).join("\n")); return; }
+  var ch = changedKeys(), msg = "Admin: " + ch.slice(0, 3).join(", ") + (ch.length > 3 ? " +" + (ch.length - 3) + " daha" : "");
+  $("bSave").disabled = true; status("Kaydediliyor…");
+  fetch("https://api.github.com/repos/" + c.repo + "/contents/" + c.path, {method:"PUT", headers:{Authorization:"Bearer " + c.token, Accept:"application/vnd.github+json", "Content-Type":"application/json"},
+    body:JSON.stringify({message:msg, content:b64(serialize()), branch:c.branch, sha:sha || undefined})})
+    .then(function(r){ return r.json().then(function(j){ return {ok:r.ok, st:r.status, j:j}; }); })
+    .then(function(x){
+      if (!x.ok) { $("bSave").disabled = false; status(x.st === 409 || x.st === 422 ? "Çakışma: dosya başka yerden değişmiş. Sayfayı yenileyip tekrar dene (taslağın korunur)." : "Kaydedilemedi: " + (x.j.message || x.st), "bad"); return; }
+      sha = x.j.content.sha; orig = {}; db.watches.forEach(function(w){ orig[key(w)] = snap(w); }); markDirty(false); renderList();
+      status("Kaydedildi ✓ Site ~1 dk içinde güncellenir.", "ok");
+    }).catch(function(e){ $("bSave").disabled = false; status("Ağ hatası: " + e.message, "bad"); });
+};
+$("bDl").onclick = function(){ var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([serialize()], {type:"application/json"})); a.download = "watches.json"; a.click(); setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000); };
+$("bUp").onclick = function(){ $("fUp").click(); };
+$("fUp").onchange = function(){ var f = this.files[0]; if (!f) return; var r = new FileReader(); r.onload = function(){ try { var d = JSON.parse(r.result); if (!d.watches || !d.config) throw new Error("watches/config yok"); db = d; sel = -1; markDirty(true); renderList(); renderForm(); status("Dosya yüklendi, kaydedilmedi.", "warn"); } catch(e){ alert("Geçersiz JSON: " + e.message); } }; r.readAsText(f); this.value = ""; };
+
+/* ---------- ayarlar ---------- */
+$("bSet").onclick = function(){ var c = cfg(); $("sTok").value = c.token; $("sRepo").value = c.repo; $("sBr").value = c.branch; $("sPath").value = c.path; $("dSet").showModal(); };
+$("sCancel").onclick = function(){ $("dSet").close(); };
+$("sOk").onclick = function(){ ls("sdAdminTok", $("sTok").value.trim() || null); ls("sdAdminCfg", JSON.stringify({repo:$("sRepo").value.trim(), branch:$("sBr").value.trim(), path:$("sPath").value.trim()})); $("dSet").close(); status("Ayarlar kaydedildi.", "ok"); };
+window.addEventListener("beforeunload", function(e){ if (dirty) { e.preventDefault(); e.returnValue = ""; } });
+
+load();
+})();
+</script>
+</body>
+</html>
