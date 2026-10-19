@@ -153,7 +153,10 @@
     "wr": "50 m",
     "mov": "AP 4302 otomatik",
     "pr": "70 saat"
-   }
+   },
+   "zoom": 1.16,
+   "zx": 0.6,
+   "zy": 7.6
   },
   {
    "b": "Patek Philippe",
@@ -192,8 +195,9 @@
     "mov": "26-330 S C otomatik (tarih, saniye durdurma)",
     "pr": "35-45 saat"
    },
-   "zoom": 1.28,
-   "zy": -3
+   "zoom": 1.55,
+   "zx": -1.2,
+   "zy": 4.6
   },
   {
    "b": "Blancpain",
@@ -236,9 +240,8 @@
     "l2l": 49.5
    },
    "verify": true,
-   "zoom": 1.63,
-   "zx": -0.3,
-   "zy": -5.1
+   "zoom": 1.98,
+   "zy": -0.9
   },
   {
    "b": "Rolex",
@@ -278,8 +281,8 @@
     "mov": "Rolex 3285 otomatik",
     "pr": "70 saat"
    },
-   "zoom": 1.07,
-   "zy": -1.1,
+   "zoom": 1.44,
+   "zy": 4,
    "img": "https://www.horando.de/cdn/shop/files/126710BLNR-0003.png?v=1782231802&width=1080",
    "zx": 1.6
   },
@@ -322,7 +325,9 @@
     "mov": "Rolex 3235 otomatik",
     "pr": "70 saat"
    },
-   "zoom": 1.05
+   "zoom": 1.34,
+   "zy": -2.6,
+   "zx": -0.3
   },
   {
    "b": "Rolex",
@@ -362,7 +367,7 @@
     "mov": "Rolex 3235 otomatik",
     "pr": "70 saat"
    },
-   "zoom": 2.08,
+   "zoom": 2.52,
    "zx": 0.6,
    "zy": -1.6
   },
@@ -404,7 +409,8 @@
     "mov": "Breitling 17 otomatik",
     "pr": "38 saat"
    },
-   "zoom": 1.34
+   "zoom": 1.71,
+   "zy": 2.1
   },
   {
    "b": "Rolex",
@@ -443,8 +449,8 @@
     "mov": "Rolex 3230 otomatik",
     "pr": "70 saat"
    },
-   "zoom": 1.89,
-   "zy": -4.2
+   "zoom": 2.4,
+   "zx": -0.3
   },
   {
    "b": "Oris",
@@ -484,7 +490,7 @@
     "mov": "Oris Calibre 113 elle kurmalı (hafta, ay, gün, tarih, güç rezervi göstergesi)",
     "pr": "10 gün"
    },
-   "zoom": 1.28
+   "zoom": 1.48
   },
   {
    "b": "Omega",
@@ -523,7 +529,7 @@
     "mov": "Omega 3861 elle kurmalı kronograf (Master Chronometer)",
     "pr": "50 saat"
    },
-   "zoom": 1.22,
+   "zoom": 1.48,
    "zx": 0.9,
    "zy": 5.9
   },
@@ -565,8 +571,8 @@
     "mov": "Grand Seiko 9S66 otomatik GMT",
     "pr": "72 saat"
    },
-   "zoom": 1.22,
-   "zy": 5.9,
+   "zoom": 1.41,
+   "zy": 9.3,
    "zx": 2.5
   },
   {
@@ -606,7 +612,7 @@
     "mov": "Omega 8900 Co-Axial Master Chronometer",
     "pr": "60 saat"
    },
-   "zoom": 1.34,
+   "zoom": 1.41,
    "zy": 7.2
   },
   {
@@ -647,7 +653,7 @@
     "mov": "P.900 otomatik, küçük saniye ve tarih",
     "pr": "3 gün"
    },
-   "zoom": 1.16,
+   "zoom": 1.28,
    "zx": 1.5,
    "zy": 0.4
   },
@@ -689,7 +695,7 @@
     "mov": "TH20-11 otomatik kronograf",
     "pr": "80 saat"
    },
-   "zoom": 1.22
+   "zoom": 1.34
   },
   {
    "b": "Omega",
@@ -851,7 +857,7 @@
     "mov": "Tudor MT5601 (COSC) otomatik",
     "pr": "70 saat"
    },
-   "zoom": 1.34
+   "zoom": 1.48
   },
   {
    "b": "Tudor",
@@ -889,7 +895,7 @@
     "mov": "MT5400 (COSC) otomatik",
     "pr": "70 saat"
    },
-   "zoom": 1.34,
+   "zoom": 1.55,
    "zy": -2.1,
    "zx": -0.3
   },
@@ -931,7 +937,7 @@
     "wr": "100 m",
     "mov": "BR-CAL.302 otomatik"
    },
-   "zoom": 1.41
+   "zoom": 1.63
   },
   {
    "b": "Straum",
@@ -1012,9 +1018,8 @@
     "mov": "Otomatik, silikon spiral",
     "pr": "72 saat"
    },
-   "zoom": 1.55,
-   "zy": 13.1,
-   "zx": -0.3
+   "zoom": 1.63,
+   "zy": 19
   },
   {
    "b": "Baume & Mercier",
@@ -1055,8 +1060,8 @@
     "pr": "120 saat"
    },
    "zoom": 1.8,
-   "zy": 10.6,
-   "zx": -0.3
+   "zy": 12.3,
+   "zx": 0.3
   },
   {
    "b": "Longines",
@@ -1096,9 +1101,9 @@
     "mov": "Longines L844 otomatik GMT, silikon spiral",
     "pr": "72 saat"
    },
-   "zoom": 1.71,
-   "zy": 11,
-   "zx": -0.9
+   "zoom": 1.8,
+   "zy": 14.8,
+   "zx": -1.2
   },
   {
    "b": "Oris",
@@ -1138,7 +1143,7 @@
     "mov": "Oris 733 otomatik",
     "pr": "41 saat"
    },
-   "zoom": 1.55,
+   "zoom": 1.63,
    "zx": 1.8,
    "zy": 8.1
   },
@@ -1180,7 +1185,7 @@
     "mov": "Oris 733 otomatik",
     "pr": "41 saat"
    },
-   "zoom": 1.8,
+   "zoom": 1.89,
    "zx": 2.1,
    "zy": 3.4
   },
@@ -1221,7 +1226,7 @@
     "mov": "Rado R763 otomatik",
     "pr": "80 saat"
    },
-   "zoom": 1.63,
+   "zoom": 1.71,
    "zx": 0.9,
    "zy": 3
   },
