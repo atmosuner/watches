@@ -198,12 +198,12 @@
    "n": "Fifty Fathoms Bathyscaphe",
    "c": "Diver",
    "p": [
-    12800,
-    16000
+    15300,
+    15300
    ],
    "dial": "#1f4a8a",
    "dn": "Mavi (güneş ışınlı)",
-   "note": "43,6 mm mavi seramik kasa ve bezel, 13,8 mm kalınlık, 300 m. Blancpain 1315 otomatik, 120 saat güç rezervi, tarihli. Mavi tekstil kayış. Fiyat piyasa tahmini, çıkış fiyatı 12.800 USD. Blancpain sitesi otomatik okumaya kapalı, ölçüler üçüncü taraf kaynaklardan.",
+   "note": "43,6 mm mavi seramik kasa ve bezel, 13,8 mm kalınlık, 300 m. Blancpain 1315 otomatik, 120 saat güç rezervi, tarihli. Mavi tekstil kayış. Blancpain sitesinde 12.600 CHF (yaklaşık 15.300 USD, kur 1 CHF = 1,21 USD, İsviçre KDV dahil), USD karşılığı tahmindir. Blancpain sitesi otomatik okumaya kapalı, ölçüler üçüncü taraf kaynaklardan.",
    "color": "Mavi",
    "mov": "Otomatik / Elle kurmalı",
    "type": "Tarihli",
@@ -212,7 +212,7 @@
    "about": [
     "Fifty Fathoms Bathyscaphe'in mavi seramik versiyonu: güneş ışınlı mavi kadran, mavi seramik bezel ve kasa, 300 m dalış kapasitesi.",
     "Diver slotunda Rolex Submariner'a daha modern ve daha spor bir alternatif. 1315 kalibresi 120 saat güç rezervi veriyor, yani hafta sonu çıkarsan Pazartesi hâlâ çalışıyor.",
-    "43,6 mm çap ve 13,8 mm kalınlık 17 cm bilekte büyük olabilir, lug-to-lug kaynaklarda yok. Almadan önce bilekte dene. Önceki 38 mm kırmızı altın modelden belirgin şekilde iri."
+    "43,6 mm çap ve 13,8 mm kalınlık 17 cm bilekte büyük olabilir, lug-to-lug kaynaklarda yok. Almadan önce bilekte dene. Önceki 38 mm kırmızı altın modelden belirgin şekilde iri. Fiyat 12.600 CHF, USD karşılığı kura göre değişir."
    ],
    "tech": {
     "mat": "Mavi seramik (kasa ve çıkıntılar)",
