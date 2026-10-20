@@ -154,9 +154,9 @@
     "mov": "AP 4302 otomatik",
     "pr": "70 saat"
    },
-   "zoom": 1.16,
-   "zx": 0.6,
-   "zy": 7.6
+   "zoom": 1.34,
+   "zx": 1.5,
+   "zy": 9.3
   },
   {
    "b": "Patek Philippe",
@@ -195,9 +195,9 @@
     "mov": "26-330 S C otomatik (tarih, saniye durdurma)",
     "pr": "35-45 saat"
    },
-   "zoom": 1.55,
-   "zx": -1.2,
-   "zy": 4.6
+   "zoom": 1.63,
+   "zy": 5.9,
+   "zx": -0.6
   },
   {
    "b": "Blancpain",
@@ -240,7 +240,7 @@
     "l2l": 49.5
    },
    "verify": true,
-   "zoom": 1.98,
+   "zoom": 2.08,
    "zy": -0.9
   },
   {
@@ -369,7 +369,7 @@
    },
    "zoom": 2.52,
    "zx": 0.6,
-   "zy": -1.6
+   "zy": -0.8
   },
   {
    "b": "Breitling",
@@ -410,7 +410,7 @@
     "pr": "38 saat"
    },
    "zoom": 1.71,
-   "zy": 2.1
+   "zy": 2.9
   },
   {
    "b": "Rolex",
@@ -449,7 +449,7 @@
     "mov": "Rolex 3230 otomatik",
     "pr": "70 saat"
    },
-   "zoom": 2.4,
+   "zoom": 2.52,
    "zx": -0.3
   },
   {
@@ -490,7 +490,7 @@
     "mov": "Oris Calibre 113 elle kurmalı (hafta, ay, gün, tarih, güç rezervi göstergesi)",
     "pr": "10 gün"
    },
-   "zoom": 1.48
+   "zoom": 1.55
   },
   {
    "b": "Omega",
@@ -529,9 +529,9 @@
     "mov": "Omega 3861 elle kurmalı kronograf (Master Chronometer)",
     "pr": "50 saat"
    },
-   "zoom": 1.48,
-   "zx": 0.9,
-   "zy": 5.9
+   "zoom": 1.55,
+   "zx": 0.3,
+   "zy": 8
   },
   {
    "b": "Grand Seiko",
@@ -612,7 +612,7 @@
     "mov": "Omega 8900 Co-Axial Master Chronometer",
     "pr": "60 saat"
    },
-   "zoom": 1.41,
+   "zoom": 1.48,
    "zy": 7.2
   },
   {
@@ -653,7 +653,7 @@
     "mov": "P.900 otomatik, küçük saniye ve tarih",
     "pr": "3 gün"
    },
-   "zoom": 1.28,
+   "zoom": 1.41,
    "zx": 1.5,
    "zy": 0.4
   },
@@ -695,7 +695,9 @@
     "mov": "TH20-11 otomatik kronograf",
     "pr": "80 saat"
    },
-   "zoom": 1.34
+   "zoom": 1.41,
+   "zy": 1.3,
+   "zx": -1.2
   },
   {
    "b": "Omega",
@@ -736,7 +738,7 @@
     "mov": "Omega 8806 Co-Axial Master Chronometer",
     "pr": "55 saat"
    },
-   "zoom": 1.22,
+   "zoom": 1.41,
    "zy": 5.1,
    "zx": -0.6
   },
@@ -777,7 +779,7 @@
     "mov": "TAG Heuer TH31-02 otomatik, gün-tarih",
     "pr": "80 saat"
    },
-   "zoom": 1.71
+   "zoom": 1.89
   },
   {
    "b": "IWC",
@@ -816,7 +818,7 @@
     "mov": "IWC 32111 otomatik",
     "pr": "120 saat"
    },
-   "zoom": 1.48,
+   "zoom": 1.63,
    "zy": 1.7
   },
   {
@@ -857,7 +859,7 @@
     "mov": "Tudor MT5601 (COSC) otomatik",
     "pr": "70 saat"
    },
-   "zoom": 1.48
+   "zoom": 1.71
   },
   {
    "b": "Tudor",
@@ -895,7 +897,7 @@
     "mov": "MT5400 (COSC) otomatik",
     "pr": "70 saat"
    },
-   "zoom": 1.55,
+   "zoom": 1.71,
    "zy": -2.1,
    "zx": -0.3
   },
@@ -937,7 +939,7 @@
     "wr": "100 m",
     "mov": "BR-CAL.302 otomatik"
    },
-   "zoom": 1.63
+   "zoom": 1.8
   },
   {
    "b": "Straum",
@@ -977,9 +979,8 @@
     "mov": "La Joux-Perret G100 otomatik",
     "pr": "68 saat"
    },
-   "zoom": 1.55,
-   "zy": 1.7,
-   "zx": -0.9
+   "zoom": 1.71,
+   "zy": 6.8
   },
   {
    "b": "Longines",
@@ -1018,7 +1019,7 @@
     "mov": "Otomatik, silikon spiral",
     "pr": "72 saat"
    },
-   "zoom": 1.63,
+   "zoom": 1.71,
    "zy": 19
   },
   {
@@ -1059,9 +1060,9 @@
     "mov": "Baumatic otomatik",
     "pr": "120 saat"
    },
-   "zoom": 1.8,
-   "zy": 12.3,
-   "zx": 0.3
+   "zoom": 1.89,
+   "zy": 14.8,
+   "zx": 0.6
   },
   {
    "b": "Longines",
@@ -1101,8 +1102,8 @@
     "mov": "Longines L844 otomatik GMT, silikon spiral",
     "pr": "72 saat"
    },
-   "zoom": 1.8,
-   "zy": 14.8,
+   "zoom": 1.89,
+   "zy": 16.9,
    "zx": -1.2
   },
   {
@@ -1143,9 +1144,9 @@
     "mov": "Oris 733 otomatik",
     "pr": "41 saat"
    },
-   "zoom": 1.63,
-   "zx": 1.8,
-   "zy": 8.1
+   "zoom": 1.71,
+   "zx": 2.7,
+   "zy": 9.8
   },
   {
    "b": "Oris",
@@ -1185,9 +1186,9 @@
     "mov": "Oris 733 otomatik",
     "pr": "41 saat"
    },
-   "zoom": 1.89,
-   "zx": 2.1,
-   "zy": 3.4
+   "zoom": 1.98,
+   "zx": 3,
+   "zy": 4.7
   },
   {
    "b": "Rado",
@@ -1226,9 +1227,9 @@
     "mov": "Rado R763 otomatik",
     "pr": "80 saat"
    },
-   "zoom": 1.71,
-   "zx": 0.9,
-   "zy": 3
+   "zoom": 1.8,
+   "zx": 1.2,
+   "zy": 4.7
   },
   {
    "b": "Nomos",
@@ -1267,7 +1268,7 @@
     "mov": "DUW 4001 elle kurmalı",
     "pr": "53 saat"
    },
-   "zoom": 1.71
+   "zoom": 1.8
   },
   {
    "b": "Longines",
@@ -1306,9 +1307,9 @@
     "mov": "Longines L888.5 otomatik, silikon spiral",
     "pr": "72 saat"
    },
-   "zoom": 1.71,
-   "zy": 11,
-   "zx": 0.3
+   "zoom": 1.8,
+   "zy": 14,
+   "zx": -0.6
   },
   {
    "b": "Sinn",
@@ -1348,7 +1349,8 @@
     "wr": "100 m",
     "mov": "Sellita SW 220-1 otomatik, gün-tarih"
    },
-   "zoom": 1.41
+   "zoom": 1.41,
+   "zy": 1.3
   },
   {
    "b": "Farer",
@@ -1388,7 +1390,8 @@
     "mov": "La Joux-Perret G101 otomatik (soignée, 4 pozisyonda ayarlı)",
     "pr": "68 saat"
    },
-   "zoom": 1.48
+   "zoom": 1.55,
+   "zy": 0.8
   },
   {
    "b": "Longines",
@@ -1427,7 +1430,7 @@
     "mov": "Longines otomatik, tarihli, silikon spiral",
     "pr": "72 saat"
    },
-   "zoom": 1.63,
+   "zoom": 1.71,
    "zy": 14
   },
   {
@@ -1467,7 +1470,7 @@
     "mov": "Sellita SW330-2 caller GMT",
     "pr": "56 saat"
    },
-   "zoom": 1.55
+   "zoom": 1.63
   },
   {
    "b": "Christopher Ward",
@@ -1507,7 +1510,7 @@
     "mov": "Sellita SW200-2 otomatik",
     "pr": "65 saat"
    },
-   "zoom": 1.71
+   "zoom": 1.8
   },
   {
    "b": "Venezianico",
@@ -1547,7 +1550,7 @@
     "mov": "Miyota 9039 otomatik",
     "pr": "~42 saat"
    },
-   "zoom": 1.55,
+   "zoom": 1.63,
    "zy": 12.7,
    "zx": 2.1
   },
@@ -1587,7 +1590,7 @@
     "mov": "Junghans J800.1 otomatik",
     "pr": "38 saat"
    },
-   "zoom": 1.55
+   "zoom": 1.63
   },
   {
    "b": "Doxa",
@@ -1627,9 +1630,8 @@
     "mov": "Swiss otomatik",
     "pr": "38 saat"
    },
-   "zoom": 1.8,
-   "zx": 1.8,
-   "zy": 10.2
+   "zoom": 1.98,
+   "zy": 12.3
   },
   {
    "b": "Seiko",
@@ -1671,7 +1673,7 @@
    },
    "zy": 15.7,
    "zx": 2.2,
-   "zoom": 1.55
+   "zoom": 1.63
   },
   {
    "b": "Christopher Ward",
@@ -1712,7 +1714,7 @@
     "mov": "Sellita SW300-1 COSC otomatik",
     "pr": "56 saat"
    },
-   "zoom": 1.8,
+   "zoom": 1.89,
    "zy": -0.5
   },
   {
@@ -1752,8 +1754,8 @@
     "mov": "Hamilton H-10 otomatik",
     "pr": "80 saat"
    },
-   "zoom": 1.48,
-   "zx": 2.5,
+   "zoom": 1.71,
+   "zx": 3.4,
    "zy": 3
   },
   {
@@ -1794,8 +1796,8 @@
     "mov": "Citizen 9051 otomatik",
     "pr": "42 saat"
    },
-   "zx": 1.5,
-   "zy": 9.3,
+   "zx": 1.2,
+   "zy": 7.6,
    "zoom": 1.41
   },
   {
@@ -1836,8 +1838,9 @@
     "mov": "Seiko NH35A otomatik",
     "pr": "41+ saat"
    },
-   "zoom": 2.08,
-   "zy": 3.4
+   "zoom": 2.4,
+   "zy": 3.4,
+   "zx": -0.3
   },
   {
    "b": "Seiko",
@@ -1876,9 +1879,9 @@
     "mov": "Seiko 6R55 otomatik",
     "pr": "72 saat"
    },
-   "zoom": 2.18,
-   "zx": 3.3,
-   "zy": 15.3
+   "zoom": 2.4,
+   "zx": 3.6,
+   "zy": 15.7
   },
   {
    "b": "Baltic",
@@ -1917,9 +1920,9 @@
     "mov": "Miyota 9039 otomatik",
     "pr": "42 saat"
    },
-   "zy": 4.2,
-   "zx": -0.9,
-   "zoom": 1.41
+   "zy": 5,
+   "zoom": 1.55,
+   "zx": 0.3
   },
   {
    "b": "Seiko",
@@ -1963,7 +1966,7 @@
    },
    "zx": 1.8,
    "zy": 5.5,
-   "zoom": 1.28
+   "zoom": 1.48
   },
   {
    "b": "Mondaine",
@@ -2002,9 +2005,8 @@
     "wr": "50 m",
     "mov": "Sellita SW200-1 otomatik"
    },
-   "zy": 5.5,
-   "zx": -0.6,
-   "zoom": 1.63
+   "zy": 7.6,
+   "zoom": 1.8
   },
   {
    "b": "Brew",
@@ -2043,9 +2045,9 @@
     "wr": "50 m",
     "mov": "VK68 meca-quartz kronograf"
    },
-   "zoom": 1.8,
-   "zy": 8.9,
-   "zx": 0.3
+   "zoom": 2.08,
+   "zy": 10.2,
+   "zx": 1.2
   },
   {
    "b": "AV86",
@@ -2087,7 +2089,7 @@
    },
    "zy": 0.4,
    "zx": -0.3,
-   "zoom": 1.8
+   "zoom": 1.98
   },
   {
    "b": "Sternglas",
@@ -2126,7 +2128,8 @@
     "mov": "Miyota 8215 otomatik, tarih, elle kurulabilir",
     "pr": "42 saat"
    },
-   "zoom": 1.71
+   "zoom": 1.89,
+   "zy": 1.3
   },
   {
    "b": "Seiko",
@@ -2165,9 +2168,9 @@
     "mov": "Seiko 4R35 otomatik",
     "pr": "41 saat"
    },
-   "zoom": 1.48,
-   "zx": 4.6,
-   "zy": 7.6
+   "zoom": 1.63,
+   "zx": 3.7,
+   "zy": 5.1
   },
   {
    "b": "Seiko",
@@ -2207,8 +2210,8 @@
     "mov": "Seiko 4R36 otomatik",
     "pr": "41 saat"
    },
-   "zoom": 1.55,
-   "zx": 0.6,
+   "zoom": 1.8,
+   "zx": 0.3,
    "zy": 4.7
   },
   {
@@ -2250,7 +2253,7 @@
     "wr": "50 m",
     "mov": "Seiko 7S26C otomatik, gün-tarih"
    },
-   "zoom": 1.63,
+   "zoom": 1.89,
    "zy": 10.2,
    "zx": 1.8
   },
@@ -2292,9 +2295,9 @@
     "wr": "30 m",
     "mov": "Quartz kronograf (biyoseramik kasa)"
    },
-   "zoom": 1.63,
-   "zx": -0.6,
-   "zy": 6.4
+   "zoom": 2.08,
+   "zx": -0.3,
+   "zy": 8.5
   },
   {
    "b": "Orient",
@@ -2333,9 +2336,8 @@
     "mov": "Orient F6524 otomatik, elle kurulabilir",
     "pr": "40+ saat"
    },
-   "zy": 8.9,
-   "zoom": 1.48,
-   "zx": -0.6
+   "zy": 12.7,
+   "zoom": 1.63
   },
   {
    "b": "Seiko",
@@ -2377,7 +2379,7 @@
    },
    "zx": 1.5,
    "zy": 4.7,
-   "zoom": 1.41
+   "zoom": 1.48
   },
   {
    "b": "Tissot",
@@ -2419,7 +2421,7 @@
    },
    "zx": 0.6,
    "zy": -0.8,
-   "zoom": 1.55
+   "zoom": 1.8
   }
  ]
 }
