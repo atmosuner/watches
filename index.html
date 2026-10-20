@@ -48,7 +48,7 @@ h1{font-family:var(--serif);font-weight:600;font-size:clamp(38px,8vw,60px);line-
 
 /* tabs */
 .navbar{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--line)}
-.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
 @media (min-width:720px){.tabs{display:flex}}
 .tab{min-height:48px;padding:0 16px;border:0;border-right:1px solid var(--line);background:transparent;font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;display:flex;align-items:center;justify-content:center;gap:8px;color:var(--muted);position:relative}
 .tab:first-child{border-left:1px solid var(--line)}
@@ -344,6 +344,7 @@ textarea.note{width:100%;min-height:96px;resize:vertical;border:1px solid var(--
     <div class="tabs" role="tablist">
       <button type="button" class="tab" role="tab" data-act="view" data-view="katalog" id="t-katalog" aria-controls="v-katalog">KATALOG <b id="nKat"></b></button>
       <button type="button" class="tab" role="tab" data-act="view" data-view="liste" id="t-liste" aria-controls="v-liste">LİSTE <b id="nList"></b></button>
+      <button type="button" class="tab" role="tab" data-act="view" data-view="kiyas" id="t-kiyas" aria-controls="v-kiyas">KIYAS <b id="nCmp"></b></button>
       <button type="button" class="tab" role="tab" data-act="view" data-view="koleksiyon" id="t-koleksiyon" aria-controls="v-koleksiyon">PARÇA <b id="nPz"></b></button>
     </div>
   </div>
@@ -367,13 +368,20 @@ textarea.note{width:100%;min-height:96px;resize:vertical;border:1px solid var(--
 
   <section class="view wrap" id="v-liste" role="tabpanel" aria-labelledby="t-liste" hidden>
     <div class="sechead">
-      <div><h2>Liste ve karşılaştırma</h2><p>İstek listenden 2–4 saat seç, aşağıda yan yana gör. "İlk saatim" kararını burada ver.</p></div>
+      <div><h2>Listem</h2><p>İstek listen ve sahip olduklarını burada gör. Karşılaştırmak için satırdaki kıyas düğmesini kullan.</p></div>
     </div>
-    <div id="cmpBox"></div>
     <div class="gh"><b>İSTEK LİSTEM</b><span id="wishSum"></span></div>
     <div class="rows" id="wishList"></div>
     <div class="gh"><b>BENDE VAR</b><span id="ownSum"></span></div>
     <div class="rows" id="ownList"></div>
+  </section>
+
+  <section class="view wrap" id="v-kiyas" role="tabpanel" aria-labelledby="t-kiyas" hidden>
+    <div class="sechead">
+      <div><h2>Karşılaştırma</h2><p>2–4 saati yan yana koy, 17 cm bileğine uyanı seç. "İlk saatim" kararını burada ver.</p></div>
+    </div>
+    <div id="cmpBox"></div>
+    <div class="emptyrow" id="cmpEmpty" hidden><span>Saat eklemek için katalogda ya da listede <b>KIYASLA</b> düğmesine dokun.</span><button type="button" class="btn ghost" data-act="view" data-view="katalog">Kataloğa git</button></div>
   </section>
 
   <section class="view wrap" id="v-koleksiyon" role="tabpanel" aria-labelledby="t-koleksiyon" hidden>
@@ -593,10 +601,10 @@ function renderList(){
     '<div class="emptyrow"><span>İstek listen boş. Katalogda bir saatin <b>İSTEK</b> düğmesine dokun.</span><button type="button" class="btn ghost" data-act="view" data-view="katalog">Kataloğa git</button></div>';
   document.getElementById("ownList").innerHTML = ol.length ? ol.map(function(w){ return row(w,"own"); }).join("") :
     '<div class="emptyrow"><span>Henüz "bende var" olarak işaretlenmiş saat yok. Aldığında detayda <b>Bende var</b>\'a bas, Koleksiyonum\'da parçası dolsun.</span></div>';
-  renderCmp();
 }
 function renderCmp(){
   var list = cmp.map(find).filter(Boolean), n = Math.max(2, list.length), box = document.getElementById("cmpBox");
+  document.getElementById("cmpEmpty").hidden = !!list.length;
   if (!list.length){
     box.innerHTML = '<div class="cmp"><div class="cmpg" style="--n:2"><div class="cmpcorner">KARŞILAŞTIRMA</div><div class="chd slot">1. saat<br>Kıyasla düğmesiyle ekle</div><div class="chd slot">2. saat<br>en az iki saat gerekli</div></div></div>';
     return;
@@ -676,15 +684,16 @@ function renderPuzzle(){
 }
 
 function renderTray(){
-  var t = document.getElementById("tray"); t.hidden = !cmp.length || view==="liste";
+  var t = document.getElementById("tray"); t.hidden = !cmp.length || view==="kiyas";
   var s = ""; for (var i=0;i<4;i++){ var w = find(cmp[i]); s += w ? '<button type="button" class="slot f" data-act="open" data-k="'+esc(cmp[i])+'" aria-label="'+esc(cmp[i])+'">'+vis(w)+'</button>' : '<span class="slot" aria-hidden="true"></span>'; }
   document.getElementById("slots").innerHTML = s;
   var g = document.getElementById("cmpGo"); g.disabled = cmp.length<2; g.textContent = cmp.length<2 ? "1 SAAT DAHA SEÇ" : "YAN YANA GÖR "+cmp.length+"/4";
 }
 function renderNav(){
-  ["katalog","liste","koleksiyon"].forEach(function(v){ document.getElementById("t-"+v).setAttribute("aria-selected", String(view===v)); document.getElementById("v-"+v).hidden = view!==v; });
+  ["katalog","liste","kiyas","koleksiyon"].forEach(function(v){ document.getElementById("t-"+v).setAttribute("aria-selected", String(view===v)); document.getElementById("v-"+v).hidden = view!==v; });
   document.getElementById("nKat").textContent = W.length;
   document.getElementById("nList").textContent = sumOf(sel).n;
+  document.getElementById("nCmp").textContent = cmp.length ? cmp.length+"/4" : "";
   document.getElementById("nPz").textContent = pzHave()+"/8";
   document.getElementById("kick").textContent = W.length+" SAAT · 8 KATEGORİ · BİLEK 170 MM";
 }
@@ -777,7 +786,7 @@ function refocus(sig){ if (!sig) return; var scope = sig.d ? document.getElement
 
 function render(){
   var sig = focusSig();
-  renderNav(); renderFilters(); renderGrid(); renderList(); renderPuzzle(); renderTray();
+  renderNav(); renderFilters(); renderGrid(); renderList(); renderCmp(); renderPuzzle(); renderTray();
   if (cur) renderDetail();
   refocus(sig);
 }
@@ -801,7 +810,7 @@ document.addEventListener("click", function(e){
     case "clear": F = {q:"",cat:"",brand:"",budget:"",col:"",fit:"",only:""}; document.getElementById("q").value = ""; render(); break;
     case "ftoggle": fOpen = !fOpen; renderFilters(); break;
     case "theme": var i = THEMES.map(function(x){ return x[0]; }).indexOf(theme); theme = THEMES[(i+1)%3][0]; try { localStorage.setItem("saatTema", theme); } catch(e){} applyTheme(); break;
-    case "cmpgo": if (cmp.length>=2) setView("liste"); break;
+    case "cmpgo": if (cmp.length>=2) setView("kiyas"); break;
     case "cmpclear": cmp = []; render(); break;
     case "pz": if (k){ openDetail(k); } else { F = {q:"",cat:b.getAttribute("data-cat"),brand:"",budget:"",col:"",fit:"",only:""}; document.getElementById("q").value = ""; setView("katalog"); } break;
   }
