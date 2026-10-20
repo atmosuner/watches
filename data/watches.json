@@ -2042,7 +2042,10 @@
     "th": "10,75 mm",
     "wr": "50 m",
     "mov": "VK68 meca-quartz kronograf"
-   }
+   },
+   "zoom": 1.8,
+   "zy": 8.9,
+   "zx": 0.3
   },
   {
    "b": "AV86",
