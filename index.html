@@ -108,6 +108,7 @@ select.field{appearance:none;padding-right:34px;background-image:linear-gradient
 .cname button{background:none;border:0;padding:0;text-align:left;font:inherit;color:inherit}
 .cname button:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
 .cchar{margin:2px 0 0;font-family:var(--serif);font-style:italic;font-size:16px;line-height:1.45;color:var(--muted);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(1.45em*3);text-wrap:pretty}
+.cyr{font-family:var(--mono);color:var(--ink)}
 .cspec{margin:10px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px dashed var(--line);padding-top:10px}
 .cspec div{min-width:0}
 .cspec dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--faint)}
@@ -363,7 +364,7 @@ textarea.note{width:100%;min-height:96px;resize:vertical;border:1px solid var(--
       <div class="countrow"><span id="count" aria-live="polite"></span><button type="button" class="linkbtn" data-act="clear" id="clearTop" hidden>Filtreleri temizle</button></div>
     </div>
     <div class="grid" id="grid"></div>
-    <p class="foot">Fiyatlar yeni halde yaklaşık USD değerleridir; kesin fiyat için yetkili bayiye bak. <span class="vfy">doğrulanmalı</span> işaretli fiyatlar teyit edilmedi. Bilek uyumu lug-to-lug ölçüsüne göre: 46 mm ve altı rahat, 48 mm'ye kadar sınırda, üstü büyük. İstek listesi, sahip olunanlar ve notlar yalnızca bu tarayıcıda saklanır.</p>
+    <p class="foot">Fiyatlar yeni halde yaklaşık USD değerleridir; kesin fiyat için yetkili bayiye bak. <span class="vfy">doğrulanmalı</span> işaretli fiyatlar teyit edilmedi. Bilek uyumu lug-to-lug ölçüsüne göre: 46 mm ve altı rahat, 48 mm'ye kadar sınırda, üstü büyük. Çıkış yılı bu modelin ya da referansın piyasaya çıktığı yıldır, "~" ile başlayanlar tahmindir; "Seri ilk çıkış" koleksiyonun ilk yılıdır. İstek listesi, sahip olunanlar ve notlar yalnızca bu tarayıcıda saklanır.</p>
   </section>
 
   <section class="view wrap" id="v-liste" role="tabpanel" aria-labelledby="t-liste" hidden>
@@ -444,7 +445,11 @@ var COLS = D.COLS.filter(function(c){ return c!=="Tümü"; });
 var COLDOT = {"Siyah":"#141516","Beyaz / krem":"#efeadf","Gri / gümüş":"#9aa0a6","Mavi":"#2a4f86","Yeşil":"#3e5b45","Bordo / kırmızı":"#8e2430","Turuncu / sarı / şampanya":"#d9a13a","Diğer":"linear-gradient(135deg,#e6b3bc 0 50%,#5a3a22 50%)"};
 var FITS = [["ok","Rahat"],["mid","Sınırda"],["big","Büyük"],["none","Veri yok"]];
 var FITLAB = {ok:"Rahat",mid:"Sınırda",big:"Büyük",none:"Veri yok"};
-var SORTS = [["price-desc","Fiyat: yüksekten"],["price-asc","Fiyat: düşükten"],["name","İsim: A–Z"],["fit","Bileğe en uygun"]];
+var SORTS = [["price-desc","Fiyat: yüksekten"],["price-asc","Fiyat: düşükten"],["name","İsim: A–Z"],["fit","Bileğe en uygun"],["year-desc","Çıkış: yeniden eskiye"],["year-asc","Çıkış: eskiden yeniye"],["orig","Seri: en köklü"]];
+var ERAS = [["2025","2025 ve sonrası"],["2022","2022–2024"],["2019","2019–2021"],["2015","2015–2018"],["old","2014 ve öncesi"],["none","Yıl yok"]];
+function eraOf(w){ var y = w.yr; if (!y) return "none"; return y>=2025?"2025":(y>=2022?"2022":(y>=2019?"2019":(y>=2015?"2015":"old"))); }
+function yrText(w){ return w.yr ? (w.yrx?"~":"")+w.yr : "—"; }
+function origText(w){ return w.orig ? String(w.orig) : "—"; }
 var IC = {
   heart:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.7 7.7 4 4.5 7.3 4.5c1.9 0 3.5 1 4.7 2.7 1.2-1.7 2.8-2.7 4.7-2.7 3.3 0 5.6 3.2 4.5 6.6-1.7 4.8-9.2 9.4-9.2 9.4z"/></svg>',
   check:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.8 2.8L16 9.5"/></svg>',
@@ -502,7 +507,7 @@ function saveSel(){ try { localStorage.setItem("saatSecim2", JSON.stringify(sel)
 function loadNotes(){ try { return JSON.parse(localStorage.getItem("saatNot2")||"{}") || {}; } catch(e){ return {}; } }
 function saveNote(k, v){ try { var n = loadNotes(); if (v) n[k]=v; else delete n[k]; localStorage.setItem("saatNot2", JSON.stringify(n)); } catch(e){} }
 
-var view = "katalog", F = {q:"",cat:"",brand:"",budget:"",col:"",fit:"",only:""}, sort = "price-desc", cmp = [], cur = null, shown = [], lastFocus = null, fOpen = false;
+var view = "katalog", F = {q:"",cat:"",brand:"",budget:"",col:"",fit:"",era:"",only:""}, sort = "price-desc", cmp = [], cur = null, shown = [], lastFocus = null, fOpen = false;
 
 function toggleWish(k){ if (sel[k]) delete sel[k]; else { sel[k]=1; delete own[k]; } saveSel(); }
 function toggleOwn(k){ if (own[k]) delete own[k]; else { own[k]=1; delete sel[k]; } saveSel(); }
@@ -515,15 +520,19 @@ function match(w){
   if (F.col && m[0]!==F.col) return false;
   if (F.budget && (!w.p || w.p[0]>BUD[F.budget])) return false;
   if (F.fit && fitOf(l2l(k))!==F.fit) return false;
+  if (F.era && eraOf(w)!==F.era) return false;
   if (F.only==="wish" && !sel[k]) return false;
   if (F.only==="own" && !own[k]) return false;
-  if (F.q){ var s = (k+" "+w.c+" "+(spec(k).mov||"")+" "+w.dn).toLocaleLowerCase("tr"); if (s.indexOf(F.q.toLocaleLowerCase("tr"))<0) return false; }
+  if (F.q){ var s = (k+" "+w.c+" "+(spec(k).mov||"")+" "+w.dn+" "+(w.yr||"")+" "+(w.orig||"")).toLocaleLowerCase("tr"); if (s.indexOf(F.q.toLocaleLowerCase("tr"))<0) return false; }
   return true;
 }
 function sorted(list){
   var a = list.slice();
   if (sort==="price-desc") a.sort(function(x,y){ return (y.p?y.p[0]:-1)-(x.p?x.p[0]:-1); });
   else if (sort==="price-asc") a.sort(function(x,y){ return (x.p?x.p[0]:1e9)-(y.p?y.p[0]:1e9); });
+  else if (sort==="year-desc") a.sort(function(x,y){ return (y.yr||-1)-(x.yr||-1) || key(x).localeCompare(key(y),"tr"); });
+  else if (sort==="year-asc") a.sort(function(x,y){ return (x.yr||1e9)-(y.yr||1e9) || key(x).localeCompare(key(y),"tr"); });
+  else if (sort==="orig") a.sort(function(x,y){ return (x.orig||1e9)-(y.orig||1e9) || key(x).localeCompare(key(y),"tr"); });
   else if (sort==="name") a.sort(function(x,y){ return key(x).localeCompare(key(y),"tr"); });
   else a.sort(function(x,y){ var p=l2l(key(x)), q=l2l(key(y)); return (p==null?99:p)-(q==null?99:q); });
   return a;
@@ -538,6 +547,8 @@ function renderFilters(){
   var h = '';
   h += '<div class="frow"><span class="flab">KATEGORİ</span><div class="chips">'+chip("cat","","Tümü",!F.cat)+CATS.map(function(c){ return chip("cat",c,c,F.cat===c).replace('</button>',' <small>'+(cc[c]||0)+'</small></button>'); }).join("")+'</div></div>';
   h += '<div class="frow"><span class="flab">BİLEK UYUMU</span><div class="chips">'+chip("fit","","Tümü",!F.fit)+FITS.map(function(f){ return chip("fit",f[0],f[1],F.fit===f[0]).replace('</button>',' <small>'+(fc[f[0]]||0)+'</small></button>'); }).join("")+'</div></div>';
+  var ec = countBy(eraOf);
+  h += '<div class="frow"><span class="flab">ÇIKIŞ YILI</span><div class="chips">'+chip("era","","Tümü",!F.era)+ERAS.filter(function(e){ return ec[e[0]]; }).map(function(e){ return chip("era",e[0],e[1],F.era===e[0]).replace('</button>',' <small>'+ec[e[0]]+'</small></button>'); }).join("")+'</div></div>';
   h += '<div class="frow"><span class="flab">FİYAT USD</span><div class="chips">'+chip("budget","","Tümü",!F.budget)+Object.keys(BUD).map(function(b){ return chip("budget",b,b,F.budget===b); }).join("")+'</div></div>';
   h += '<div class="frow"><span class="flab">KADRAN RENGİ</span><div class="chips">'+chip("col","","Tümü",!F.col)+COLS.map(function(c){ return chip("col",c,c,F.col===c,'<i style="background:'+COLDOT[c]+'"></i>'); }).join("")+'</div></div>';
   h += '<div class="fmeta"><div class="chips">'+chip("only","","Tüm saatler",!F.only)+chip("only","wish","İstek listem",F.only==="wish")+chip("only","own","Bende var",F.only==="own")+'</div>'+
@@ -558,7 +569,7 @@ function card(w){
   return '<article class="card" data-k="'+esc(k)+'">'+
     '<div class="ctop"><span>№ '+pad(NUM[k])+'</span><span class="cdot"><i style="background:'+w.dial+'"></i>'+esc(m[0]||w.dn)+'</span></div>'+
     '<button type="button" class="ph cph'+(FAILED[k]?' failed':'')+'" data-act="open" aria-label="'+esc(k)+' detayını aç">'+vis(w)+(ow?'<span class="flag own">BENDE VAR</span>':(on?'<span class="flag">İSTEK LİSTEMDE</span>':''))+'</button>'+
-    '<div class="cbody"><div class="cbrand">'+esc(w.b)+' · '+esc(w.c)+'</div>'+
+    '<div class="cbody"><div class="cbrand">'+esc(w.b)+' · '+esc(w.c)+(w.yr?' · <span class="cyr" title="Çıkış yılı'+(w.yrx?' (tahmini)':'')+'">'+yrText(w)+'</span>':'')+'</div>'+
     '<h3 class="cname"><button type="button" data-act="open">'+esc(w.n)+'</button></h3>'+
     '<p class="cchar">'+esc(ab)+'</p>'+
     '<dl class="cspec"><div><dt>Ø MM</dt><dd>'+dash(strip(sp.dia))+'</dd></div><div class="fit-'+f+'"><dt>L2L MM</dt><dd>'+(v?num(v):'—')+'</dd><small>'+FITLAB[f]+'</small></div><div><dt>SU</dt><dd>'+dash(sp.wr)+'</dd></div></dl>'+
@@ -584,7 +595,7 @@ function row(w, kind){
   var k = key(w), sp = spec(k), v = l2l(k), f = fitOf(v), ic = cmp.indexOf(k)>=0;
   return '<div class="row" data-k="'+esc(k)+'">'+
     '<button type="button" class="ph'+(FAILED[k]?' failed':'')+'" data-act="open" aria-label="'+esc(k)+' detayını aç">'+vis(w)+'</button>'+
-    '<div class="rname"><span class="b"><i class="dot" style="background:'+w.dial+'"></i>'+esc(w.b)+' · '+esc(w.c)+'</span><button type="button" data-act="open">'+esc(w.n)+'</button><span class="p">'+priceText(w)+'</span></div>'+
+    '<div class="rname"><span class="b"><i class="dot" style="background:'+w.dial+'"></i>'+esc(w.b)+' · '+esc(w.c)+(w.yr?' · '+yrText(w):'')+'</span><button type="button" data-act="open">'+esc(w.n)+'</button><span class="p">'+priceText(w)+'</span></div>'+
     '<div class="rc"><small>Ø MM</small>'+dash(strip(sp.dia))+'</div>'+
     '<div class="rc fit-'+f+'"><small>L2L</small><span style="color:var(--'+(f==="none"?"faint":f)+')">'+(v?num(v)+' · '+FITLAB[f]:'—')+'</span></div>'+
     '<div class="rc"><small>SU</small>'+dash(sp.wr)+'</div>'+
@@ -617,7 +628,7 @@ function renderCmp(){
   }
   var lows = list.filter(function(w){ return w.p; }).map(function(w){ return w.p[0]; }), minP = lows.length ? Math.min.apply(null,lows) : null;
   var groups = [
-    ["GENEL", [["Kategori", function(w){ return esc(w.c); }],["Fiyat", function(w){ return '<span class="mono'+(list.length>1&&w.p&&w.p[0]===minP?' best':'')+'">'+priceText(w)+'</span>'+(w.verify?'<br><span class="vfy">doğrulanmalı</span>':''); }],["Kadran", function(w){ return '<span style="display:inline-flex;gap:6px;align-items:center"><i class="dot" style="background:'+w.dial+'"></i>'+esc(w.dn)+'</span>'; }]]],
+    ["GENEL", [["Kategori", function(w){ return esc(w.c); }],["Çıkış yılı", function(w){ return w.yr ? '<span class="mono">'+yrText(w)+'</span>' : '<span class="na">—</span>'; }],["Seri ilk çıkış", function(w){ return w.orig ? '<span class="mono">'+w.orig+'</span>' : '<span class="na">—</span>'; }],["Fiyat", function(w){ return '<span class="mono'+(list.length>1&&w.p&&w.p[0]===minP?' best':'')+'">'+priceText(w)+'</span>'+(w.verify?'<br><span class="vfy">doğrulanmalı</span>':''); }],["Kadran", function(w){ return '<span style="display:inline-flex;gap:6px;align-items:center"><i class="dot" style="background:'+w.dial+'"></i>'+esc(w.dn)+'</span>'; }]]],
     ["01 KASA", [["Malzeme","mat"],["Çap","dia",1],["Kalınlık","th",1],["Lug-to-lug", function(w){ var v=l2l(key(w)), f=fitOf(v); return v ? '<span class="mono">'+num(v)+' mm</span><br><span class="fitchip '+f+'"><i></i>'+FITLAB[f]+'</span>' : '<span class="na">—</span>'; }]]],
     ["02 KADRAN", [["Yüzey","dial"]]],
     ["03 BEZEL VE CAM", [["Bezel","bz"],["Cam","gl"]]],
@@ -734,7 +745,7 @@ function renderDetail(){
     (ab[1]?'<p class="t"><span class="k">Koleksiyondaki yeri</span>'+esc(ab[1])+'</p>':'')+
     (ab[2]?'<p class="t"><span class="k">Dikkat edilecekler</span>'+esc(ab[2])+'</p>':'')+'</div>';
   var l2s = sp.l2l ? num(sp.l2l)+" mm" : "";
-  var groups = [["01 KASA",[["Malzeme",sp.mat],["Çap",sp.dia],["Kalınlık",sp.th],["Lug-to-lug",l2s]]],["02 KADRAN",[["Renk",w.dn],["Yüzey",sp.dial]]],["03 BEZEL VE CAM",[["Bezel",sp.bz],["Cam",sp.gl]]],["04 MEKANİZMA",[["Kalibre ve tip",sp.mov],["Güç rezervi",sp.pr]]],["05 SU GEÇİRMEZLİK",[["Derinlik",sp.wr]]],["06 KAYIŞ / BİLEZİK",[["Tip",sp.str],["Kayış genişliği",sp.lw]]]];
+  var groups = [["00 TARİHÇE",[["Çıkış yılı",w.yr?yrText(w)+(w.yrx?" (tahmini)":""):""],["Seri ilk çıkış",w.orig?String(w.orig):""]]],["01 KASA",[["Malzeme",sp.mat],["Çap",sp.dia],["Kalınlık",sp.th],["Lug-to-lug",l2s]]],["02 KADRAN",[["Renk",w.dn],["Yüzey",sp.dial]]],["03 BEZEL VE CAM",[["Bezel",sp.bz],["Cam",sp.gl]]],["04 MEKANİZMA",[["Kalibre ve tip",sp.mov],["Güç rezervi",sp.pr]]],["05 SU GEÇİRMEZLİK",[["Derinlik",sp.wr]]],["06 KAYIŞ / BİLEZİK",[["Tip",sp.str],["Kayış genişliği",sp.lw]]]];
   var tot = 0, miss = 0; groups.forEach(function(g){ g[1].forEach(function(r){ tot++; if (!r[1]) miss++; }); });
   h += '<div class="dsec"><h3>TEKNİK BİLGİLER <span>'+(tot-miss)+' / '+tot+' alan</span></h3>'+(miss>tot/2?'<p class="tnote">Bu saatin teknik verisi büyük ölçüde eksik. "—" olan alanlar henüz doğrulanmadı.</p>':'')+
     groups.map(function(g){ return '<div class="tg"><h4>'+g[0]+'</h4>'+g[1].map(function(r){ return '<div class="tr"><span>'+r[0]+'</span><b'+(r[1]?'':' class="na"')+'>'+dash(r[1])+'</b></div>'; }).join("")+'</div>'; }).join("")+'</div>';
@@ -807,12 +818,12 @@ document.addEventListener("click", function(e){
     case "goto": cur = b.getAttribute("data-to"); renderDetail(); document.getElementById("dPanel").scrollTop = 0; document.getElementById("dClose").focus(); break;
     case "view": setView(b.getAttribute("data-view")); break;
     case "chip": var f = b.getAttribute("data-f"), v = b.getAttribute("data-v"); F[f] = (F[f]===v && v) ? "" : v; render(); break;
-    case "clear": F = {q:"",cat:"",brand:"",budget:"",col:"",fit:"",only:""}; document.getElementById("q").value = ""; render(); break;
+    case "clear": F = {q:"",cat:"",brand:"",budget:"",col:"",fit:"",era:"",only:""}; document.getElementById("q").value = ""; render(); break;
     case "ftoggle": fOpen = !fOpen; renderFilters(); break;
     case "theme": var i = THEMES.map(function(x){ return x[0]; }).indexOf(theme); theme = THEMES[(i+1)%3][0]; try { localStorage.setItem("saatTema", theme); } catch(e){} applyTheme(); break;
     case "cmpgo": if (cmp.length>=2) setView("kiyas"); break;
     case "cmpclear": cmp = []; render(); break;
-    case "pz": if (k){ openDetail(k); } else { F = {q:"",cat:b.getAttribute("data-cat"),brand:"",budget:"",col:"",fit:"",only:""}; document.getElementById("q").value = ""; setView("katalog"); } break;
+    case "pz": if (k){ openDetail(k); } else { F = {q:"",cat:b.getAttribute("data-cat"),brand:"",budget:"",col:"",fit:"",era:"",only:""}; document.getElementById("q").value = ""; setView("katalog"); } break;
   }
 });
 document.addEventListener("change", function(e){

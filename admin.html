@@ -174,6 +174,9 @@ function renderForm(){
   h += '<fieldset><legend>Temel</legend><div class="g">' +
     field("Marka", "b", w.b) + field("Model", "n", w.n) + selectF("Kategori", "c", cats, w.c) +
     field("Fiyat min (USD)", "p0", p[0] == null ? "" : p[0], {type:"number"}) + field("Fiyat max (USD, boş = açık uçlu)", "p1", p[1] == null ? "" : p[1], {type:"number"}) +
+    field("Çıkış yılı", "yr", w.yr == null ? "" : w.yr, {type:"number", ph:"örn. 2022"}) +
+    '<label><span class="h">Çıkış yılı kesin mi?</span><select data-f="yrx"><option value="">Kesin</option><option value="1"' + (w.yrx ? " selected" : "") + '>Tahmin (~)</option></select></label>' +
+    field("Seri ilk çıkış yılı", "orig", w.orig == null ? "" : w.orig, {type:"number", ph:"örn. 1953"}) +
     '<label><span class="h">Fiyat doğrulanmamış</span><select data-f="verify"><option value="">Hayır</option><option value="1"' + (w.verify ? " selected" : "") + '>Evet (tahmin)</option></select></label>' +
     '<label><span class="h">Kadran rengi</span><div class="row"><input type="color" data-f="dial" value="' + esc(/^#[0-9a-f]{6}$/i.test(w.dial || "") ? w.dial : "#888888") + '" style="width:44px;height:32px;padding:0"><input type="text" data-f="dialtxt" value="' + esc(w.dial || "") + '"></div></label>' +
     field("Kadran adı", "dn", w.dn) + selectF("Renk ailesi", "color", cols, w.color) +
@@ -225,6 +228,8 @@ $("form").addEventListener("input", function(e){
   var el = e.target, k = el.getAttribute("data-f"); if (!k || sel < 0) return;
   var w = db.watches[sel], v = el.value;
   if (k === "p0" || k === "p1") { w.p = w.p || [null, null]; w.p[+k.slice(1)] = v === "" ? null : +v; }
+  else if (k === "yr" || k === "orig") { var n = parseInt(v, 10); if (isNaN(n)) delete w[k]; else w[k] = n; if (k === "yr" && !w.yr) delete w.yrx; }
+  else if (k === "yrx") { if (v && w.yr) w.yrx = true; else delete w.yrx; }
   else if (k === "verify") { if (v) w.verify = true; else delete w.verify; }
   else if (k === "zoom" || k === "zx" || k === "zy" || k === "zoomn" || k === "zxn" || k === "zyn") {
     var kk = k.replace(/n$/, ""), nv = +v; if (isNaN(nv)) return;
