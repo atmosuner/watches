@@ -820,45 +820,47 @@
   },
   {
    "b": "IWC",
-   "n": "Pilot's Watch Mark XX",
-   "c": "Field / Pilot",
+   "n": "Ingenieur Automatic 40",
+   "c": "Smart casual",
    "p": [
-    5000,
-    6500
+    13500,
+    13500
    ],
-   "dial": "#111314",
-   "dn": "Siyah",
-   "note": "40 mm, 10,8 mm kalın, IWC 32111 otomatik ve 120 saat güç rezervi. Sade, okunaklı pilot saati.",
+   "dial": "#17181a",
+   "dn": "Siyah, ızgara (grid) dokulu",
+   "note": "Gérald Genta'nın 1976 Ingenieur SL'sinin yeniden yorumu (IW328901). 40 mm çelik kasa, 10,7 mm kalın, 45,7 mm lug-to-lug (resmi), entegre çelik bilezik. IWC 32111 otomatik, 120 saat güç rezervi, 100 m, yumuşak demir iç kasa ile manyetik koruma. Fiyat IWC ABD fiyatıdır (13.500 USD), Türkiye fiyatı farklı olur.",
    "color": "Siyah",
    "mov": "Otomatik / Elle kurmalı",
    "type": "Tarihli",
-   "link": "https://www.iwc.com/ww-en/watches/pilot-watches/iw328201-pilots-watch-mark-xx",
-   "img": "https://img.iwc.com/product-slideshow-2xl-1/84051a252a4bdf55e73dfd901165f5e12199ff36.jpg",
+   "verify": true,
+   "link": "https://www.iwc.com/us-en/watches/ingenieur/iw328901-ingenieur-automatic-40",
+   "img": "https://img.iwc.com/open-graph-boxed-image-1/o-dpr-2/e0bf63d3a5ee6e240fb4c78085f597e9cc4b0681.jpg",
    "about": [
-    "Pilot saatinin klasiği: sade siyah kadran, tarih, 120 saat güç rezervi veren IWC 32111.",
-    "Field / Pilot slotunun şık, okunaklı adayı.",
-    ""
+    "Genta'nın ikonik spor saati tasarımı: beş vidalı bezel, entegre bilezik ve ızgara dokulu siyah kadran.",
+    "Smart casual slotunda, çelik entegre bilezikli bir spor-şık seçenek. Hem ofiste hem hafta sonu takılır.",
+    "45,7 mm lug-to-lug ve 10,7 mm kalınlıkla 17 cm bileğe rahat oturur. Resmi fiyat ABD'ye göre, yerel fiyat için bayiye bak."
    ],
    "tech": {
     "mat": "Paslanmaz çelik",
-    "dial": "Siyah",
-    "gl": "Bombeli safir, iki yüzde yansıma önleyici",
-    "str": "Siyah dana derisi, EasX-CHANGE",
-    "lw": "20 mm",
-    "bz": "Sabit, yüksek cilalı çelik",
-    "l2l": 49.2
+    "dial": "Siyah, ızgara dokulu, rodyum kaplama ibreler ve appliklar (Super-LumiNova dolgulu)",
+    "gl": "Safir cam",
+    "str": "Entegre çelik bilezik, kelebek katlamalı toka (orta halka bağlantısı)",
+    "lw": "14 mm (bilezik ucu)",
+    "th": "10,7 mm",
+    "bz": "Sabit, cilalı ve satine yüzeyli, beş fonksiyonel vidalı",
+    "l2l": 45.7,
+    "pr": "120 saat"
    },
    "spec": {
     "dia": "40 mm",
-    "th": "10,8 mm",
+    "l2l": 45.7,
+    "th": "10,7 mm",
     "wr": "100 m",
     "mov": "IWC 32111 otomatik",
     "pr": "120 saat"
    },
-   "zoom": 1.63,
-   "zy": 1.7,
-   "yr": 2022,
-   "orig": 1948
+   "yr": 2023,
+   "orig": 1955
   },
   {
    "b": "Tudor",
