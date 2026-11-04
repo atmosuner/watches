@@ -2569,7 +2569,7 @@
    ],
    "dial": "#23477f",
    "dn": "Mavi, çift renk geçişli lake",
-   "note": "Q9128981. 40 mm çelik kasa, 12,9 mm kalın, 20 mm kayış. Manufaktur Kalibre 899 otomatik, 70 saat güç rezervi, 200 m, üst taçla çalışan iç dönen zamanlama bezeli. Mavi kanvas kayışla geliyor, çelik çift katlamalı tokalı. Lug-to-lug ölçüsü resmi kaynaklarda yok, almadan önce bilekte dene. Fiyat 10.400 USD (Rotap Türkiye: 590.000 TL).",
+   "note": "Q9128981. 40 mm çelik kasa, 12,9 mm kalın, 20 mm kayış. Manufaktur Kalibre 899 otomatik, 70 saat güç rezervi, 200 m, üst taçla çalışan iç dönen zamanlama bezeli. Mavi kanvas kayışla geliyor, çelik çift katlamalı tokalı. Lug-to-lug yaklaşık 47 mm (resmi değil, bir inceleme videosundan), almadan önce bilekte dene. Fiyat 10.400 USD (Rotap Türkiye: 590.000 TL).",
    "color": "Mavi",
    "mov": "Otomatik / Elle kurmalı",
    "type": "Tarihli",
@@ -2578,7 +2578,7 @@
    "about": [
     "1968 Memovox Polaris'in torunu: mavi çift geçişli lake kadran, iskelet baton ibreler ve 12'de turuncu üçgen.",
     "Polaris Date'in ilk kez 40 mm'ye inmiş hali. Günlük ve spor-şık kullanım için bilek dostu boyut.",
-    "Lug-to-lug resmi olarak yayınlanmadı. 12,9 mm kalınlık ve 40 mm çap ile 17 cm bilekte rahat olması beklenir ama bilekte dene."
+    "Lug-to-lug yaklaşık 47 mm (resmi değil, inceleme videosundan). 12,9 mm kalınlıkla 17 cm bilekte rahat olması beklenir ama bilekte dene."
    ],
    "tech": {
     "mat": "Paslanmaz çelik, fırçalı ve cilalı yüzeyler",
@@ -2588,14 +2588,16 @@
     "lw": "20 mm",
     "th": "12,9 mm",
     "bz": "Dar, iç dönen zamanlama bezeli (üst taç ile)",
-    "pr": "70 saat"
+    "pr": "70 saat",
+    "l2l": 47
    },
    "spec": {
     "dia": "40 mm",
     "th": "12,9 mm",
     "wr": "200 m",
     "mov": "JLC Kalibre 899 otomatik",
-    "pr": "70 saat"
+    "pr": "70 saat",
+    "l2l": 47
    },
    "yr": 2026,
    "orig": 1968,
