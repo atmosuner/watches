@@ -84,7 +84,8 @@
    "Venezianico Arsenale Bosphorus",
    "Doxa Sub 200",
    "Mondaine Original Automatic 41 mm",
-   "Unimatic Modello Uno U1-TSP"
+   "Unimatic Modello Uno U1-TSP",
+   "Jaeger-LeCoultre Polaris Date 40 mm"
   ],
   "target": [
    "Audemars Piguet",
@@ -2556,6 +2557,47 @@
    "yr": 2021,
    "orig": 1938,
    "yrx": true
+  },
+  {
+   "b": "Jaeger-LeCoultre",
+   "n": "Polaris Date 40 mm",
+   "c": "Smart casual",
+   "p": [
+    10400,
+    10400
+   ],
+   "dial": "#23477f",
+   "dn": "Mavi, çift renk geçişli lake",
+   "note": "Q9128981. 40 mm çelik kasa, 12,9 mm kalın, 20 mm kayış. Manufaktur Kalibre 899 otomatik, 70 saat güç rezervi, 200 m, üst taçla çalışan iç dönen zamanlama bezeli. Mavi kanvas kayışla geliyor, çelik çift katlamalı tokalı. Lug-to-lug ölçüsü resmi kaynaklarda yok, almadan önce bilekte dene. Fiyat 10.400 USD (Rotap Türkiye: 590.000 TL).",
+   "color": "Mavi",
+   "mov": "Otomatik / Elle kurmalı",
+   "type": "Tarihli",
+   "link": "https://www.rotapsaat.com/tr/jaeger-lecoultre/jaeger-lecoultre-polaris-date-40-mm-otomatik-saat-q9128981",
+   "img": "https://www.rotapsaat.com/images/thumbs/0041608_jaeger-lecoultre-polaris-date-40-mm-otomatik-saat-q9128981_1250.jpeg",
+   "about": [
+    "1968 Memovox Polaris'in torunu: mavi çift geçişli lake kadran, iskelet baton ibreler ve 12'de turuncu üçgen.",
+    "Polaris Date'in ilk kez 40 mm'ye inmiş hali. Günlük ve spor-şık kullanım için bilek dostu boyut.",
+    "Lug-to-lug resmi olarak yayınlanmadı. 12,9 mm kalınlık ve 40 mm çap ile 17 cm bilekte rahat olması beklenir ama bilekte dene."
+   ],
+   "tech": {
+    "mat": "Paslanmaz çelik, fırçalı ve cilalı yüzeyler",
+    "dial": "Mavi, çift geçişli lake; güneş ışınlı, grene ve opalin yüzeyler; iskelet baton ibreler (Super-LumiNova)",
+    "gl": "Safir (glass-box), şeffaf safir kasa arkası",
+    "str": "Mavi kanvas kayış, hızlı değişim, çelik çift katlamalı toka",
+    "lw": "20 mm",
+    "th": "12,9 mm",
+    "bz": "Dar, iç dönen zamanlama bezeli (üst taç ile)",
+    "pr": "70 saat"
+   },
+   "spec": {
+    "dia": "40 mm",
+    "th": "12,9 mm",
+    "wr": "200 m",
+    "mov": "JLC Kalibre 899 otomatik",
+    "pr": "70 saat"
+   },
+   "yr": 2026,
+   "orig": 1968
   }
  ]
 }
