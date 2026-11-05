@@ -2617,7 +2617,7 @@
    "mov": "Otomatik / Elle kurmalı",
    "type": "Sade",
    "link": "https://www.grand-seiko.com/us-en/collections/sbgy013g",
-   "img": "https://www.grand-seiko.com/us-en/-/media/Images/GlobalEn/GrandSeiko/Home/collections/Products/SBGY013/SBGY013_KV_pc.jpg",
+   "img": "https://www.grand-seiko.com/tr-tr/-/media/Images/Product--Image/All/GrandSeiko/2022/06/29/11/48/SBGY013G/SBGY013G.png",
    "about": [
     "Spring Drive'lı gerçek dress saat: ince, kubbeli safir camlı, Zaratsu cilalı kasa. Saniye ibresi tik atmadan süzülür.",
     "Omiwatari'nin buz beyazı sürümü; SBGY007'nin açık mavisine karşı daha sade. Ceketin kolu altına rahat girer, 43,7 mm lug-to-lug 17 cm bilekte kolay oturur.",
@@ -2641,7 +2641,10 @@
     "pr": "72 saat"
    },
    "yr": 2022,
-   "orig": 2021
+   "orig": 2021,
+   "zoom": 1.55,
+   "zx": 1.5,
+   "zy": 10.6
   }
  ]
 }
