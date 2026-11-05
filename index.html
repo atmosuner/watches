@@ -205,34 +205,42 @@ select.field{appearance:none;padding-right:34px;background-image:linear-gradient
 .pzcount small{font-family:var(--mono);font-weight:400;font-size:12px;letter-spacing:.06em;color:var(--muted);margin-left:6px}
 .pzbar{height:8px;background:var(--line2);position:relative;overflow:hidden}
 .pzbar i{position:absolute;left:0;top:0;bottom:0;background:var(--acc);transition:width .4s}
-.pzticks{display:grid;grid-template-columns:repeat(8,1fr);margin-top:4px;font-family:var(--mono);font-size:10px;color:var(--faint)}
-.pzgrid{display:grid;gap:0;max-width:880px;margin:0 auto;padding:4% 4% 0}
-.pzcell{position:relative;aspect-ratio:1}
-.pzpiece{position:absolute;inset:-20%}
-.pzfill{position:absolute;inset:0;border:0;padding:0;margin:0;background:var(--surface);overflow:hidden;display:block;width:100%;height:100%}
-.pzcell.have .pzfill{background:var(--photo)}
-.pzfill img,.pzfill .fb{position:absolute;left:24%;top:20%;width:52%;height:46%;object-fit:contain;mix-blend-mode:multiply}
-.pzfill .fbcap{display:none}
-.pzfill:hover{filter:brightness(1.04)}
-.pzfill:focus-visible{outline:none}
-.pzcell:focus-within .pzline path{stroke:var(--acc);stroke-width:3}
-.pzline{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
-.pzline path{fill:none;stroke:var(--line);stroke-width:1.5;vector-effect:non-scaling-stroke}
-.pzcell.have .pzline path{stroke:var(--ink);stroke-width:2}
-.pzcell.empty .pzline path{stroke-dasharray:5 4;stroke:var(--faint)}
-.pzlab{position:absolute;left:8%;right:8%;bottom:7%;z-index:3;pointer-events:none;text-align:center;line-height:1.25}
-.pzlab b{display:block;font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.02em}
-.pzlab small{display:block;font-size:11.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.pzcell.have .pzlab{left:12%;right:12%;bottom:9%;background:var(--raise);border:1px solid var(--ink);padding:4px 6px}
-.pzcell.have .pzlab small{color:var(--ink)}
-.pzcell.empty .pzlab{top:50%;bottom:auto;transform:translateY(-50%)}
-.pzcell.empty .pzlab .plus{display:block;font-family:var(--mono);font-size:24px;line-height:1;margin-bottom:6px;color:var(--faint)}
-@media (max-width:520px){.pzlab b{font-size:10.5px}.pzlab small{font-size:10.5px}}
+.pzticks{display:grid;grid-template-columns:repeat(7,1fr);margin-top:4px;font-family:var(--mono);font-size:10px;color:var(--faint)}
+.pzgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;max-width:880px;margin:0 auto;align-items:center}
+@media (min-width:760px){.pzgrid{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}}
+.pzwatch svg{display:block;width:100%;max-width:380px;margin:0 auto;height:auto;overflow:visible}
+.pzp{cursor:pointer;transition:transform .6s cubic-bezier(.2,.9,.3,1.25),opacity .4s}
+.pzp .sh{fill:var(--pf,var(--surface));stroke:var(--ink);stroke-width:2;stroke-linejoin:round;transition:fill .4s}
+.pzp .dec{fill:none;stroke:var(--ink);stroke-width:2;opacity:.45;stroke-linecap:round;pointer-events:none}
+.pzp .decf{fill:var(--ink);opacity:.45;pointer-events:none}
+.pzp.wish .sh{fill:var(--acc-soft);stroke:var(--acc);stroke-dasharray:5 4}
+.pzp.empty .sh{fill:var(--surface);stroke:var(--faint);stroke-dasharray:5 4}
+.pzp.empty .dec,.pzp.wish .dec{opacity:.25;stroke:var(--faint)}
+.pzp.empty .decf,.pzp.wish .decf{opacity:.25;fill:var(--faint)}
+.pzp.empty[data-p="Bilezik"],.pzp.wish[data-p="Bilezik"]{transform:translate(0,-26px)}
+.pzp.empty[data-p="Kayış"],.pzp.wish[data-p="Kayış"]{transform:translate(0,26px)}
+.pzp.empty[data-p="Taç"],.pzp.wish[data-p="Taç"]{transform:translate(24px,0)}
+.pzp.empty[data-p="Düğmeler"],.pzp.wish[data-p="Düğmeler"]{transform:translate(22px,-10px)}
+.pzp.empty[data-p="Bezel"],.pzp.wish[data-p="Bezel"],.pzp.empty[data-p="Kadran"],.pzp.wish[data-p="Kadran"]{opacity:.8}
+.pzp:hover .sh{filter:brightness(1.07)}
+.pzp:focus{outline:none}
+.pzp:focus-visible .sh{stroke:var(--acc);stroke-width:3.5}
+.pzgrid.done .pzwatch svg{filter:drop-shadow(0 0 14px var(--acc));animation:pzglow 2.4s ease-in-out infinite alternate}
+@keyframes pzglow{from{filter:drop-shadow(0 0 6px var(--acc))}to{filter:drop-shadow(0 0 18px var(--acc))}}
+@media (prefers-reduced-motion:reduce){.pzp{transition:none}.pzgrid.done .pzwatch svg{animation:none}}
+.pzlegend{display:grid;gap:8px}
+.pzrow{display:grid;grid-template-columns:18px minmax(0,1fr);gap:4px 12px;align-items:center;text-align:left;border:1px solid var(--line);background:var(--surface);padding:10px 12px;font:inherit;color:inherit;cursor:pointer}
+.pzrow:hover{border-color:var(--ink)}
+.pzrow .sw{width:18px;height:18px;border:2px solid var(--faint);border-radius:50%;grid-row:span 2;background:transparent}
+.pzrow.have .sw{border-color:var(--ink);background:var(--pf)}
+.pzrow.wish .sw{border-color:var(--acc);border-style:dashed}
+.pzrow b{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.02em}
+.pzrow small{font-size:12.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pzrow.have small{color:var(--ink)}
 .pzdone{margin:26px auto 0;max-width:880px;border:2px solid var(--acc);padding:18px 20px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;background:var(--acc-soft)}
 .pzdone b{font-family:var(--serif);font-weight:600;font-size:26px;line-height:1.1;display:block}
 .pzdone span{color:var(--muted)}
 .pzdone .stamp{font-family:var(--mono);font-size:12px;letter-spacing:.08em;border:1.5px solid var(--acc);color:var(--acc);padding:8px 10px;transform:rotate(-4deg)}
-.pzgrid.done .pzline path{stroke:var(--acc)}
 @media (prefers-reduced-motion:no-preference){.pzdone{animation:pzin .6s ease-out both}@keyframes pzin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}
 
 /* tray */
@@ -387,14 +395,14 @@ textarea.note{width:100%;min-height:96px;resize:vertical;border:1px solid var(--
 
   <section class="view wrap" id="v-koleksiyon" role="tabpanel" aria-labelledby="t-koleksiyon" hidden>
     <div class="sechead">
-      <div><h2>Koleksiyonum</h2><p>Her kategori bir yapboz parçası. "Bende var" diye işaretlediğin saat kendi kategorisinin parçasını doldurur. Boş bir parçaya dokunursan o kategorideki saatler listelenir.</p></div>
+      <div><h2>Koleksiyonum</h2><p>Her kategori saatin bir parçası. "Bende var" diye işaretlediğin saat kendi parçasını yerine oturtur ve saatin o bölümü senin saatinin renginde dolar. Yedisi birleşince saat tamamlanır, Voltron gibi. Boş bir parçaya dokunursan o kategorideki saatler listelenir.</p></div>
     </div>
     <div class="pzmeta">
       <div class="pzcount" id="pzCount">0<small>/ 7 PARÇA</small></div>
-      <div><div class="pzbar" role="progressbar" aria-valuemin="0" aria-valuemax="8" id="pzBarWrap"><i id="pzBar" style="width:0"></i></div><div class="pzticks" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div></div>
+      <div><div class="pzbar" role="progressbar" aria-valuemin="0" aria-valuemax="7" id="pzBarWrap"><i id="pzBar" style="width:0"></i></div><div class="pzticks" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div></div>
     </div>
     <div class="pzgrid" id="pzGrid"></div>
-    <div class="pzdone" id="pzDone" hidden role="status"><span class="stamp" id="pzStamp">7 / 7</span><div><b>Koleksiyon tamam</b><span>Yedi kategorinin hepsinde bir saatin var. Defter kapanmaz ama bu bir dönüm noktası.</span></div></div>
+    <div class="pzdone" id="pzDone" hidden role="status"><span class="stamp" id="pzStamp">7 / 7</span><div><b>Voltron birleşti</b><span>Yedi parçanın hepsi yerinde: her kategoride bir saatin var. Defter kapanmaz ama bu bir dönüm noktası.</span></div></div>
   </section>
 </main>
 
@@ -651,49 +659,55 @@ function renderCmp(){
   box.innerHTML = h + '</div></div>';
 }
 
-/* yapboz */
-function pzEdge(edge, sg){
-  function P(u,v){ if (edge===0) return [u,-v]; if (edge===1) return [100+v,u]; if (edge===2) return [100-u,100+v]; return [-v,100-u]; }
-  var pts = sg ? [[38,0],[38,5*sg],[32,6*sg],[32,11*sg],[32,17*sg],[68,17*sg],[68,11*sg],[68,6*sg],[62,5*sg],[62,0],[100,0]] : [[100,0]];
-  return pts.map(function(p){ return P(p[0],p[1]); });
-}
-function pzPath(c, r, cols, rows, norm){
-  var tx = (c+r)%2===0 ? 1 : -1, ty = (c*3+r)%2===0 ? 1 : -1;
-  var right = c<cols-1 ? tx : 0, left = c>0 ? -((c-1+r)%2===0?1:-1) : 0;
-  var bottom = r<rows-1 ? ty : 0, top = r>0 ? -(((c*3+(r-1))%2===0)?1:-1) : 0;
-  var sgs = [top, right, bottom, left];
-  function N(p){ return norm ? [((p[0]+20)/140).toFixed(4), ((p[1]+20)/140).toFixed(4)] : [p[0], p[1]]; }
-  var d = "M"+N([0,0]).join(",");
-  for (var e=0;e<4;e++){ var q = pzEdge(e, sgs[e]);
-    if (sgs[e]===0){ d += "L"+N(q[q.length-1]).join(","); continue; }
-    d += "L"+N(q[0]).join(",")+"C"+N(q[1]).join(",")+" "+N(q[2]).join(",")+" "+N(q[3]).join(",")+"C"+N(q[4]).join(",")+" "+N(q[5]).join(",")+" "+N(q[6]).join(",")+"C"+N(q[7]).join(",")+" "+N(q[8]).join(",")+" "+N(q[9]).join(",")+"L"+N(q[10]).join(",");
-  }
-  return d+"Z";
+/* yapboz: 7 parçalı saat */
+var PZ = [
+  {cat:"Ofis spor-şık", part:"Bilezik"},
+  {cat:"Field / Pilot", part:"Kayış"},
+  {cat:"Diver", part:"Bezel"},
+  {cat:"Dress", part:"Kadran"},
+  {cat:"Smart casual", part:"Kasa"},
+  {cat:"Grail / Özel", part:"Taç"},
+  {cat:"Eğlenceli / Kronograf", part:"Düğmeler"}
+];
+function pzRing(R, r){ var cx = 150, cy = 240; return "M"+(cx-R)+","+cy+"a"+R+","+R+" 0 1,0 "+(2*R)+",0a"+R+","+R+" 0 1,0 "+(-2*R)+",0ZM"+(cx-r)+","+cy+"a"+r+","+r+" 0 1,0 "+(2*r)+",0a"+r+","+r+" 0 1,0 "+(-2*r)+",0Z"; }
+function pzPolar(rad, deg){ var a = (deg-90)*Math.PI/180; return [150+rad*Math.cos(a), 240+rad*Math.sin(a)]; }
+function pzShape(part){
+  var o = "", i, p, q;
+  if (part==="Bilezik") return '<path class="sh" d="M128,132L172,132L171,26Q150,14 129,26Z"/><path class="dec" d="M136,40L137,124M164,40L163,124" stroke-dasharray="3 5"/>';
+  if (part==="Kayış") return '<path class="sh" d="M128,348L172,348L171,454Q150,466 129,454Z"/><path class="dec" d="M136,356L137,440M164,356L163,440" stroke-dasharray="3 5"/><circle class="decf" cx="150" cy="392" r="3.5"/><circle class="decf" cx="150" cy="412" r="3.5"/><circle class="decf" cx="150" cy="432" r="3.5"/>';
+  if (part==="Taç") return '<rect class="sh" x="248" y="226" width="26" height="28" rx="5"/><path class="dec" d="M255,230L255,250M261,230L261,250M267,230L267,250"/><path class="decf" d="M262,234L267,240L262,246L257,240Z" style="opacity:.7"/>';
+  if (part==="Düğmeler") return '<g transform="rotate(-32 150 240)"><rect class="sh" x="250" y="233" width="20" height="14" rx="3"/></g><g transform="rotate(32 150 240)"><rect class="sh" x="250" y="233" width="20" height="14" rx="3"/></g>';
+  if (part==="Kasa") return '<path class="sh" d="M101,150L109,116L130,121L127,154ZM199,150L191,116L170,121L173,154ZM101,330L109,364L130,359L127,326ZM199,330L191,364L170,359L173,326Z"/><path class="sh" fill-rule="evenodd" d="'+pzRing(104,88)+'"/>';
+  if (part==="Bezel"){ for (i=0;i<12;i++){ p = pzPolar(82, i*30); q = pzPolar(74, i*30); o += "M"+p[0].toFixed(1)+","+p[1].toFixed(1)+"L"+q[0].toFixed(1)+","+q[1].toFixed(1); }
+    return '<path class="sh" fill-rule="evenodd" d="'+pzRing(88,68)+'"/><path class="dec" d="'+o+'"/>'; }
+  if (part==="Kadran"){ for (i=0;i<12;i++){ p = pzPolar(58, i*30); q = pzPolar(i%3===0?48:52, i*30); o += "M"+p[0].toFixed(1)+","+p[1].toFixed(1)+"L"+q[0].toFixed(1)+","+q[1].toFixed(1); }
+    return '<circle class="sh" cx="150" cy="240" r="68"/><path class="dec" d="'+o+'"/><path class="dec" d="M150,240L121,224M150,240L192,216" style="stroke-width:3.5"/><circle class="decf" cx="150" cy="240" r="4"/>'; }
+  return "";
 }
 function pzHave(){ return CATS.filter(function(cat){ return W.some(function(w){ return w.c===cat && own[key(w)]; }); }).length; }
 function renderPuzzle(){
-  var host = document.getElementById("pzGrid"), cols = window.innerWidth < 600 ? 2 : 4, rows = Math.ceil(CATS.length/cols);
-  host.style.gridTemplateColumns = "repeat("+cols+", minmax(0,1fr))";
-  var defs = '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>', cells = "", have = 0;
-  CATS.forEach(function(cat, i){
-    var c = i%cols, r = Math.floor(i/cols);
-    var owned = W.filter(function(w){ return w.c===cat && own[key(w)]; }).sort(function(a,b){ return (b.p?b.p[0]:0)-(a.p?a.p[0]:0); });
+  var host = document.getElementById("pzGrid"), have = 0, parts = PZ.filter(function(z){ return CATS.indexOf(z.cat)>=0; }), svgBy = {}, rows = "";
+  parts.forEach(function(z){
+    var cat = z.cat, owned = W.filter(function(w){ return w.c===cat && own[key(w)]; }).sort(function(a,b){ return (b.p?b.p[0]:0)-(a.p?a.p[0]:0); });
     var wished = W.filter(function(w){ return w.c===cat && sel[key(w)]; }).length, w = owned[0];
+    var st = w ? "have" : (wished ? "wish" : "empty");
     if (w) have++;
-    defs += '<clipPath id="pzc'+i+'" clipPathUnits="objectBoundingBox"><path d="'+pzPath(c,r,cols,rows,true)+'"/></clipPath>';
+    var hex = (w && /^#[0-9a-f]{3,8}$/i.test(w.dial||"")) ? w.dial : "#8a857b";
     var sub = w ? esc(w.b+" "+w.n)+(owned.length>1?" +"+(owned.length-1):"") : (wished ? wished+" aday listede" : "Boş parça");
-    cells += '<div class="pzcell '+(w?"have":"empty")+'" style="grid-column:'+(c+1)+';grid-row:'+(r+1)+'">'+
-      '<div class="pzpiece"><button type="button" class="pzfill" data-act="pz" data-cat="'+esc(cat)+'"'+(w?' data-k="'+esc(key(w))+'"':'')+' style="clip-path:url(#pzc'+i+');-webkit-clip-path:url(#pzc'+i+')" aria-label="'+esc(cat)+(w?": "+esc(key(w))+", detayı aç":": boş parça, bu kategorideki saatleri göster")+'">'+(w?vis(w):'')+'</button>'+
-      '<svg class="pzline" viewBox="-20 -20 140 140" preserveAspectRatio="none" aria-hidden="true"><path d="'+pzPath(c,r,cols,rows,false)+'"/></svg></div>'+
-      '<div class="pzlab">'+(w?'':'<span class="plus" aria-hidden="true">+</span>')+'<b>'+esc(cat)+'</b><small>'+sub+'</small></div></div>';
+    var label = z.part+" · "+cat+": "+(w ? key(w) : (wished ? wished+" aday listede" : "boş"));
+    var attrs = 'data-act="pz" data-cat="'+esc(cat)+'"'+(w?' data-k="'+esc(key(w))+'"':'');
+    svgBy[z.part] = '<g class="pzp '+st+'" data-p="'+z.part+'" '+attrs+' tabindex="0" role="button" aria-label="'+esc(label)+'" style="--pf:'+hex+'">'+pzShape(z.part)+'</g>';
+    rows += '<button type="button" class="pzrow '+st+'" '+attrs+' style="--pf:'+hex+'"><span class="sw"></span><b>'+z.part.toUpperCase()+' · '+esc(cat)+'</b><small>'+sub+'</small></button>';
   });
-  host.innerHTML = defs+'</defs></svg>'+cells;
-  host.classList.toggle("done", have===CATS.length);
-  document.getElementById("pzCount").innerHTML = have+'<small>/ '+CATS.length+' PARÇA</small>';
-  document.getElementById("pzBar").style.width = Math.round(have/CATS.length*100)+"%";
+  var ordered = ["Kayış","Bilezik","Düğmeler","Taç","Kasa","Bezel","Kadran"].map(function(n){ return svgBy[n] || ""; }).join("");
+  host.innerHTML = '<div class="pzwatch"><svg viewBox="-10 -24 320 530" role="group" aria-label="Yedi parçalı saat">'+ordered+'</svg></div><div class="pzlegend">'+rows+'</div>';
+  host.classList.toggle("done", have===parts.length);
+  document.getElementById("pzCount").innerHTML = have+'<small>/ '+parts.length+' PARÇA</small>';
+  document.getElementById("pzBar").style.width = Math.round(have/parts.length*100)+"%";
   document.getElementById("pzBarWrap").setAttribute("aria-valuenow", have);
-  document.getElementById("pzDone").hidden = have!==CATS.length;
+  document.getElementById("pzDone").hidden = have!==parts.length;
 }
+document.getElementById("pzGrid").addEventListener("keydown", function(e){ if ((e.key==="Enter" || e.key===" ") && e.target.closest && e.target.closest("g.pzp")){ e.preventDefault(); e.target.closest("g.pzp").dispatchEvent(new MouseEvent("click",{bubbles:true})); } });
 
 function renderTray(){
   var t = document.getElementById("tray"); t.hidden = !cmp.length || view==="kiyas";
@@ -850,8 +864,6 @@ document.addEventListener("keydown", function(e){
     if (e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
     else if (!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); } }
 });
-var pzCols = window.innerWidth < 600 ? 2 : 4;
-window.addEventListener("resize", function(){ var c = window.innerWidth < 600 ? 2 : 4; if (c!==pzCols){ pzCols = c; renderPuzzle(); } });
 
 document.getElementById("sortD").innerHTML = sortOpts();
 applyTheme();
