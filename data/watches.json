@@ -8,7 +8,6 @@
    "Smart casual",
    "Field / Pilot",
    "Diver",
-   "GMT / Seyahat",
    "Eğlenceli / Kronograf",
    "Grail / Özel"
   ],
@@ -76,7 +75,7 @@
    "Straum Expedition",
    "Brew Metric Retro Black",
    "Panerai Radiomir",
-   "Rolex Datejust 36",
+   "Rolex Datejust",
    "Omega Seamaster Aqua Terra"
   ],
   "target": [
@@ -112,7 +111,7 @@
   "own": [
    "Unimatic Modello Uno GMT U1-GMT-TSP"
   ],
-  "seedV": 5
+  "seedV": 6
  },
  "watches": [
   {
@@ -250,7 +249,7 @@
   {
    "b": "Rolex",
    "n": "GMT-Master II",
-   "c": "GMT / Seyahat",
+   "c": "Ofis spor-şık",
    "p": [
     11000,
     13000
@@ -340,7 +339,7 @@
   {
    "b": "Rolex",
    "n": "Datejust",
-   "c": "Smart casual",
+   "c": "Dress",
    "p": [
     8500,
     10000
@@ -1513,7 +1512,7 @@
   {
    "b": "Christopher Ward",
    "n": "C63 Sealander GMT",
-   "c": "GMT / Seyahat",
+   "c": "Ofis spor-şık",
    "p": [
     1500,
     1800
@@ -2605,7 +2604,7 @@
   {
    "b": "Unimatic",
    "n": "Modello Uno GMT U1-GMT-TSP",
-   "c": "GMT / Seyahat",
+   "c": "Diver",
    "p": [
     1050,
     1070
@@ -2646,43 +2645,6 @@
    "orig": 2015,
    "verify": true,
    "yr": 2026
-  },
-  {
-   "b": "Rolex",
-   "n": "Datejust 36",
-   "c": "Dress",
-   "p": [
-    8150,
-    8350
-   ],
-   "dial": "#d8dbde",
-   "dn": "Gümüş (güneş ışınlı)",
-   "note": "36 mm Oystersteel kasa, bombeli bezel, güneş ışınlı gümüş kadran, saat 3'te tarih (Cyclops). Kalibre 3235 otomatik, yaklaşık 70 saat, 100 m, Oyster bilezik (Easylink 5 mm). ABD fiyatı 8.150 $ (Jubilee bilezikli sürümler 8.350 $). Kalınlık ve lug-to-lug Rolex sayfasında yok.",
-   "color": "Gri / gümüş",
-   "mov": "Otomatik / Elle kurmalı",
-   "type": "Tarihli",
-   "link": "https://www.rolex.com/en-us/watches/datejust/m126200-0002",
-   "img": "https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-cover-majesty-landscape/c_limit,w_1920/v1/a677b2c664f6/catalogue/2026/upright-c/m126200-0002",
-   "about": [
-    "Zamansız dress-spor: bombeli bezel, tarih penceresi ve Oyster bilezik. Ceketle de, tişörtle de gider.",
-    "Miras düşünüldüğünde en güvenli Rolex'lerden: 1945'ten beri aynı çizgi, 36 mm ölçüsü 17 cm bileğe rahat oturur.",
-    "Gümüş kadran kıyafet uyumu için nötr; Jubilee bilezikli sürümü daha dress, Oyster daha spor."
-   ],
-   "tech": {
-    "mat": "Oystersteel (904L)",
-    "dial": "Güneş ışınlı gümüş, Chromalight mavi lume",
-    "gl": "Çizilmez safir, tarih üstünde Cyclops lens",
-    "str": "Oyster, 3 parçalı katı linkler, Oysterclasp + Easylink 5 mm",
-    "bz": "Bombeli, pürüzsüz"
-   },
-   "spec": {
-    "dia": "36 mm",
-    "wr": "100 m",
-    "mov": "Rolex 3235 otomatik",
-    "pr": "70 saat"
-   },
-   "yr": 2018,
-   "orig": 1945
   }
  ]
 }

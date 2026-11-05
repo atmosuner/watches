@@ -390,11 +390,11 @@ textarea.note{width:100%;min-height:96px;resize:vertical;border:1px solid var(--
       <div><h2>Koleksiyonum</h2><p>Her kategori bir yapboz parçası. "Bende var" diye işaretlediğin saat kendi kategorisinin parçasını doldurur. Boş bir parçaya dokunursan o kategorideki saatler listelenir.</p></div>
     </div>
     <div class="pzmeta">
-      <div class="pzcount" id="pzCount">0<small>/ 8 PARÇA</small></div>
+      <div class="pzcount" id="pzCount">0<small>/ 7 PARÇA</small></div>
       <div><div class="pzbar" role="progressbar" aria-valuemin="0" aria-valuemax="8" id="pzBarWrap"><i id="pzBar" style="width:0"></i></div><div class="pzticks" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div></div>
     </div>
     <div class="pzgrid" id="pzGrid"></div>
-    <div class="pzdone" id="pzDone" hidden role="status"><span class="stamp">8 / 8</span><div><b>Koleksiyon tamam</b><span>Sekiz kategorinin hepsinde bir saatin var. Defter kapanmaz ama bu bir dönüm noktası.</span></div></div>
+    <div class="pzdone" id="pzDone" hidden role="status"><span class="stamp" id="pzStamp">7 / 7</span><div><b>Koleksiyon tamam</b><span>Yedi kategorinin hepsinde bir saatin var. Defter kapanmaz ama bu bir dönüm noktası.</span></div></div>
   </section>
 </main>
 
@@ -706,8 +706,8 @@ function renderNav(){
   document.getElementById("nKat").textContent = W.length;
   document.getElementById("nList").textContent = sumOf(sel).n;
   document.getElementById("nCmp").textContent = cmp.length ? cmp.length+"/4" : "";
-  document.getElementById("nPz").textContent = pzHave()+"/8";
-  document.getElementById("kick").textContent = W.length+" SAAT · 8 KATEGORİ · BİLEK 170 MM";
+  document.getElementById("nPz").textContent = pzHave()+"/"+CATS.length;
+  document.getElementById("kick").textContent = W.length+" SAAT · "+CATS.length+" KATEGORİ · BİLEK 170 MM";
 }
 
 /* detay paneli */
