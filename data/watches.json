@@ -72,25 +72,13 @@
    "Bell & Ross": "https://www.bellross.com"
   },
   "seed": [
-   "IWC Ingenieur Automatic 40",
-   "Rolex GMT-Master II",
    "Jaeger-LeCoultre Polaris Date 40 mm",
-   "Rolex Datejust",
-   "Omega Speedmaster Professional",
-   "Panerai Radiomir",
    "Straum Expedition",
-   "Baume & Mercier Riviera",
-   "Sinn 240 St",
-   "Longines Conquest Heritage",
-   "Christopher Ward C63 Sealander GMT",
-   "Doxa Sub 200",
-   "Venezianico Arsenale Bosphorus",
-   "Hamilton Khaki Field Murph",
-   "Unimatic Modello Uno U1-TSP",
-   "Seiko Alpinist",
-   "Tissot Heritage 1938 39mm",
    "Brew Metric Retro Black",
-   "Omega x Swatch MoonSwatch Mission to the Sun"
+   "Rolex Explorer",
+   "Panerai Radiomir",
+   "Grand Seiko SBGY013 Spring Drive",
+   "Omega Seamaster Aqua Terra"
   ],
   "target": [
    "Audemars Piguet",
@@ -121,7 +109,11 @@
    "Bordo / kırmızı": "red dial",
    "Turuncu / sarı / şampanya": "",
    "Diğer": ""
-  }
+  },
+  "own": [
+   "Unimatic Modello Uno U1-TSP"
+  ],
+  "seedV": 2
  },
  "watches": [
   {
@@ -2609,6 +2601,47 @@
    "zoom": 1.71,
    "zy": 11,
    "zx": 1.5
+  },
+  {
+   "b": "Grand Seiko",
+   "n": "SBGY013 Spring Drive",
+   "c": "Dress",
+   "p": [
+    8800,
+    9300
+   ],
+   "dial": "#e8ebed",
+   "dn": "Buz beyazı / gümüş (Omiwatari dokulu)",
+   "note": "38,5 mm çelik kasa, 10,2 mm kalın, 43,7 mm lug-to-lug, 19 mm bilezik. 9R31 elle kurmalı Spring Drive, 72 saat güç rezervi, günde ±1 sn. Donmuş Suwa Gölü'ndeki buz çıkıntısından esinlenen dokulu kadran, mavilenmiş çelik saniye ibresi. ABD fiyatı 9.300 $, Avrupa lansmanı 8.800 €.",
+   "color": "Beyaz / krem",
+   "mov": "Otomatik / Elle kurmalı",
+   "type": "Sade",
+   "link": "https://www.grand-seiko.com/us-en/collections/sbgy013g",
+   "img": "https://www.grand-seiko.com/us-en/-/media/Images/GlobalEn/GrandSeiko/Home/collections/Products/SBGY013/SBGY013_KV_pc.jpg",
+   "about": [
+    "Spring Drive'lı gerçek dress saat: ince, kubbeli safir camlı, Zaratsu cilalı kasa. Saniye ibresi tik atmadan süzülür.",
+    "Omiwatari'nin buz beyazı sürümü; SBGY007'nin açık mavisine karşı daha sade. Ceketin kolu altına rahat girer, 43,7 mm lug-to-lug 17 cm bilekte kolay oturur.",
+    "Saf fildişi değil, soğuk bir buz beyazı/gümüş. Su geçirmezlik sadece sıçramaya dayanıklı, bilezikli sürüm var; fildişi isteyen için mekanik SBGW301 alternatif."
+   ],
+   "tech": {
+    "mat": "Paslanmaz çelik, Zaratsu cilalı",
+    "dial": "Dokulu buz beyazı/gümüş, mavilenmiş çelik saniye ibresi",
+    "gl": "Çift kubbeli safir, iç yüzeyde yansıma önleyici",
+    "str": "Çelik 9 sıra boncuk (beads-of-rice) bilezik, üç katlamalı toka (butonla açılır)",
+    "lw": "19 mm",
+    "th": "10,2 mm",
+    "bz": "Sabit, cilalı çelik"
+   },
+   "spec": {
+    "dia": "38,5 mm",
+    "l2l": 43.7,
+    "th": "10,2 mm",
+    "wr": "Sıçramaya dayanıklı",
+    "mov": "Grand Seiko 9R31 Spring Drive (elle kurmalı)",
+    "pr": "72 saat"
+   },
+   "yr": 2022,
+   "orig": 2021
   }
  ]
 }

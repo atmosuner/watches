@@ -430,7 +430,7 @@ function buildSD(db){
     LINKS[k] = r.link || ""; IMGS[k] = r.img || "";
     ABOUT[k] = r.about || []; TECH[k] = r.tech || {}; SPEC[k] = r.spec || {};
   });
-  window.SD = {W:W, CATS:c.cats, SITES:c.sites, META:META, COLS:c.cols, BUD:c.bud, LINKS:LINKS, IMGS:IMGS, ABOUT:ABOUT, TECH:TECH, SPEC:SPEC, SEED:c.seed};
+  window.SD = {W:W, CATS:c.cats, SITES:c.sites, META:META, COLS:c.cols, BUD:c.bud, LINKS:LINKS, IMGS:IMGS, ABOUT:ABOUT, TECH:TECH, SPEC:SPEC, SEED:c.seed, OWN:c.own||[], SEEDV:c.seedV||0};
 }
 fetch("data/watches.json", {cache:"no-cache"}).then(function(r){
   if (!r.ok) throw new Error("HTTP " + r.status);
@@ -503,6 +503,7 @@ function bigUrl(u){ return u.replace(/c_limit,w_640/,"c_limit,w_1400").replace("
 var sel = {}, own = {};
 try { var rawSel = localStorage.getItem("saatSecim2"); if (rawSel===null) D.SEED.forEach(function(k){ sel[k]=1; }); else { var sv = JSON.parse(rawSel); if (sv && typeof sv==="object") sel = sv; } } catch(e){ D.SEED.forEach(function(k){ sel[k]=1; }); }
 try { var so = JSON.parse(localStorage.getItem("saatSahip2")||"{}"); if (so && typeof so==="object") own = so; } catch(e){}
+try { var sv2 = String(D.SEEDV||""); if (sv2 && localStorage.getItem("saatSeedV")!==sv2) { sel = {}; own = {}; D.SEED.forEach(function(k){ sel[k]=1; }); (D.OWN||[]).forEach(function(k){ own[k]=1; }); localStorage.setItem("saatSecim2", JSON.stringify(sel)); localStorage.setItem("saatSahip2", JSON.stringify(own)); localStorage.setItem("saatSeedV", sv2); } } catch(e){}
 function saveSel(){ try { localStorage.setItem("saatSecim2", JSON.stringify(sel)); localStorage.setItem("saatSahip2", JSON.stringify(own)); } catch(e){} }
 function loadNotes(){ try { return JSON.parse(localStorage.getItem("saatNot2")||"{}") || {}; } catch(e){ return {}; } }
 function saveNote(k, v){ try { var n = loadNotes(); if (v) n[k]=v; else delete n[k]; localStorage.setItem("saatNot2", JSON.stringify(n)); } catch(e){} }
