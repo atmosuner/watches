@@ -75,7 +75,6 @@
    "Jaeger-LeCoultre Polaris Date 40 mm",
    "Straum Expedition",
    "Brew Metric Retro Black",
-   "Rolex Explorer",
    "Panerai Radiomir",
    "Rolex Datejust 36",
    "Omega Seamaster Aqua Terra"
@@ -113,7 +112,7 @@
   "own": [
    "Unimatic Modello Uno GMT U1-GMT-TSP"
   ],
-  "seedV": 4
+  "seedV": 5
  },
  "watches": [
   {
