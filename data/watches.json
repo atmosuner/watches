@@ -77,7 +77,7 @@
    "Brew Metric Retro Black",
    "Rolex Explorer",
    "Panerai Radiomir",
-   "Grand Seiko SBGY013 Spring Drive",
+   "Rolex Datejust 36",
    "Omega Seamaster Aqua Terra"
   ],
   "target": [
@@ -113,7 +113,7 @@
   "own": [
    "Unimatic Modello Uno GMT U1-GMT-TSP"
   ],
-  "seedV": 3
+  "seedV": 4
  },
  "watches": [
   {
@@ -1899,49 +1899,6 @@
    "yrx": true
   },
   {
-   "b": "Unimatic",
-   "n": "Modello Uno U1-TSP",
-   "c": "Diver",
-   "p": [
-    870,
-    930
-   ],
-   "dial": "#a8523a",
-   "dn": "Clay (kiremit kırmızısı, grené doku)",
-   "note": "99 adetlik sınırlı üretim. 40 mm çelik kasa (bezelle 41,5 mm), kumlanmış yüzey, otomatik NH35A, 41 saat güç rezervi, 300 m. Siyah-sarı naylon kayışla gelir. Fiyat 800 EUR, USD karşılığı kura göre değişir.",
-   "color": "Bordo / kırmızı",
-   "mov": "Otomatik / Elle kurmalı",
-   "type": "Sade",
-   "link": "https://www.unimaticwatches.com/products/uwk-u1-tsp",
-   "img": "https://www.unimaticwatches.com/cdn/shop/files/U1-TSP-Herod.png?v=1785834610&width=800",
-   "imgq": "Unimatic Modello Uno U1-TSP clay red dial",
-   "about": [
-    "İtalyan dalış saati: kumlanmış kasa, kiremit kırmızısı grené kadran, 99 adetlik sınırlı üretim.",
-    "Diver slotunda farklı, minimal ve renkli seçenek.",
-    "49 mm lug-to-lug 17 cm bilek için büyük."
-   ],
-   "tech": {
-    "mat": "316L çelik, kumlanmış",
-    "dial": "Kiremit kırmızısı, iri grené",
-    "bz": "Tek yönlü, 120 tık, mat siyah seramik insert",
-    "gl": "Çift bombeli safir, içte yansıma önleyici",
-    "str": "Siyah-sarı naylon, iki parçalı",
-    "lw": "22 mm"
-   },
-   "spec": {
-    "dia": "40 mm (bezelle 41,5)",
-    "l2l": 49,
-    "th": "13,2 mm (camla 14,4)",
-    "wr": "300 m",
-    "mov": "Seiko NH35A otomatik",
-    "pr": "41+ saat"
-   },
-   "zoom": 2.4,
-   "zy": 3.4,
-   "zx": -0.3,
-   "orig": 2015
-  },
-  {
    "b": "Seiko",
    "n": "Alpinist",
    "c": "Field / Pilot",
@@ -2656,7 +2613,7 @@
    ],
    "dial": "#a8523a",
    "dn": "Clay (kiremit kırmızısı, grené doku)",
-   "note": "99 adetlik sınırlı Tennis Collection üretimi. 40 mm çelik kasa (bezelle 41,5 mm), kumlanmış yüzey, kiremit kırmızısı grené kadran, NH34A tabanlı otomatik GMT (24 saat göstergeli), 41+ saat güç rezervi, 300 m. Siyah-sarı naylon kayışla gelir. Fiyat 920 EUR (vergiler dahil), ABD fiyatı 1.050 $. Kalınlık ve lug-to-lug resmi sayfada yok; U1-TSP ile aynı kasa platformu olduğu için tahmin.",
+   "note": "99 adetlik sınırlı Tennis Collection üretimi. 40 mm çelik kasa (bezelle 41,5 mm), kumlanmış yüzey, kiremit kırmızısı grené kadran, NH34A tabanlı otomatik GMT (24 saat göstergeli), 41+ saat güç rezervi, 300 m. Siyah-sarı naylon kayışla gelir. Fiyat 920 EUR (vergiler dahil), ABD fiyatı 1.050 $. Kalınlık ve lug-to-lug resmi sayfada yok; U1 serisiyle aynı kasa platformu olduğu için tahmin.",
    "color": "Bordo / kırmızı",
    "mov": "Otomatik / Elle kurmalı",
    "type": "GMT",
@@ -2666,7 +2623,7 @@
    "about": [
     "İtalyan GMT dalış saati: kumlanmış kasa, kiremit kırmızısı grené kadran, 24 saat göstergesi, 99 adetlik sınırlı Tennis Collection.",
     "Bahadır'ın kolleksiyondaki saati. Hem dalış (300 m) hem seyahat; rengi mavi ve siyah saatlerle çakışmaz.",
-    "Lug-to-lug yaklaşık 49 mm (U1-TSP ile aynı platform, resmi değer yok): 17 cm bilek için büyük."
+    "Lug-to-lug yaklaşık 49 mm (U1 serisiyle aynı platform, resmi değer yok): 17 cm bilek için büyük."
    ],
    "tech": {
     "mat": "316L çelik, kumlanmış",
@@ -2690,6 +2647,43 @@
    "orig": 2015,
    "verify": true,
    "yr": 2026
+  },
+  {
+   "b": "Rolex",
+   "n": "Datejust 36",
+   "c": "Dress",
+   "p": [
+    8150,
+    8350
+   ],
+   "dial": "#d8dbde",
+   "dn": "Gümüş (güneş ışınlı)",
+   "note": "36 mm Oystersteel kasa, bombeli bezel, güneş ışınlı gümüş kadran, saat 3'te tarih (Cyclops). Kalibre 3235 otomatik, yaklaşık 70 saat, 100 m, Oyster bilezik (Easylink 5 mm). ABD fiyatı 8.150 $ (Jubilee bilezikli sürümler 8.350 $). Kalınlık ve lug-to-lug Rolex sayfasında yok.",
+   "color": "Gri / gümüş",
+   "mov": "Otomatik / Elle kurmalı",
+   "type": "Tarihli",
+   "link": "https://www.rolex.com/en-us/watches/datejust/m126200-0002",
+   "img": "https://media.rolex.com/image/upload/q_auto/f_auto/t_v7-cover-majesty-landscape/c_limit,w_1920/v1/a677b2c664f6/catalogue/2026/upright-c/m126200-0002",
+   "about": [
+    "Zamansız dress-spor: bombeli bezel, tarih penceresi ve Oyster bilezik. Ceketle de, tişörtle de gider.",
+    "Miras düşünüldüğünde en güvenli Rolex'lerden: 1945'ten beri aynı çizgi, 36 mm ölçüsü 17 cm bileğe rahat oturur.",
+    "Gümüş kadran kıyafet uyumu için nötr; Jubilee bilezikli sürümü daha dress, Oyster daha spor."
+   ],
+   "tech": {
+    "mat": "Oystersteel (904L)",
+    "dial": "Güneş ışınlı gümüş, Chromalight mavi lume",
+    "gl": "Çizilmez safir, tarih üstünde Cyclops lens",
+    "str": "Oyster, 3 parçalı katı linkler, Oysterclasp + Easylink 5 mm",
+    "bz": "Bombeli, pürüzsüz"
+   },
+   "spec": {
+    "dia": "36 mm",
+    "wr": "100 m",
+    "mov": "Rolex 3235 otomatik",
+    "pr": "70 saat"
+   },
+   "yr": 2018,
+   "orig": 1945
   }
  ]
 }
