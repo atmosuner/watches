@@ -1036,43 +1036,42 @@
    "n": "Legend Diver",
    "c": "Diver",
    "p": [
-    3000,
-    3800
+    3550,
+    3850
    ],
    "dial": "#14161a",
    "dn": "Siyah",
-   "note": "1959 mirasından, 42 mm, 300 m. İç dönen bezel ve iki taç koruması var. Silikon spiralli otomatik, yaklaşık 72 saat, dokulu siyah kadran.",
+   "note": "39 mm sürüm (L3.764.4.50.7, siyah, çelik bilezik). 39 mm, 12,7 mm kalın, 47 mm lug-to-lug (17 cm bilek için sınırda), 300 m. İç dönen bezel ve iki vidalı taç. COSC sertifikalı L888.6 otomatik, 72 saat, tarihsiz.",
    "color": "Siyah",
    "mov": "Otomatik / Elle kurmalı",
-   "type": "Tarihli",
-   "link": "https://www.longines.com/tr/p/watch-longines-legend-diver-l3-795-4-59-9",
-   "img": "https://api.ecom.longines.com/media/catalog/product/w/a/watch-collection-longines-legend-diver-59-l3-795-4-59-9-1fd94b-hero.png?w=700",
+   "type": "Tarihsiz",
+   "link": "https://www.longines.com/en-gb/p/watch-longines-legend-diver-l3-764-4-50-7",
+   "img": "https://www.exquisitetimepieces.com/cdn/shop/files/4522505043.jpg?v=1780855769&width=1200",
    "about": [
-    "1959 mirasından vintage çizgili diver: iç dönen bezel, iki taç koruması, dokulu siyah kadran.",
-    "Diver slotunda Longines'in klasik dalış tarafı.",
-    ""
+    "1959'daki ilk Legend Diver'a sadık 39 mm sürüm: iç dönen bezel, iki vidalı taç, cilalı siyah lake kadran.",
+    "Unimatic'ten daha şık bir diver: deri kayışla ofiste, kauçuk ya da bilezikle hafta sonu.",
+    "Diğer 39 mm kadranlar: mavi, yeşil, terakota, antrasit, mat beyaz."
    ],
    "tech": {
     "mat": "Paslanmaz çelik",
-    "dial": "Dokulu siyah",
+    "dial": "Cilalı siyah lake",
     "bz": "İç dönen dalış bezeli",
-    "gl": "Safir, iki yüzde yansıma önleyici",
-    "th": "12,85 mm",
-    "str": "Çelik bilezik, deri veya kauçuk seçenekleri",
-    "lw": "22 mm",
-    "l2l": 50.1
+    "gl": "Kubbeli safir, iki yüzde yansıma önleyici",
+    "th": "12,7 mm",
+    "str": "Çelik bilezik (deri, kauçuk, NATO seçenekleri)",
+    "lw": "20 mm",
+    "l2l": 47
    },
    "spec": {
-    "dia": "42 mm",
+    "dia": "39 mm",
+    "l2l": 47,
+    "th": "12,7 mm",
     "wr": "300 m",
-    "mov": "Otomatik, silikon spiral",
+    "mov": "Longines L888.6 otomatik, COSC, silikon spiral",
     "pr": "72 saat"
    },
-   "zoom": 1.71,
-   "zy": 19,
-   "yr": 2020,
-   "orig": 1959,
-   "yrx": true
+   "yr": 2023,
+   "orig": 1959
   },
   {
    "b": "Baume & Mercier",
