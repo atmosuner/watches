@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mikro Markalar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#efede8;--surface:#f7f5f1;--raise:#fbfaf7;--ink:#1b1a18;--muted:#5c5851;--faint:#837e75;
+  --line:#c9c4ba;--line2:#dcd8cf;--photo:#e6e3dc;--acc:#a44e1b;--acc-soft:rgba(164,78,27,.10);
+  --serif:"Source Serif 4",Georgia,serif;--sans:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;
+  --tS:#e57373;--tA:#efa868;--tB:#e9c96a;--tC:#e3e06a;--tD:#bde27a;--tF:#8fd98c;--t0:#a9a39a;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#161513;--surface:#1d1c19;--raise:#22211e;--ink:#ebe7df;--muted:#aaa59a;--faint:#857f75;
+  --line:#3b3833;--line2:#2c2a26;--acc:#e8955c;--acc-soft:rgba(232,149,92,.12);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#161513;--surface:#1d1c19;--raise:#22211e;--ink:#ebe7df;--muted:#aaa59a;--faint:#857f75;
+  --line:#3b3833;--line2:#2c2a26;--acc:#e8955c;--acc-soft:rgba(232,149,92,.12);color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header{padding:28px 0 8px}
+.kick{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--faint)}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,6vw,42px);margin:4px 0 6px;line-height:1.1}
+.lede{color:var(--muted);max-width:680px;margin:0 0 6px}
+.back{font-family:var(--mono);font-size:12px;color:var(--acc);text-decoration:none}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line2);padding:10px 0;margin-top:12px}
+.bar .wrap{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px;font-family:var(--mono);font-size:12px;cursor:pointer;color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+#q{flex:1;min-width:150px;border:1px solid var(--line);background:var(--raise);border-radius:8px;padding:7px 10px;font:inherit;color:var(--ink)}
+section.tier{margin:26px 0}
+.th{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.badge{width:40px;height:40px;border-radius:8px;display:grid;place-items:center;font-family:var(--mono);font-weight:500;font-size:18px;color:#1b1a18;flex:none}
+.th h2{font-family:var(--serif);font-weight:600;font-size:22px;margin:0}
+.th span{color:var(--faint);font-family:var(--mono);font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line2);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card.mine{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc) inset}
+.ch{display:flex;align-items:center;gap:10px;min-width:0}
+.logo{width:34px;height:34px;border-radius:8px;background:#fff;border:1px solid var(--line2);flex:none;object-fit:contain;padding:4px}
+.ch b{font-family:var(--serif);font-size:18px;font-weight:600;line-height:1.15;display:block;overflow-wrap:anywhere}
+.ch small{display:block;color:var(--faint);font-family:var(--mono);font-size:11px}
+.tag{margin-left:auto;font-family:var(--mono);font-size:10px;background:var(--acc-soft);color:var(--acc);padding:2px 6px;border-radius:4px;flex:none}
+.note{color:var(--muted);font-size:13px;margin:0}
+.models{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.m{display:block;text-decoration:none;border-radius:8px;overflow:hidden;background:var(--photo);position:relative}
+.m img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#fff}
+.m .ph{aspect-ratio:1/1;display:grid;place-items:center;font-family:var(--mono);font-size:10px;color:#5c5851;padding:4px;text-align:center}
+.m span{display:block;font-size:11px;line-height:1.25;padding:4px 5px;background:var(--raise);color:var(--ink);min-height:30px}
+.links{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.links a{font-family:var(--mono);font-size:11px;text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:4px 8px;color:var(--ink)}
+.links a.pri{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.empty{color:var(--faint);font-family:var(--mono);font-size:12px;padding:20px 0}
+footer{color:var(--faint);font-size:12px;padding:30px 0 40px;border-top:1px solid var(--line2);margin-top:30px}
+.theme{float:right;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 10px;font-family:var(--mono);font-size:11px;cursor:pointer;color:var(--ink)}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <button class="theme" id="themeBtn" type="button">TEMA</button>
+  <a class="back" href="./">← Saat Defterim</a>
+  <div class="kick" style="margin-top:10px">MİKRO MARKA TIER LİSTESİ</div>
+  <h1>Mikro Markalar</h1>
+  <p class="lede">YouTube'daki mikro marka tier listesinden. Her kartta markanın sitesi ve öne çıkan modelleri var. Modele dokununca fotoğraflarını açar. Turuncu çerçeve: listende ya da koleksiyonunda olan marka.</p>
+</header>
+<div class="bar"><div class="wrap" id="bar"></div></div>
+<main class="wrap" id="main"></main>
+<footer class="wrap">Model görselleri arama motoru küçük resimleridir, bazıları modelin tam kendisi olmayabilir. Fiyat ve stok için marka sitesine bak. Sıralama videodaki kişisel görüştür.</footer>
+<script>
+var TIERS=[["S","--tS"],["A","--tA"],["B","--tB"],["C","--tC"],["D","--tD"],["F","--tF"],["?","--t0"]];
+var TNAME={"?":"Logosu eşleşmeyenler"};
+// [tier, ad, site (boşsa arama), not, [modeller], benimki?]
+var B=[
+["S","Haim Watch Company","","Chicago merkezli küçük marka.",["Haim watch","Haim field watch","Haim diver"]],
+["S","Traska","traskawatches.com","Sertleştirilmiş çelik, 36–38 mm seçenekler.",["Summiteer","Commuter","Freediver"]],
+["S","Serica","serica-watches.com","Fransız, vintage askeri esinli.",["5303 Diver","4512 Field","8315 Chronograph"]],
+["S","Furlan Marri","furlanmarri.com","Vintage kronograflar, sektör kadranlar.",["Mechaquartz Chronograph","Disco Volante","Sector Dial"]],
+["S","Farer","farer.com","Renkli İngiliz tasarım.",["Racing Chronograph","Aqua Compressor","Lander GMT"]],
+["A","Studio Underd0g","studiounderd0g.com","Meyve renkli eğlenceli kronograflar.",["Watermel0n","Go0fy Panda","Desert Sky"]],
+["A","Halios","halios.com","Kanada, sınırlı üretim diver'lar.",["Seaforth","Universa","Fairwind"]],
+["A","Baltic","baltic-watches.com","Fransız, vintage oranlar.",["Aquascaphe","Bicompax","MR01"]],
+["A","Christopher Ward","christopherward.com","İngiliz, Swiss Made, geniş seri.",["The Twelve","C63 Sealander","Bel Canto"]],
+["A","Formex","formexwatch.com","İsviçre, kasa süspansiyonu, hızlı kordon.",["Essence 39","Reef","Field Automatic"]],
+["A","Oak & Oscar","oakandoscar.com","Chicago, deri ve detay işçiliği.",["Burnham","Jackson","Humboldt"]],
+["A","Isotope","isotopewatches.com","Sıra dışı kadranlar.",["Hydrium","Gaia","Rider"]],
+["A","Lorier","lorierwatches.com","Vintage esinli, uygun fiyatlı.",["Neptune","Hydra","Falcon"]],
+["A","Astor + Banks","astorandbanks.com","Chicago, saha ve pilot saatleri.",["Fortitude","Sportsman","Pilotmatic"]],
+["A","Venezianico","venezianico.com","Venedik esinli İtalyan tasarım.",["Nereide","Redentore","Arsenale"]],
+["A","MJW","","Logodan okundu, adını doğrula.",["MJW watch","MJW diver","MJW field"]],
+["A","AV86","","Logodan okundu.",["AV86 watch","AV86 diver","AV86 chronograph"]],
+["B","Zelos","zeloswatches.com","Singapur, bronz ve titanyum diver'lar.",["Mako","Hammerhead","Swordfish"]],
+["B","Brew Watch Co.","brew-watches.com","Espresso esinli retro saatler.",["Metric Retro","Retromatic","HP1"],1],
+["B","Dan Henry","danhenrywatches.com","Vintage esinli, çok uygun fiyat.",["1964 Gran Turismo","1970 Diver","1939 Alarm"]],
+["B","Straum","straum.co","Norveç, titanyum ve entegre kauçuk.",["Expedition","Jan Mayen Titanium","Jan Mayen"],1],
+["B","Unimatic","unimaticwatches.com","İtalyan, minimal tool saatleri.",["Modello Uno GMT","Modello Due","Modello Quattro"],1],
+["B","Boldr","boldrsupply.com","Macera ve titanyum saatler.",["Venture","Odyssey","Globetrotter"]],
+["B","Henry Archer","","Danimarka, kaplama kadranlar.",["Henry Archer Kontrast","Henry Archer Nordsø","Henry Archer Hav"]],
+["B","Islander","longislandwatch.com","Long Island Watch'ın markası.",["Islander Bridgehampton","Islander Northport","Islander Brightwater"]],
+["B","Héron","","Fransız mikro marka.",["Heron Calypso","Heron watch","Heron diver"]],
+["B","Maen","maenwatches.com","İsveç, sade ve şık.",["Hudson 38","Manhattan 37","Skyline"]],
+["B","Praesidus","praesidus.com","WWII askeri yeniden yorumlar.",["A-11","Rec Spec","DD-45"]],
+["B","Trafford Watch Co.","","Logodan okundu.",["Trafford watch","Trafford field","Trafford diver"]],
+["B","Xeric","xericwatches.com","Tuhaf ve tasarım odaklı.",["Soloscope","Trappist","Halograph"]],
+["B","Addiesdive","","Çok uygun fiyatlı homajlar.",["Addiesdive diver","Addiesdive field","Addiesdive GMT"]],
+["B","Vario","vario.sg","Singapur, vintage askeri.",["1918 Trench","Empire","Versa"]],
+["B","Kuoe Kyoto","","Japon, vintage hava.",["Kuoe Old Smiths","Kuoe Kyoto watch","Kuoe 90-001"]],
+["B","Vaer","vaerwatches.com","ABD montaj, field ve diver.",["C5 Tradesman","D5 Diver","S5 Solar"]],
+["B","Sternglas","sternglas.de","Alman Bauhaus sadeliği.",["Hamburg","Naos","Asmus"]],
+["B","Nodus","noduswatches.com","Los Angeles, sağlam tool saatleri.",["Sector","Contrail","Retrospect"]],
+["C","Tsao Baltimore","","Baltimore merkezli.",["Tsao Baltimore watch","Tsao diver","Tsao chronograph"]],
+["C","Marloe","marloewatchcompany.com","İngiliz, el kurmalı klasikler.",["Lomond","Cherwell","Morar"]],
+["C","echo/neutra","echoneutra.com","Yaratıcı kasa tasarımları.",["Averau","Cave Dweller","echo neutra watch"]],
+["C","Monta","montawatch.com","St. Louis, yüksek bitiş kalitesi.",["Noble 40","Atlas","Oceanking"]],
+["C","Bamford London","bamfordlondon.com","Özelleştirme ve renk.",["B347","Mayfair","GMT"]],
+["C","Jack Mason","jackmasonbrand.com","Dallas, uygun fiyatlı.",["Nautical","Aviation","Racing"]],
+["C","Mercer","","Logodan okundu.",["Mercer watch","Mercer diver","Mercer field"]],
+["C","Santurce","","Logodan okundu.",["Santurce watch","Santurce diver","Santurce field"]],
+["D","Berny","","Çok uygun fiyatlı.",["Berny watch","Berny automatic","Berny diver"]],
+["D","San Martin","","Homaj ağırlıklı.",["San Martin diver","San Martin field","San Martin GMT"]],
+["D","RZE","rzewatches.com","Titanyum, sertleştirilmiş kasa.",["Resolute","Endeavour","Urbanist"]],
+["D","Tandorio","","Homaj ağırlıklı.",["Tandorio diver","Tandorio GMT","Tandorio field"]],
+["D","Spinnaker","spinnaker-watches.com","Yastık kasalı Hull serisi.",["Hull","Fleuss","Bradner"]],
+["D","Boderry","","Titanyum, uygun fiyat.",["Boderry Landmaster","Boderry diver","Boderry field"]],
+["F","Pagani Design","","Çok ucuz homajlar.",["PD-1701","PD-1644","Pagani Design diver"]],
+["?","anOrdain","anordain.com","Glasgow, emaye kadranlar. Bölüm adında geçiyor.",["Model 1","Model 2","Model 3"]],
+["?","Mr Jones Watches","mrjoneswatches.com","Londra, tuhaf kadranlar. Bölüm adında geçiyor.",["The Accurate","Last Laugh","Pursuit"]],
+["?","Dorenzo","","Bölüm adında geçiyor, logosu belirsiz.",["Dorenzo watch","Dorenzo diver","Dorenzo field"]],
+["?","Botoft (?)","","Otomatik bölüm adı, yazımı belirsiz.",["Botoft watch","Botoft diver","Botoft field"]]
+];
+function img(q){return "https://tse1.mm.bing.net/th?q="+encodeURIComponent(q)+"&w=300&h=300&c=7"}
+function gimg(q){return "https://www.google.com/search?tbm=isch&q="+encodeURIComponent(q)}
+function gsite(n){return "https://www.google.com/search?q="+encodeURIComponent(n+" watches official site")}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+var cur="Tümü",q="";
+function card(b){
+  var n=b[1],site=b[2],ms=b[4],mine=b[5];
+  var url=site?"https://"+site:gsite(n);
+  var logo=site?'<img class="logo" loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain='+site+'&sz=64" onerror="this.style.visibility=\'hidden\'">':'<div class="logo" style="display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:#5c5851">'+esc(n[0])+'</div>';
+  var mh=ms.map(function(m){
+    var full=m.toLowerCase().indexOf(n.split(" ")[0].toLowerCase())>=0?m:n+" "+m;
+    var qq=full+" watch";
+    return '<a class="m" href="'+gimg(qq)+'" target="_blank" rel="noopener"><img loading="lazy" alt="'+esc(full)+'" src="'+img(qq)+'" onerror="this.outerHTML=\'<div class=ph>'+esc(m).replace(/'/g,"")+'</div>\'"><span>'+esc(m)+'</span></a>';
+  }).join("");
+  return '<article class="card'+(mine?' mine':'')+'"><div class="ch">'+logo+'<div><b>'+esc(n)+'</b><small>'+(site?esc(site):'site araması')+'</small></div>'+(mine?'<span class="tag">LİSTEMDE</span>':'')+'</div><p class="note">'+esc(b[3])+'</p><div class="models">'+mh+'</div><div class="links"><a class="pri" href="'+url+'" target="_blank" rel="noopener">Site ↗</a><a href="'+gimg(n+" watches")+'" target="_blank" rel="noopener">Fotoğraflar ↗</a></div></article>';
+}
+function render(){
+  var html="",any=false;
+  TIERS.forEach(function(t){
+    if(cur!=="Tümü"&&cur!==t[0])return;
+    var list=B.filter(function(b){return b[0]===t[0]&&(!q||(b[1]+" "+b[4].join(" ")).toLowerCase().indexOf(q)>=0)});
+    if(!list.length)return; any=true;
+    html+='<section class="tier"><div class="th"><div class="badge" style="background:var('+t[1]+')">'+t[0]+'</div><h2>'+(TNAME[t[0]]||t[0]+" sınıfı")+'</h2><span>'+list.length+' marka</span></div><div class="grid">'+list.map(card).join("")+'</div></section>';
+  });
+  document.getElementById("main").innerHTML=any?html:'<p class="empty">Eşleşen marka yok.</p>';
+}
+var bar=document.getElementById("bar");
+bar.innerHTML=["Tümü"].concat(TIERS.map(function(t){return t[0]})).map(function(t){
+  var tt=TIERS.filter(function(x){return x[0]===t})[0];
+  return '<button class="chip" data-t="'+t+'" aria-pressed="'+(t===cur)+'">'+(tt?'<span class="dot" style="background:var('+tt[1]+')"></span>':'')+t+'</button>';
+}).join("")+'<input id="q" type="search" placeholder="Marka veya model ara">';
+bar.addEventListener("click",function(e){var b=e.target.closest(".chip");if(!b)return;cur=b.dataset.t;bar.querySelectorAll(".chip").forEach(function(c){c.setAttribute("aria-pressed",c.dataset.t===cur)});render()});
+document.getElementById("q").addEventListener("input",function(e){q=e.target.value.trim().toLowerCase();render()});
+var th=["auto","light","dark"],ti=0;try{ti=Math.max(0,th.indexOf(localStorage.getItem("saatTema")||"auto"))}catch(e){}
+function applyT(){var v=th[ti];if(v==="auto")document.documentElement.removeAttribute("data-theme");else document.documentElement.setAttribute("data-theme",v);document.getElementById("themeBtn").textContent={auto:"OTOMATİK",light:"AÇIK",dark:"KOYU"}[v]}
+document.getElementById("themeBtn").onclick=function(){ti=(ti+1)%3;try{localStorage.setItem("saatTema",th[ti])}catch(e){}applyT()};
+applyT();render();
+</script>
+</body>
+</html>
