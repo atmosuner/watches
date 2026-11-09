@@ -185,7 +185,8 @@ function renderForm(){
     '<label class="wf"><span class="h">Not (kartta görünen kısa açıklama)</span><textarea data-f="note">' + esc(w.note) + '</textarea></label></div></fieldset>';
   h += '<fieldset><legend>Link ve fotoğraf</legend><div class="g">' +
     field("Ürün linki", "link", w.link, {type:"url", cls:"wf"}) + field("Fotoğraf linki", "img", w.img, {type:"url", cls:"wf"}) +
-    field("Foto arama sorgusu (isteğe bağlı)", "imgq", w.imgq, {cls:"wf"}) + '</div>' +
+    field("Foto arama sorgusu (isteğe bağlı)", "imgq", w.imgq, {cls:"wf"}) +
+    '<label class="wf"><span class="h">Ek fotoğraflar (detayda kaydırılır, her satıra bir link, en fazla 4)</span><textarea data-f="imgs">' + esc((w.imgs || []).join("\n")) + '</textarea></label></div>' +
     '<div class="prev"><div class="pbox"><img id="pv" alt="" referrerpolicy="no-referrer" src="' + esc(w.img) + '"></div><div style="flex:1;min-width:200px"><div class="zc"><span title="Önizlemede sürükle = kaydır, tekerlek = yakınlaştır">Yakınlık</span><input type="range" min="0.6" max="3" step="0.05" data-f="zoom" value="' + (w.zoom || 1) + '"><input type="number" min="0.6" max="3" step="0.05" data-f="zoomn" value="' + (w.zoom || 1) + '"><span>Yatay</span><input type="range" min="-40" max="40" step="1" data-f="zx" value="' + (w.zx || 0) + '"><input type="number" step="1" data-f="zxn" value="' + (w.zx || 0) + '"><span>Dikey</span><input type="range" min="-40" max="40" step="1" data-f="zy" value="' + (w.zy || 0) + '"><input type="number" step="1" data-f="zyn" value="' + (w.zy || 0) + '"></div><div class="info" id="pvi">' + (w.img ? "" : "Fotoğraf linki boş.") + '</div><div class="info" style="margin-top:4px">Önizlemeyi fareyle sürükle, tekerlekle yakınlaştır.</div><button type="button" id="bZ0" style="margin-top:6px">Sıfırla</button> <button type="button" id="bGr" style="margin-top:6px">Kareyi aç/kapat</button></div></div>' +
     (w.link ? '<p style="margin:8px 0 0"><a href="' + esc(w.link) + '" target="_blank" rel="noopener" style="color:var(--acc)">Ürün sayfasını aç ↗</a></p>' : "") + '</fieldset>';
   h += '<fieldset><legend>Hakkında (3 paragraf)</legend><div class="g">' + [0,1,2].map(function(i){ return '<label class="wf"><span class="h">' + (i + 1) + '</span><textarea data-f="about' + i + '">' + esc(a[i] || "") + '</textarea></label>'; }).join("") + '</div></fieldset>';
@@ -243,6 +244,7 @@ $("form").addEventListener("input", function(e){
   else if (/^about\d$/.test(k)) { var a = [0,1,2].map(function(i){ return (document.querySelector('[data-f="about' + i + '"]').value || "").trim(); }); while (a.length && !a[a.length - 1]) a.pop(); w.about = a; }
   else if (k.slice(0, 2) === "t_") { w.tech = w.tech || {}; setOrDel(w.tech, k.slice(2), v); }
   else if (k.slice(0, 2) === "s_") { w.spec = w.spec || {}; var kk = k.slice(2), vv = v.trim(); if (vv === "") delete w.spec[kk]; else w.spec[kk] = kk === "l2l" ? (isNaN(+vv.replace(",", ".")) ? vv : +vv.replace(",", ".")) : vv; }
+  else if (k === "imgs") { var g = v.split(/\s+/).map(function(x){ return x.trim(); }).filter(Boolean).slice(0, 4); if (g.length) w.imgs = g; else delete w.imgs; }
   else if (k === "imgq" || k === "link" || k === "img") { setOrDel(w, k, v); if (k === "img") { var pv = $("pv"); pv.src = v.trim(); $("pvi").textContent = v.trim() ? "" : "Fotoğraf linki boş."; } }
   else w[k] = v;
   markDirty(changedKeys().length > 0);

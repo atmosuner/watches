@@ -433,6 +433,12 @@
    "roles": [
     "İş",
     "Miras"
+   ],
+   "imgs": [
+    "https://res.cloudinary.com/wc-photo/image/upload/c_fill,w_3000,h_3000,g_auto/c_limit,w_1600/f_auto/q_auto/v1745816204/product/0b76a8cfc2050c5e459aed2aec089cc8/cacbaf59a35a6cb479297198e6dbe701?_a=BAVAfVDW0",
+    "https://res.cloudinary.com/wc-photo/image/upload/c_fill,w_3000,h_3000,g_auto/c_limit,w_1600/f_auto/q_auto/v1745816207/product/0b76a8cfc2050c5e459aed2aec089cc8/afa3860e91ef4f8796e5089e508d1cbc?_a=BAVAfVDW0",
+    "https://res.cloudinary.com/wc-photo/image/upload/c_fill,w_3000,h_3000,g_auto/c_limit,w_1600/f_auto/q_auto/v1745816210/product/0b76a8cfc2050c5e459aed2aec089cc8/7d8a6e2b467ecbb071eecbd3dc3c3022?_a=BAVAfVDW0",
+    "https://res.cloudinary.com/wc-photo/image/upload/c_fill,w_3000,h_3000,g_auto/c_limit,w_1600/f_auto/q_auto/v1742373043/product/0b76a8cfc2050c5e459aed2aec089cc8/c34317ec8b87220a667a90362bd26dbe?_a=BAVAfVDW0"
    ]
   },
   {
@@ -715,6 +721,9 @@
    "roles": [
     "İş",
     "Renkli Cuma"
+   ],
+   "imgs": [
+    "https://www.omegawatches.com/media/catalog/product/o/m/omega-seamaster-aqua-terra-150m-co-axial-master-chronometer-41-mm-22032412103001-watch-wrist-72b402.png"
    ]
   },
   {
@@ -765,6 +774,11 @@
    "roles": [
     "İş",
     "Hafta sonu"
+   ],
+   "imgs": [
+    "https://asset.bucherer.com/image/upload/f_auto,w_1200/Assets/Watches/RICHEMONT/Panerai/Manual/1408-627-6_MP_1.jpg",
+    "https://asset.bucherer.com/image/upload/f_auto,w_1200/Assets/Watches/RICHEMONT/Panerai/Manual/1408-627-6_MP_2.jpg",
+    "https://asset.bucherer.com/image/upload/f_auto,w_1200/Assets/Watches/RICHEMONT/Panerai/Manual/1408-627-6_MP_3.jpg"
    ]
   },
   {
@@ -1152,6 +1166,12 @@
    "roles": [
     "Hafta sonu",
     "Renkli Cuma"
+   ],
+   "imgs": [
+    "https://straum.co/cdn/shop/files/straum-titanium-gray-dial--hero-angle-1.jpg?v=1787584926&width=1200",
+    "https://straum.co/cdn/shop/files/straum-titanium-gray-dial--wristshot-15.webp?v=1787553471&width=1080",
+    "https://straum.co/cdn/shop/files/straum-expedition--crown-detail-1.jpg?v=1787584926&width=1080",
+    "https://straum.co/cdn/shop/files/straum-expedition--hero-angle-1.jpg?v=1787584926&width=1080"
    ]
   },
   {
@@ -2349,6 +2369,11 @@
    "roles": [
     "Hafta sonu",
     "Renkli Cuma"
+   ],
+   "imgs": [
+    "https://www.brew-watches.com/cdn/shop/files/BREWMETRICANGLERETRODIAL-SD.jpg?v=1700672505&width=1200",
+    "https://www.brew-watches.com/cdn/shop/files/BREWMETRICSTEELREAR-SD2.jpg?v=1735567219&width=1200",
+    "https://www.brew-watches.com/cdn/shop/files/BREWMETRICRETRODIALPOUCH-SD.jpg?v=1735567219&width=1200"
    ]
   },
   {
@@ -2834,6 +2859,10 @@
     "Ana saat",
     "İş",
     "Hafta sonu"
+   ],
+   "imgs": [
+    "https://www.rotapsaat.com/images/thumbs/0041609_jaeger-lecoultre-polaris-date-40-mm-otomatik-saat-q9128981_1250.jpeg",
+    "https://www.rotapsaat.com/images/thumbs/0041610_jaeger-lecoultre-polaris-date-40-mm-otomatik-saat-q9128981_1250.jpeg"
    ]
   },
   {
@@ -2931,6 +2960,10 @@
    "yr": 2026,
    "roles": [
     "Hafta sonu"
+   ],
+   "imgs": [
+    "https://cdn.ebnermediagroup.de/watchtime_de/blt22276bff283176bd/bltf993a3f2532af0b8/6a7997d65e49580881c34e9b/Unimatic-Tennis-Collection-BodenU1-GMT-TSP.webp",
+    "https://cdn.ebnermediagroup.de/watchtime_de/blt22276bff283176bd/blt580c9eb31d35a5b4/6a79988b8c0da399ee7a1dbb/Unimatic-U1-GMT-TSP-LUme.webp"
    ]
   },
   {
@@ -2982,6 +3015,12 @@
    "roles": [
     "Hafta sonu",
     "Renkli Cuma"
+   ],
+   "imgs": [
+    "https://underd0g.com/cdn/shop/files/01DST_1.png?v=1756754282&width=1200",
+    "https://underd0g.com/cdn/shop/files/01DST_2.png?v=1756754283&width=1200",
+    "https://underd0g.com/cdn/shop/files/01DST_3.png?v=1756754282&width=1200",
+    "https://underd0g.com/cdn/shop/files/01DST_Product_Page_Editorial_Case.png?v=1783324824&width=1200"
    ]
   }
  ]
