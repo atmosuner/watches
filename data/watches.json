@@ -878,7 +878,7 @@
    "mov": "Otomatik / Elle kurmalı",
    "type": "Sade",
    "link": "https://www.tudorwatch.com/en/watches/black-bay-one/m79680-0001",
-   "img": "https://media.tudorwatch.com/image/upload/q_auto/f_auto/t_tdr-cover-watch/c_limit,w_640/v1/catalogue/0yi5ee8b69yh3/upright-cb-centred-with-drop-shadow/tudor-m79680-0001",
+   "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRspltToG0qouhSO1FxzbH1_2q34MuIAnwYDEMInSoyfA&s=10",
    "imgq": "Tudor Black Bay One 41 anthracite dial",
    "about": [
     "Tudor'un 1954 dalgıç saatinden esinlenen Black Bay One: sade antrasit kadran, düz cam ve çelik bilezik, sadece saat dakika saniye.",
@@ -900,10 +900,12 @@
     "mov": "Tudor MT5601 (COSC) otomatik",
     "pr": "70 saat"
    },
-   "zoom": 1.71,
+   "zoom": 1.8,
    "yr": 2026,
    "orig": 2012,
-   "yrx": true
+   "yrx": true,
+   "zy": -3,
+   "zx": 0.3
   },
   {
    "b": "Tudor",
