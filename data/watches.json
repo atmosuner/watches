@@ -1047,7 +1047,7 @@
    "mov": "Otomatik / Elle kurmalı",
    "type": "Tarihsiz",
    "link": "https://www.longines.com/en-gb/p/watch-longines-legend-diver-l3-764-4-50-7",
-   "img": "https://www.exquisitetimepieces.com/cdn/shop/files/4522505043.jpg?v=1780855769&width=1200",
+   "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTF5gdvoWRk0tol7DfLRUA8Y_NLScHPkh9mieQoWtkVsxsP0czwP75iBsh&s=10",
    "about": [
     "1959'daki ilk Legend Diver'a sadık 39 mm sürüm: iç dönen bezel, iki vidalı taç, cilalı siyah lake kadran.",
     "Unimatic'ten daha şık bir diver: deri kayışla ofiste, kauçuk ya da bilezikle hafta sonu.",
@@ -1072,7 +1072,10 @@
     "pr": "72 saat"
    },
    "yr": 2023,
-   "orig": 1959
+   "orig": 1959,
+   "zoom": 1.89,
+   "zy": 13.5,
+   "zx": 2.1
   },
   {
    "b": "Baume & Mercier",
@@ -2688,7 +2691,10 @@
     "pr": "50 saat (krono kapalı), 45 saat (açık)"
    },
    "yr": 2026,
-   "orig": 2020
+   "orig": 2020,
+   "zoom": 2.29,
+   "zy": 6.3,
+   "zx": 0.6
   }
  ]
 }
