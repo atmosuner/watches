@@ -649,7 +649,7 @@ function renderCmp(){
     ["GENEL", [["Kategori", function(w){ return esc(w.c); }],["Seviye", function(w){ return esc(tierOf(w)||"—"); }],["Rol", function(w){ return esc(rolesOf(w).join(", ")||"—"); }],["Çıkış yılı", function(w){ return w.yr ? '<span class="mono">'+yrText(w)+'</span>' : '<span class="na">—</span>'; }],["Seri ilk çıkış", function(w){ return w.orig ? '<span class="mono">'+w.orig+'</span>' : '<span class="na">—</span>'; }],["Fiyat", function(w){ return '<span class="mono'+(list.length>1&&w.p&&w.p[0]===minP?' best':'')+'">'+priceText(w)+'</span>'+(w.verify?'<br><span class="vfy">doğrulanmalı</span>':''); }],["Kadran", function(w){ return '<span style="display:inline-flex;gap:6px;align-items:center"><i class="dot" style="background:'+w.dial+'"></i>'+esc(w.dn)+'</span>'; }]]],
     ["01 KASA", [["Malzeme","mat"],["Çap","dia",1],["Kalınlık","th",1],["Lug-to-lug", function(w){ var v=l2l(key(w)), f=fitOf(v); return v ? '<span class="mono">'+num(v)+' mm</span><br><span class="fitchip '+f+'"><i></i>'+FITLAB[f]+'</span>' : '<span class="na">—</span>'; }]]],
     ["02 KADRAN", [["Yüzey","dial"]]],
-    ["03 BEZEL VE CAM", [["Bezel","bz"],["Cam","gl"]]],
+    ["03 BEZEL, CAM, ARKA KAPAK", [["Bezel","bz"],["Cam","gl"],["Arka kapak","cb"]]],
     ["04 MEKANİZMA", [["Kalibre ve tip","mov"],["Güç rezervi","pr",1]]],
     ["05 SU GEÇİRMEZLİK", [["Derinlik","wr",1]]],
     ["06 KAYIŞ / BİLEZİK", [["Tip","str"],["Kayış genişliği","lw",1]]]
@@ -772,7 +772,7 @@ function renderDetail(){
     (ab[1]?'<p class="t"><span class="k">Koleksiyondaki yeri</span>'+esc(ab[1])+'</p>':'')+
     (ab[2]?'<p class="t"><span class="k">Dikkat edilecekler</span>'+esc(ab[2])+'</p>':'')+'</div>';
   var l2s = sp.l2l ? num(sp.l2l)+" mm" : "";
-  var groups = [["00 TARİHÇE",[["Çıkış yılı",w.yr?yrText(w)+(w.yrx?" (tahmini)":""):""],["Seri ilk çıkış",w.orig?String(w.orig):""]]],["01 KASA",[["Malzeme",sp.mat],["Çap",sp.dia],["Kalınlık",sp.th],["Lug-to-lug",l2s]]],["02 KADRAN",[["Renk",w.dn],["Yüzey",sp.dial]]],["03 BEZEL VE CAM",[["Bezel",sp.bz],["Cam",sp.gl]]],["04 MEKANİZMA",[["Kalibre ve tip",sp.mov],["Güç rezervi",sp.pr]]],["05 SU GEÇİRMEZLİK",[["Derinlik",sp.wr]]],["06 KAYIŞ / BİLEZİK",[["Tip",sp.str],["Kayış genişliği",sp.lw]]]];
+  var groups = [["00 TARİHÇE",[["Çıkış yılı",w.yr?yrText(w)+(w.yrx?" (tahmini)":""):""],["Seri ilk çıkış",w.orig?String(w.orig):""]]],["01 KASA",[["Malzeme",sp.mat],["Çap",sp.dia],["Kalınlık",sp.th],["Lug-to-lug",l2s]]],["02 KADRAN",[["Renk",w.dn],["Yüzey",sp.dial]]],["03 BEZEL, CAM, ARKA KAPAK",[["Bezel",sp.bz],["Cam",sp.gl],["Arka kapak",sp.cb]]],["04 MEKANİZMA",[["Kalibre ve tip",sp.mov],["Güç rezervi",sp.pr]]],["05 SU GEÇİRMEZLİK",[["Derinlik",sp.wr]]],["06 KAYIŞ / BİLEZİK",[["Tip",sp.str],["Kayış genişliği",sp.lw]]]];
   var tot = 0, miss = 0; groups.forEach(function(g){ g[1].forEach(function(r){ tot++; if (!r[1]) miss++; }); });
   h += '<div class="dsec"><h3>TEKNİK BİLGİLER <span>'+(tot-miss)+' / '+tot+' alan</span></h3>'+(miss>tot/2?'<p class="tnote">Bu saatin teknik verisi büyük ölçüde eksik. "—" olan alanlar henüz doğrulanmadı.</p>':'')+
     groups.map(function(g){ return '<div class="tg"><h4>'+g[0]+'</h4>'+g[1].map(function(r){ return '<div class="tr"><span>'+r[0]+'</span><b'+(r[1]?'':' class="na"')+'>'+dash(r[1])+'</b></div>'; }).join("")+'</div>'; }).join("")+'</div>';

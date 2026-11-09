@@ -167,9 +167,10 @@
    "tech": {
     "mat": "Paslanmaz çelik",
     "dial": "Grande Tapisserie dokulu",
-    "gl": "Safir (ön ve arka)",
+    "gl": "Safir",
     "str": "Çelik bilezik, AP katlamalı toka",
-    "bz": "Sekizgen, çelik, altı görünür vida"
+    "bz": "Sekizgen, çelik, altı görünür vida",
+    "cb": "Şeffaf – safir cam"
    },
    "spec": {
     "dia": "41 mm",
@@ -213,10 +214,11 @@
     "mat": "Beyaz altın",
     "dial": "Pembe-altın tonlu opalin",
     "bz": "Içbükey (concave)",
-    "gl": "Safir arka kapak",
+    "gl": "Safir",
     "str": "Parlak çikolata kahve alligator, beyaz altın iğneli toka",
     "lw": "20 mm",
-    "l2l": 46
+    "l2l": 46,
+    "cb": "Şeffaf – safir cam, menteşeli çelik kapak"
    },
    "spec": {
     "dia": "39 mm",
@@ -259,12 +261,13 @@
     "mat": "Mavi seramik (kasa ve çıkıntılar)",
     "dial": "Güneş ışınlı mavi, uygulamalı lümenli indeksler",
     "bz": "Tek yönlü dönen, mavi seramik",
-    "gl": "Safir (ön ve şeffaf arka kapak)",
+    "gl": "Safir",
     "str": "Mavi tekstil kayış, seramik pimli toka",
     "lw": "23 mm",
     "th": "13,8 mm",
     "pr": "120 saat",
-    "l2l": "49,5"
+    "l2l": "49,5",
+    "cb": "Şeffaf – safir cam"
    },
    "spec": {
     "dia": "43,6 mm",
@@ -314,7 +317,8 @@
     "gl": "Safir, tarih için Cyclops mercek",
     "th": "~12,2 mm",
     "lw": "20 mm",
-    "l2l": 48
+    "l2l": 48,
+    "cb": "Kapalı – Oystersteel, vidalı"
    },
    "spec": {
     "dia": "40 mm",
@@ -364,7 +368,8 @@
     "dial": "Siyah, Chromalight mavi ışıklı indeksler",
     "th": "12,5 mm",
     "lw": "20 mm",
-    "l2l": 48
+    "l2l": 48,
+    "cb": "Kapalı – Oystersteel, vidalı"
    },
    "spec": {
     "dia": "41 mm",
@@ -411,7 +416,8 @@
     "dial": "Slate (gri)",
     "th": "~12 mm",
     "lw": "21 mm",
-    "l2l": 47.5
+    "l2l": 47.5,
+    "cb": "Kapalı – Oystersteel, vidalı"
    },
    "spec": {
     "dia": "41 mm",
@@ -458,7 +464,8 @@
     "lw": "22 mm",
     "mat": "Paslanmaz çelik",
     "dial": "Mavi, güneş ışınlı",
-    "l2l": 47.9
+    "l2l": 47.9,
+    "cb": "Kapalı – çelik, gravürlü"
    },
    "spec": {
     "dia": "41 mm",
@@ -504,7 +511,8 @@
     "gl": "Safir",
     "th": "11,5 mm",
     "lw": "19 mm",
-    "l2l": 43
+    "l2l": 43,
+    "cb": "Kapalı – Oystersteel, vidalı"
    },
    "spec": {
     "dia": "36 mm",
@@ -550,7 +558,8 @@
     "lw": "22 mm",
     "th": "13,1 mm",
     "bz": "Sabit, cilalı çelik",
-    "l2l": 50
+    "l2l": 50,
+    "cb": "Şeffaf – safir pencereli vidalı çelik, gravürlü"
    },
    "spec": {
     "dia": "43 mm",
@@ -591,7 +600,8 @@
     "bz": "Siyah eloksallı alüminyum",
     "gl": "Bombeli safir, içte yansıma önleyici",
     "str": "Siyah dana derisi, çelik katlamalı toka",
-    "lw": "20 mm"
+    "lw": "20 mm",
+    "cb": "Şeffaf – safir cam"
    },
    "spec": {
     "dia": "42 mm",
@@ -639,7 +649,8 @@
     "str": "Timsah derisi, üçlü katlamalı toka (butonla açılır)",
     "lw": "19 mm",
     "th": "13,7 mm",
-    "bz": "Sabit, cilalı çelik, konik eğimli (24 saat skalası kadranın iç halkasında)"
+    "bz": "Sabit, cilalı çelik, konik eğimli (24 saat skalası kadranın iç halkasında)",
+    "cb": "Şeffaf – safir cam, 6 vidalı"
    },
    "spec": {
     "dia": "39,5 mm",
@@ -685,7 +696,8 @@
     "bz": "Fırçalı siyah seramik",
     "gl": "Bombeli safir, iki yüzde yansıma önleyici",
     "str": "Siyah kauçuk, katlamalı toka",
-    "lw": "20 mm"
+    "lw": "20 mm",
+    "cb": "Şeffaf – safir cam"
    },
    "spec": {
     "dia": "41 mm",
@@ -735,7 +747,8 @@
     "str": "Mat siyah alligator, cilalı çelik toka",
     "lw": "24 mm",
     "th": "10,3 mm",
-    "gl": "Safir"
+    "gl": "Safir",
+    "cb": "Kapalı – parlatılmış çelik"
    },
    "spec": {
     "dia": "40 mm",
@@ -780,10 +793,11 @@
     "mat": "Titanyum (Grade 5)",
     "dial": "Mavi opalin",
     "bz": "Sabit, titanyum",
-    "gl": "Safir arka kapak",
+    "gl": "Safir",
     "str": "Delikli siyah dana derisi, titanyum katlamalı toka",
     "lw": "22 mm (boynuz arası 22,5)",
-    "l2l": 47.5
+    "l2l": 47.5,
+    "cb": "Şeffaf – safir cam"
    },
    "spec": {
     "dia": "39 mm",
@@ -832,7 +846,8 @@
     "bz": "Kahverengi tropik alüminyum",
     "gl": "Bombeli safir, içte yansıma önleyici",
     "str": "Titanyum mesh bilezik, katlamalı toka",
-    "lw": "20 mm"
+    "lw": "20 mm",
+    "cb": "Şeffaf – safir cam"
    },
    "spec": {
     "dia": "42 mm",
@@ -878,10 +893,11 @@
     "mat": "Çelik, ince fırçalı ve cilalı",
     "dial": "Mavi, güneş ışınlı fırçalı, uygulamalı indeksler",
     "bz": "Sabit, çelik",
-    "gl": "Safir (şeffaf safir kasa arkası)",
+    "gl": "Safir",
     "str": "Çelik, üç sıra H şeklinde bilezik, çift güvenlikli katlamalı toka",
     "th": "12,7 mm",
-    "lw": "21,5 mm"
+    "lw": "21,5 mm",
+    "cb": "Şeffaf – safir cam"
    },
    "spec": {
     "dia": "41 mm",
@@ -929,7 +945,8 @@
     "th": "10,7 mm",
     "bz": "Sabit, cilalı ve satine yüzeyli, beş fonksiyonel vidalı",
     "l2l": 45.7,
-    "pr": "120 saat"
+    "pr": "120 saat",
+    "cb": "Kapalı – çelik (yumuşak demir manyetik kalkan)"
    },
    "spec": {
     "dia": "40 mm",
@@ -978,7 +995,8 @@
     "gl": "Düz safir",
     "str": "Çelik bilezik (5 mafsallı), T-fit toka",
     "th": "12,2 mm",
-    "lw": "22 mm"
+    "lw": "22 mm",
+    "cb": "Kapalı – çelik, vidalı"
    },
    "spec": {
     "dia": "41 mm",
@@ -1023,7 +1041,8 @@
     "bz": "Pürüzsüz saten fırçalı çelik",
     "gl": "Bombeli safir",
     "str": "Çelik bilezik, T-fit toka",
-    "lw": "19 mm"
+    "lw": "19 mm",
+    "cb": "Kapalı – çelik, vidalı"
    },
    "spec": {
     "dia": "36 mm",
@@ -1072,7 +1091,8 @@
     "bz": "Sabit, kare, çelik",
     "pr": "~38 saat",
     "lw": "24 mm",
-    "l2l": 51.2
+    "l2l": 51.2,
+    "cb": "Kapalı – çelik, gravürlü"
    },
    "spec": {
     "dia": "42 mm",
@@ -1117,7 +1137,8 @@
     "str": "Sarı FKM kauçuk kayış (diğer renkler ve titanyum bilezik seçenek)",
     "l2l": 45.7,
     "th": "11 mm (camsız 10,3)",
-    "lw": "24,8 mm (kayışta 18 mm'ye daralır, entegre)"
+    "lw": "24,8 mm (kayışta 18 mm'ye daralır, entegre)",
+    "cb": "Kapalı – titanyum, gravürlü"
    },
    "spec": {
     "dia": "38,2 mm",
@@ -1162,7 +1183,8 @@
     "th": "12,7 mm",
     "str": "Çelik bilezik (deri, kauçuk, NATO seçenekleri)",
     "lw": "20 mm",
-    "l2l": 47
+    "l2l": 47,
+    "cb": "Kapalı – çelik, dalgıç gravürlü, vidalı"
    },
    "spec": {
     "dia": "39 mm",
@@ -1210,7 +1232,8 @@
     "bz": "Sabit, on iki kenarlı",
     "str": "Değiştirilebilir çelik bilezik, üçlü katlamalı toka",
     "gl": "Safir",
-    "l2l": 48.1
+    "l2l": 48.1,
+    "cb": "Şeffaf – safir cam"
    },
    "spec": {
     "dia": "39 mm",
@@ -1260,7 +1283,8 @@
     "th": "13,9 mm",
     "bz": "Çift yönlü dönen, seramik, 24 saat skalası",
     "lw": "22 mm",
-    "l2l": 49
+    "l2l": 49,
+    "cb": "Kapalı – çelik, dünya gravürlü, 6 vidalı"
    },
    "spec": {
     "dia": "42 mm",
@@ -1308,7 +1332,8 @@
     "str": "Çok parçalı çelik bilezik, katlamalı toka",
     "lw": "20 mm",
     "th": "12,86 mm",
-    "l2l": 47.9
+    "l2l": 47.9,
+    "cb": "Kapalı – çelik, gravürlü, vidalı"
    },
    "spec": {
     "dia": "40 mm",
@@ -1356,7 +1381,8 @@
     "lw": "23 mm",
     "th": "~12 mm",
     "l2l": 50,
-    "dial": "Güneş ışınlı (sunray)"
+    "dial": "Güneş ışınlı (sunray)",
+    "cb": "Şeffaf – mineral cam, vidalı çelik"
    },
    "spec": {
     "dia": "43,5 mm",
@@ -1402,7 +1428,8 @@
     "gl": "Safir",
     "bz": "Tek yönlü dönen, seramik insert",
     "lw": "21 mm",
-    "l2l": 49
+    "l2l": 49,
+    "cb": "Kapalı – çelik, gravürlü, vidalı"
    },
    "spec": {
     "dia": "42 mm",
@@ -1448,7 +1475,8 @@
     "gl": "Safir",
     "str": "Siyah Horween shell cordovan deri",
     "lw": "18 mm",
-    "bz": "Yok (ince çelik çerçeve)"
+    "bz": "Yok (ince çelik çerçeve)",
+    "cb": "Kapalı – çelik"
    },
    "spec": {
     "dia": "35 mm",
@@ -1492,7 +1520,8 @@
     "gl": "Safir, çok katmanlı yansıma önleyici",
     "str": "Kahverengi timsah derisi, tokalı",
     "lw": "20 mm",
-    "bz": "Sabit, çelik"
+    "bz": "Sabit, çelik",
+    "cb": "Kapalı – çelik, 18 ayar altın madalyon"
    },
    "spec": {
     "dia": "40 mm",
@@ -1542,7 +1571,8 @@
     "str": "Deri, silikon ya da çelik bilezik seçenekleri",
     "lw": "22 mm",
     "pr": "~38 saat",
-    "l2l": 46
+    "l2l": 46,
+    "cb": "Kapalı – çelik, vidalı"
    },
    "spec": {
     "dia": "43 mm",
@@ -1586,7 +1616,8 @@
     "bz": "Tek yönlü iç bezel, dakika işaretli",
     "gl": "Çift bombeli safir, yansıma önleyici",
     "str": "Hızlı değişimli doğal kauçuk, titanyum toka",
-    "lw": "20 mm"
+    "lw": "20 mm",
+    "cb": "Şeffaf – düz safir cam"
    },
    "spec": {
     "dia": "41,5 mm",
@@ -1633,7 +1664,8 @@
     "str": "Çelik bilezik",
     "th": "11,9 mm",
     "lw": "21 mm",
-    "l2l": 51
+    "l2l": 51,
+    "cb": "Kapalı – çelik, vidalı"
    },
    "spec": {
     "dia": "41 mm",
@@ -1679,7 +1711,8 @@
     "str": "Bader çelik bilezik",
     "lw": "20 mm",
     "l2l": 45,
-    "th": "11,3 mm (39 mm sürüm)"
+    "th": "11,3 mm (39 mm sürüm)",
+    "cb": "Şeffaf – safir cam"
    },
    "spec": {
     "dia": "36 / 39 / 42 mm",
@@ -1726,7 +1759,8 @@
     "str": "Bader çelik bilezik",
     "lw": "20 mm",
     "l2l": 42,
-    "th": "10,9 mm (36 mm sürüm)"
+    "th": "10,9 mm (36 mm sürüm)",
+    "cb": "Şeffaf – safir cam, vidalı"
    },
    "spec": {
     "dia": "36 / 39 mm",
@@ -1771,7 +1805,8 @@
     "bz": "316L çelik",
     "gl": "Safir, yansıma önleyici",
     "str": "Entegre kauçuk, çelik uç parçalı",
-    "lw": "20 mm"
+    "lw": "20 mm",
+    "cb": "Kapalı – çelik, Ortaköy Camii gravürlü"
    },
    "spec": {
     "dia": "40 mm",
@@ -1818,7 +1853,8 @@
     "gl": "Bombeli safir, yansıma önleyici",
     "str": "Siyah deri, çelik toka",
     "bz": "Yok (ince çelik çerçeve)",
-    "lw": "20 mm"
+    "lw": "20 mm",
+    "cb": "Kapalı – çelik"
    },
    "spec": {
     "dia": "38 mm",
@@ -1862,7 +1898,8 @@
     "str": "Beads of Rice çelik bilezik (FKM kauçuk kayış seçeneği)",
     "lw": "19 mm",
     "dial": "Mat",
-    "l2l": 46
+    "l2l": 46,
+    "cb": "Kapalı – çelik, balık gravürlü, vidalı"
    },
    "spec": {
     "dia": "42 mm",
@@ -1907,7 +1944,8 @@
     "gl": "Safir",
     "str": "Silikon kayış",
     "bz": "Tek yönlü dönen, 120 klik, çelik (süper sert kaplama)",
-    "lw": "19 mm"
+    "lw": "19 mm",
+    "cb": "Kapalı – çelik, yunus amblemli, vidalı"
    },
    "spec": {
     "dia": "38 mm",
@@ -1953,9 +1991,10 @@
     "mat": "Titanyum (Grade 2)",
     "dial": "Şeker kristali dokulu, degrade",
     "bz": "Gümüş renkli, sabit",
-    "gl": "Safir arka kapak",
+    "gl": "Safir",
     "str": "Titanyum bilezik, kelebek toka (kauçuk kayış da var)",
-    "lw": "22 mm"
+    "lw": "22 mm",
+    "cb": "Şeffaf – safir cam"
    },
    "spec": {
     "dia": "36 mm",
@@ -2003,7 +2042,8 @@
     "str": "İnek derisi (siyah deri)",
     "lw": "20 mm",
     "bz": "Sabit, çelik",
-    "l2l": 44.7
+    "l2l": 44.7,
+    "cb": "Şeffaf – safir cam"
    },
    "spec": {
     "dia": "38 mm",
@@ -2051,7 +2091,8 @@
     "lw": "15 mm",
     "th": "11,7 mm",
     "dial": "Geometrik dokulu (damalı desen)",
-    "l2l": 48
+    "l2l": 48,
+    "cb": "Şeffaf – safir cam"
    },
    "spec": {
     "dia": "42,6 mm",
@@ -2097,7 +2138,8 @@
     "gl": "Safir, büyüteçli, içte yansıma önleyici",
     "str": "İnek derisi, üçlü katlamalı toka",
     "lw": "20 mm",
-    "dial": "Güneş ışınlı (sunburst)"
+    "dial": "Güneş ışınlı (sunburst)",
+    "cb": "Şeffaf – safir cam, vidalı"
    },
    "spec": {
     "dia": "39,5 mm",
@@ -2144,7 +2186,8 @@
     "bz": "Tek yönlü (120 tık), fırçalı seramik",
     "gl": "Çift bombeli safir",
     "lw": "20 mm",
-    "str": "FKM kauçuk, titanyum toka"
+    "str": "FKM kauçuk, titanyum toka",
+    "cb": "Kapalı – titanyum, numaralı"
    },
    "spec": {
     "dia": "41 mm",
@@ -2193,7 +2236,8 @@
     "lw": "20 mm",
     "th": "11,5 mm",
     "pr": "41 saat",
-    "bz": "Sabit, düz, parlak cilalı (fırçalı pah)"
+    "bz": "Sabit, düz, parlak cilalı (fırçalı pah)",
+    "cb": "Şeffaf – Hardlex cam"
    },
    "spec": {
     "dia": "40 mm",
@@ -2242,7 +2286,8 @@
     "str": "Deri ya da metal (sayfada ikisi de geçiyor)",
     "lw": "20 mm",
     "bz": "Sabit, çelik",
-    "pr": "~38 saat"
+    "pr": "~38 saat",
+    "cb": "Şeffaf – cam, 316L çelik"
    },
    "spec": {
     "dia": "41 mm",
@@ -2287,7 +2332,8 @@
     "str": "Çelik bilezik, fırçalı/cilalı, mikro ayarlı katlamalı toka",
     "lw": "19,85 mm",
     "th": "10,75 mm",
-    "l2l": "41,5 mm"
+    "l2l": "41,5 mm",
+    "cb": "Kapalı – çelik, vidalı, kahve çekirdeği gravürlü"
    },
    "spec": {
     "dia": "36 mm",
@@ -2333,7 +2379,8 @@
     "bz": "Yok",
     "gl": "Bombeli safir, yansıma önleyici",
     "str": "İtalyan deri, iğneli toka",
-    "lw": "20 mm"
+    "lw": "20 mm",
+    "cb": "Kapalı – çelik, Kopenhag silueti gravürlü (doğrulanmalı)"
    },
    "spec": {
     "dia": "36 mm",
@@ -2379,7 +2426,8 @@
     "bz": "Yok",
     "gl": "Çift bombeli safir, çift yansıma önleyici",
     "str": "Vintage İtalyan deri",
-    "lw": "20 mm"
+    "lw": "20 mm",
+    "cb": "Şeffaf – safir cam, 6 vidalı"
    },
    "spec": {
     "dia": "38 mm",
@@ -2426,7 +2474,8 @@
     "lw": "20 mm",
     "bz": "Sabit, çelik",
     "dial": "Radyal güneş ışınlı, lake kaplı",
-    "l2l": 45.4
+    "l2l": 45.4,
+    "cb": "Şeffaf – Hardlex cam"
    },
    "spec": {
     "dia": "38,5 mm",
@@ -2474,7 +2523,8 @@
     "lw": "18 mm",
     "th": "12,5 mm",
     "dial": "Siyah, fırçalı ve ayna yüzeyler, turuncu saniye ibresi",
-    "bz": "Sabit, düz cilalı çelik"
+    "bz": "Sabit, düz cilalı çelik",
+    "cb": "Şeffaf – Hardlex cam"
    },
    "spec": {
     "dia": "37 mm",
@@ -2525,7 +2575,8 @@
     "bz": "Sabit, çelik",
     "pr": "~40 saat",
     "th": "10,5 mm",
-    "l2l": 45.5
+    "l2l": 45.5,
+    "cb": "Şeffaf – Hardlex cam"
    },
    "spec": {
     "dia": "38 mm",
@@ -2571,7 +2622,8 @@
     "gl": "Eko malzeme (biyobazlı)",
     "str": "Cırt-cırt bant",
     "lw": "20 mm",
-    "pr": "Quartz (pil)"
+    "pr": "Quartz (pil)",
+    "cb": "Kapalı – Bioceramic, pil kapaklı"
    },
    "spec": {
     "dia": "42 mm",
@@ -2617,7 +2669,8 @@
     "bz": "Çelik",
     "gl": "Kutu form (box) kristal",
     "str": "Kahverengi deri, iğneli toka",
-    "lw": "20 mm"
+    "lw": "20 mm",
+    "cb": "Şeffaf – mineral cam, geçmeli"
    },
    "spec": {
     "dia": "38,4 mm",
@@ -2662,7 +2715,8 @@
     "lw": "18 mm",
     "th": "12,5 mm",
     "dial": "Mat siyah, pütürlü/kumlu doku, 24 saat iç skalası, kırmızı uçlu saniye ibresi",
-    "bz": "Sabit, fırçalı çelik"
+    "bz": "Sabit, fırçalı çelik",
+    "cb": "Şeffaf – Hardlex cam"
    },
    "spec": {
     "dia": "36,4 mm",
@@ -2710,7 +2764,8 @@
     "gl": "Safir, iç yüzeyde yansıma önleyici",
     "str": "Gri kabartmalı deri, çabuk sökülebilir",
     "lw": "20 mm",
-    "th": "11,1 mm"
+    "th": "11,1 mm",
+    "cb": "Şeffaf – safir cam"
    },
    "spec": {
     "dia": "39 mm",
@@ -2753,13 +2808,14 @@
    "tech": {
     "mat": "Paslanmaz çelik, fırçalı ve cilalı yüzeyler",
     "dial": "Mavi, çift geçişli lake; güneş ışınlı, grene ve opalin yüzeyler; iskelet baton ibreler (Super-LumiNova)",
-    "gl": "Safir (glass-box), şeffaf safir kasa arkası",
+    "gl": "Safir (glass-box)",
     "str": "Mavi kanvas kayış, hızlı değişim, çelik çift katlamalı toka",
     "lw": "20 mm",
     "th": "12,9 mm",
     "bz": "Dar, iç dönen zamanlama bezeli (üst taç ile)",
     "pr": "70 saat",
-    "l2l": 47
+    "l2l": 47,
+    "cb": "Şeffaf – safir cam"
    },
    "spec": {
     "dia": "40 mm",
@@ -2808,7 +2864,8 @@
     "str": "Çelik 9 sıra boncuk (beads-of-rice) bilezik, üç katlamalı toka (butonla açılır)",
     "lw": "19 mm",
     "th": "10,2 mm",
-    "bz": "Sabit, cilalı çelik"
+    "bz": "Sabit, cilalı çelik",
+    "cb": "Şeffaf – safir cam"
    },
    "spec": {
     "dia": "38,5 mm",
@@ -2855,7 +2912,8 @@
     "bz": "Tek yönlü, 120 tık, mat siyah seramik insert (24 saat göstergeli)",
     "gl": "Çift bombeli safir, içte yansıma önleyici",
     "str": "Siyah-sarı naylon, iki parçalı",
-    "lw": "22 mm"
+    "lw": "22 mm",
+    "cb": "Kapalı – çelik, vidalı, gravürlü"
    },
    "spec": {
     "dia": "40 mm (bezelle 41,5)",
@@ -2901,11 +2959,12 @@
     "mat": "316L çelik, 3 parçalı kasa",
     "dial": "İki katmanlı: saten kumlanmış taban, kaba degrade üst kadran",
     "bz": "Takimetre",
-    "gl": "Safir, safir arka cam",
+    "gl": "Safir",
     "th": "12,9 mm",
     "str": "The Strap Tailor İtalyan Epsom deri, 20→16 mm, hızlı değişim pimleri",
     "lw": "20 mm",
-    "l2l": 44.5
+    "l2l": 44.5,
+    "cb": "Şeffaf – safir cam"
    },
    "spec": {
     "dia": "38,5 mm",
