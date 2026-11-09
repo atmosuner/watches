@@ -76,7 +76,8 @@
    "Panerai Radiomir",
    "Rolex Datejust",
    "Omega Seamaster Aqua Terra",
-   "Audemars Piguet Royal Oak"
+   "Audemars Piguet Royal Oak",
+   "Studio Underd0g 01SERIES Desert Sky (Gen3)"
   ],
   "target": [
    "Audemars Piguet",
@@ -112,7 +113,7 @@
    "Unimatic Modello Uno GMT U1-GMT-TSP",
    "Brew Metric Retro Black"
   ],
-  "seedV": 8
+  "seedV": 9
  },
  "watches": [
   {
@@ -2645,6 +2646,49 @@
    "orig": 2015,
    "verify": true,
    "yr": 2026
+  },
+  {
+   "b": "Studio Underd0g",
+   "n": "01SERIES Desert Sky (Gen3)",
+   "c": "Eğlenceli / Kronograf",
+   "p": [
+    780,
+    800
+   ],
+   "dial": "#b9cfd9",
+   "dn": "Desert Sky degrade",
+   "verify": true,
+   "note": "£600 (İngiltere fiyatı, yaklaşık 790 $). Arkadaş İngiltere'den alıyor. 38,5 mm, 44,5 mm lug-to-lug (17 cm bilek için rahat), 12,9 mm, el kurmalı ST-1901B kronograf, 50 m.",
+   "color": "Desert Sky",
+   "mov": "Elle kurmalı",
+   "type": "Kronograf",
+   "link": "https://underd0g.com/products/01dst",
+   "img": "https://underd0g.com/cdn/shop/files/01DST_Product_Card_c649bb0e-9fe2-47ab-8c79-55e7cd6ce295.png?v=1783351280&width=800",
+   "about": [
+    "İngiliz Studio Underd0g'un 01SERIES el kurmalı kronografı; vintage orta yüzyıl silueti, modern degrade kadran.",
+    "Gen3: daha ince orta kasa, kalınlaşmış taç, büyütülmüş safir arka cam ve kadranda 'Assembled in Great Britain' yazısı.",
+    "Brew'un yanında ikinci eğlenceli kronograf; hafta sonu ve renkli cumalar için."
+   ],
+   "tech": {
+    "mat": "316L çelik, 3 parçalı kasa",
+    "dial": "İki katmanlı: saten kumlanmış taban, kaba degrade üst kadran",
+    "bz": "Takimetre",
+    "gl": "Safir, safir arka cam",
+    "th": "12,9 mm",
+    "str": "The Strap Tailor İtalyan Epsom deri, 20→16 mm, hızlı değişim pimleri",
+    "lw": "20 mm",
+    "l2l": 44.5
+   },
+   "spec": {
+    "dia": "38,5 mm",
+    "l2l": 44.5,
+    "th": "12,9 mm",
+    "wr": "50 m",
+    "mov": "ST-1901B (Seagull), elle kurmalı, 21.600 vph",
+    "pr": "50 saat (krono kapalı), 45 saat (açık)"
+   },
+   "yr": 2026,
+   "orig": 2020
   }
  ]
 }
