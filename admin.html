@@ -181,6 +181,7 @@ function renderForm(){
     '<label><span class="h">Kadran rengi</span><div class="row"><input type="color" data-f="dial" value="' + esc(/^#[0-9a-f]{6}$/i.test(w.dial || "") ? w.dial : "#888888") + '" style="width:44px;height:32px;padding:0"><input type="text" data-f="dialtxt" value="' + esc(w.dial || "") + '"></div></label>' +
     field("Kadran adı", "dn", w.dn) + selectF("Renk ailesi", "color", cols, w.color) +
     selectF("Mekanizma türü", "mov", MOVS, w.mov) + selectF("Tür", "type", TYPES, w.type) +
+    '<div class="wf"><span class="h">Rol (birden fazla seçilebilir) · Seviye fiyattan otomatik hesaplanır</span><div class="row" style="flex-wrap:wrap;gap:12px;margin-top:4px">' + (db.config.roles || []).map(function(r){ return '<label style="display:inline-flex;gap:5px;align-items:center"><input type="checkbox" data-f="roles" value="' + esc(r) + '"' + ((w.roles || []).indexOf(r) >= 0 ? " checked" : "") + '>' + esc(r) + '</label>'; }).join("") + '</div></div>' +
     '<label class="wf"><span class="h">Not (kartta görünen kısa açıklama)</span><textarea data-f="note">' + esc(w.note) + '</textarea></label></div></fieldset>';
   h += '<fieldset><legend>Link ve fotoğraf</legend><div class="g">' +
     field("Ürün linki", "link", w.link, {type:"url", cls:"wf"}) + field("Fotoğraf linki", "img", w.img, {type:"url", cls:"wf"}) +
@@ -230,6 +231,7 @@ $("form").addEventListener("input", function(e){
   if (k === "p0" || k === "p1") { w.p = w.p || [null, null]; w.p[+k.slice(1)] = v === "" ? null : +v; }
   else if (k === "yr" || k === "orig") { var n = parseInt(v, 10); if (isNaN(n)) delete w[k]; else w[k] = n; if (k === "yr" && !w.yr) delete w.yrx; }
   else if (k === "yrx") { if (v && w.yr) w.yrx = true; else delete w.yrx; }
+  else if (k === "roles") { var rs = []; document.querySelectorAll('[data-f="roles"]').forEach(function(x){ if (x.checked) rs.push(x.value); }); w.roles = rs; }
   else if (k === "verify") { if (v) w.verify = true; else delete w.verify; }
   else if (k === "zoom" || k === "zx" || k === "zy" || k === "zoomn" || k === "zxn" || k === "zyn") {
     var kk = k.replace(/n$/, ""), nv = +v; if (isNaN(nv)) return;
@@ -251,7 +253,7 @@ $("form").addEventListener("input", function(e){
 function renderListKeepScroll(){ var a = document.querySelector("aside"), st = a.scrollTop; renderList(); a.scrollTop = st; }
 
 $("bNew").onclick = function(){
-  var w = {b:"Marka", n:"Yeni model " + (db.watches.length + 1), c:db.config.cats[1], p:[0, null], dial:"#888888", dn:"", note:"", color:"Diğer", mov:MOVS[0], type:"Sade", link:"", img:"", about:[], tech:{}, spec:{}};
+  var w = {b:"Marka", n:"Yeni model " + (db.watches.length + 1), c:db.config.cats[1], roles:[], p:[0, null], dial:"#888888", dn:"", note:"", color:"Diğer", mov:MOVS[0], type:"Sade", link:"", img:"", about:[], tech:{}, spec:{}};
   db.watches.push(w); sel = db.watches.length - 1; markDirty(true); renderList(); renderForm(); document.querySelector('[data-f="b"]').select();
 };
 $("form").addEventListener("click", function(e){

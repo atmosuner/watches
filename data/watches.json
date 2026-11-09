@@ -4,12 +4,11 @@
   "cats": [
    "Tümü",
    "Dress",
-   "Ofis spor-şık",
-   "Smart casual",
-   "Field / Pilot",
+   "Spor-şık",
    "Diver",
-   "Eğlenceli / Kronograf",
-   "Grail / Özel"
+   "Field / Pilot",
+   "Kronograf",
+   "GMT"
   ],
   "cols": [
    "Tümü",
@@ -113,13 +112,42 @@
    "Unimatic Modello Uno GMT U1-GMT-TSP",
    "Brew Metric Retro Black"
   ],
-  "seedV": 9
+  "seedV": 10,
+  "roles": [
+   "Ana saat",
+   "İş",
+   "Hafta sonu",
+   "Renkli Cuma",
+   "Miras"
+  ],
+  "tiers": [
+   [
+    "Giriş",
+    0,
+    1000
+   ],
+   [
+    "Orta",
+    1000,
+    5000
+   ],
+   [
+    "Üst",
+    5000,
+    15000
+   ],
+   [
+    "Grail",
+    15000,
+    null
+   ]
+  ]
  },
  "watches": [
   {
    "b": "Audemars Piguet",
    "n": "Royal Oak",
-   "c": "Grail / Özel",
+   "c": "Spor-şık",
    "p": [
     30000,
     null
@@ -156,7 +184,11 @@
    "zx": 1.5,
    "zy": 9.3,
    "yr": 2022,
-   "orig": 1972
+   "orig": 1972,
+   "roles": [
+    "İş",
+    "Miras"
+   ]
   },
   {
    "b": "Patek Philippe",
@@ -199,7 +231,10 @@
    "zy": 5.9,
    "zx": -0.6,
    "yr": 2026,
-   "orig": 1932
+   "orig": 1932,
+   "roles": [
+    "İş"
+   ]
   },
   {
    "b": "Blancpain",
@@ -246,12 +281,15 @@
    "zy": -0.9,
    "yr": 2016,
    "orig": 1953,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Rolex",
    "n": "GMT-Master II",
-   "c": "Ofis spor-şık",
+   "c": "GMT",
    "p": [
     11000,
     13000
@@ -291,7 +329,11 @@
    "img": "https://www.horando.de/cdn/shop/files/126710BLNR-0003.png?v=1782231802&width=1080",
    "zx": 1.6,
    "yr": 2019,
-   "orig": 1954
+   "orig": 1954,
+   "roles": [
+    "İş",
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Rolex",
@@ -336,7 +378,10 @@
    "zy": -2.6,
    "zx": -0.3,
    "yr": 2020,
-   "orig": 1953
+   "orig": 1953,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Rolex",
@@ -380,7 +425,11 @@
    "zx": 0.6,
    "zy": -0.8,
    "yr": 2016,
-   "orig": 1945
+   "orig": 1945,
+   "roles": [
+    "İş",
+    "Miras"
+   ]
   },
   {
    "b": "Breitling",
@@ -423,7 +472,10 @@
    "zoom": 1.71,
    "zy": 2.9,
    "yr": 2022,
-   "orig": 1952
+   "orig": 1952,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Rolex",
@@ -465,12 +517,15 @@
    "zoom": 2.52,
    "zx": -0.3,
    "yr": 2021,
-   "orig": 1953
+   "orig": 1953,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Oris",
    "n": "Artelier Year of the Horse LE",
-   "c": "Grail / Özel",
+   "c": "Dress",
    "p": [
     7300,
     8300
@@ -506,12 +561,15 @@
     "pr": "10 gün"
    },
    "zoom": 1.55,
-   "yr": 2026
+   "yr": 2026,
+   "roles": [
+    "İş"
+   ]
   },
   {
    "b": "Omega",
    "n": "Speedmaster Professional",
-   "c": "Smart casual",
+   "c": "Kronograf",
    "p": [
     7000,
     8000
@@ -549,12 +607,15 @@
    "zx": 0.3,
    "zy": 8,
    "yr": 2021,
-   "orig": 1957
+   "orig": 1957,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Grand Seiko",
    "n": "SBGM221 GMT",
-   "c": "Grail / Özel",
+   "c": "GMT",
    "p": [
     4500,
     6000
@@ -593,12 +654,16 @@
    "zy": 9.3,
    "zx": 2.5,
    "yr": 2017,
-   "orig": 1960
+   "orig": 1960,
+   "roles": [
+    "İş",
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Omega",
    "n": "Seamaster Aqua Terra",
-   "c": "Ofis spor-şık",
+   "c": "Spor-şık",
    "p": [
     6500,
     7500
@@ -636,12 +701,16 @@
    "zy": 7.2,
    "yr": 2017,
    "orig": 2002,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "İş",
+    "Renkli Cuma"
+   ]
   },
   {
    "b": "Panerai",
    "n": "Radiomir",
-   "c": "Smart casual",
+   "c": "Spor-şık",
    "p": [
     6000,
     9000
@@ -681,12 +750,16 @@
    "zy": 0.4,
    "yr": 2022,
    "orig": 1936,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "İş",
+    "Hafta sonu"
+   ]
   },
   {
    "b": "TAG Heuer",
    "n": "Monaco Chronograph",
-   "c": "Eğlenceli / Kronograf",
+   "c": "Kronograf",
    "p": [
     6000,
     8500
@@ -726,7 +799,11 @@
    "zx": -1.2,
    "yr": 2025,
    "orig": 1969,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "İş",
+    "Renkli Cuma"
+   ]
   },
   {
    "b": "Omega",
@@ -772,12 +849,15 @@
    "zx": -0.6,
    "yr": 2022,
    "orig": 1993,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "TAG Heuer",
    "n": "Carrera Day-Date 41",
-   "c": "Smart casual",
+   "c": "Spor-şık",
    "p": [
     3500,
     4200
@@ -814,12 +894,16 @@
    "zoom": 1.89,
    "yr": 2024,
    "orig": 1963,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "İş",
+    "Hafta sonu"
+   ]
   },
   {
    "b": "IWC",
    "n": "Ingenieur Automatic 40",
-   "c": "Smart casual",
+   "c": "Spor-şık",
    "p": [
     13500,
     13500
@@ -860,7 +944,11 @@
    "yr": 2023,
    "orig": 1955,
    "zoom": 3,
-   "zy": 1.3
+   "zy": 1.3,
+   "roles": [
+    "İş",
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Tudor",
@@ -905,7 +993,10 @@
    "orig": 2012,
    "yrx": true,
    "zy": -3,
-   "zx": 0.3
+   "zx": 0.3,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Tudor",
@@ -947,7 +1038,10 @@
    "zy": -2.1,
    "zx": -0.3,
    "yr": 2022,
-   "orig": 1952
+   "orig": 1952,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Bell & Ross",
@@ -990,7 +1084,10 @@
    "zoom": 1.8,
    "yr": 2016,
    "orig": 2005,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Straum",
@@ -1032,7 +1129,11 @@
    },
    "zoom": 1.71,
    "zy": 6.8,
-   "yr": 2026
+   "yr": 2026,
+   "roles": [
+    "Hafta sonu",
+    "Renkli Cuma"
+   ]
   },
   {
    "b": "Longines",
@@ -1077,12 +1178,15 @@
    "orig": 1959,
    "zoom": 1.89,
    "zy": 13.5,
-   "zx": 2.1
+   "zx": 2.1,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Baume & Mercier",
    "n": "Riviera",
-   "c": "Ofis spor-şık",
+   "c": "Spor-şık",
    "p": [
     2500,
     3500
@@ -1122,12 +1226,16 @@
    "zx": 0.6,
    "yr": 2022,
    "orig": 1973,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "İş",
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Longines",
    "n": "Spirit Zulu Time",
-   "c": "Field / Pilot",
+   "c": "GMT",
    "p": [
     2400,
     3700
@@ -1166,7 +1274,11 @@
    "zy": 16.9,
    "zx": -1.2,
    "yr": 2021,
-   "orig": 2020
+   "orig": 2020,
+   "roles": [
+    "İş",
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Oris",
@@ -1211,7 +1323,10 @@
    "zy": 9.8,
    "yr": 2025,
    "orig": 1965,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Oris",
@@ -1256,7 +1371,10 @@
    "zy": 4.7,
    "yr": 2022,
    "orig": 2011,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Rado",
@@ -1300,7 +1418,10 @@
    "zy": 4.7,
    "yr": 2019,
    "orig": 1962,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Nomos",
@@ -1341,12 +1462,15 @@
    },
    "zoom": 1.8,
    "yr": 1989,
-   "orig": 1989
+   "orig": 1989,
+   "roles": [
+    "İş"
+   ]
   },
   {
    "b": "Longines",
    "n": "Conquest Heritage",
-   "c": "Smart casual",
+   "c": "Dress",
    "p": [
     2000,
     2500
@@ -1385,7 +1509,10 @@
    "zx": -0.6,
    "yr": 2018,
    "orig": 1954,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "İş"
+   ]
   },
   {
    "b": "Sinn",
@@ -1428,12 +1555,15 @@
    "zoom": 1.41,
    "zy": 1.3,
    "yr": 2015,
-   "orig": 2015
+   "orig": 2015,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Farer",
    "n": "Aqua Compressor",
-   "c": "Eğlenceli / Kronograf",
+   "c": "Diver",
    "p": [
     1500,
     2500
@@ -1470,12 +1600,16 @@
    },
    "zoom": 1.55,
    "zy": 0.8,
-   "yr": 2025
+   "yr": 2025,
+   "roles": [
+    "Hafta sonu",
+    "Renkli Cuma"
+   ]
   },
   {
    "b": "Longines",
    "n": "HydroConquest",
-   "c": "Ofis spor-şık",
+   "c": "Diver",
    "p": [
     1500,
     1900
@@ -1513,12 +1647,15 @@
    "zy": 14,
    "yr": 2017,
    "orig": 2007,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Christopher Ward",
    "n": "C63 Sealander GMT",
-   "c": "Ofis spor-şık",
+   "c": "GMT",
    "p": [
     1500,
     1800
@@ -1555,12 +1692,16 @@
    "zoom": 1.63,
    "yr": 2023,
    "orig": 2020,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "İş",
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Christopher Ward",
    "n": "C63 Sealander Automatic",
-   "c": "Ofis spor-şık",
+   "c": "Spor-şık",
    "p": [
     1375,
     1400
@@ -1598,12 +1739,16 @@
    "zoom": 1.8,
    "yr": 2023,
    "orig": 2020,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "İş",
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Venezianico",
    "n": "Arsenale Bosphorus",
-   "c": "Eğlenceli / Kronograf",
+   "c": "Spor-şık",
    "p": [
     1000,
     1100
@@ -1642,7 +1787,11 @@
    "zy": 12.7,
    "zx": 2.1,
    "yr": 2026,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "Hafta sonu",
+    "Renkli Cuma"
+   ]
   },
   {
    "b": "Junghans",
@@ -1681,7 +1830,10 @@
     "pr": "38 saat"
    },
    "zoom": 1.63,
-   "orig": 1962
+   "orig": 1962,
+   "roles": [
+    "İş"
+   ]
   },
   {
    "b": "Doxa",
@@ -1724,7 +1876,10 @@
    "zoom": 1.98,
    "zy": 12.3,
    "yr": 2019,
-   "orig": 1967
+   "orig": 1967,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Seiko",
@@ -1768,12 +1923,15 @@
    "zx": 2.2,
    "zoom": 1.63,
    "yr": 2023,
-   "orig": 1965
+   "orig": 1965,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Christopher Ward",
    "n": "The Twelve (Pick and Mix)",
-   "c": "Ofis spor-şık",
+   "c": "Spor-şık",
    "p": [
     1000,
     1500
@@ -1812,7 +1970,12 @@
    "zoom": 1.89,
    "zy": -0.5,
    "yr": 2021,
-   "orig": 2021
+   "orig": 2021,
+   "roles": [
+    "İş",
+    "Hafta sonu",
+    "Renkli Cuma"
+   ]
   },
   {
    "b": "Hamilton",
@@ -1855,12 +2018,15 @@
    "zx": 3.4,
    "zy": 3,
    "yr": 2022,
-   "orig": 1940
+   "orig": 1940,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Citizen",
    "n": "Series 8",
-   "c": "Ofis spor-şık",
+   "c": "Spor-şık",
    "p": [
     1000,
     1300
@@ -1900,7 +2066,11 @@
    "zoom": 1.41,
    "yr": 2026,
    "orig": 2018,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "İş",
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Seiko",
@@ -1944,7 +2114,10 @@
    "zy": 15.7,
    "yr": 2023,
    "orig": 1961,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Baltic",
@@ -1987,12 +2160,15 @@
    "zoom": 1.55,
    "zx": 0.3,
    "yr": 2022,
-   "orig": 2020
+   "orig": 2020,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Seiko",
    "n": "Dress X SRPE51",
-   "c": "Smart casual",
+   "c": "Dress",
    "p": [
     330,
     430
@@ -2034,7 +2210,10 @@
    "zoom": 1.48,
    "yr": 2020,
    "orig": 1963,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "İş"
+   ]
   },
   {
    "b": "Mondaine",
@@ -2077,12 +2256,15 @@
    "zoom": 1.8,
    "yr": 2018,
    "orig": 1986,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "İş"
+   ]
   },
   {
    "b": "Brew",
    "n": "Metric Retro Black",
-   "c": "Eğlenceli / Kronograf",
+   "c": "Kronograf",
    "p": [
     475,
     475
@@ -2119,7 +2301,11 @@
    "zoom": 2.08,
    "zy": 10.2,
    "zx": 1.2,
-   "yr": 2023
+   "yr": 2023,
+   "roles": [
+    "Hafta sonu",
+    "Renkli Cuma"
+   ]
   },
   {
    "b": "AV86",
@@ -2163,7 +2349,10 @@
    "zx": -0.3,
    "zoom": 1.98,
    "yr": 2026,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "İş"
+   ]
   },
   {
    "b": "Sternglas",
@@ -2206,7 +2395,10 @@
    "zy": 1.3,
    "yr": 2023,
    "orig": 2012,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "İş"
+   ]
   },
   {
    "b": "Seiko",
@@ -2250,12 +2442,15 @@
    "zy": 5.1,
    "yr": 2020,
    "orig": 2016,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "İş"
+   ]
   },
   {
    "b": "Seiko",
    "n": "5 Sports SRPK89",
-   "c": "Eğlenceli / Kronograf",
+   "c": "Diver",
    "p": [
     350,
     450
@@ -2295,12 +2490,15 @@
    "zy": 4.7,
    "yr": 2022,
    "orig": 1963,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Seiko",
    "n": "5 Sports SNKL23K",
-   "c": "Eğlenceli / Kronograf",
+   "c": "Field / Pilot",
    "p": [
     300,
     400
@@ -2341,12 +2539,15 @@
    "zx": 1.8,
    "yr": 2009,
    "orig": 1963,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Omega x Swatch",
    "n": "MoonSwatch Mission to the Sun",
-   "c": "Eğlenceli / Kronograf",
+   "c": "Kronograf",
    "p": [
     300,
     350
@@ -2385,7 +2586,11 @@
    "zx": -0.3,
    "zy": 8.5,
    "yr": 2022,
-   "orig": 2022
+   "orig": 2022,
+   "roles": [
+    "Hafta sonu",
+    "Renkli Cuma"
+   ]
   },
   {
    "b": "Orient",
@@ -2425,7 +2630,10 @@
     "pr": "40+ saat"
    },
    "zy": 12.7,
-   "zoom": 1.63
+   "zoom": 1.63,
+   "roles": [
+    "İş"
+   ]
   },
   {
    "b": "Seiko",
@@ -2470,7 +2678,10 @@
    "zoom": 1.48,
    "yr": 2023,
    "orig": 1963,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Tissot",
@@ -2515,12 +2726,15 @@
    "zoom": 1.8,
    "yr": 2021,
    "orig": 1938,
-   "yrx": true
+   "yrx": true,
+   "roles": [
+    "İş"
+   ]
   },
   {
    "b": "Jaeger-LeCoultre",
    "n": "Polaris Date 40 mm",
-   "c": "Smart casual",
+   "c": "Spor-şık",
    "p": [
     10400,
     10400
@@ -2561,7 +2775,12 @@
    "orig": 1968,
    "zoom": 1.71,
    "zy": 11,
-   "zx": 1.5
+   "zx": 1.5,
+   "roles": [
+    "Ana saat",
+    "İş",
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Grand Seiko",
@@ -2605,7 +2824,10 @@
    "orig": 2021,
    "zoom": 1.55,
    "zx": 1.5,
-   "zy": 10.6
+   "zy": 10.6,
+   "roles": [
+    "İş"
+   ]
   },
   {
    "b": "Unimatic",
@@ -2650,12 +2872,15 @@
    "zx": -0.3,
    "orig": 2015,
    "verify": true,
-   "yr": 2026
+   "yr": 2026,
+   "roles": [
+    "Hafta sonu"
+   ]
   },
   {
    "b": "Studio Underd0g",
    "n": "01SERIES Desert Sky (Gen3)",
-   "c": "Eğlenceli / Kronograf",
+   "c": "Kronograf",
    "p": [
     780,
     800
@@ -2696,7 +2921,11 @@
    "orig": 2020,
    "zoom": 2.29,
    "zy": 6.3,
-   "zx": 0.6
+   "zx": 0.6,
+   "roles": [
+    "Hafta sonu",
+    "Renkli Cuma"
+   ]
   }
  ]
 }
