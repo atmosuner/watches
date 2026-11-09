@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Büyük Markalar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#efede8;--surface:#f7f5f1;--raise:#fbfaf7;--ink:#1b1a18;--muted:#5c5851;--faint:#837e75;
+  --line:#c9c4ba;--line2:#dcd8cf;--photo:#e6e3dc;--acc:#a44e1b;--acc-soft:rgba(164,78,27,.10);
+  --serif:"Source Serif 4",Georgia,serif;--sans:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;
+  --tW:#6fd3ea;--tO:#7ee07a;--tE:#bde27a;--tM:#e9de6a;--tN:#efa868;--tX:#e57373;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#161513;--surface:#1d1c19;--raise:#22211e;--ink:#ebe7df;--muted:#aaa59a;--faint:#857f75;
+  --line:#3b3833;--line2:#2c2a26;--acc:#e8955c;--acc-soft:rgba(232,149,92,.12);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#161513;--surface:#1d1c19;--raise:#22211e;--ink:#ebe7df;--muted:#aaa59a;--faint:#857f75;
+  --line:#3b3833;--line2:#2c2a26;--acc:#e8955c;--acc-soft:rgba(232,149,92,.12);color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header{padding:28px 0 8px}
+.kick{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--faint)}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,6vw,42px);margin:4px 0 6px;line-height:1.1}
+.lede{color:var(--muted);max-width:680px;margin:0 0 6px}
+.back{font-family:var(--mono);font-size:12px;color:var(--acc);text-decoration:none}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line2);padding:10px 0;margin-top:12px}
+.bar .wrap{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px;font-family:var(--mono);font-size:12px;cursor:pointer;color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+#q{flex:1;min-width:150px;border:1px solid var(--line);background:var(--raise);border-radius:8px;padding:7px 10px;font:inherit;color:var(--ink)}
+section.tier{margin:26px 0}
+.th{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.badge{width:40px;height:40px;border-radius:8px;display:grid;place-items:center;font-family:var(--mono);font-weight:500;font-size:18px;color:#1b1a18;flex:none}
+.th h2{font-family:var(--serif);font-weight:600;font-size:22px;margin:0}
+.th span{color:var(--faint);font-family:var(--mono);font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line2);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card.mine{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc) inset}
+.ch{display:flex;align-items:center;gap:10px;min-width:0}
+.logo{width:34px;height:34px;border-radius:8px;background:#fff;border:1px solid var(--line2);flex:none;object-fit:contain;padding:4px}
+.ch b{font-family:var(--serif);font-size:18px;font-weight:600;line-height:1.15;display:block;overflow-wrap:anywhere}
+.ch small{display:block;color:var(--faint);font-family:var(--mono);font-size:11px}
+.tag{margin-left:auto;font-family:var(--mono);font-size:10px;background:var(--acc-soft);color:var(--acc);padding:2px 6px;border-radius:4px;flex:none}
+.note{color:var(--muted);font-size:13px;margin:0}
+.models{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.m{display:block;text-decoration:none;border-radius:8px;overflow:hidden;background:var(--photo);position:relative}
+.m img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#fff}
+.m .ph{aspect-ratio:1/1;display:grid;place-items:center;font-family:var(--mono);font-size:10px;color:#5c5851;padding:4px;text-align:center}
+.m span{display:block;font-size:11px;line-height:1.25;padding:4px 5px;background:var(--raise);color:var(--ink);min-height:30px}
+.links{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.links a{font-family:var(--mono);font-size:11px;text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:4px 8px;color:var(--ink)}
+.links a.pri{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.empty{color:var(--faint);font-family:var(--mono);font-size:12px;padding:20px 0}
+footer{color:var(--faint);font-size:12px;padding:30px 0 40px;border-top:1px solid var(--line2);margin-top:30px}
+.theme{float:right;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 10px;font-family:var(--mono);font-size:11px;cursor:pointer;color:var(--ink)}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <button class="theme" id="themeBtn" type="button">TEMA</button>
+  <a class="back" href="./">← Saat Defterim</a>
+  <div class="kick" style="margin-top:10px">BÜYÜK MARKALAR · PERFORMANS DEĞERLENDİRMESİ</div>
+  <h1>Büyük Markalar</h1>
+  <p class="lede">Bark &amp; Jack'in YouTube videosundaki "performans değerlendirmesi" sıralamasından. Kart notları videodaki yorumların kısa özetidir. Modele dokununca fotoğraflarını açar. Turuncu çerçeve: listende olan marka. <a href="mikro.html" style="color:var(--acc)">Mikro markalar →</a></p>
+</header>
+<div class="bar"><div class="wrap" id="bar"></div></div>
+<main class="wrap" id="main"></main>
+<footer class="wrap">Model görselleri arama motoru küçük resimleridir, bazıları modelin tam kendisi olmayabilir. Fiyat ve stok için marka sitesine bak. Sıralama videodaki kişisel görüştür (Bark &amp; Jack, youtube.com/watch?v=6sSE1fSowNw).</footer>
+<script>
+var TIERS=[["W","--tW"],["O","--tO"],["E","--tE"],["M","--tM"],["N","--tN"],["X","--tX"]];
+var TNAME={W:"Would Buy · Alırdım",O:"Outstanding · Olağanüstü",E:"Exceeds · Beklentinin üstünde",M:"Meeting · Beklentiyi karşılıyor",N:"Needs Improvement · Gelişmeli",X:"Disciplinary · Disiplin"};
+var SHORT={W:"Alırdım",O:"Olağanüstü",E:"Üstünde",M:"Karşılıyor",N:"Gelişmeli",X:"Disiplin"};
+var B=[
+["W","A. Lange & Söhne","alange-soehne.com","Sunucunun takıntılı olduğu marka; parası olsa almayacağı model yok.",["Lange 1","Saxonia","Odysseus"]],
+["W","IWC Schaffhausen","iwc.com","Kendisi sahip, daha fazlasını istiyor; giderek popülerleşmesini seviyor.",["Ingenieur Automatic 40","Portugieser Automatic","Pilot's Watch Mark XX"]],
+["W","Zenith","zenith-watches.com","Kronografları çok güzel; pilot serisini sevmiyor.",["Chronomaster Sport","Chronomaster Original","Defy Skyline"]],
+["W","Hublot","hublot.com","Tasarımlar sakinleşti, in-house mekanizmalarla 'artık havalı' diyor.",["Classic Fusion","Big Bang Unico","Spirit of Big Bang"]],
+["W","Omega","omegawatches.com","Fiyatlar yüksek ama sahip ve daha alacak.",["Seamaster Aqua Terra","Speedmaster Moonwatch","Seamaster Diver 300M"],1],
+["W","Rolex","rolex.com","Perakende fiyattan alınırsa ömür boyu dayanan, en iyi değer.",["Datejust","Explorer","Submariner"],1],
+["W","Tudor","tudorwatch.com","Sessiz kardeşten topluluğun en sevilen markalarından birine.",["Black Bay 58","Pelagos 39","Ranger"]],
+["W","Vacheron Constantin","vacheron-constantin.com","1921, Overseas ve Everest çok güzel; parası olsa alırdı.",["Overseas","Historiques American 1921","Overseas Everest"]],
+["O","Audemars Piguet","audemarspiguet.com","Olağanüstünün tanımı: güzel, iyi bitirilmiş, segmentine göre adil.",["Royal Oak 15510","Royal Oak Jumbo","Code 11.59"],1],
+["O","Jaeger-LeCoultre","jaeger-lecoultre.com","Saatçilerin saatçisi; marka biraz daha görünür olabilir ama ürün muhteşem.",["Polaris Date","Reverso Tribute","Master Control Date"],1],
+["O","Girard-Perregaux","girard-perregaux.com","Özellikle Laureato: fiyatına göre bitiş kalitesi ve tasarım çok iyi.",["Laureato 38","Laureato 42","Laureato Chronograph"]],
+["O","Greubel Forsey","greubelforsey.com","Olağanüstü ama kendisi almazdı.",["Double Tourbillon 30°","Balancier Convexe","GMT Sport"]],
+["E","Frederique Constant","frederiqueconstant.com","Hem çok iyi değer hem üst seviye saatler.",["Highlife","Classics Manufacture","Slimline Moonphase"]],
+["E","Chopard","chopard.com","Çok seviyor; çok pahalı ama çok güzel.",["Alpine Eagle","L.U.C XPS","Mille Miglia"]],
+["E","Czapek","czapek.com","Çok güzel saatler, ama 'olağanüstü' için yeterli değil.",["Antarctique","Faubourg de Cracovie","Place Vendôme"]],
+["E","Hamilton","hamiltonwatch.com","Kendi çizgisinde kalan, iyi pazarlama, adil fiyat.",["Khaki Field Mechanical","Khaki Field Murph","Intra-Matic Chronograph"]],
+["E","Hermès","hermes.com","100+ yıl geçmiş, gerçekten havalı tasarımlar.",["Hermès H08","Arceau","Slim d'Hermès"]],
+["E","Christopher Ward","christopherward.com","Fiyatları aşağı çekip sağlam ürün yapıyor.",["The Twelve","C63 Sealander","Bel Canto"]],
+["E","H. Moser & Cie","h-moser.com","Topluluğa yakın yönetim, çok iyi bitiş.",["Streamliner","Endeavour Centre Seconds","Pioneer"]],
+["E","Longines","longines.com","AVM markasından güzel saatlere dönüşüm; JLC'nin sportif tarafı, uygun fiyatla.",["Legend Diver 39","Spirit Zulu Time 39","Conquest Heritage"]],
+["E","Swatch","swatch.com","MoonSwatch ve Scuba Fifty Fathoms ile çok akıllıca hamleler.",["MoonSwatch","Scuba Fifty Fathoms","Swatch Sistem51"]],
+["E","Zodiac","zodiacwatches.com","Renkleri cesurca kullanan ilk markalardan.",["Super Sea Wolf","Olympos","Sea Wolf GMT"]],
+["M","TAG Heuer","tagheuer.com","Yıllarca kayboldu ama toparlanıyor; glass box tasarımları çok güzel.",["Carrera Glassbox","Monaco","Aquaracer"]],
+["M","G-Shock","gshock.com","Eğlenceli, renkli, moda dünyasına da taşıyor.",["G-Shock 5600","CasiOak GA-2100","G-Shock Full Metal"]],
+["M","Baltic","baltic-watches.com","Mikro markanın olması gerektiği gibi: güzel tasarım, adil fiyat.",["Aquascaphe","Bicompax","MR01"]],
+["M","Cartier","cartier.com","İkonik ama mücevhere kayıyor, fiyat belirleyici olmuyor.",["Santos","Tank Must","Pasha"]],
+["M","Citizen","citizenwatch.com","Sağlam tool saatleri; sunucunun saat hikâyesi buradan başladı.",["Promaster Diver","Tsuyosa","Series 8"]],
+["M","Sinn","sinn.de","Süs yok, sadece sağlam tool saati isteyene.",["556","104","U50"]],
+["M","Richard Mille","richardmille.com","Kendi tarzı değil.",["RM 035","RM 011","RM 67-02"]],
+["M","Breguet","breguet.com","Köklü geçmiş, tasarımı ona hitap etmiyor.",["Classique","Type XX","Marine"]],
+["M","Nivada Grenchen","nivadagrenchenofficial.com","Baltic gibi: gerçekten güzel görünen saatler.",["Chronomaster","Antarctic","Depthmaster"]],
+["M","Grand Seiko","grand-seiko.com","Teknik olarak çok iyi, tasarımlar 'biraz tuhaf'.",["SBGA211 Snowflake","SBGY013","SBGW301"]],
+["M","Jacob & Co","jacobandco.com","Kendi tarzında, sıralamada beklentiyi karşılıyor.",["Astronomia","Epic X","Bugatti Chiron"]],
+["M","Oris","oris.ch","Uzun süre beklentinin üstündeydi; daha fazlasını görmek istiyor.",["Aquis Date","Big Crown Pointer Date","Divers Sixty-Five"]],
+["M","Baume & Mercier","baume-et-mercier.com","Riviera çok iyi ama hak ettiği ilgiyi görmüyor.",["Riviera","Clifton","Classima"]],
+["N","Glashütte Original","glashuette-original.com","SeaQ Panorama Date çok güzel ama 42 mm, fazla büyük.",["SeaQ Panorama Date","SeaQ 39.5","Senator Excellence"]],
+["N","Breitling","breitling.com","Fazla iri ve moda olmuştu, toparlanıyor.",["Navitimer B01 41","Superocean Heritage","Chronomat"]],
+["N","Blancpain","blancpain.com","Harika geçmiş ama yan logo, boyut ve kalınlık sorunlu.",["Fifty Fathoms","Villeret","Air Command"]],
+["N","Patek Philippe","patek.com","Mağaza deneyimi çok iyiydi ama CEO röportajı fikrini değiştirdi.",["Nautilus","Aquanaut","Calatrava"]],
+["N","Franck Muller","franckmuller.com","Çok kendine özgü stil ama bir şey değişmeli.",["Vanguard","Cintrée Curvex","Long Island"]],
+["N","Seiko","seiko-watch.co.jp","'Az bütçeyle sağlam saat' dönemi bitti diyor.",["Prospex SPB143","Presage Cocktail","Seiko 5 Sports"]],
+["N","Raymond Weil","raymond-weil.com","Hâlâ gelişmeli ama yükselişte, Longines'in daha ucuz yolunda.",["Millésime","Freelancer","Maestro"]],
+["X","Officine Panerai","panerai.com","Ürün güzel ama boyutlar eski kaldı; tek tasarımı tekrar ediyor.",["Radiomir","Luminor Marina","Submersible"],1],
+["X","Bell & Ross","bellross.com","Tek tasarımı ufak değişikliklerle tekrarlıyor.",["BR 03","BR 05","BR-X5"]],
+["X","Montblanc","montblanc.com","Sunucuya göre marka 'bitti'.",["1858 Geosphere","Star Legacy","Heritage"]],
+["X","Bremont","bremont.com","Sevgiden hayal kırıklığına.",["Supermarine","Altitude","Terra Nova"]]
+];
+function img(q){return "https://tse1.mm.bing.net/th?q="+encodeURIComponent(q)+"&w=300&h=300&c=7"}
+function gimg(q){return "https://www.google.com/search?tbm=isch&q="+encodeURIComponent(q)}
+function gsite(n){return "https://www.google.com/search?q="+encodeURIComponent(n+" watches official site")}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+var cur="Tümü",q="";
+function card(b){
+  var n=b[1],site=b[2],ms=b[4],mine=b[5];
+  var url=site?"https://"+site:gsite(n);
+  var logo=site?'<img class="logo" loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain='+site+'&sz=64" onerror="this.style.visibility=\'hidden\'">':'<div class="logo" style="display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:#5c5851">'+esc(n[0])+'</div>';
+  var mh=ms.map(function(m){
+    var full=m.toLowerCase().indexOf(n.split(" ")[0].toLowerCase())>=0?m:n+" "+m;
+    var qq=full+" watch";
+    return '<a class="m" href="'+gimg(qq)+'" target="_blank" rel="noopener"><img loading="lazy" alt="'+esc(full)+'" src="'+img(qq)+'" onerror="this.outerHTML=\'<div class=ph>'+esc(m).replace(/'/g,"")+'</div>\'"><span>'+esc(m)+'</span></a>';
+  }).join("");
+  return '<article class="card'+(mine?' mine':'')+'"><div class="ch">'+logo+'<div><b>'+esc(n)+'</b><small>'+(site?esc(site):'site araması')+'</small></div>'+(mine?'<span class="tag">LİSTEMDE</span>':'')+'</div><p class="note">'+esc(b[3])+'</p><div class="models">'+mh+'</div><div class="links"><a class="pri" href="'+url+'" target="_blank" rel="noopener">Site ↗</a><a href="'+gimg(n+" watches")+'" target="_blank" rel="noopener">Fotoğraflar ↗</a></div></article>';
+}
+function render(){
+  var html="",any=false;
+  TIERS.forEach(function(t){
+    if(cur!=="Tümü"&&cur!==t[0])return;
+    var list=B.filter(function(b){return b[0]===t[0]&&(!q||(b[1]+" "+b[4].join(" ")).toLowerCase().indexOf(q)>=0)});
+    if(!list.length)return; any=true;
+    html+='<section class="tier"><div class="th"><div class="badge" style="background:var('+t[1]+')">'+(TIERS.indexOf(t)+1)+'</div><h2>'+(TNAME[t[0]]||t[0]+" sınıfı")+'</h2><span>'+list.length+' marka</span></div><div class="grid">'+list.map(card).join("")+'</div></section>';
+  });
+  document.getElementById("main").innerHTML=any?html:'<p class="empty">Eşleşen marka yok.</p>';
+}
+var bar=document.getElementById("bar");
+bar.innerHTML=["Tümü"].concat(TIERS.map(function(t){return t[0]})).map(function(t){
+  var tt=TIERS.filter(function(x){return x[0]===t})[0];
+  return '<button class="chip" data-t="'+t+'" aria-pressed="'+(t===cur)+'">'+(tt?'<span class="dot" style="background:var('+tt[1]+')"></span>':'')+(SHORT[t]||t)+'</button>';
+}).join("")+'<input id="q" type="search" placeholder="Marka veya model ara">';
+bar.addEventListener("click",function(e){var b=e.target.closest(".chip");if(!b)return;cur=b.dataset.t;bar.querySelectorAll(".chip").forEach(function(c){c.setAttribute("aria-pressed",c.dataset.t===cur)});render()});
+document.getElementById("q").addEventListener("input",function(e){q=e.target.value.trim().toLowerCase();render()});
+var th=["auto","light","dark"],ti=0;try{ti=Math.max(0,th.indexOf(localStorage.getItem("saatTema")||"auto"))}catch(e){}
+function applyT(){var v=th[ti];if(v==="auto")document.documentElement.removeAttribute("data-theme");else document.documentElement.setAttribute("data-theme",v);document.getElementById("themeBtn").textContent={auto:"OTOMATİK",light:"AÇIK",dark:"KOYU"}[v]}
+document.getElementById("themeBtn").onclick=function(){ti=(ti+1)%3;try{localStorage.setItem("saatTema",th[ti])}catch(e){}applyT()};
+applyT();render();
+</script>
+</body>
+</html>
