@@ -206,7 +206,7 @@ select.field{appearance:none;padding-right:34px;background-image:linear-gradient
 .pzcount small{font-family:var(--mono);font-weight:400;font-size:12px;letter-spacing:.06em;color:var(--muted);margin-left:6px}
 .pzbar{height:8px;background:var(--line2);position:relative;overflow:hidden}
 .pzbar i{position:absolute;left:0;top:0;bottom:0;background:var(--acc);transition:width .4s}
-.pzticks{display:grid;grid-template-columns:repeat(7,1fr);margin-top:4px;font-family:var(--mono);font-size:10px;color:var(--faint)}
+.pzticks{display:grid;grid-template-columns:repeat(6,1fr);margin-top:4px;font-family:var(--mono);font-size:10px;color:var(--faint)}
 .pzgrid{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;max-width:880px;margin:0 auto;align-items:center}
 @media (min-width:760px){.pzgrid{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}}
 .pzwatch svg{display:block;width:100%;max-width:380px;margin:0 auto;height:auto;overflow:visible}
@@ -223,6 +223,7 @@ select.field{appearance:none;padding-right:34px;background-image:linear-gradient
 .pzp.empty[data-p="Taç"],.pzp.wish[data-p="Taç"]{transform:translate(24px,0)}
 .pzp.empty[data-p="Düğmeler"],.pzp.wish[data-p="Düğmeler"]{transform:translate(22px,-10px)}
 .pzp.empty[data-p="Bezel"],.pzp.wish[data-p="Bezel"],.pzp.empty[data-p="Kadran"],.pzp.wish[data-p="Kadran"]{opacity:.8}
+.pzp.fix{cursor:default}.pzp.fix .sh{fill:var(--line2);stroke:var(--faint)}.pzp.fix .dec,.pzp.fix .decf{opacity:.3}
 .pzp:hover .sh{filter:brightness(1.07)}
 .pzp:focus{outline:none}
 .pzp:focus-visible .sh{stroke:var(--acc);stroke-width:3.5}
@@ -396,14 +397,14 @@ textarea.note{width:100%;min-height:96px;resize:vertical;border:1px solid var(--
 
   <section class="view wrap" id="v-koleksiyon" role="tabpanel" aria-labelledby="t-koleksiyon" hidden>
     <div class="sechead">
-      <div><h2>Koleksiyonum</h2><p>Her saat tipi saatin bir parçası; kasa "Ana saat" rolü, taç ise Grail seviyesi (15k $ ve üstü). "Bende var" diye işaretlediğin saat kendi parçasını yerine oturtur ve saatin o bölümü senin saatinin renginde dolar. Yedisi birleşince saat tamamlanır, Voltron gibi. Boş bir parçaya dokunursan o kategorideki saatler listelenir.</p></div>
+      <div><h2>Koleksiyonum</h2><p>Her saat tipi saatin bir parçası, kasa ise "Ana saat" rolü. "Bende var" diye işaretlediğin saat kendi parçasını yerine oturtur ve saatin o bölümü senin saatinin renginde dolar. Altısı birleşince saat tamamlanır, Voltron gibi. Boş bir parçaya dokunursan o kategorideki saatler listelenir.</p></div>
     </div>
     <div class="pzmeta">
       <div class="pzcount" id="pzCount">0<small>/ 7 PARÇA</small></div>
-      <div><div class="pzbar" role="progressbar" aria-valuemin="0" aria-valuemax="7" id="pzBarWrap"><i id="pzBar" style="width:0"></i></div><div class="pzticks" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div></div>
+      <div><div class="pzbar" role="progressbar" aria-valuemin="0" aria-valuemax="6" id="pzBarWrap"><i id="pzBar" style="width:0"></i></div><div class="pzticks" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div></div>
     </div>
     <div class="pzgrid" id="pzGrid"></div>
-    <div class="pzdone" id="pzDone" hidden role="status"><span class="stamp" id="pzStamp">7 / 7</span><div><b>Voltron birleşti</b><span>Yedi parçanın hepsi yerinde: her tipte, ana saatte ve Grail seviyesinde bir saatin var. Defter kapanmaz ama bu bir dönüm noktası.</span></div></div>
+    <div class="pzdone" id="pzDone" hidden role="status"><span class="stamp" id="pzStamp">6 / 6</span><div><b>Voltron birleşti</b><span>Altı parçanın hepsi yerinde: her tipte bir saatin ve bir ana saatin var. Defter kapanmaz ama bu bir dönüm noktası.</span></div></div>
   </section>
 </main>
 
@@ -674,7 +675,6 @@ var PZ = [
   {cat:"Diver", part:"Bezel"},
   {cat:"Dress", part:"Kadran"},
   {role:"Ana saat", part:"Kasa"},
-  {tier:"Grail", part:"Taç"},
   {cat:"Kronograf", part:"Düğmeler"}
 ];
 function pzIn(z, w){ return z.tier ? tierOf(w)===z.tier : (z.role ? rolesOf(w).indexOf(z.role)>=0 : w.c===z.cat); }
@@ -709,8 +709,9 @@ function renderPuzzle(){
     svgBy[z.part] = '<g class="pzp '+st+'" data-p="'+z.part+'" '+attrs+' tabindex="0" role="button" aria-label="'+esc(label)+'" style="--pf:'+hex+'">'+pzShape(z.part)+'</g>';
     rows += '<button type="button" class="pzrow '+st+'" '+attrs+' style="--pf:'+hex+'"><span class="sw"></span><b>'+z.part.toUpperCase()+' · '+esc(cat)+'</b><small>'+sub+'</small></button>';
   });
+  svgBy["Taç"] = '<g class="pzp fix" data-p="Taç" aria-hidden="true">'+pzShape("Taç")+'</g>';
   var ordered = ["Kayış","Bilezik","Düğmeler","Taç","Kasa","Bezel","Kadran"].map(function(n){ return svgBy[n] || ""; }).join("");
-  host.innerHTML = '<div class="pzwatch"><svg viewBox="-10 -24 320 530" role="group" aria-label="Yedi parçalı saat">'+ordered+'</svg></div><div class="pzlegend">'+rows+'</div>';
+  host.innerHTML = '<div class="pzwatch"><svg viewBox="-10 -24 320 530" role="group" aria-label="Altı parçalı saat">'+ordered+'</svg></div><div class="pzlegend">'+rows+'</div>';
   host.classList.toggle("done", have===parts.length);
   document.getElementById("pzCount").innerHTML = have+'<small>/ '+parts.length+' PARÇA</small>';
   document.getElementById("pzBar").style.width = Math.round(have/parts.length*100)+"%";

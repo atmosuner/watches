@@ -74,7 +74,6 @@
    "Panerai Radiomir",
    "Rolex Datejust",
    "Omega Seamaster Aqua Terra",
-   "Audemars Piguet Royal Oak",
    "Studio Underd0g 01SERIES Desert Sky (Gen3)"
   ],
   "target": [
@@ -111,7 +110,7 @@
    "Unimatic Modello Uno GMT U1-GMT-TSP",
    "Brew Metric Retro Black"
   ],
-  "seedV": 11,
+  "seedV": 12,
   "roles": [
    "Ana saat",
    "İş",
