@@ -7,8 +7,7 @@
    "Spor-şık",
    "Diver",
    "Field / Pilot",
-   "Kronograf",
-   "GMT"
+   "Kronograf"
   ],
   "cols": [
    "Tümü",
@@ -112,7 +111,7 @@
    "Unimatic Modello Uno GMT U1-GMT-TSP",
    "Brew Metric Retro Black"
   ],
-  "seedV": 10,
+  "seedV": 11,
   "roles": [
    "Ana saat",
    "İş",
@@ -289,7 +288,7 @@
   {
    "b": "Rolex",
    "n": "GMT-Master II",
-   "c": "GMT",
+   "c": "Spor-şık",
    "p": [
     11000,
     13000
@@ -615,7 +614,7 @@
   {
    "b": "Grand Seiko",
    "n": "SBGM221 GMT",
-   "c": "GMT",
+   "c": "Dress",
    "p": [
     4500,
     6000
@@ -1235,7 +1234,7 @@
   {
    "b": "Longines",
    "n": "Spirit Zulu Time",
-   "c": "GMT",
+   "c": "Field / Pilot",
    "p": [
     2400,
     3700
@@ -1655,7 +1654,7 @@
   {
    "b": "Christopher Ward",
    "n": "C63 Sealander GMT",
-   "c": "GMT",
+   "c": "Spor-şık",
    "p": [
     1500,
     1800

@@ -396,14 +396,14 @@ textarea.note{width:100%;min-height:96px;resize:vertical;border:1px solid var(--
 
   <section class="view wrap" id="v-koleksiyon" role="tabpanel" aria-labelledby="t-koleksiyon" hidden>
     <div class="sechead">
-      <div><h2>Koleksiyonum</h2><p>Her saat tipi saatin bir parçası, taç ise Grail seviyesi (15k $ ve üstü). "Bende var" diye işaretlediğin saat kendi parçasını yerine oturtur ve saatin o bölümü senin saatinin renginde dolar. Yedisi birleşince saat tamamlanır, Voltron gibi. Boş bir parçaya dokunursan o kategorideki saatler listelenir.</p></div>
+      <div><h2>Koleksiyonum</h2><p>Her saat tipi saatin bir parçası; kasa "Ana saat" rolü, taç ise Grail seviyesi (15k $ ve üstü). "Bende var" diye işaretlediğin saat kendi parçasını yerine oturtur ve saatin o bölümü senin saatinin renginde dolar. Yedisi birleşince saat tamamlanır, Voltron gibi. Boş bir parçaya dokunursan o kategorideki saatler listelenir.</p></div>
     </div>
     <div class="pzmeta">
       <div class="pzcount" id="pzCount">0<small>/ 7 PARÇA</small></div>
       <div><div class="pzbar" role="progressbar" aria-valuemin="0" aria-valuemax="7" id="pzBarWrap"><i id="pzBar" style="width:0"></i></div><div class="pzticks" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div></div>
     </div>
     <div class="pzgrid" id="pzGrid"></div>
-    <div class="pzdone" id="pzDone" hidden role="status"><span class="stamp" id="pzStamp">7 / 7</span><div><b>Voltron birleşti</b><span>Yedi parçanın hepsi yerinde: her tipte ve Grail seviyesinde bir saatin var. Defter kapanmaz ama bu bir dönüm noktası.</span></div></div>
+    <div class="pzdone" id="pzDone" hidden role="status"><span class="stamp" id="pzStamp">7 / 7</span><div><b>Voltron birleşti</b><span>Yedi parçanın hepsi yerinde: her tipte, ana saatte ve Grail seviyesinde bir saatin var. Defter kapanmaz ama bu bir dönüm noktası.</span></div></div>
   </section>
 </main>
 
@@ -567,7 +567,6 @@ function renderFilters(){
   h += '<div class="frow"><span class="flab">BİLEK UYUMU</span><div class="chips">'+chip("fit","","Tümü",!F.fit)+FITS.map(function(f){ return chip("fit",f[0],f[1],F.fit===f[0]).replace('</button>',' <small>'+(fc[f[0]]||0)+'</small></button>'); }).join("")+'</div></div>';
   var ec = countBy(eraOf);
   h += '<div class="frow"><span class="flab">ÇIKIŞ YILI</span><div class="chips">'+chip("era","","Tümü",!F.era)+ERAS.filter(function(e){ return ec[e[0]]; }).map(function(e){ return chip("era",e[0],e[1],F.era===e[0]).replace('</button>',' <small>'+ec[e[0]]+'</small></button>'); }).join("")+'</div></div>';
-  h += '<div class="frow"><span class="flab">FİYAT USD</span><div class="chips">'+chip("budget","","Tümü",!F.budget)+Object.keys(BUD).map(function(b){ return chip("budget",b,b,F.budget===b); }).join("")+'</div></div>';
   h += '<div class="frow"><span class="flab">KADRAN RENGİ</span><div class="chips">'+chip("col","","Tümü",!F.col)+COLS.map(function(c){ return chip("col",c,c,F.col===c,'<i style="background:'+COLDOT[c]+'"></i>'); }).join("")+'</div></div>';
   h += '<div class="fmeta"><div class="chips">'+chip("only","","Tüm saatler",!F.only)+chip("only","wish","İstek listem",F.only==="wish")+chip("only","own","Bende var",F.only==="own")+'</div>'+
     '<div class="chips"><label class="sr" for="brandSel">Marka</label><select class="field" id="brandSel" data-brand><option value="">Tüm markalar</option>'+brands.map(function(b){ return '<option value="'+esc(b)+'"'+(F.brand===b?' selected':'')+'>'+esc(b)+'</option>'; }).join("")+'</select>'+
@@ -674,12 +673,12 @@ var PZ = [
   {cat:"Field / Pilot", part:"Kayış"},
   {cat:"Diver", part:"Bezel"},
   {cat:"Dress", part:"Kadran"},
-  {cat:"GMT", part:"Kasa"},
+  {role:"Ana saat", part:"Kasa"},
   {tier:"Grail", part:"Taç"},
   {cat:"Kronograf", part:"Düğmeler"}
 ];
-function pzIn(z, w){ return z.tier ? tierOf(w)===z.tier : w.c===z.cat; }
-function pzName(z){ return z.tier ? z.tier : z.cat; }
+function pzIn(z, w){ return z.tier ? tierOf(w)===z.tier : (z.role ? rolesOf(w).indexOf(z.role)>=0 : w.c===z.cat); }
+function pzName(z){ return z.tier || z.role || z.cat; }
 function pzRing(R, r){ var cx = 150, cy = 240; return "M"+(cx-R)+","+cy+"a"+R+","+R+" 0 1,0 "+(2*R)+",0a"+R+","+R+" 0 1,0 "+(-2*R)+",0ZM"+(cx-r)+","+cy+"a"+r+","+r+" 0 1,0 "+(2*r)+",0a"+r+","+r+" 0 1,0 "+(-2*r)+",0Z"; }
 function pzPolar(rad, deg){ var a = (deg-90)*Math.PI/180; return [150+rad*Math.cos(a), 240+rad*Math.sin(a)]; }
 function pzShape(part){
@@ -697,7 +696,7 @@ function pzShape(part){
 }
 function pzHave(){ return PZ.filter(function(z){ return W.some(function(w){ return pzIn(z,w) && own[key(w)]; }); }).length; }
 function renderPuzzle(){
-  var host = document.getElementById("pzGrid"), have = 0, parts = PZ.filter(function(z){ return z.tier ? TIERS.some(function(t){ return t[0]===z.tier; }) : CATS.indexOf(z.cat)>=0; }), svgBy = {}, rows = "";
+  var host = document.getElementById("pzGrid"), have = 0, parts = PZ.filter(function(z){ return z.tier ? TIERS.some(function(t){ return t[0]===z.tier; }) : (z.role ? ROLES.indexOf(z.role)>=0 : CATS.indexOf(z.cat)>=0); }), svgBy = {}, rows = "";
   parts.forEach(function(z){
     var cat = pzName(z), owned = W.filter(function(w){ return pzIn(z,w) && own[key(w)]; }).sort(function(a,b){ return (b.p?b.p[0]:0)-(a.p?a.p[0]:0); });
     var wished = W.filter(function(w){ return pzIn(z,w) && sel[key(w)]; }).length, w = owned[0];
@@ -706,7 +705,7 @@ function renderPuzzle(){
     var hex = (w && /^#[0-9a-f]{3,8}$/i.test(w.dial||"")) ? w.dial : "#8a857b";
     var sub = w ? esc(w.b+" "+w.n)+(owned.length>1?" +"+(owned.length-1):"") : (wished ? wished+" aday listede" : "Boş parça");
     var label = z.part+" · "+cat+": "+(w ? key(w) : (wished ? wished+" aday listede" : "boş"));
-    var attrs = 'data-act="pz" '+(z.tier?'data-tier':'data-cat')+'="'+esc(cat)+'"'+(w?' data-k="'+esc(key(w))+'"':'');
+    var attrs = 'data-act="pz" '+(z.tier?'data-tier':(z.role?'data-role':'data-cat'))+'="'+esc(cat)+'"'+(w?' data-k="'+esc(key(w))+'"':'');
     svgBy[z.part] = '<g class="pzp '+st+'" data-p="'+z.part+'" '+attrs+' tabindex="0" role="button" aria-label="'+esc(label)+'" style="--pf:'+hex+'">'+pzShape(z.part)+'</g>';
     rows += '<button type="button" class="pzrow '+st+'" '+attrs+' style="--pf:'+hex+'"><span class="sw"></span><b>'+z.part.toUpperCase()+' · '+esc(cat)+'</b><small>'+sub+'</small></button>';
   });
@@ -813,7 +812,7 @@ function applyTheme(){ if (theme==="auto") document.documentElement.removeAttrib
 function focusSig(){
   var a = document.activeElement; if (!a || !a.getAttribute || !a.getAttribute("data-act")) return null;
   var s = '[data-act="'+a.getAttribute("data-act")+'"]';
-  ["data-f","data-v","data-view","data-cat","data-tier","data-to"].forEach(function(n){ var v = a.getAttribute(n); if (v!=null) s += '['+n+'="'+CSS.escape(v)+'"]'; });
+  ["data-f","data-v","data-view","data-cat","data-tier","data-role","data-to"].forEach(function(n){ var v = a.getAttribute(n); if (v!=null) s += '['+n+'="'+CSS.escape(v)+'"]'; });
   var host = a.closest("[data-k]"); return { s:s, k: host ? host.getAttribute("data-k") : null, d: !!a.closest("#dPanel"), self: a===host };
 }
 function refocus(sig){ if (!sig) return; var scope = sig.d ? document.getElementById("dPanel") : document.querySelector("main");
@@ -850,7 +849,7 @@ document.addEventListener("click", function(e){
     case "theme": var i = THEMES.map(function(x){ return x[0]; }).indexOf(theme); theme = THEMES[(i+1)%3][0]; try { localStorage.setItem("saatTema", theme); } catch(e){} applyTheme(); break;
     case "cmpgo": if (cmp.length>=2) setView("kiyas"); break;
     case "cmpclear": cmp = []; render(); break;
-    case "pz": if (k){ openDetail(k); } else { F = {q:"",cat:b.getAttribute("data-cat")||"",brand:"",budget:"",col:"",fit:"",era:"",only:"",role:"",tier:b.getAttribute("data-tier")||""}; document.getElementById("q").value = ""; setView("katalog"); } break;
+    case "pz": if (k){ openDetail(k); } else { F = {q:"",cat:b.getAttribute("data-cat")||"",brand:"",budget:"",col:"",fit:"",era:"",only:"",role:b.getAttribute("data-role")||"",tier:b.getAttribute("data-tier")||""}; document.getElementById("q").value = ""; setView("katalog"); } break;
   }
 });
 document.addEventListener("change", function(e){
