@@ -66,7 +66,8 @@
    "Omega x Swatch": "https://www.swatch.com",
    "Unimatic": "https://www.unimaticwatches.com",
    "AV86": "https://av86.com/products/1954-amalfi-mechanical-gold-midnight-blue",
-   "Bell & Ross": "https://www.bellross.com"
+   "Bell & Ross": "https://www.bellross.com",
+   "Casio G-Shock": "https://gshock.casio.com"
   },
   "seed": [
    "Jaeger-LeCoultre Polaris Date 40 mm",
@@ -108,9 +109,11 @@
   },
   "own": [
    "Unimatic Modello Uno GMT U1-GMT-TSP",
-   "Brew Metric Retro Black"
+   "Brew Metric Retro Black",
+   "Mondaine Evo2 Automatic 40 mm MSE.40610.SM",
+   "Casio G-Shock GA-2100-7A7 (CasiOak) Beyaz"
   ],
-  "seedV": 12,
+  "seedV": 13,
   "roles": [
    "Ana saat",
    "İş",
@@ -3238,6 +3241,102 @@
     "https://underd0g.com/cdn/shop/files/01DST_2.png?v=1756754283&width=1200",
     "https://underd0g.com/cdn/shop/files/01DST_3.png?v=1756754282&width=1200",
     "https://underd0g.com/cdn/shop/files/01DST_Product_Page_Editorial_Case.png?v=1783324824&width=1200"
+   ]
+  },
+  {
+   "b": "Mondaine",
+   "n": "Evo2 Automatic 40 mm MSE.40610.SM",
+   "c": "Dress",
+   "p": [
+    1010,
+    1010
+   ],
+   "dial": "#f3f2ec",
+   "dn": "Beyaz",
+   "acc": "#d6322b",
+   "note": "40 mm çelik kasa, 10 mm kalın, 50 m. Sellita otomatik, tarihli. Milano örgü çelik kordon (20 mm), safir cam, şeffaf arka kapak. İsviçre tren istasyonu saati kadranı, kırmızı saniye ibresi. Resmi fiyat 1.010 USD; Bahadır Hepsiburada'dan 41.950 TL'ye aldı.",
+   "color": "Beyaz / krem",
+   "mov": "Otomatik / Elle kurmalı",
+   "type": "Tarihli",
+   "link": "https://mondaine.com/products/official-swiss-railways-evo2-automatic",
+   "img": "https://mondaine.com/cdn/shop/products/MSE.40610.SM-S90-1080px-_2021.jpg?v=1689172430",
+   "about": [
+    "Mondaine'in yuvarlak hatlı evo2 kasasında İsviçre tren istasyonu saati: beyaz kadran, siyah indeksler, kırmızı saniye.",
+    "Milano örgü kordon ve 10 mm kalınlıkla gömlek kolunun altına rahat girer; iş ve şık günler için.",
+    "40 mm çap 17 cm bileğe uygun. Bahadır'ın koleksiyonundaki saat."
+   ],
+   "tech": {
+    "mat": "316L çelik",
+    "dial": "Beyaz, siyah indeksler, kırmızı saniye ibresi, saat 3'te tarih",
+    "gl": "Safir",
+    "str": "Milano örgü çelik kordon",
+    "lw": "20 mm",
+    "bz": "Sabit, çelik",
+    "pr": "~38 saat",
+    "cb": "Şeffaf – safir cam, 316L çelik"
+   },
+   "spec": {
+    "dia": "40 mm",
+    "th": "10 mm",
+    "wr": "50 m",
+    "mov": "Sellita otomatik"
+   },
+   "roles": [
+    "İş"
+   ],
+   "imgs": [
+    "https://mondaine.com/cdn/shop/products/MSE.40610.SM-SIS-1080px-_2021.jpg?v=1691160600",
+    "https://mondaine.com/cdn/shop/products/MSE.40610.SM-CBS-1080px-_2021.jpg?v=1691160600",
+    "https://mondaine.com/cdn/shop/products/MSE.40610.SM-DTS-1080px-_2021.jpg?v=1691160600",
+    "https://mondaine.com/cdn/shop/files/CopyofMSE.40610.SM-ML1-1080px-_2021.jpg?v=1691160683"
+   ]
+  },
+  {
+   "b": "Casio G-Shock",
+   "n": "GA-2100-7A7 (CasiOak) Beyaz",
+   "c": "Spor-şık",
+   "p": [
+    99,
+    110
+   ],
+   "dial": "#f2f2f0",
+   "dn": "Beyaz (tamamen beyaz)",
+   "note": "48,5 × 45,4 × 11,8 mm, 51 g. Karbon Core Guard kasa, biyo-reçine kasa ve kayış, mineral cam, 200 m. Quartz analog-dijital: dünya saati, kronometre, geri sayım, 5 alarm, çift LED ışık, yaklaşık 3 yıl pil. Royal Oak'u andıran sekizgen kasa yüzünden 'CasiOak' diye anılır. Bahadır Hepsiburada'dan 7.112 TL'ye aldı.",
+   "color": "Beyaz / krem",
+   "mov": "Quartz",
+   "type": "Dijital / analog",
+   "link": "https://gshock.casio.com/intl/",
+   "img": "https://watchdirect.com.au/cdn/shop/files/GA-2100-7A7.png?v=1709719747&width=1200",
+   "about": [
+    "Royal Oak esinli sekizgen kasa ('CasiOak'), tamamen beyaz; G-Shock'un en ince serilerinden.",
+    "51 g ve 200 m ile hiç düşünmeden takılan saat: tekne, spor, tatil, eşofmanlı hafta sonları.",
+    "Beyaz renk Brew ve Unimatic'in yanında koleksiyona yeni bir ton katıyor."
+   ],
+   "tech": {
+    "mat": "Karbon / biyo-reçine (Carbon Core Guard)",
+    "dial": "Beyaz, analog ibreler + LCD ekran",
+    "gl": "Mineral",
+    "str": "Beyaz biyo-reçine kayış",
+    "bz": "Sabit, sekizgen reçine",
+    "pr": "~3 yıl pil (SR726W × 2)",
+    "cb": "Kapalı – çelik"
+   },
+   "spec": {
+    "dia": "45,4 mm",
+    "l2l": 48.5,
+    "th": "11,8 mm",
+    "wr": "200 m",
+    "mov": "Quartz analog-dijital"
+   },
+   "orig": 2019,
+   "roles": [
+    "Hafta sonu"
+   ],
+   "imgs": [
+    "https://watchdirect.com.au/cdn/shop/files/GA-2100-7A7_02.jpg?v=1709719772&width=1200",
+    "https://watchdirect.com.au/cdn/shop/files/GA-2100-7A7_03.jpg?v=1709719782&width=1200",
+    "https://watchdirect.com.au/cdn/shop/files/GA-2100-7A7_04.jpg?v=1709719802&width=1200",
+    "https://watchdirect.com.au/cdn/shop/files/GA-2100-7A7_model.jpg?v=1709719753&width=1080"
    ]
   }
  ]
