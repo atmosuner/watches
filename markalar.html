@@ -67,7 +67,7 @@ footer{color:var(--faint);font-size:12px;padding:30px 0 40px;border-top:1px soli
   <a class="back" href="./">← Saat Defterim</a>
   <div class="kick" style="margin-top:10px">BÜYÜK MARKALAR · PERFORMANS DEĞERLENDİRMESİ</div>
   <h1>Büyük Markalar</h1>
-  <p class="lede">Bark &amp; Jack'in YouTube videosundaki "performans değerlendirmesi" sıralamasından. Kart notları videodaki yorumların kısa özetidir. Modele dokununca fotoğraflarını açar. <b>WTNY 26</b> etiketi: WatchTime New York 2026 katılımcısı; bu yeni eklenenlerin sınıfı videodan değil, Claude'un değerlendirmesi. Turuncu çerçeve: listende olan marka. <a href="mikro.html" style="color:var(--acc)">Mikro markalar →</a></p>
+  <p class="lede">Bark &amp; Jack'in YouTube videosundaki "performans değerlendirmesi" sıralamasından. Kart notları videodaki yorumların kısa özetidir. Modele dokununca fotoğraflarını açar. <b>SAATSEÇİMİ</b> etiketi: saatsecimi'nin "Saatçiliğin farklı yüzleri" serisinden. <b>WTNY 26</b> etiketi: WatchTime New York 2026 katılımcısı; etiketli markaların sınıfı videodan değil, Claude'un değerlendirmesi. Turuncu çerçeve: listende olan marka. <a href="mikro.html" style="color:var(--acc)">Mikro markalar →</a></p>
 </header>
 <div class="bar"><div class="wrap" id="bar"></div></div>
 <main class="wrap" id="main"></main>
@@ -150,7 +150,17 @@ var B=[
 ["M", "Bianchet", "bianchet.com", "İskelet tourbillon odaklı, gösterişli genç marka.", ["UFO Tourbillon", "B1.618 Skeleton", "Tourbillon"], 0, 1],
 ["M", "L. Leroy", "montres-leroy.com", "1785'ten gelen köklü Fransız isim; yeni dönemi çok üst fiyat segmentinde.", ["Osmior", "Elyor", "Chronomètre Observatoire"], 0, 1],
 ["M", "Perrelet", "perrelet.com", "Türbin rotorlu kadranlarıyla tanınır; tasarım herkese göre değil.", ["Turbine", "Turbine Pilot", "Lab Peripheral"], 0, 1],
-["M", "Artisans de Genève", "artisansdegeneve.com", "Sahibinin Rolex ve Patek'ini kişiye özel yeniden işleyen atölye.", ["Daytona Custom", "Pulsar", "Nautilus Custom"], 0, 1]
+["M", "Artisans de Genève", "artisansdegeneve.com", "Sahibinin Rolex ve Patek'ini kişiye özel yeniden işleyen atölye.", ["Daytona Custom", "Pulsar", "Nautilus Custom"], 0, 1],
+["W", "F.P. Journe", "fpjourne.com", "Bağımsız saatçiliğin zirvesi; rezonansla senkronize olan iki balans, çift saat göstergesi.", ["Chronomètre à Résonance", "Chronomètre Bleu", "Octa Automatique Réserve"], 0, "SAATSEÇİMİ"],
+["W", "Rexhep Rexhepi", "akrivia.com", "AKRIVIA atölyesi; klasik oranlar, emaye kadran, sıfırlanan saniye ibresi ve kusursuz el bitişleri.", ["Chronomètre Contemporain II", "Chronomètre Contemporain", "Akrivia Tourbillon Monopusher"], 0, "SAATSEÇİMİ"],
+["W", "Philippe Dufour", "", "Simplicity: sadece saat, dakika ve saniye; asıl iddia mekanizmadaki el işçiliği. Bulmak çok zor.", ["Simplicity", "Duality", "Grande et Petite Sonnerie"], 0, "SAATSEÇİMİ"],
+["O", "Roger W. Smith", "", "Man Adası'nda George Daniels mirası; co-axial eşapman, giyoşe kadran, İngiliz ekolü.", ["Series Two", "Series Four", "Series Five"], 0, "SAATSEÇİMİ"],
+["O", "De Bethune", "debethune.ch", "Yüzer kulaklar, yeni malzemeler, deneysel formlar; geleceğe bakan tasarım.", ["DB28XS Dark Sand", "DB28 Kind of Blue", "DB25"], 0, "SAATSEÇİMİ"],
+["O", "Urban Jürgensen", "urbanjurgensen.com", "Danimarka mirası, İsviçre işçiliği ve Voutilainen yaklaşımı; asimetrik küçük saniye.", ["UJ-2", "UJ-1", "Big 8"], 0, "SAATSEÇİMİ"],
+["O", "Grönefeld", "gronefeld.com", "Hollandalı kardeşler; 8 saniyede bir yenilenen sabit kuvvet (remontoire) sistemi.", ["1941 Remontoire", "1941 Principia", "One Hertz"], 0, "SAATSEÇİMİ"],
+["O", "Berneron", "", "Asimetrik kasa ve kadran; formu özel kalibresinden doğan Mirage, 72 saat güç rezervi.", ["Mirage 38 Sienna", "Mirage 34", "Mirage"], 0, "SAATSEÇİMİ"],
+["E", "Bovet", "bovet.com", "Gösterişli komplikasyonlar; dünya saati, daimi takvim ve uçan tourbillon bir arada.", ["Récital 28 Prowess 1", "Amadeo Fleurier", "Récital 26 Brainstorm"], 0, "SAATSEÇİMİ"],
+["E", "Louis Moinet", "louismoinet.com", "Kronografı kadranın başrolüne taşıyan Memoris; çalışan parçalar önden görünür.", ["Memoris Original", "Memoris", "Space Revolution"], 0, "SAATSEÇİMİ"]
 ];
 function img(q){return "https://tse1.mm.bing.net/th?q="+encodeURIComponent(q)+"&w=300&h=300&c=7"}
 function gimg(q){return "https://www.google.com/search?tbm=isch&q="+encodeURIComponent(q)}
@@ -166,7 +176,7 @@ function card(b){
     var qq=full+" watch";
     return '<a class="m" href="'+gimg(qq)+'" target="_blank" rel="noopener"><img loading="lazy" alt="'+esc(full)+'" src="'+img(qq)+'" onerror="this.outerHTML=\'<div class=ph>'+esc(m).replace(/'/g,"")+'</div>\'"><span>'+esc(m)+'</span></a>';
   }).join("");
-  return '<article class="card'+(mine?' mine':'')+'"><div class="ch">'+logo+'<div><b>'+esc(n)+'</b><small>'+(site?esc(site):'site araması')+'</small></div>'+(mine?'<span class="tag">LİSTEMDE</span>':'')+(wt?'<span class="tag wt"'+(mine?' style="margin-left:6px"':'')+'>WTNY 26</span>':'')+'</div><p class="note">'+esc(b[3])+'</p><div class="models">'+mh+'</div><div class="links"><a class="pri" href="'+url+'" target="_blank" rel="noopener">Site ↗</a><a href="'+gimg(n+" watches")+'" target="_blank" rel="noopener">Fotoğraflar ↗</a></div></article>';
+  return '<article class="card'+(mine?' mine':'')+'"><div class="ch">'+logo+'<div><b>'+esc(n)+'</b><small>'+(site?esc(site):'site araması')+'</small></div>'+(mine?'<span class="tag">LİSTEMDE</span>':'')+(wt?'<span class="tag wt"'+(mine?' style="margin-left:6px"':'')+'>'+(typeof wt==="string"?wt:"WTNY 26")+'</span>':'')+'</div><p class="note">'+esc(b[3])+'</p><div class="models">'+mh+'</div><div class="links"><a class="pri" href="'+url+'" target="_blank" rel="noopener">Site ↗</a><a href="'+gimg(n+" watches")+'" target="_blank" rel="noopener">Fotoğraflar ↗</a></div></article>';
 }
 function render(){
   var html="",any=false;
