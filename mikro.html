@@ -58,6 +58,7 @@ section.tier{margin:26px 0}
 .empty{color:var(--faint);font-family:var(--mono);font-size:12px;padding:20px 0}
 footer{color:var(--faint);font-size:12px;padding:30px 0 40px;border-top:1px solid var(--line2);margin-top:30px}
 .theme{float:right;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 10px;font-family:var(--mono);font-size:11px;cursor:pointer;color:var(--ink)}
+.tag.wt{background:transparent;color:inherit;opacity:.7;border:1px solid var(--line)}
 </style>
 </head>
 <body>
@@ -66,7 +67,7 @@ footer{color:var(--faint);font-size:12px;padding:30px 0 40px;border-top:1px soli
   <a class="back" href="./">← Saat Defterim</a>
   <div class="kick" style="margin-top:10px">MİKRO MARKA TIER LİSTESİ</div>
   <h1>Mikro Markalar</h1>
-  <p class="lede">YouTube'daki mikro marka tier listesinden. Her kartta markanın sitesi ve öne çıkan modelleri var. Modele dokununca fotoğraflarını açar. Turuncu çerçeve: listende ya da koleksiyonunda olan marka.</p>
+  <p class="lede">YouTube'daki mikro marka tier listesinden. Her kartta markanın sitesi ve öne çıkan modelleri var. Modele dokununca fotoğraflarını açar. <b>WTNY 26</b> etiketi: WatchTime New York 2026 katılımcısı; bu yeni eklenenlerin sınıfı videodan değil, Claude'un değerlendirmesi. Turuncu çerçeve: listende ya da koleksiyonunda olan marka.</p>
 </header>
 <div class="bar"><div class="wrap" id="bar"></div></div>
 <main class="wrap" id="main"></main>
@@ -130,7 +131,14 @@ var B=[
 ["?","anOrdain","anordain.com","Glasgow, emaye kadranlar. Bölüm adında geçiyor.",["Model 1","Model 2","Model 3"]],
 ["?","Mr Jones Watches","mrjoneswatches.com","Londra, tuhaf kadranlar. Bölüm adında geçiyor.",["The Accurate","Last Laugh","Pursuit"]],
 ["?","Dorenzo","","Bölüm adında geçiyor, logosu belirsiz.",["Dorenzo watch","Dorenzo diver","Dorenzo field"]],
-["?","Botoft (?)","","Otomatik bölüm adı, yazımı belirsiz.",["Botoft watch","Botoft diver","Botoft field"]]
+["?","Botoft (?)","","Otomatik bölüm adı, yazımı belirsiz.",["Botoft watch","Botoft diver","Botoft field"]],
+["A", "Ming", "ming.watch", "Malezya çıkışlı; kadran ve cam işçiliğinde mikro markaların en yaratıcısı.", ["37.09", "17.09", "20.01"], 0, 1],
+["A", "Fears", "fearswatches.com", "Bristol'den köklü İngiliz isim; yastık kasalı Brunswick çok zarif.", ["Brunswick", "Redcliff", "Archival 1930"], 0, 1],
+["A", "Massena LAB", "massenalab.com", "William Massena'nın iş birlikleri; Uni-Racer ile vintage kronograf ruhu.", ["Uni-Racer", "Magraph", "Uni-Diver"], 0, 1],
+["A", "Zeitwinkel", "zeitwinkel.ch", "Küçük İsviçre-Alman manufaktürü; sade ve çok iyi bitirilmiş.", ["273°", "082°", "188°"], 0, 1],
+["B", "Kollokium", "kollokium.com", "Sektör emektarlarının kurduğu, tasarım odaklı genç İsviçre markası.", ["Project 01", "Kollokium 01", "Kollokium watch"], 0, 1],
+["?", "Artime", "artime.ch", "WatchTime NY 2026 katılımcısı; hakkında yeterli bilgi bulamadım.", ["Artime watch", "Artime Geneve", "Artime chronograph"], 0, 1],
+["?", "Keris", "keris-time.com", "Saat değil: mekanizmaları büyüten mekanik heykeller ve saat sergileme ürünleri.", ["MECA-01", "WOW Watch on Wall", "The Winding"], 0, 1]
 ];
 function img(q){return "https://tse1.mm.bing.net/th?q="+encodeURIComponent(q)+"&w=300&h=300&c=7"}
 function gimg(q){return "https://www.google.com/search?tbm=isch&q="+encodeURIComponent(q)}
@@ -138,7 +146,7 @@ function gsite(n){return "https://www.google.com/search?q="+encodeURIComponent(n
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 var cur="Tümü",q="";
 function card(b){
-  var n=b[1],site=b[2],ms=b[4],mine=b[5];
+  var n=b[1],site=b[2],ms=b[4],mine=b[5],wt=b[6];
   var url=site?"https://"+site:gsite(n);
   var logo=site?'<img class="logo" loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain='+site+'&sz=64" onerror="this.style.visibility=\'hidden\'">':'<div class="logo" style="display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:#5c5851">'+esc(n[0])+'</div>';
   var mh=ms.map(function(m){
@@ -146,7 +154,7 @@ function card(b){
     var qq=full+" watch";
     return '<a class="m" href="'+gimg(qq)+'" target="_blank" rel="noopener"><img loading="lazy" alt="'+esc(full)+'" src="'+img(qq)+'" onerror="this.outerHTML=\'<div class=ph>'+esc(m).replace(/'/g,"")+'</div>\'"><span>'+esc(m)+'</span></a>';
   }).join("");
-  return '<article class="card'+(mine?' mine':'')+'"><div class="ch">'+logo+'<div><b>'+esc(n)+'</b><small>'+(site?esc(site):'site araması')+'</small></div>'+(mine?'<span class="tag">LİSTEMDE</span>':'')+'</div><p class="note">'+esc(b[3])+'</p><div class="models">'+mh+'</div><div class="links"><a class="pri" href="'+url+'" target="_blank" rel="noopener">Site ↗</a><a href="'+gimg(n+" watches")+'" target="_blank" rel="noopener">Fotoğraflar ↗</a></div></article>';
+  return '<article class="card'+(mine?' mine':'')+'"><div class="ch">'+logo+'<div><b>'+esc(n)+'</b><small>'+(site?esc(site):'site araması')+'</small></div>'+(mine?'<span class="tag">LİSTEMDE</span>':'')+(wt?'<span class="tag wt"'+(mine?' style="margin-left:6px"':'')+'>WTNY 26</span>':'')+'</div><p class="note">'+esc(b[3])+'</p><div class="models">'+mh+'</div><div class="links"><a class="pri" href="'+url+'" target="_blank" rel="noopener">Site ↗</a><a href="'+gimg(n+" watches")+'" target="_blank" rel="noopener">Fotoğraflar ↗</a></div></article>';
 }
 function render(){
   var html="",any=false;

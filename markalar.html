@@ -58,6 +58,7 @@ section.tier{margin:26px 0}
 .empty{color:var(--faint);font-family:var(--mono);font-size:12px;padding:20px 0}
 footer{color:var(--faint);font-size:12px;padding:30px 0 40px;border-top:1px solid var(--line2);margin-top:30px}
 .theme{float:right;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 10px;font-family:var(--mono);font-size:11px;cursor:pointer;color:var(--ink)}
+.tag.wt{background:transparent;color:inherit;opacity:.7;border:1px solid var(--line)}
 </style>
 </head>
 <body>
@@ -66,7 +67,7 @@ footer{color:var(--faint);font-size:12px;padding:30px 0 40px;border-top:1px soli
   <a class="back" href="./">← Saat Defterim</a>
   <div class="kick" style="margin-top:10px">BÜYÜK MARKALAR · PERFORMANS DEĞERLENDİRMESİ</div>
   <h1>Büyük Markalar</h1>
-  <p class="lede">Bark &amp; Jack'in YouTube videosundaki "performans değerlendirmesi" sıralamasından. Kart notları videodaki yorumların kısa özetidir. Modele dokununca fotoğraflarını açar. Turuncu çerçeve: listende olan marka. <a href="mikro.html" style="color:var(--acc)">Mikro markalar →</a></p>
+  <p class="lede">Bark &amp; Jack'in YouTube videosundaki "performans değerlendirmesi" sıralamasından. Kart notları videodaki yorumların kısa özetidir. Modele dokununca fotoğraflarını açar. <b>WTNY 26</b> etiketi: WatchTime New York 2026 katılımcısı; bu yeni eklenenlerin sınıfı videodan değil, Claude'un değerlendirmesi. Turuncu çerçeve: listende olan marka. <a href="mikro.html" style="color:var(--acc)">Mikro markalar →</a></p>
 </header>
 <div class="bar"><div class="wrap" id="bar"></div></div>
 <main class="wrap" id="main"></main>
@@ -78,7 +79,7 @@ var SHORT={W:"Alırdım",O:"Olağanüstü",E:"Üstünde",M:"Karşılıyor",N:"Ge
 var B=[
 ["W","A. Lange & Söhne","alange-soehne.com","Sunucunun takıntılı olduğu marka; parası olsa almayacağı model yok.",["Lange 1","Saxonia","Odysseus"]],
 ["W","IWC Schaffhausen","iwc.com","Kendisi sahip, daha fazlasını istiyor; giderek popülerleşmesini seviyor.",["Ingenieur Automatic 40","Portugieser Automatic","Pilot's Watch Mark XX"]],
-["W","Zenith","zenith-watches.com","Kronografları çok güzel; pilot serisini sevmiyor.",["Chronomaster Sport","Chronomaster Original","Defy Skyline"]],
+["W","Zenith","zenith-watches.com","Kronografları çok güzel; pilot serisini sevmiyor.",["Chronomaster Sport","Chronomaster Original","Defy Skyline"],0,1],
 ["W","Hublot","hublot.com","Tasarımlar sakinleşti, in-house mekanizmalarla 'artık havalı' diyor.",["Classic Fusion","Big Bang Unico","Spirit of Big Bang"]],
 ["W","Omega","omegawatches.com","Fiyatlar yüksek ama sahip ve daha alacak.",["Seamaster Aqua Terra","Speedmaster Moonwatch","Seamaster Diver 300M"],1],
 ["W","Rolex","rolex.com","Perakende fiyattan alınırsa ömür boyu dayanan, en iyi değer.",["Datejust","Explorer","Submariner"],1],
@@ -88,40 +89,68 @@ var B=[
 ["O","Jaeger-LeCoultre","jaeger-lecoultre.com","Saatçilerin saatçisi; marka biraz daha görünür olabilir ama ürün muhteşem.",["Polaris Date","Reverso Tribute","Master Control Date"],1],
 ["O","Girard-Perregaux","girard-perregaux.com","Özellikle Laureato: fiyatına göre bitiş kalitesi ve tasarım çok iyi.",["Laureato 38","Laureato 42","Laureato Chronograph"]],
 ["O","Greubel Forsey","greubelforsey.com","Olağanüstü ama kendisi almazdı.",["Double Tourbillon 30°","Balancier Convexe","GMT Sport"]],
-["E","Frederique Constant","frederiqueconstant.com","Hem çok iyi değer hem üst seviye saatler.",["Highlife","Classics Manufacture","Slimline Moonphase"]],
-["E","Chopard","chopard.com","Çok seviyor; çok pahalı ama çok güzel.",["Alpine Eagle","L.U.C XPS","Mille Miglia"]],
-["E","Czapek","czapek.com","Çok güzel saatler, ama 'olağanüstü' için yeterli değil.",["Antarctique","Faubourg de Cracovie","Place Vendôme"]],
+["E","Frederique Constant","frederiqueconstant.com","Hem çok iyi değer hem üst seviye saatler.",["Highlife","Classics Manufacture","Slimline Moonphase"],0,1],
+["E","Chopard","chopard.com","Çok seviyor; çok pahalı ama çok güzel.",["Alpine Eagle","L.U.C XPS","Mille Miglia"],0,1],
+["E","Czapek","czapek.com","Çok güzel saatler, ama 'olağanüstü' için yeterli değil.",["Antarctique","Faubourg de Cracovie","Place Vendôme"],0,1],
 ["E","Hamilton","hamiltonwatch.com","Kendi çizgisinde kalan, iyi pazarlama, adil fiyat.",["Khaki Field Mechanical","Khaki Field Murph","Intra-Matic Chronograph"]],
 ["E","Hermès","hermes.com","100+ yıl geçmiş, gerçekten havalı tasarımlar.",["Hermès H08","Arceau","Slim d'Hermès"]],
 ["E","Christopher Ward","christopherward.com","Fiyatları aşağı çekip sağlam ürün yapıyor.",["The Twelve","C63 Sealander","Bel Canto"]],
-["E","H. Moser & Cie","h-moser.com","Topluluğa yakın yönetim, çok iyi bitiş.",["Streamliner","Endeavour Centre Seconds","Pioneer"]],
+["E","H. Moser & Cie","h-moser.com","Topluluğa yakın yönetim, çok iyi bitiş.",["Streamliner","Endeavour Centre Seconds","Pioneer"],0,1],
 ["E","Longines","longines.com","AVM markasından güzel saatlere dönüşüm; JLC'nin sportif tarafı, uygun fiyatla.",["Legend Diver 39","Spirit Zulu Time 39","Conquest Heritage"]],
 ["E","Swatch","swatch.com","MoonSwatch ve Scuba Fifty Fathoms ile çok akıllıca hamleler.",["MoonSwatch","Scuba Fifty Fathoms","Swatch Sistem51"]],
 ["E","Zodiac","zodiacwatches.com","Renkleri cesurca kullanan ilk markalardan.",["Super Sea Wolf","Olympos","Sea Wolf GMT"]],
 ["M","TAG Heuer","tagheuer.com","Yıllarca kayboldu ama toparlanıyor; glass box tasarımları çok güzel.",["Carrera Glassbox","Monaco","Aquaracer"]],
-["M","G-Shock","gshock.com","Eğlenceli, renkli, moda dünyasına da taşıyor.",["G-Shock 5600","CasiOak GA-2100","G-Shock Full Metal"]],
+["M","G-Shock","gshock.com","Eğlenceli, renkli, moda dünyasına da taşıyor.",["G-Shock 5600","CasiOak GA-2100","G-Shock Full Metal"],0,1],
 ["M","Baltic","baltic-watches.com","Mikro markanın olması gerektiği gibi: güzel tasarım, adil fiyat.",["Aquascaphe","Bicompax","MR01"]],
 ["M","Cartier","cartier.com","İkonik ama mücevhere kayıyor, fiyat belirleyici olmuyor.",["Santos","Tank Must","Pasha"]],
-["M","Citizen","citizenwatch.com","Sağlam tool saatleri; sunucunun saat hikâyesi buradan başladı.",["Promaster Diver","Tsuyosa","Series 8"]],
+["M","Citizen","citizenwatch.com","Sağlam tool saatleri; sunucunun saat hikâyesi buradan başladı.",["Promaster Diver","Tsuyosa","Series 8"],0,1],
 ["M","Sinn","sinn.de","Süs yok, sadece sağlam tool saati isteyene.",["556","104","U50"]],
 ["M","Richard Mille","richardmille.com","Kendi tarzı değil.",["RM 035","RM 011","RM 67-02"]],
 ["M","Breguet","breguet.com","Köklü geçmiş, tasarımı ona hitap etmiyor.",["Classique","Type XX","Marine"]],
 ["M","Nivada Grenchen","nivadagrenchenofficial.com","Baltic gibi: gerçekten güzel görünen saatler.",["Chronomaster","Antarctic","Depthmaster"]],
 ["M","Grand Seiko","grand-seiko.com","Teknik olarak çok iyi, tasarımlar 'biraz tuhaf'.",["SBGA211 Snowflake","SBGY013","SBGW301"]],
-["M","Jacob & Co","jacobandco.com","Kendi tarzında, sıralamada beklentiyi karşılıyor.",["Astronomia","Epic X","Bugatti Chiron"]],
-["M","Oris","oris.ch","Uzun süre beklentinin üstündeydi; daha fazlasını görmek istiyor.",["Aquis Date","Big Crown Pointer Date","Divers Sixty-Five"]],
+["M","Jacob & Co","jacobandco.com","Kendi tarzında, sıralamada beklentiyi karşılıyor.",["Astronomia","Epic X","Bugatti Chiron"],0,1],
+["M","Oris","oris.ch","Uzun süre beklentinin üstündeydi; daha fazlasını görmek istiyor.",["Aquis Date","Big Crown Pointer Date","Divers Sixty-Five"],0,1],
 ["M","Baume & Mercier","baume-et-mercier.com","Riviera çok iyi ama hak ettiği ilgiyi görmüyor.",["Riviera","Clifton","Classima"]],
-["N","Glashütte Original","glashuette-original.com","SeaQ Panorama Date çok güzel ama 42 mm, fazla büyük.",["SeaQ Panorama Date","SeaQ 39.5","Senator Excellence"]],
+["N","Glashütte Original","glashuette-original.com","SeaQ Panorama Date çok güzel ama 42 mm, fazla büyük.",["SeaQ Panorama Date","SeaQ 39.5","Senator Excellence"],0,1],
 ["N","Breitling","breitling.com","Fazla iri ve moda olmuştu, toparlanıyor.",["Navitimer B01 41","Superocean Heritage","Chronomat"]],
-["N","Blancpain","blancpain.com","Harika geçmiş ama yan logo, boyut ve kalınlık sorunlu.",["Fifty Fathoms","Villeret","Air Command"]],
+["N","Blancpain","blancpain.com","Harika geçmiş ama yan logo, boyut ve kalınlık sorunlu.",["Fifty Fathoms","Villeret","Air Command"],0,1],
 ["N","Patek Philippe","patek.com","Mağaza deneyimi çok iyiydi ama CEO röportajı fikrini değiştirdi.",["Nautilus","Aquanaut","Calatrava"]],
 ["N","Franck Muller","franckmuller.com","Çok kendine özgü stil ama bir şey değişmeli.",["Vanguard","Cintrée Curvex","Long Island"]],
 ["N","Seiko","seiko-watch.co.jp","'Az bütçeyle sağlam saat' dönemi bitti diyor.",["Prospex SPB143","Presage Cocktail","Seiko 5 Sports"]],
 ["N","Raymond Weil","raymond-weil.com","Hâlâ gelişmeli ama yükselişte, Longines'in daha ucuz yolunda.",["Millésime","Freelancer","Maestro"]],
 ["X","Officine Panerai","panerai.com","Ürün güzel ama boyutlar eski kaldı; tek tasarımı tekrar ediyor.",["Radiomir","Luminor Marina","Submersible"],1],
-["X","Bell & Ross","bellross.com","Tek tasarımı ufak değişikliklerle tekrarlıyor.",["BR 03","BR 05","BR-X5"]],
+["X","Bell & Ross","bellross.com","Tek tasarımı ufak değişikliklerle tekrarlıyor.",["BR 03","BR 05","BR-X5"],0,1],
 ["X","Montblanc","montblanc.com","Sunucuya göre marka 'bitti'.",["1858 Geosphere","Star Legacy","Heritage"]],
-["X","Bremont","bremont.com","Sevgiden hayal kırıklığına.",["Supermarine","Altitude","Terra Nova"]]
+["X","Bremont","bremont.com","Sevgiden hayal kırıklığına.",["Supermarine","Altitude","Terra Nova"]],
+["W", "Parmigiani Fleurier", "parmigiani.com", "Tonda PF: sade, entegre kordonlu, sessiz lüksün en iyi örneklerinden.", ["Tonda PF Micro-Rotor", "Tonda PF GMT Rattrapante", "Toric"], 0, 1],
+["W", "Piaget", "piaget.com", "Polo 79 ile 70'lerin entegre kordon dilinin asıl sahiplerinden; Altiplano incelikte referans.", ["Polo 79", "Altiplano", "Polo Date"], 0, 1],
+["W", "Laurent Ferrier", "laurentferrier.ch", "Bağımsız saatçiliğin en zarif klasikleri; bitiş kalitesi çok yüksek.", ["Classic Origin", "Sport Auto", "Galet Square"], 0, 1],
+["O", "Kari Voutilainen", "voutilainen.ch", "Fin usta; kadran ve mekanizma işçiliğinde dünyanın en iyilerinden.", ["Vingt-8", "28SC", "Observatoire"], 0, 1],
+["O", "Ferdinand Berthoud", "ferdinandberthoud.ch", "Chopard ailesinden; kronometre odaklı, müze kalitesinde saatler.", ["FB 1", "FB 2RE", "FB 3SPC"], 0, 1],
+["O", "MB&F", "mbandf.com", "Saati kinetik heykele çeviren marka; Legacy Machine'ler daha giyilebilir.", ["HM10 Bulldog", "Legacy Machine Perpetual", "M.A.D.1"], 0, 1],
+["O", "Urwerk", "urwerk.com", "Uydu saat göstergeleriyle tamamen kendine özgü, bilim kurgu tasarım.", ["UR-100V", "UR-105", "UR-220"], 0, 1],
+["O", "Moritz Grossmann", "grossmann-uhren.com", "Glashütte'nin el işçiliğine en çok yaslanan, klasik Alman saatçiliği.", ["Benu", "Atum", "Tefnut"], 0, 1],
+["O", "Ressence", "ressencewatches.com", "İbresiz, dönen disklerle okunan Belçika tasarımı; benzeri yok.", ["Type 1", "Type 3", "Type 8"], 0, 1],
+["O", "Armin Strom", "arminstrom.com", "Rezonans teknolojisi ve açık kadranlarla teknik bağımsız.", ["Orbit", "Mirrored Force Resonance", "Gravity Equal Force"], 0, 1],
+["O", "Kudoke", "kudoke.eu", "Alman bağımsız; el oyması mekanizmalar ve gece-gündüz kadranlar.", ["Kudoke 1", "Kudoke 2", "Kudoke 3"], 0, 1],
+["E", "Arnold & Son", "arnoldandson.com", "Ay fazı ve tourbillonlarda fiyatına göre güçlü haute horlogerie.", ["Nebula", "Perpetual Moon", "Ultrathin Tourbillon"], 0, 1],
+["E", "Norqain", "norqain.com", "Genç İsviçre markası; Freedom 60 ile vintage spor çizgisi güzel.", ["Freedom 60", "Adventure Sport", "Wild ONE"], 0, 1],
+["E", "Fortis", "fortis-swiss.com", "Havacılık köklü tool saatleri; Marinemaster ve Flieger çok iyi değer.", ["Marinemaster M-40", "Flieger F-39", "Stratoliner"], 0, 1],
+["E", "Gerald Charles", "geraldcharles.com", "Genta'nın son markası; Maestro entegre kordon tasarımları dikkat çekici.", ["Maestro 2.0", "Maestro 8.0", "Masterlink"], 0, 1],
+["E", "Gérald Genta", "geraldgenta.com", "Efsane tasarımcının adıyla yeniden doğan marka; Bulgari ailesinden.", ["Gentissima Oursin", "Arena", "Gentissima"], 0, 1],
+["E", "Ulysse Nardin", "ulysse-nardin.com", "Freak ile cesur, Marine ile denizci köklere sadık.", ["Freak X", "Diver", "Marine Torpilleur"], 0, 1],
+["E", "Singer Reimagined", "singerreimagined.com", "70'lerin kronograf ruhunu modern, merkezli kronografla yorumluyor.", ["Track1", "Flytrack", "Divetrack"], 0, 1],
+["E", "Chronoswiss", "chronoswiss.com", "Regülatör kadranları ve guilloche işçiliğiyle tanınır.", ["Regulator Classic", "Flying Regulator", "Opus Chronograph"], 0, 1],
+["E", "Schwarz Etienne", "schwarz-etienne.com", "Kendi mekanizmasını yapan küçük İsviçre manufaktürü.", ["Roma Synergy", "Tonneau", "La Chaux-de-Fonds"], 0, 1],
+["E", "Sarpaneva", "sarpaneva.com", "Fin tasarımcı; ay yüzlü Korona kadranları çok karakterli.", ["Korona K0", "Moonshine", "Northern Lights"], 0, 1],
+["E", "RGM Watch Co.", "rgmwatches.com", "ABD'de el yapımı mekanizmalar; Amerikan saatçiliğinin bayrağı.", ["Model 801", "Pennsylvania Tourbillon", "Model 151"], 0, 1],
+["E", "Cyrus Genève", "cyrus-watches.ch", "Yastık kasalı, sıra dışı komplikasyonlu Klepcys serisi.", ["Klepcys GMT Retrograde", "Kuros", "Dominion GMT"], 0, 1],
+["M", "Hautlence", "hautlence.com", "Atlama saat ve sıra dışı göstergeler; tasarım ilginç ama niş.", ["Linear Series 1", "Vagabonde", "Sphere"], 0, 1],
+["M", "Bianchet", "bianchet.com", "İskelet tourbillon odaklı, gösterişli genç marka.", ["UFO Tourbillon", "B1.618 Skeleton", "Tourbillon"], 0, 1],
+["M", "L. Leroy", "montres-leroy.com", "1785'ten gelen köklü Fransız isim; yeni dönemi çok üst fiyat segmentinde.", ["Osmior", "Elyor", "Chronomètre Observatoire"], 0, 1],
+["M", "Perrelet", "perrelet.com", "Türbin rotorlu kadranlarıyla tanınır; tasarım herkese göre değil.", ["Turbine", "Turbine Pilot", "Lab Peripheral"], 0, 1],
+["M", "Artisans de Genève", "artisansdegeneve.com", "Sahibinin Rolex ve Patek'ini kişiye özel yeniden işleyen atölye.", ["Daytona Custom", "Pulsar", "Nautilus Custom"], 0, 1]
 ];
 function img(q){return "https://tse1.mm.bing.net/th?q="+encodeURIComponent(q)+"&w=300&h=300&c=7"}
 function gimg(q){return "https://www.google.com/search?tbm=isch&q="+encodeURIComponent(q)}
@@ -129,7 +158,7 @@ function gsite(n){return "https://www.google.com/search?q="+encodeURIComponent(n
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 var cur="Tümü",q="";
 function card(b){
-  var n=b[1],site=b[2],ms=b[4],mine=b[5];
+  var n=b[1],site=b[2],ms=b[4],mine=b[5],wt=b[6];
   var url=site?"https://"+site:gsite(n);
   var logo=site?'<img class="logo" loading="lazy" alt="" src="https://www.google.com/s2/favicons?domain='+site+'&sz=64" onerror="this.style.visibility=\'hidden\'">':'<div class="logo" style="display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:#5c5851">'+esc(n[0])+'</div>';
   var mh=ms.map(function(m){
@@ -137,7 +166,7 @@ function card(b){
     var qq=full+" watch";
     return '<a class="m" href="'+gimg(qq)+'" target="_blank" rel="noopener"><img loading="lazy" alt="'+esc(full)+'" src="'+img(qq)+'" onerror="this.outerHTML=\'<div class=ph>'+esc(m).replace(/'/g,"")+'</div>\'"><span>'+esc(m)+'</span></a>';
   }).join("");
-  return '<article class="card'+(mine?' mine':'')+'"><div class="ch">'+logo+'<div><b>'+esc(n)+'</b><small>'+(site?esc(site):'site araması')+'</small></div>'+(mine?'<span class="tag">LİSTEMDE</span>':'')+'</div><p class="note">'+esc(b[3])+'</p><div class="models">'+mh+'</div><div class="links"><a class="pri" href="'+url+'" target="_blank" rel="noopener">Site ↗</a><a href="'+gimg(n+" watches")+'" target="_blank" rel="noopener">Fotoğraflar ↗</a></div></article>';
+  return '<article class="card'+(mine?' mine':'')+'"><div class="ch">'+logo+'<div><b>'+esc(n)+'</b><small>'+(site?esc(site):'site araması')+'</small></div>'+(mine?'<span class="tag">LİSTEMDE</span>':'')+(wt?'<span class="tag wt"'+(mine?' style="margin-left:6px"':'')+'>WTNY 26</span>':'')+'</div><p class="note">'+esc(b[3])+'</p><div class="models">'+mh+'</div><div class="links"><a class="pri" href="'+url+'" target="_blank" rel="noopener">Site ↗</a><a href="'+gimg(n+" watches")+'" target="_blank" rel="noopener">Fotoğraflar ↗</a></div></article>';
 }
 function render(){
   var html="",any=false;
