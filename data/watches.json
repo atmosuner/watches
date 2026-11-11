@@ -67,7 +67,8 @@
    "Unimatic": "https://www.unimaticwatches.com",
    "AV86": "https://av86.com/products/1954-amalfi-mechanical-gold-midnight-blue",
    "Bell & Ross": "https://www.bellross.com",
-   "Casio G-Shock": "https://gshock.casio.com"
+   "Casio G-Shock": "https://gshock.casio.com",
+   "MING": "https://www.ming.watch"
   },
   "seed": [
    "Jaeger-LeCoultre Polaris Date 40 mm",
@@ -75,7 +76,8 @@
    "Panerai Radiomir",
    "Rolex Datejust",
    "Omega Seamaster Aqua Terra",
-   "Studio Underd0g 01SERIES Desert Sky (Gen3)"
+   "Studio Underd0g 01SERIES Desert Sky (Gen3)",
+   "MING 37.09 Uni"
   ],
   "target": [
    "Audemars Piguet",
@@ -113,7 +115,7 @@
    "Mondaine Evo2 Automatic 40 mm MSE.40610.SM",
    "Casio G-Shock GA-2100-7A7 (CasiOak) Beyaz"
   ],
-  "seedV": 13,
+  "seedV": 14,
   "roles": [
    "Ana saat",
    "İş",
@@ -3290,6 +3292,56 @@
    "zoom": 1.63,
    "zx": 0.9,
    "zy": 3.4
+  },
+  {
+   "b": "MING",
+   "n": "37.09 Uni",
+   "c": "Diver",
+   "p": [
+    7200,
+    7200
+   ],
+   "dial": "#141414",
+   "dn": "Siyah metalize safir, turuncu zamanlayıcı ölçeği",
+   "acc": "#e8742c",
+   "note": "38 mm siyah DLC kaplı çelik, 12,8 mm (2,8 mm'si bombeli safir), 44,5 mm lug-to-lug, 20 mm kordon. Sellita for MING SW300.M1 otomatik, ~50 saat. 600 m. Kadran safirden, saat 4'teki kurmayla döndürülen 60 tıklık zamanlayıcı; ilk 20 dakikası turuncu ve turuncu parlıyor. Siyah FKM kauçuk kayış. Fiyat CHF 5.250, ABD bayilerinde 7.200 USD. Yılda 150 adet üretildi, şu an marka sitesinde tükendi.",
+   "color": "Siyah",
+   "mov": "Otomatik / Elle kurmalı",
+   "type": "Sade",
+   "link": "https://www.ming.watch/featured-product/ming-37-09-uni",
+   "img": "https://cdn.prod.website-files.com/62cd089edd0c372e58a75932/677f45a8bb77422fa81da0aa_907X_B0006114-2.jpg",
+   "about": [
+    "Deniz kestanesinden (Japonca 'uni') esinli siyah DLC dalış saati; dönen safir kadran ve turuncu lume.",
+    "38 mm ve 44,5 mm lug-to-lug ile 17 cm bilekte çok iyi oturur; 600 m ile her yere.",
+    "Yılda 150 adet; bulmak için ikinci el ya da bayi stoğu gerekebilir."
+   ],
+   "tech": {
+    "mat": "316L çelik, mat fırçalı, siyah DLC",
+    "dial": "Siyah metalize safir, Super-LumiNova X1 dolgulu desen, turuncu 20 dk ölçeği",
+    "gl": "Bombeli safir, çift yüz AR",
+    "str": "Siyah FKM kauçuk, flying blade toka",
+    "lw": "20 mm",
+    "bz": "Basamaklı sabit bezel; zamanlayıcı içte, dönen kadranda",
+    "pr": "~50 saat",
+    "cb": "Şeffaf – bombeli safir cam"
+   },
+   "spec": {
+    "dia": "38 mm",
+    "l2l": 44.5,
+    "th": "12,8 mm",
+    "wr": "600 m",
+    "mov": "Sellita for MING SW300.M1 otomatik"
+   },
+   "yr": 2025,
+   "roles": [
+    "Hafta sonu"
+   ],
+   "imgs": [
+    "https://cdn.prod.website-files.com/62cd089edd0c372e58a75932/677f50b17d6dc167ee12f145_907X_B0006184-2.jpg",
+    "https://cdn.prod.website-files.com/62cd089edd0c372e58a75932/677f507904ab0faadc8f1c4f_907X_B0006132-2.jpg",
+    "https://cdn.prod.website-files.com/62cd089edd0c372e58a75932/677f509a50b972dff821faee_907X_B0006208.jpg",
+    "https://cdn.prod.website-files.com/62cd089edd0c372e58a75932/677f50f3d0fcd497ed5bb57e_907X_B0006149-2.jpg"
+   ]
   }
  ]
 }
