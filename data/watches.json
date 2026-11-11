@@ -2459,59 +2459,6 @@
    ]
   },
   {
-   "b": "Mondaine",
-   "n": "Original Automatic 41 mm",
-   "c": "Dress",
-   "p": [
-    600,
-    900
-   ],
-   "dial": "#f1f0ea",
-   "dn": "Beyaz",
-   "acc": "#d6322b",
-   "note": "41 mm, 11,5 mm, 50 m. Sellita SW200-1 otomatik, İsviçre tren istasyonu saati tasarımı, beyaz kadran ve kırmızı saniye ibresi.",
-   "color": "Beyaz / krem",
-   "mov": "Otomatik / Elle kurmalı",
-   "type": "Tarihli",
-   "link": "https://mondaine.com/products/original-automatic-41mm-stainless-steel-automatic-watch-mst-4161b-sj",
-   "img": "https://mondaine.com/cdn/shop/products/MST.4161B.SJ-S90-1080x1080px-_2021.jpg?crop=center&height=1000&v=1689173075&width=1000",
-   "about": [
-    "İsviçre tren istasyonu saati tasarımı: beyaz kadran, kırmızı saniye ibresi, Sellita SW200-1 otomatik.",
-    "Dress slotunda uygun fiyatlı beyaz kadran.",
-    "Nomos ve Junghans da beyaz, dress slotunda renk tekrarına dikkat."
-   ],
-   "tech": {
-    "mat": "316L fırçalı çelik",
-    "dial": "Beyaz, siyah indeksler",
-    "gl": "Safir",
-    "str": "Deri ya da metal (sayfada ikisi de geçiyor)",
-    "lw": "20 mm",
-    "bz": "Sabit, çelik",
-    "pr": "~38 saat",
-    "cb": "Şeffaf – cam, 316L çelik"
-   },
-   "spec": {
-    "dia": "41 mm",
-    "th": "11,5 mm",
-    "wr": "50 m",
-    "mov": "Sellita SW200-1 otomatik"
-   },
-   "zy": 7.6,
-   "zoom": 1.8,
-   "yr": 2018,
-   "orig": 1986,
-   "yrx": true,
-   "roles": [
-    "İş"
-   ],
-   "imgs": [
-    "https://mondaine.com/cdn/shop/products/MST.4161B.SJ-S90-1080x1080px-_2021.jpg?v=1689173075",
-    "https://mondaine.com/cdn/shop/products/MST.4161B.SJ-CBS-1080px-_2021.jpg?v=1689173072",
-    "https://mondaine.com/cdn/shop/products/MST.4161B.SJ-SIS-1080x1080px-_2021.jpg?v=1689173072",
-    "https://mondaine.com/cdn/shop/products/MST.4161B.SJ-ML1-1080px-_2021.jpg?v=1658505505"
-   ]
-  },
-  {
    "b": "Brew",
    "n": "Metric Retro Black",
    "c": "Kronograf",
@@ -3289,7 +3236,9 @@
     "https://mondaine.com/cdn/shop/products/MSE.40610.SM-CBS-1080px-_2021.jpg?v=1691160600",
     "https://mondaine.com/cdn/shop/products/MSE.40610.SM-DTS-1080px-_2021.jpg?v=1691160600",
     "https://mondaine.com/cdn/shop/files/CopyofMSE.40610.SM-ML1-1080px-_2021.jpg?v=1691160683"
-   ]
+   ],
+   "zoom": 1.71,
+   "zy": 6.8
   },
   {
    "b": "Casio G-Shock",
@@ -3337,7 +3286,10 @@
     "https://watchdirect.com.au/cdn/shop/files/GA-2100-7A7_03.jpg?v=1709719782&width=1200",
     "https://watchdirect.com.au/cdn/shop/files/GA-2100-7A7_04.jpg?v=1709719802&width=1200",
     "https://watchdirect.com.au/cdn/shop/files/GA-2100-7A7_model.jpg?v=1709719753&width=1080"
-   ]
+   ],
+   "zoom": 1.63,
+   "zx": 0.9,
+   "zy": 3.4
   }
  ]
 }
