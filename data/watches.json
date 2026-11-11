@@ -3343,7 +3343,9 @@
     "https://cdn.prod.website-files.com/62cd089edd0c372e58a75932/677f507904ab0faadc8f1c4f_907X_B0006132-2.jpg",
     "https://cdn.prod.website-files.com/62cd089edd0c372e58a75932/677f509a50b972dff821faee_907X_B0006208.jpg"
    ],
-   "zoom": 1.7
+   "zoom": 1.7,
+   "zx": -0.3,
+   "zy": 17.3
   }
  ]
 }
